@@ -8,7 +8,7 @@
 #### How to use it?
 Run this command:
 ```
-curl -s https://github.com/tranvietphuoc/nvim/master/install.sh | sh
+curl -sSL https://github.com/tranvietphuoc/nvim/master/install.sh | sh
 ```
 Then run:
 ```

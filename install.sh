@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [-d "$HOME/.config/nvim"]
+if [-d "$HOME/.config/nvim"];
 then
     mv $HOME/.config/nvim $HOME/.config/nvim.old
     mkdir -p $HOME/.config/nvim
