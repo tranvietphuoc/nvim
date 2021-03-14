@@ -4,6 +4,7 @@
 * `neovim`
 * `python3.+`
 * `nodejs` and `npm`
+* `macOS` only
 
 #### How to use it?
 Run this command:
