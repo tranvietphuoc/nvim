@@ -1,0 +1,52 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "python",
+    "go",
+    "json",
+    "javascriptreact",
+    "typescriptreact",
+    "typescript.tsx"
+  ],
+  "eslint.filetypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact",
+    "typescript.tsx"
+  ],
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    },
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cc", "cpp", "objc", "objcpp", "cuda"],
+      "rootPatterns": [
+        "/Users/phuoc/.config/nvim/.ccls",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        },
+        "clang": {
+          "extraArgs": [
+            "-isytem/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1",
+            "-isytem/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include",
+            "-isytem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
+            "-isytem/Library/Developer/CommandLineTools/usr/include",
+            "-isytem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+          ],
+          "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0"
+        }
+      }
+    }
+  }
+}

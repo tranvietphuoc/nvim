@@ -1,0 +1,8 @@
+clang
+-std=c++17
+-stdlib=libc++
+-isystem/usr/local/include
+-isystem/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1
+-isystem/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include
+-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX11.2.1.sdk/usr/include
+-isystem/Library/Developer/CommandLineTools/usr/include
