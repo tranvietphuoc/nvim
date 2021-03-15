@@ -1,6 +1,15 @@
 # My configurations for Neovim editor
 
 Currently, I use `Neovim` on `macOS`, so this guide will work well on `macOS` only. I'll update for another platforms later...
+This configuration supports (includes syntax hightlighting and autocompletion) for these languages:
+* `Python`
+* `Javascript`
+* `Rust`
+* `C`
+* `C++`
+* `Go`
+* `Html`
+* `Css`
 
 ## Prequisition:
 * `neovim`
@@ -8,7 +17,7 @@ Currently, I use `Neovim` on `macOS`, so this guide will work well on `macOS` on
 * `nodejs` and `npm`
 
 ### Neovim
-In order to have all the newest features, you should install [the latest release (>=0.5.0)](https://github.com/neovim/neovim/releases/tag/nightly) but __not a highly recommend__.
+In order to have all the newest features, you should install [the latest release (>=0.5.0)](https://github.com/neovim/neovim/releases/tag/nightly) but __not a highly recommended__.
 
 ### Python providers
 I've used `python3` as a default version on my mac. If you use another versions of `Python`.
@@ -16,7 +25,7 @@ Please edit the `g:python3_host_prog` variable to probably path to your `Python`
 If your machine doesn't have any versions of `Python`, you could install [follow this](https://www.python.org/).
 After install `Python`, you must to install `pynvim`
 ```
-pip3 instlal pynvim
+pip3 install pynvim
 ```
 
 ### Nodejs and npm
