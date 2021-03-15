@@ -1,7 +1,7 @@
 # My configurations for Neovim editor
 
 Currently, I use `Neovim` on `macOS`, so this guide will work well on `macOS` only. I'll update for another platforms later...
-This configuration supports (includes syntax hightlighting and autocompletion) for these languages:
+This configuration supports (includes syntax highlighting and autocompletion) for these languages:
 * `Python`
 * `Javascript`
 * `Rust`

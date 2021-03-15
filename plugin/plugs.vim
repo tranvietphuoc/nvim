@@ -9,12 +9,21 @@ endif
 call plug#begin('$HOME/.config/nvim/autoload/plugged')
 
 Plug 'terryma/vim-multiple-cursors'
+
 " git
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'junegunn/gv.vim'
+
+" status and tabs
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
+
+" treesitter
 Plug 'nvim-treesitter/nvim-treesitter'
+
+" papercolor
 Plug 'NLKNguyen/papercolor-theme'
 
 " Better Visual Guide
