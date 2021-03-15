@@ -23,7 +23,7 @@ In order to have all the newest features, you should install [the latest release
 I've used `python3` as a default version on my mac. If you use another versions of `Python`.
 Please edit the `g:python3_host_prog` variable to probably path to your `Python`.
 If your machine doesn't have any versions of `Python`, you could install [follow this](https://www.python.org/).
-After install `Python`, you must to install `pynvim`
+After install `Python`, you must install `pynvim`
 ```
 pip3 install pynvim
 ```
