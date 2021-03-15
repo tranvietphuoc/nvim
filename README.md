@@ -18,6 +18,7 @@ This configuration supports (includes syntax hightlighting and autocompletion) f
 
 ### Neovim
 In order to have all the newest features, you should install [the latest release (>=0.5.0)](https://github.com/neovim/neovim/releases/tag/nightly) but __not a highly recommended__.
+Other way, you could install follow the guide of [Neovim homepage](https://neovim.io/).
 
 ### Python providers
 I've used `python3` as a default version on my mac. If you use another versions of `Python`.
@@ -29,10 +30,10 @@ pip3 install pynvim
 ```
 
 ### Nodejs and npm
-There're a lot of plugins that use external packages (like language server protocol,...). And we need to install [Nodejs and npm via download](https://nodejs.org/en/download/)
+There're a lot of plugins that use external packages (like language server protocol,...) of Neovim. And we need to install [Nodejs and npm via download](https://nodejs.org/en/download/)
 [or via package manager](https://nodejs.org/en/download/package-manager/).
 
-Nvim Nodejs client is also needed:
+`neovim` Nodejs client is also needed:
 ```
 npm install -g neovim
 ```
