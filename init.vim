@@ -16,3 +16,4 @@ source $HOME/.config/nvim/plugin-config/nerdtree.vim
 source $HOME/.config/nvim/plugin-config/emmet.vim
 source $HOME/.config/nvim/plugin-config/theme.vim
 source $HOME/.config/nvim/plugin-config/treesitter.vim
+source $HOME/.config/nvim/plugin-config/fugitive.vim
