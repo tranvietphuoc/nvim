@@ -64,7 +64,7 @@ Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
 
 "Highlighting color for files extenstion
-Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeTabsToggle'] }
+Plug 'preservim/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs', { 'on':  'NERDTreeTabsToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'

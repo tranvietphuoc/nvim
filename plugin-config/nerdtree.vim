@@ -8,7 +8,7 @@ autocmd bufenter * if (winnr("$")) == 1 && exists("b:NERDTreeType") && (b:NERDTr
 " deleting files
 let NERDTreeAutoDeleteBuffer=1
 " making it prettier
-let NERDTreeMinimalUI = 1
+" let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 " map leader + o open nerdtree
 let g:netrw_banner=0
@@ -20,7 +20,7 @@ nnoremap <leader>e :Lexplore<CR>
 " config nerdtree-color-highlights
 let g:NERDTreeFileExtensionHighlightFullName = 1
 " config nerdtree git plugin
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
@@ -32,10 +32,12 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
-let g:NERDTreeShowIgnoredStatus = 1
-let g:NERDTreeShowGitStatus=1
+let g:NERDTreeGitStatusShowIgnored = 1
+let g:NERDTreeGitStatusEnable=1
 let g:NERDTreeShowHidden=1  " Show hidden files
 let g:NERDTreeWinSize=30  " size of NERDTree windows
+let NERDTreeDirArrows=1
+
 let NERDTreeIgnore = ['\.swp$', '.DS_Store', '\.pyc$', '__pycache__', 'node_modules']  " filter VIM swap-files from tree
 " Highlighting insdide NERDTree
 let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
