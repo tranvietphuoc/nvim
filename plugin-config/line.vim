@@ -1,7 +1,7 @@
 
 " lightline
 let g:lightline = {}
-let g:lightline.colorscheme = 'wombat'
+let g:lightline.colorscheme = 'PaperColor'
 let g:lightline.active = { 'left': [ ['mode', 'paste'], ['cocstatus', 'readonly', 'filename', 'modified'] ] }
 let g:lightline.component_function = { 'filename': 'LightlineFilename', 'cocstatus': 'coc#status', 'gitbranch': 'FugitiveHead' }
 set showtabline=2

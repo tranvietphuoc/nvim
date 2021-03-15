@@ -13,13 +13,14 @@ Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'joshdick/onedark.vim'
+Plug 'NLKNguyen/papercolor-theme'
 
 " Better Visual Guide
 Plug 'Yggdroot/indentLine'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+
 " Plug 'posva/vim-vue'
 Plug 'mxw/vim-jsx'
 Plug 'plasticboy/vim-markdown'
@@ -87,5 +88,8 @@ Plug 'sheerun/vim-polyglot'
 
 " startify
 Plug 'mhinz/vim-startify'
+
+" lua completion
+Plug 'nvim-lua/completion-nvim'
 
 call plug#end()
