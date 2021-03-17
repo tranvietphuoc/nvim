@@ -30,4 +30,4 @@ if has("nvim")
     " rather than going into the terminal's normal mode.
     autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
 endif
-nnoremap <silent> <Leader>f :FZF<CR>
+nnoremap <silent> <Leader>fz :FZF<CR>

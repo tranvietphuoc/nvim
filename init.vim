@@ -18,3 +18,4 @@ source $HOME/.config/nvim/plugin-config/theme.vim
 source $HOME/.config/nvim/plugin-config/treesitter.vim
 source $HOME/.config/nvim/plugin-config/fugitive.vim
 source $HOME/.config/nvim/plugin-config/gitsign.vim
+source $HOME/.config/nvim/plugin-config/floatterm.vim

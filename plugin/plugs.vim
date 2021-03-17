@@ -103,4 +103,7 @@ Plug 'mhinz/vim-startify'
 " lua completion
 Plug 'nvim-lua/completion-nvim'
 
+" floatterm
+Plug 'voldikss/vim-floaterm'
+
 call plug#end()
