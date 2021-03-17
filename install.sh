@@ -10,4 +10,4 @@ else
     git clone https://github.com/tranvietphuoc/nvim.git $HOME/.config/
     cd $HOME/.config/nvim/
     rm -r ./assets/
-if
+fi
