@@ -48,3 +48,8 @@ Then run:
 nvim
 ```
 to install plugins.
+
+## Some images of demo.
+![floatterm](./assets/floatterm.png)
+![startify](./assets/startfiy.png)
+![Nerdtree and tagba](./assets/nerdtree_and_tagbar.png)
