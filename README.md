@@ -18,7 +18,6 @@ This configuration supports (includes syntax highlighting and autocompletion) fo
 
 ### Neovim
 In order to have all the newest features, you should install the [Nightly version, the latest (>=0.5.0) here](https://github.com/neovim/neovim/releases/tag/nightly).
-Other way, you could install follow the guide of [Neovim homepage](https://neovim.io/).
 
 ### Python providers
 I've used `python3` as a default version on my mac. If you use another versions of `Python`.
