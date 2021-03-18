@@ -17,7 +17,7 @@ This configuration supports (includes syntax highlighting and autocompletion) fo
 * `nodejs` and `npm`
 
 ### Neovim
-In order to have all the newest features, you should install [the latest release (>=0.5.0)](https://github.com/neovim/neovim/releases/tag/nightly) but __not a highly recommended__.
+In order to have all the newest features, you should install the [Nightly version, the latest (>=0.5.0) here](https://github.com/neovim/neovim/releases/tag/nightly).
 Other way, you could install follow the guide of [Neovim homepage](https://neovim.io/).
 
 ### Python providers
