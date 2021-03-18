@@ -52,6 +52,29 @@ to open the editor first, then run command:
 ```
 to install all plugins of editor. `:q` to quit and open it again.
 
+## Some basic keys mapping of this configuration.
+|Keys  |Command|
+|:-- -:|:-   -:|
+|`,`   |`Leader`(`n`, `v` mode) |
+|`<Leader>/` | `:Commentary<CR>`|
+|`<Leader>t` | `:TagbarToggle<CR>`|
+|`<Leader>n` | `:NERDTreeToggle<CR>`|
+|`bn`  | `:bnext<CR>` |
+|`bp` | `:bprevious<CR>` |
+|`bd` | `:bd<CR>` |
+|`qq` | `<Esc>` |
+|`<Leader>ff` | `<cmd>Telescope find_files<CR>`|
+|`<Leader>fg` | `<cmd>Telescope live_grep<CR>` |
+|`<Leader>fb` | `<cmd>Telescope buffers<CR>` |
+|`<Leader>fh` | `<cmd>Telescope help_tags<CR>` |
+|`,,` | Trigger `Leader` key in `i` mode of `emmet`|
+|`<Leader>ft` | `g:floatterm_keymap_toggle` |
+|`<Leader>fn` | `g:floatterm_keymap_next` |
+|`<Leader>fp` | `g:floatterm_keymap_prev`|
+|`<Leader>fw` | `g:floatterm_keymap_new`|
+
+
+
 ## Some images of demo.
 ![floatterm](./assets/floatterm.png)
 ![startify](./assets/startfiy.png)
