@@ -42,6 +42,7 @@ vim.cmd('set signcolumn=yes')
 vim.cmd('set ttyfast')
 vim.cmd('set errorformat=%f:%l:\\ %m')
 vim.cmd('set modifiable')
+vim.wo.relativenumber = true
 
 if vim.fn.has('nvim') == 1 then
     --
