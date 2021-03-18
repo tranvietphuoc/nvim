@@ -43,11 +43,15 @@ Run this command:
 ```
 curl -sSL https://github.com/tranvietphuoc/nvim/blob/master/install.sh | sh
 ```
-Then run:
+and then type to the terminal command:
 ```
 nvim
 ```
-to install plugins.
+to open the editor first, then run command:
+```
+:PackerInstall
+```
+to install all plugins of editor. `:q` to quit and open it again.
 
 ## Some images of demo.
 ![floatterm](./assets/floatterm.png)
