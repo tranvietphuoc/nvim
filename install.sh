@@ -2,7 +2,6 @@
 
 set -o errexit
 
-
 installdependencies() {
     brew install lua
     brew install node

@@ -15,6 +15,7 @@ This configuration supports (includes syntax highlighting and autocompletion) fo
 * `neovim`
 * `python3.+`
 * `nodejs` and `npm`
+* `ccls`
 
 ### Neovim
 In order to have all the newest features, you should install the [Nightly version, the latest (>=0.5.0) here](https://github.com/neovim/neovim/releases/tag/nightly).
@@ -36,6 +37,16 @@ There're a lot of plugins that use external packages (like language server proto
 ```
 npm install -g neovim
 ```
+### ccls
+```
+git clone --depth=1 --recursive https://github.com/MaskRay/ccls
+cd ccls
+brew info llvm
+cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/usr/local/Cellar/llvm/<Your Version>/lib/cmake
+cmake --build Release
+cmake --build Release --target install
+```
+
 
 ## How to use it?
 Run this command:
