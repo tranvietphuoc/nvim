@@ -26,7 +26,7 @@ return require('packer').startup(function(use)
     use 'junegunn/gv.vim'
 
     -- treesitter
-    use 'nvim-treesitter/nvim-treesitter'
+    use {'nvim-treesitter/nvim-treesitter', run=':TSUpdate'}
     -- status bar
     use 'itchyny/lightline.vim'
     use 'mengelbrecht/lightline-bufferline'
@@ -99,7 +99,7 @@ return require('packer').startup(function(use)
     use 'tpope/vim-commentary'
 
     -- go vim
-    use {'fatih/vim-go', tag='v1.22', run=':GoUpdateBinaries'}
+    use {'fatih/vim-go', run=':GoUpdateBinaries'}
 
     -- rust
     use 'rust-lang/rust.vim'
