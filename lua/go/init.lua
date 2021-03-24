@@ -18,4 +18,3 @@ vim.g.go_info_mode = 'gopls'
 vim.g.go_decls_includes = 'func'
 vim.g.go_fmt_options = '-tabwidth=8'
 vim.g.go_addtags_transform = 'camelcase'
-

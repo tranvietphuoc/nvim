@@ -99,7 +99,7 @@ return require('packer').startup(function(use)
     use 'tpope/vim-commentary'
 
     -- go vim
-    use 'fatih/vim-go'
+    use {'fatih/vim-go', tag='v1.22', run=':GoUpdateBinaries'}
 
     -- rust
     use 'rust-lang/rust.vim'

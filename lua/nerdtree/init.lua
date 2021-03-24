@@ -33,3 +33,6 @@ vim.cmd('let g:NERDTreeSyntaxEnabledExtensions=[ \'c\', \'css\', \'h\', \'html\'
 vim.cmd('let g:NERDTreeSyntaxDisableDefaultExtensions = 1')
 vim.cmd('let g:WebDevIconsUnicodeDecorateFolderNodes = 1')
 vim.cmd('let g:DevIconsEnableFoldersOpenClose = 1')
+vim.cmd('let g:webdevicons_enable_nerdtree = 1')
+vim.g.WebDevIconsDisableDefaultFolderSymbolColorFromNERDTreeDir = 0
+vim.g.WebDevIconsDisableDefaultFileSymbolColorFromNERDTreeFile = 0

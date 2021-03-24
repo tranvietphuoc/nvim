@@ -62,3 +62,5 @@
 --     au FileType javascript setlocal foldmethod=syntax
 -- augroup END
 -- ]])
+--
+vim.cmd('autocmd FileType json syntax match Comment +\\/\\/.\\+$+')
