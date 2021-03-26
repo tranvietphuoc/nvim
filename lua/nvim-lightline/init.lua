@@ -1,7 +1,7 @@
 -- config lightline
 vim.cmd('let g:lightline = {}')
 vim.cmd('let g:lightline.colorscheme = \'PaperColor\'')
-vim.cmd('let g:lightline.active = { \'left\': [ [\'mode\', \'paste\'], [\'cocstatus\', \'readonly\', \'filename\', \'modified\'] ] }')
+vim.cmd('let g:lightline.active = { \'left\': [ [\'mode\', \'paste\'], [\'cocstatus\', \'readonly\', \'filename\', \'modified\', \'gitbranch\'] ] }')
 vim.cmd('let g:lightline.component_function = { \'filename\': \'LightlineFilename\', \'cocstatus\': \'coc#status\', \'gitbranch\': \'FugitiveHead\' }')
 vim.cmd('let g:lightline.tabline = { \'left\': [[\'buffers\']], \'right\': [[\'close\']] }')
 vim.cmd('let g:lightline.component_expand = { \'buffers\': \'lightline#bufferline#buffers\' }')
