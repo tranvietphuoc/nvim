@@ -48,6 +48,7 @@ return require('packer').startup(function(use)
 
     -- markdown
     use 'plasticboy/vim-markdown'
+    use {'iamcco/markdown-preview.nvim', run = ':call mkdp#util#install()'}
     use 'christoomey/vim-tmux-navigator'
     use 'machakann/vim-highlightedyank'
 
@@ -104,7 +105,7 @@ return require('packer').startup(function(use)
     -- rust
     use 'rust-lang/rust.vim'
     use 'racer-rust/vim-racer'
-    use 'autozimu/LanguageClient-neovim'
+    -- use 'autozimu/LanguageClient-neovim'
 
     -- csv
     use 'chrisbra/csv.vim'
