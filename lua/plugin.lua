@@ -113,5 +113,7 @@ return require('packer').startup(function(use)
     -- vim easy align
     use 'junegunn/vim-easy-align'
 
+    use {'turbio/bracey.vim', run = 'npm install --prefix server'}
+
 
 end)

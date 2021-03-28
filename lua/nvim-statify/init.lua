@@ -1,5 +1,5 @@
-vim.g.startify_custom_header = {
-	' ▄▄    ▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄   ▄▄ ▄▄▄ ▄▄   ▄▄ ',
+vim.g.ascii = {
+    ' ▄▄    ▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄   ▄▄ ▄▄▄ ▄▄   ▄▄ ',
 	'█  █  █ █       █       █  █ █  █   █  █▄█  █',
 	'█   █▄█ █    ▄▄▄█   ▄   █  █▄█  █   █       █',
 	'█       █   █▄▄▄█  █ █  █       █   █       █',
@@ -7,6 +7,8 @@ vim.g.startify_custom_header = {
 	'█ █ █   █   █▄▄▄█       ██     ██   █ ██▄██ █',
 	'█▄█  █▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█ █▄▄▄█ █▄▄▄█▄█   █▄█',
 }
+
+vim.g.startify_custom_header = 'startify#pad(g:ascii + startify#fortune#boxed())'
 
 vim.g.webdevicons_enable_startify = 1
 vim.g.startify_enable_special = 0
@@ -30,3 +32,4 @@ function! StartifyEntryFormat()
         return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
 endfunction
 ]])
+vim.g.startify_padding_left = 3
