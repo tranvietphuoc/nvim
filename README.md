@@ -84,13 +84,14 @@ to install all plugins of editor. `:q` to quit and open it again.
 |`<Leader>fn`  | `g:floatterm_keymap_next`                   |
 |`<Leader>fp`  | `g:floatterm_keymap_prev`                   |
 |`<Leader>fw`  | `g:floatterm_keymap_new`                    |
+|`<Leader>mp`  | `<Plug>MarkdownPreview`                     |
 --------------------------------------------------------------
 
 
 
 ## Some images of demo.
 ![floatterm](./assets/floatterm.png)
-![startify](./assets/startfiy.png)
+![startify](./assets/startify.png)
 ![Nerdtree and tagbar](./assets/nerdtree_and_tagbar.png)
 
 ## Thanks to these plugins.
@@ -140,3 +141,4 @@ to install all plugins of editor. `:q` to quit and open it again.
 * [racer-rust/vim-racer](https://github.com/racer-rust/vim-racer)
 * [autozimu/LanguageClient-neovim](https://github.com/autozimu/LanguageClient-neovim)
 * [chrisbra/csv.vim](https://github.com/chrisbra/csv.vim)
+* [markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
