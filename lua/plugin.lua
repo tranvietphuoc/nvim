@@ -115,5 +115,8 @@ return require('packer').startup(function(use)
 
     use {'turbio/bracey.vim', run = 'npm install --prefix server'}
 
+    -- lazygit
+    use 'kdheepak/lazygit.nvim'
+
 
 end)
