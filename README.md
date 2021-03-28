@@ -68,23 +68,27 @@ to install all plugins of editor. `:q` to quit and open it again.
 |Keys          |Command                                      |
 |:------------:|:-------------------------------------------:|
 |`,`           |`Leader`(`n`, `v` mode)                      |
-|`<Leader>/`   | `:Commentary<CR>`                           |
-|`<Leader>t`   | `:TagbarToggle<CR>`                         |
-|`<Leader>n`   | `:NERDTreeToggle<CR>`                       |
-|`bn`          | `:bnext<CR>`                                |
-|`bp`          | `:bprevious<CR>`                            |
-|`bd`          | `:bd<CR>`                                   |
-|`qq`          | `<Esc>`                                     |
-|`<Leader>ff`  | `<cmd>Telescope find_files<CR>`             |
-|`<Leader>fg`  | `<cmd>Telescope live_grep<CR>`              |
-|`<Leader>fb`  | `<cmd>Telescope buffers<CR>`                |
-|`<Leader>fh`  | `<cmd>Telescope help_tags<CR>`              |
-|`,,`          | Trigger `Leader` key in `i` mode of `emmet` |
-|`<Leader>ft`  | `g:floatterm_keymap_toggle`                 |
-|`<Leader>fn`  | `g:floatterm_keymap_next`                   |
-|`<Leader>fp`  | `g:floatterm_keymap_prev`                   |
-|`<Leader>fw`  | `g:floatterm_keymap_new`                    |
-|`<Leader>mp`  | `<Plug>MarkdownPreview`                     |
+|`<Leader>/`   |`:Commentary<CR>`                            |
+|`<Leader>t`   |`:TagbarToggle<CR>`                          |
+|`<Leader>n`   |`:NERDTreeToggle<CR>`                        |
+|`bn`          |`:bnext<CR>`                                 |
+|`bp`          |`:bprevious<CR>`                             |
+|`bd`          |`:bd<CR>`                                    |
+|`qq`          |`<Esc>`                                      |
+|`<Leader>ff`  |`<cmd>Telescope find_files<CR>`              |
+|`<Leader>fg`  |`<cmd>Telescope live_grep<CR>`               |
+|`<Leader>fb`  |`<cmd>Telescope buffers<CR>`                 |
+|`<Leader>fh`  |`<cmd>Telescope help_tags<CR>`               |
+|`,,`          |Trigger `Leader` key in `i` mode of `emmet`  |
+|`<Leader>ft`  |`g:floatterm_keymap_toggle`                  |
+|`<Leader>fn`  |`g:floatterm_keymap_next`                    |
+|`<Leader>fp`  |`g:floatterm_keymap_prev`                    |
+|`<Leader>fw`  |`g:floatterm_keymap_new`                     |
+|`<Leader>mp`  |`<Plug>MarkdownPreview` live server for md   |
+|`<Leader>ms`  |`<Plug>MarkdownPreviewStop` stop live server |
+|`<Leader>lg`  |`:LazyGit<CR>`                               |
+|`<Leader>li`  |`:Bracey<CR>` live server for html, js, css  |
+|`<Leader>ls`  |`:BraceyStop<CR>` stop live server           |
 --------------------------------------------------------------
 
 
@@ -142,3 +146,4 @@ to install all plugins of editor. `:q` to quit and open it again.
 * [autozimu/LanguageClient-neovim](https://github.com/autozimu/LanguageClient-neovim)
 * [chrisbra/csv.vim](https://github.com/chrisbra/csv.vim)
 * [markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
+* [kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)
