@@ -110,5 +110,8 @@ return require('packer').startup(function(use)
     -- csv
     use 'chrisbra/csv.vim'
 
+    -- vim easy align
+    use 'junegunn/vim-easy-align'
+
 
 end)
