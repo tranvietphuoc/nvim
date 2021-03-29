@@ -23,7 +23,7 @@ vim.api.nvim_exec(
 	true
 	)
 vim.api.nvim_exec(
-	'let startify_bookmarks = [ { \'.py\': \'~/Desktop/python/\' }, { \'.js\': \'~/Desktop/javascript/\' }, { \'.rs\': \'~/Desktop/rust/\' }, { \'.go\': \'~/go-workspace/src/github.com/tranvietphuoc/\' }, { \'.c\': \'~/Desktop/c/\' }, { \'.nvim\': \'~/.config/nvim/\' } ]',
+	'let startify_bookmarks = [ { \'.py\': \'~/Desktop/python/\' }, { \'.js\': \'~/Desktop/javascript/\' }, { \'.rs\': \'~/Desktop/rust/\' }, { \'.go\': \'~/go-workspace/src/github.com/tranvietphuoc/\' }, { \'.c\': \'~/Desktop/c/\' }, { \'.vim\': \'~/.config/nvim/\' } ]',
 	true
 	)
 
