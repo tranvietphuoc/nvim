@@ -1,18 +1,16 @@
 
 let g:coc_global_extensions = [
     \'coc-snippets',
-    \'coc-python',
     \'coc-eslint',
     \'coc-prettier',
     \'coc-pairs',
     \'coc-html',
     \'coc-css',
     \'coc-tsserver',
-    \'coc-rls',
-    \'coc-rust-analyzer',
     \'coc-json',
-    \'coc-go',
     \'coc-vetur',
+    \'coc-lua',
+    \'coc-pyright',
     \]
 
 " use <cr> to completion

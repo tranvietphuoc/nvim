@@ -8,20 +8,59 @@
     "rust",
     "javascriptreact",
     "typescriptreact",
-    "typescript.tsx"
+    "css",
+    "markdown"
   ],
-  "eslint.filetypes": [
+  "eslint.probe": [
     "javascript",
     "typescript",
     "typescriptreact",
     "javascriptreact",
-    "typescript.tsx"
+    "vue",
+    "markdown",
+    "html"
   ],
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact",
+    "vue",
+    "markdown",
+    "html"
+  ],
+  "pyright.enable": true,
+  "python.analysis.autoImportCompletions": true,
+  "python.venvPath": "./.venv/",
+  "python.pythonPath": "./.venv/bin/python",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.formatting.blackPath": "black",
+  "python.formatting.provider": "black",
+  "python.linting.lintOnSave": true,
+
   "languageserver": {
     "golang": {
       "command": "gopls",
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"]
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"],
+      "disableWorkspaceFolders": true
+    },
+    "rust": {
+      "command": "rust-analyzer",
+      "filetypes": ["rust"],
+      "rootPatterns": ["Cargo.toml"]
+    },
+    "sql": {
+      "command": "sql-language-server",
+      "args": ["up", "--method", "stdio"],
+      "filetypes": ["sql", "mysql"]
+    },
+    "lua": {
+      "command": "/Users/phuoc/lua-language-server/bin/macOS/lua-language-server",
+      "args": ["-E", "/Users/phuoc/lua-language-server/main.lua"],
+      "filetypes": ["lua"],
+      "rootPatterns": [".git/"]
     },
     "ccls": {
       "command": "ccls",
