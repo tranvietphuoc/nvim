@@ -147,5 +147,6 @@ return require('packer').startup(function(use)
 	-- colorizer
 	use 'norcalli/nvim-colorizer.lua'
 
+	
 
 end)

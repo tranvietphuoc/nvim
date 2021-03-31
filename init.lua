@@ -23,14 +23,18 @@ require('_markdown')
 require('_easyalign')
 require('_bracey')
 require('_lazygit')
-require('global_config')
 require('_colorizer')
 require('autopairs')
 require('_ts-rainbow')
 require('_which-key')
+require('_efm')
+
+-- database
+require('_dbcompletion')
+vim.cmd('source ~/.config/nvim/vimscript/db.vim')
 
 -- lsp
-vim.cmd('luafile ~/.config/nvim/lua/settings.lua')
+vim.cmd('luafile ~/.config/nvim/lua/global-config.lua')
 require('lsp')
 require('lsp.compe')
 -- autoimport
