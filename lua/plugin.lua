@@ -115,11 +115,34 @@ return require('packer').startup(function(use)
     use 'kdheepak/lazygit.nvim'
 
     use 'neovim/nvim-lspconfig'
-    use 'nvim-lua/completion-nvim'
     use 'kabouzeid/nvim-lspinstall'
     use 'kosayoda/nvim-lightbulb'
     use 'onsails/lspkind-nvim'
 	use 'glepnir/lspsaga.nvim'
+	use 'hrsh7th/nvim-compe'
+
+	-- snippet
+	use { 'hrsh7th/vim-vsnip' }
+	use { 'cstrap/python-snippets' }
+	use { 'ylcnfrht/vscode-python-snippet-pack' }
+	use { 'xabikos/vscode-javascript' }
+	use { 'golang/vscode-go' }
+	use { 'rust-lang/vscode-rust' }
+
+	-- database
+	use { 'kristijanhusak/vim-dadbod-completion' }
+	use { 'tpope/vim-dadbod' }
+	use { 'kristijanhusak/vim-dadbod-ui' }
+
+
+	-- which-key
+	use {'AckslD/nvim-whichkey-setup.lua', requires = {'liuchengxu/vim-which-key'}}
+
+
+
+	-- ts-rainbow
+	use 'p00f/nvim-ts-rainbow'
+
 
 	-- colorizer
 	use 'norcalli/nvim-colorizer.lua'

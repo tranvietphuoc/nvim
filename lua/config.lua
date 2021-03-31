@@ -46,8 +46,9 @@ vim.cmd('set clipboard=unnamedplus')
 vim.cmd('set nofoldenable')
 vim.cmd('set rtp+=~/.fzf')
 vim.cmd('set rtp+=/usr/local/opt/fzf')
-vim.cmd[[ set completeopt=menuone,noinsert,noselect ]]
 vim.cmd[[ set termguicolors ]]
+vim.cmd[[ set smarttab ]]
+
 
 if vim.fn.has('nvim') == 1 then
     --

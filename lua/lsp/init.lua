@@ -1,14 +1,6 @@
--- vim.cmd('packadd nvim-lspconfig')
-
-
--- lsp install
--- require'lspinstall'.setup()
+-- lsp config
 --
-local lsp_config = require("lspconfig")
-local lsp_completion = require("completion")
 --Enable completion
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -41,9 +33,7 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
 
-  if client.resolved_capabilities.completion then
-    lsp_completion.on_attach(client, bufnr)
-  end
+ 
 
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
@@ -64,53 +54,28 @@ local on_attach = function(client, bufnr)
   vim.fn.sign_define("LspDiagnosticsSignHint", {texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint"})
   vim.fn.sign_define("LspDiagnosticsSignInformation", {texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"})
 
-
-  vim.cmd('autocmd Filetype rust,python,go,c,html,css,cpp,javascript,typescript setl omnifunc=v:lua.vim.lsp.omnifunc')
-
-  vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-  vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-  vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-
-  -- -- auto_complete
-  -- Use completion-nvim in every buffer
-  vim.cmd('autocmd BufEnter * lua require\'completion\'.on_attach()')
-  vim.cmd[[ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>" ]]
-  vim.cmd[[ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>" ]]
-  vim.cmd('imap <tab> <Plug>(completion_smart_tab)')
-  vim.cmd('imap <s-tab> <Plug>(completion_smart_s_tab)')
+  -- vim.cmd('autocmd Filetype rust,python,go,c,html,css,cpp,javascript,typescript setl omnifunc=v:lua.vim.lsp.omnifunc')
 
 end
+
+local lsp_config = require("lspconfig")
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+capabilities.textDocument.completion.completionItem.snippetSupport = true;
+
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 local servers = { "pyright", "rust_analyzer", "tsserver", "gopls", "html", "cssls", "bashls", "graphql", "jsonls", "vimls", "ccls", "clangd" }
 for _, server in ipairs(servers) do
-  require('lspconfig')[server].setup { 
+  lsp_config[server].setup { 
       on_attach = on_attach,
       capabilities = capabilities,
   }
 end
 
 
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-_G.s_tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-    return t "<Plug>(vsnip-jump-prev)"
-  else
-    return t "<S-Tab>"
-  end
-end
-
-
-
-
-
-
+-- lightbulb
 require'nvim-lightbulb'.update_lightbulb {
     sign = {
         enabled = true,
@@ -130,10 +95,9 @@ require'nvim-lightbulb'.update_lightbulb {
     }
 }
 
+-- lsp kind
 require('lspkind').init({
 })
-
-
 
 -- lspsaga
 local saga = require'lspsaga'
