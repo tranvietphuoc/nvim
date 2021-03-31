@@ -1,66 +1,76 @@
-
-
--- -- Use K to show documentation in preview window
--- vim.cmd('nnoremap <silent> K :call <SID>show_documentation()<CR>')
--- -- Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
--- -- Coc only does snippet and additional edit on confirm.
--- vim.cmd('inoremap <expr> <cr> pumvisible() ? \"\\<C-y>\" : \"\\<C-g>u\\<CR>\"')
-
+-- vim.cmd('autocmd FileType json syntax match Comment +\\/\\/.\\+$+')
+-- if vim.fn.has('nvim') then
+-- 	vim.cmd[[ inoremap <silent><expr> <c-space> coc#refresh() ]]
+-- else
+-- 	vim.cmd[[ inoremap <silent><expr> <c-@> coc#refresh() ]]
+-- end
+--
+-- vim.g.coc_global_extensions = {'coc-css', 'coc-pyright', 'coc-html', 'coc-prettier', 'coc-eslint', 'coc-snippets', 'coc-pairs', 'coc-lua', 'coc-json'}
+-- vim.cmd [[ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : \"\\<C-g>u\\<CR>\" ]]
+--
+-- -- Use tab for trigger completion with characters ahead and navigate.
+-- -- NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+-- -- other plugin before putting this into your config.
 -- vim.cmd([[
--- function! s:show_documentation()
---   if (index(['vim','help'], &filetype) >= 0)
---     execute 'h '.expand('<cword>')
---   elseif (coc#rpc#ready())
---     call CocActionAsync('doHover')
---   else
---     execute '!' . &keywordprg . " " . expand('<cword>')
---   endif
--- endfunction
--- ]])
--- -- Highlight the symbol and its references when holding the cursor
--- vim.cmd('autocmd CursorHold * silent call CocActionAsync(\'highlight\')')
-
--- -- Use `[g` and `]g` to navigate diagnostics
--- vim.cmd('nmap <silent> [g <Plug>(coc-diagnostic-prev)')
--- vim.cmd('nmap <silent> ]g <Plug>(coc-diagnostic-next)')
-
--- -- Remap keys for gotos
--- vim.cmd('nmap <silent> gD <Plug>(coc-definition)')
--- vim.cmd('nmap <silent> gY <Plug>(coc-type-definition)')
--- vim.cmd('nmap <silent> gI <Plug>(coc-implementation)')
--- vim.cmd('nmap <silent> gR <Plug>(coc-references)')
--- vim.cmd('autocmd CursorHold * silent call CocActionAsync(\'highlight\')')
-
--- -- Remap for rename current word
--- vim.cmd('nmap <leader>rn <Plug>(coc-rename)')
-
--- -- Remap for format selected region
--- vim.cmd('xmap <leader>F  <Plug>(coc-format-selected)')
--- vim.cmd('nmap <leader>F  <Plug>(coc-format-selected)')
--- vim.cmd([[
--- augroup mygroup
---   autocmd!
---   " Setup formatexpr specified filetype(s).
---   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
---   " Update signature help on jump placeholder
---   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
--- augroup end
--- ]])
-
--- -- Use `:Format` to format current buffer
--- vim.cmd('command! -nargs=0 Format :call CocAction(\'format\')')
--- -- Use `:Fold` to fold current buffer
--- vim.cmd('command! -nargs=? Fold :call     CocAction(\'fold\', <f-args>)')
--- -- use `:OR` for organize import of current buffer
--- vim.cmd('command! -nargs=0 OR   :call     CocAction(\'runCommand\', \'editor.action.organizeImport\')')
-
--- -- Add status line support, for integration with other plugin, checkout `:h coc-status`
--- vim.cmd('set statusline^=%{coc#status()}%{get(b:,\'coc_current_function\',\'\')}')
--- vim.cmd([[
--- augroup javascript_folding
---     au!
---     au FileType javascript setlocal foldmethod=syntax
--- augroup END
+-- 	function! s:check_back_space() abort
+-- 		let col = col('.') - 1
+-- 		return !col || getline('.')[col - 1]  =~ '\s'
+-- 		endfunction
 -- ]])
 --
-vim.cmd('autocmd FileType json syntax match Comment +\\/\\/.\\+$+')
+-- -- vim.cmd('inoremap <silent><expr> <TAB> pumvisible() ? \"\\<C-n>\" : <SID>check_back_space() ? \"\\<TAB>\" : coc#refresh()')
+-- vim.cmd('inoremap <expr><S-TAB> pumvisible() ? \"\\<C-p>\" : \"\\<C-h>\"')
+-- vim.cmd('inoremap <expr> <Tab> pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"')
+-- vim.cmd('inoremap <expr> <S-Tab> pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"')
+--
+-- -- Make <CR> auto-select the first completion item and notify coc.nvim to
+-- -- format on enter, <cr> could be remapped by other vim plugin
+-- -- inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+--
+--
+-- -- Use K to show documentation in preview window.
+-- vim.cmd('nnoremap <silent> K :call <SID>show_documentation()<CR>')
+--
+-- -- GoTo code navigation.
+-- vim.cmd('nmap <silent> gd <Plug>(coc-definition)')
+-- vim.cmd('nmap <silent> gy <Plug>(coc-type-definition)')
+-- vim.cmd('nmap <silent> gi <Plug>(coc-implementation)')
+-- vim.cmd('nmap <silent> gr <Plug>(coc-references)')
+--
+-- -- Highlight the symbol and its references when holding the cursor.
+-- vim.cmd('autocmd CursorHold * silent call CocActionAsync(\'highlight\')')
+--
+-- -- Formatting selected code.
+-- vim.cmd('xmap <leader>cf  <Plug>(coc-format-selected)')
+-- vim.cmd('nmap <leader>cf  <Plug>(coc-format-selected)')
+--
+-- -- group mygroup
+-- --   autocmd!
+-- -- -- Setup formatexpr specified filetype(s).
+-- --  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+-- -- -- Update signature help on jump placeholder.
+-- --  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+-- -- augroup end
+--
+--
+-- -- Applying codeAction to the selected region.
+-- -- Example: `<leader>aap` for current paragraph
+-- vim.cmd('xmap <leader>a  <Plug>(coc-codeaction-selected)')
+-- vim.cmd('nmap <leader>a  <Plug>(coc-codeaction-selected)')
+--
+-- -- Remap keys for applying codeAction to the current buffer.
+-- vim.cmd('nmap <leader>ac  <Plug>(coc-codeaction)')
+-- -- Apply AutoFix to problem on the current line.
+-- vim.cmd('nmap <leader>qf  <Plug>(coc-fix-current)')
+--
+-- -- Map function and class text objects
+-- --
+-- -- NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+-- vim.cmd('xmap if <Plug>(coc-funcobj-i)')
+-- vim.cmd('omap if <Plug>(coc-funcobj-i)')
+-- vim.cmd('xmap af <Plug>(coc-funcobj-a)')
+-- vim.cmd('omap af <Plug>(coc-funcobj-a)')
+-- vim.cmd('xmap ic <Plug>(coc-classobj-i)')
+-- vim.cmd('omap ic <Plug>(coc-classobj-i)')
+-- vim.cmd('xmap ac <Plug>(coc-classobj-a)')
+-- vim.cmd('omap ac <Plug>(coc-classobj-a)')

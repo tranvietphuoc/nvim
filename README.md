@@ -81,8 +81,9 @@ to open the editor first, then run command:
 ```
 :PackerInstall
 
-:CocInstall coc-pyright
 ```
+
+then install the LSP with [LspInstall](https://github.com/kabouzeid/nvim-lspinstall)
 
 to install all plugins of editor. `:q` to quit and open it again.
 
@@ -145,8 +146,6 @@ to install all plugins of editor. `:q` to quit and open it again.
 - [plasticboy/vim-markdown](https://github.com/plasticboy/vim-markdown)
 - [christoomey/vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
 - [machakann/vim-highlightedyank](https://github.com/machakann/vim-highlightedyank)
-- [dense-analysis/ale](https://github.com/dense-analysis/ale)
-- [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
 - [prettier/vim-prettier](https://github.com/prettier/vim-prettier)
 - [nvim-lua/popup.nvim](https://github.com/nvim-lua/popup.nvim)
 - [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
@@ -173,3 +172,4 @@ to install all plugins of editor. `:q` to quit and open it again.
 - [chrisbra/csv.vim](https://github.com/chrisbra/csv.vim)
 - [markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
 - [kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)

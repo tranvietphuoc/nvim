@@ -1,13 +1,13 @@
 local install_path = vim.fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
 
+vim.cmd [[packadd packer.nvim]]
+vim.cmd[[ autocmd BufWritePost plugins.lua PackerCompile ]]
+
+
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.api.nvim_command('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
     vim.api.nvim_command('packadd packer.nvim')
 end
-
-vim.cmd [[packadd packer.nvim]]
-
-vim.cmd 'autocmd BufWritePost plugin.lua PackerCompile'  -- auto compile when ther are changes in plugin.lua
 
 return require('packer').startup(function(use)
     -- packer can manage itself as an optional plugin
@@ -53,8 +53,8 @@ return require('packer').startup(function(use)
     use 'machakann/vim-highlightedyank'
 
     -- syntax check
-    use 'dense-analysis/ale'
-    use {'neoclide/coc.nvim', branch='release'}
+    -- use 'dense-analysis/ale'
+    -- use {'neoclide/coc.nvim', branch='release'}
     use 'prettier/vim-prettier'
 
     -- telescope for fuzzy find
@@ -71,8 +71,6 @@ return require('packer').startup(function(use)
     -- polyglot
     use 'sheerun/vim-polyglot'
 
-    -- python mode
-    use 'python-mode/python-mode'
 
     -- python syntax
     use 'vim-python/python-syntax'
@@ -118,5 +116,11 @@ return require('packer').startup(function(use)
     -- lazygit
     use 'kdheepak/lazygit.nvim'
 
+    use 'neovim/nvim-lspconfig'
+    use 'nvim-lua/completion-nvim'
+    use 'kabouzeid/nvim-lspinstall'
+    use 'kosayoda/nvim-lightbulb'
+    use 'onsails/lspkind-nvim'
+	use 'glepnir/lspsaga.nvim'
 
 end)

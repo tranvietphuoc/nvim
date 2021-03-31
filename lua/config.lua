@@ -47,8 +47,7 @@ vim.cmd('set clipboard=unnamedplus')
 vim.cmd('set nofoldenable')
 vim.cmd('set rtp+=~/.fzf')
 vim.cmd('set rtp+=/usr/local/opt/fzf')
-vim.cmd[[ autocmd BufWritePost plugins.lua PackerCompile ]]
-
+vim.cmd[[ set completeopt=menuone,noinsert,noselect ]]
 
 if vim.fn.has('nvim') == 1 then
     --

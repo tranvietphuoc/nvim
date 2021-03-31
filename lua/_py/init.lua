@@ -17,19 +17,3 @@ vim.g.python_highlight_func_calls = 1
 vim.g.python_highlight_class_vars = 1
 vim.g.python_highlight_operators = 1
 vim.g.python_highlight_file_headers_as_comments = 1
-
-
--- pymode
-vim.g.pymode_options_colorcolumn = 1
-vim.g.pymode_virtualenv = 1
-vim.g.pymode_run = 1
-vim.g.pymode_run_bind = '<Leader>r'
-vim.g.pymode_breakpoint = 1
-vim.g.pymode_breakpoint_bind = '<Leader>b'
-vim.g.pymode_doc = 0
-vim.g.pymode_doc_key = 'K'
-vim.g.pymode_syntax = 1
-vim.g.pymode_syntax_all = 1
-vim.g.pymode_syntax_slow_sync = 1
-vim.g.pymode_syntax_print_as_function = 1
-vim.g.pymode_lint = 0

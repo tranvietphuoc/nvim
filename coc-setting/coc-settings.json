@@ -62,6 +62,11 @@
       "filetypes": ["lua"],
       "rootPatterns": [".git/"]
     },
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    },
     "ccls": {
       "command": "ccls",
       "filetypes": ["c", "cc", "cpp", "objc", "objcpp", "cuda"],
