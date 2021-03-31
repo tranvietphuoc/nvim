@@ -7,7 +7,6 @@ vim.o.filetype = "on"
 vim.cmd('filetype plugin indent on')
 vim.cmd('set nocompatible')
 vim.o.fileencoding = "utf-8"
-vim.o.termguicolors = true
 vim.o.conceallevel = 0  -- to see `` in markdown files
 vim.bo.smartindent = true
 vim.wo.number = true
@@ -48,6 +47,7 @@ vim.cmd('set nofoldenable')
 vim.cmd('set rtp+=~/.fzf')
 vim.cmd('set rtp+=/usr/local/opt/fzf')
 vim.cmd[[ set completeopt=menuone,noinsert,noselect ]]
+vim.cmd[[ set termguicolors ]]
 
 if vim.fn.has('nvim') == 1 then
     --

@@ -75,8 +75,6 @@ return require('packer').startup(function(use)
     -- python syntax
     use 'vim-python/python-syntax'
 
-    -- css color
-    use 'ap/vim-css-color'
 
     -- auto pairs
     use 'jiangmiao/auto-pairs'
@@ -122,5 +120,9 @@ return require('packer').startup(function(use)
     use 'kosayoda/nvim-lightbulb'
     use 'onsails/lspkind-nvim'
 	use 'glepnir/lspsaga.nvim'
+
+	-- colorizer
+	use 'norcalli/nvim-colorizer.lua'
+
 
 end)

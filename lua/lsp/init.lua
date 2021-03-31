@@ -3,6 +3,12 @@
 
 -- lsp install
 -- require'lspinstall'.setup()
+--
+local lsp_config = require("lspconfig")
+local lsp_completion = require("completion")
+--Enable completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -35,6 +41,10 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
 
+  if client.resolved_capabilities.completion then
+    lsp_completion.on_attach(client, bufnr)
+  end
+
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec([[
@@ -48,13 +58,37 @@ local on_attach = function(client, bufnr)
       augroup END
     ]], false)
   end
+
+  vim.fn.sign_define("LspDiagnosticsSignError", {texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError"})
+  vim.fn.sign_define("LspDiagnosticsSignWarning", {texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning"})
+  vim.fn.sign_define("LspDiagnosticsSignHint", {texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint"})
+  vim.fn.sign_define("LspDiagnosticsSignInformation", {texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"})
+
+
+  vim.cmd('autocmd Filetype rust,python,go,c,html,css,cpp,javascript,typescript setl omnifunc=v:lua.vim.lsp.omnifunc')
+
+  vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+  vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+  vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+  -- -- auto_complete
+  -- Use completion-nvim in every buffer
+  vim.cmd('autocmd BufEnter * lua require\'completion\'.on_attach()')
+  vim.cmd[[ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>" ]]
+  vim.cmd[[ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>" ]]
+  vim.cmd('imap <tab> <Plug>(completion_smart_tab)')
+  vim.cmd('imap <s-tab> <Plug>(completion_smart_s_tab)')
+
 end
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 local servers = { "pyright", "rust_analyzer", "tsserver", "gopls", "html", "cssls", "bashls", "graphql", "jsonls", "vimls", "ccls", "clangd" }
-for _, lsp in ipairs(servers) do
-  require('lspconfig')[lsp].setup { on_attach = on_attach }
+for _, server in ipairs(servers) do
+  require('lspconfig')[server].setup { 
+      on_attach = on_attach,
+      capabilities = capabilities,
+  }
 end
 
 
@@ -72,27 +106,10 @@ _G.s_tab_complete = function()
   end
 end
 
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 
-vim.cmd('autocmd Filetype rust,python,go,c,html,css,cpp,javascript,typescript setl omnifunc=v:lua.vim.lsp.omnifunc')
-
-vim.fn.sign_define("LspDiagnosticsSignError", {texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError"})
-vim.fn.sign_define("LspDiagnosticsSignWarning", {texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning"})
-vim.fn.sign_define("LspDiagnosticsSignHint", {texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint"})
-vim.fn.sign_define("LspDiagnosticsSignInformation", {texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"})
 
 
--- -- auto_complete
-
--- Use completion-nvim in every buffer
-vim.cmd('autocmd BufEnter * lua require\'completion\'.on_attach()')
-vim.cmd[[ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>" ]]
-vim.cmd[[ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>" ]]
-vim.cmd('imap <tab> <Plug>(completion_smart_tab)')
-vim.cmd('imap <s-tab> <Plug>(completion_smart_s_tab)')
 
 require'nvim-lightbulb'.update_lightbulb {
     sign = {
