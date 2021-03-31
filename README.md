@@ -20,10 +20,10 @@ You need to install these tools first:
 - `neovim`
 - `python3.+`
 - `nodejs` and `npm`
-- [ccls](https://github.com/MaskRay/ccls/wiki)
 - [lua-language-server](<https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)>)
 - [rust-analyzer](https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary)
 - [gopls](https://github.com/golang/tools/blob/master/gopls/doc/vim.md)
+- [clangd](https://clangd.llvm.org/installation.html)
 
 ### Neovim
 
@@ -49,17 +49,6 @@ There're a lot of plugins that use external packages (like language server proto
 
 ```
 npm install -g neovim
-```
-
-### ccls
-
-```
-git clone --depth=1 --recursive https://github.com/MaskRay/ccls
-cd ccls
-brew info llvm
-cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/usr/local/Cellar/llvm/<Your Version>/lib/cmake
-cmake --build Release
-cmake --build Release --target install
 ```
 
 ## How to use it?
