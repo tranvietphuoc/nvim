@@ -162,3 +162,4 @@ to install all plugins of editor. `:q` to quit and open it again.
 - [markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
 - [kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+- and more in plugin.lua file...
