@@ -5,7 +5,7 @@ nnoremap <silent> <leader>df :DBUIFindBuffer<CR>
 nnoremap <silent> <leader>dr :DBUIRenameBuffer<CR>
 nnoremap <silent> <leader>dl :DBUILastQueryInfo<CR>
 
-let g:db_ui_save_location = '~/.config/db_ui'
+let g:db_ui_save_location = '~/Dropbox/db_ui_queries'
 
 let g:dbs = {
 			\ 'test': 'postgres://postgres:mypassword@localhost:5432/test',

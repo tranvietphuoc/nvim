@@ -8,6 +8,9 @@ installdependencies() {
     brew install yarn
     brew install ctags
 
+    # clangd
+    brew install llvm
+
     # install pynvim
     pip3 install pynvim
 
@@ -22,8 +25,6 @@ installdependencies() {
 installlsp() {
     npm install -g pyright vscode-css-languageserver-bin vscode-html-languageserver-bin typescript typescript-language-server graphql-language-service-cli graphql-language-service-cli
     npm install -g dockerfile-language-server-nodejs vscode-json-languageserver
-
-
 }
 
 if [-d "$HOME/.config/nvim"];
