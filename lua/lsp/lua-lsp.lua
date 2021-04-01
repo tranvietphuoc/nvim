@@ -1,7 +1,7 @@
 -- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
 local sumneko_root = DATA .. "/lspinstall/lua"
 local sumneko_binary = sumneko_root .. "/sumneko-lua-language-server"
-require('lspconfig').sumneko_lua.setup {
+require'lspconfig'.sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root .. "/sumneko-lua/extension/server/main.lua"},
     on_attach = require'lsp'.common_on_attach,
     settings = {

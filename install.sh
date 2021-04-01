@@ -20,11 +20,16 @@ installdependencies() {
     # install fzf
     brew install fzf
 
+    #install efm-langserver
+    brew install efm-langserver
+
 }
 
 installlsp() {
-    npm install -g pyright vscode-css-languageserver-bin vscode-html-languageserver-bin typescript typescript-language-server graphql-language-service-cli graphql-language-service-cli
-    npm install -g dockerfile-language-server-nodejs vscode-json-languageserver
+    npm install -g pyright vscode-css-languageserver-bin vscode-html-languageserver-bin
+    npm install -g typescript typescript-language-server graphql-language-service-cli graphql-language-service-cli
+    npm install -g dockerfile-language-server-nodejs vscode-json-languageserver 
+    npm install -g vls
 }
 
 if [-d "$HOME/.config/nvim"];

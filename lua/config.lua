@@ -70,20 +70,20 @@ O = {
     },
     tsserver = {
         -- @usage can be 'eslint'
-        linter = '',
+        linter = 'eslint',
         -- @usage can be 'prettier'
-        formatter = '',
+        formatter = 'prettier',
         autoformat = false,
         diagnostics = {virtual_text = true, signs = true, underline = true}
     },
     json = {
         -- @usage can be 'prettier'
-        formatter = '',
+        formatter = 'prettier',
         autoformat = false,
         diagnostics = {virtual_text = true, signs = true, underline = true}
     },
      python = {
-        linter = '',
+        linter = 'black',
         -- @usage can be 'yapf', 'black'
         formatter = '',
         autoformat = false,

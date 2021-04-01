@@ -74,6 +74,10 @@ to open the editor first, then run command:
 
 then install the LSP with [LspInstall](https://github.com/kabouzeid/nvim-lspinstall)
 
+I use `efm-langserver` for linting and formatting.
+
+`:LspInstall efm`
+
 to install all plugins of editor. `:q` to quit and open it again.
 
 ## Some basic keys mapping of this configuration.

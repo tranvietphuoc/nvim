@@ -27,7 +27,6 @@ require('_colorizer')
 require('autopairs')
 require('_ts-rainbow')
 require('_which-key')
-require('_efm')
 
 -- database
 require('_dbcompletion')
@@ -51,4 +50,7 @@ require('lsp.rust-lsp')
 require('lsp.tsserver-lsp')
 require('lsp.vim-lsp')
 require('lsp.vue-lsp')
+
+-- formmater
+require('lsp.efm-lsp')
 
