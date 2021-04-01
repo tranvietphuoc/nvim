@@ -40,13 +40,11 @@ then
     installdependencies
     installlsp
     cp ./dependencies/.ctags $HOME  # move ctags config to $HOME
-    rm -r ./assets/
 else
     git clone https://github.com/tranvietphuoc/nvim.git $HOME/.config/
     cd $HOME/.config/nvim/
     installdependencies
     installlsp
     cp ./dependencies/.ctags $HOME  # move ctags config to $HOME
-    rm -r ./assets/
 
 fi

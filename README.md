@@ -111,11 +111,6 @@ to install all plugins of editor. `:q` to quit and open it again.
 
 ---
 
-## Some images of demo.
-
-![floatterm](./assets/floatterm.png)
-![startify](./assets/startify.png)
-![Nerdtree and tagbar](./assets/nerdtree_and_tagbar.png)
 
 ## Thanks to these plugins.
 
