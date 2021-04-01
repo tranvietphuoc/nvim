@@ -32,12 +32,13 @@ require('_which-key')
 require('_dbcompletion')
 vim.cmd('source ~/.config/nvim/vimscript/db.vim')
 
--- lsp
+-- lsp config
 vim.cmd('luafile ~/.config/nvim/lua/global-config.lua')
 require('lsp')
 require('lsp.compe')
--- autoimport
-vim.cmd('source ~/.config/nvim/vimscript/config.vim')
+vim.cmd('source ~/.config/nvim/vimscript/compe.vim.vim')
+
+-- lsp server
 require('lsp.bash-lsp')
 require('lsp.clangd-lsp')
 require('lsp.css-lsp')
