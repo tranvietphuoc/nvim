@@ -27,9 +27,6 @@ return require('packer').startup(function(use)
 
     -- treesitter
     use {'nvim-treesitter/nvim-treesitter', run=':TSUpdate'}
-    -- status bar
-    use 'itchyny/lightline.vim'
-    use 'mengelbrecht/lightline-bufferline'
 
     -- multiple cursors
     use 'terryma/vim-multiple-cursors'
@@ -70,7 +67,6 @@ return require('packer').startup(function(use)
 
     -- polyglot
     use 'sheerun/vim-polyglot'
-
 
     -- python syntax
     use 'vim-python/python-syntax'
@@ -134,19 +130,17 @@ return require('packer').startup(function(use)
 	use { 'tpope/vim-dadbod' }
 	use { 'kristijanhusak/vim-dadbod-ui' }
 
-
 	-- which-key
 	use {'AckslD/nvim-whichkey-setup.lua', requires = {'liuchengxu/vim-which-key'}}
-
-
 
 	-- ts-rainbow
 	use 'p00f/nvim-ts-rainbow'
 
-
 	-- colorizer
 	use 'norcalli/nvim-colorizer.lua'
 
-	
+	-- lightline
+    use 'itchyny/lightline.vim'
+	use 'mengelbrecht/lightline-bufferline'
 
 end)
