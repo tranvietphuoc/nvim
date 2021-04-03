@@ -94,7 +94,7 @@ to install all plugins of editor. `:q` to quit and open it again.
 | `<Leader>n`  |            `:NERDTreeToggle<CR>`             |
 |   `<TAB>`    |                 `:bnext<CR>`                 |
 |  `<S-TAB>`   |               `:bprevious<CR>`               |
-|   `<S-d>`    |                  `:bdelete<CR>`              |
+|   `<S-c>`    |                  `:bdelete<CR>`              |
 |     `qq`     |                   `<Esc>`                    |
 | `<Leader>ff` |       `<cmd>Telescope find_files<CR>`        |
 | `<Leader>fg` |        `<cmd>Telescope live_grep<CR>`        |
