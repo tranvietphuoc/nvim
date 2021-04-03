@@ -36,11 +36,12 @@ vim.cmd('source ~/.config/nvim/vimscript/db.vim')
 vim.cmd('luafile ~/.config/nvim/lua/global-config.lua')
 require('lsp')
 require('lsp.compe')
-vim.cmd('source ~/.config/nvim/vimscript/compe.vim.vim')
+vim.cmd('source ~/.config/nvim/vimscript/compe.vim')
 
 -- lsp server
 require('lsp.bash-lsp')
 require('lsp.clangd-lsp')
+require('lsp.cmake-lsp')
 require('lsp.css-lsp')
 require('lsp.docker-lsp')
 require('lsp.go-lsp')
@@ -51,6 +52,7 @@ require('lsp.rust-lsp')
 require('lsp.tsserver-lsp')
 require('lsp.vim-lsp')
 require('lsp.vue-lsp')
+require('lsp.yaml-lsp')
 
 -- formmater
 require('lsp.efm-lsp')
