@@ -6,6 +6,12 @@ vim.g.mapleader = ","
 -- :nnoremap <silent> <Leader><Space> :set hlsearch<CR>
 vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', { noremap = true, silent = true })
 
+-- tab to next buffer in normal mode
+vim.api.nvim_set_keymap('n', '<TAB>', ':bnext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-TAB>', ':bprevious<CR>', { noremap = true, silent = true })
+-- delete current buffer
+vim.api.nvim_set_keymap('n', '<S-x>', ':bdelete<CR>', { noremap = true, silent = true })
+
 
 --- move through splitted windows
 vim.cmd([[
@@ -34,10 +40,6 @@ vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', {noremap = true, silent = tr
 -- fast quitting
 vim.api.nvim_set_keymap('n', '<Leader>q', ':q<CR>', {noremap = true, silent = false})
 
--- move between buffers
-vim.api.nvim_set_keymap('n', 'bn', ':bnext<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'bp', ':bprevious<CR>', { noremap = true, silent = true })
-vim.cmd('noremap bd :bd<Cr>')
 
 -- move selected line / blocks of text in V-mode
 -- Move selected line / block of text in visual mode

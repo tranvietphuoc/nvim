@@ -12,6 +12,8 @@ This configuration supports (includes syntax highlighting and autocompletion) fo
 - `Html`
 - `Css`
 - `Lua`
+- `Cmake`
+- `Yaml`
 
 ## Prequisition:
 
@@ -90,9 +92,9 @@ to install all plugins of editor. `:q` to quit and open it again.
 | `<Leader>/`  |              `:Commentary<CR>`               |
 | `<Leader>t`  |             `:TagbarToggle<CR>`              |
 | `<Leader>n`  |            `:NERDTreeToggle<CR>`             |
-|     `bn`     |                 `:bnext<CR>`                 |
-|     `bp`     |               `:bprevious<CR>`               |
-|     `bd`     |                  `:bd<CR>`                   |
+|   `<TAB>`    |                 `:bnext<CR>`                 |
+|  `<S-TAB>`   |               `:bprevious<CR>`               |
+|   `<S-x>`    |                  `:bdelete<CR>`              |
 |     `qq`     |                   `<Esc>`                    |
 | `<Leader>ff` |       `<cmd>Telescope find_files<CR>`        |
 | `<Leader>fg` |        `<cmd>Telescope live_grep<CR>`        |
