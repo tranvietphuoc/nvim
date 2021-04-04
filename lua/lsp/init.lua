@@ -66,7 +66,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "rust_analyzer", "tsserver", "gopls", "html", "cssls", "bashls", "graphql", "jsonls", "vimls", "clangd", "dockerls", "cmake", "yaml" }
+local servers = { "pyright", "rust_analyzer", "tsserver", "gopls", "html", "cssls", "bashls", "graphql", "jsonls", "vimls", "clangd", "dockerls", "cmake", "yamlls" }
 for _, server in ipairs(servers) do
   lsp_config[server].setup { 
       on_attach = on_attach,

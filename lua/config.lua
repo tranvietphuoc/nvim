@@ -17,7 +17,7 @@ vim.o.showmode = true
 vim.cmd('set nobackup')
 vim.cmd('set noswapfile')
 vim.cmd("set showcmd")
-vim.o.cmdheight = 1
+vim.o.cmdheight = 2
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.showmatch = true

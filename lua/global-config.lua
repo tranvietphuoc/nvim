@@ -12,7 +12,7 @@ O.auto_close_tree = 0
 -- add things like O.python.formatter.yapf.exec_path
 -- add things like O.python.linter.flake8.exec_path
 -- add things like O.python.formatter.isort.exec_path
-O.python.formatter = 'black'
+O.python.formatter = ''
 -- O.python.linter = 'flake8'
 O.python.isort = true
 O.python.autoformat = true

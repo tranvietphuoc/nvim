@@ -23,10 +23,10 @@ require('_easyalign')
 require('_bracey')
 require('_lazygit')
 require('_colorizer')
-require('autopairs')
 require('_ts-rainbow')
 require('_which-key')
 require('_lightline')
+require('autopairs')
 
 -- database
 require('_dbcompletion')

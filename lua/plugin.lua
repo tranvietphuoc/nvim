@@ -71,10 +71,6 @@ return require('packer').startup(function(use)
     -- python syntax
     use 'vim-python/python-syntax'
 
-
-    -- auto pairs
-    use 'jiangmiao/auto-pairs'
-
     -- floatterm
     use 'voldikss/vim-floaterm'
 
@@ -142,5 +138,9 @@ return require('packer').startup(function(use)
 	-- lightline
     use 'itchyny/lightline.vim'
 	use 'mengelbrecht/lightline-bufferline'
+
+    -- auto-pairs
+	use 'jiangmiao/auto-pairs'
+	-- use 'windwp/nvim-autopairs'
 
 end)
