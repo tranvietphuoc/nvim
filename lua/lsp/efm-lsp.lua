@@ -1,3 +1,5 @@
+-- python 
+--
 local python_args = {}
 
 local flake8 = {
@@ -22,6 +24,7 @@ elseif O.python.formatter == 'black' then
     table.insert(python_arguments, black)
 end
 
+-- lua
 
 local lua_arguments = {}
 local luaFormat = {
@@ -30,7 +33,6 @@ local luaFormat = {
 }
 
 if O.lua.formatter == 'lua-format' then table.insert(lua_arguments, luaFormat) end
-
 
 -- tsserver
 local tsserver_args = {}
@@ -68,3 +70,4 @@ require"lspconfig".efm.setup {
             yaml = {prettier},
         }
     }
+}

@@ -28,6 +28,7 @@ require('_which-key')
 require('_lightline')
 require('autopairs')
 
+
 -- database
 require('_dbcompletion')
 vim.cmd('source ~/.config/nvim/vimscript/db.vim')
@@ -53,6 +54,7 @@ require('lsp.tsserver-lsp')
 require('lsp.vim-lsp')
 require('lsp.vue-lsp')
 require('lsp.yaml-lsp')
+require('lsp.lua-lsp')
 
 -- formmater
 require('lsp.efm-lsp')
