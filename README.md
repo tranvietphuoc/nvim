@@ -118,7 +118,7 @@ to install all plugins of editor. `:q` to quit and open it again.
 
 - [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim)
 - [nanotee/nvim-lua-guide](https://github.com/nanotee/nvim-lua-guide)
-- [NLKNguyen/papercolor-theme](https://github.com/NLKNguyen/papercolor-theme)
+- [ChristianChiarulli/nvcode-color-schemes.vim](https://github.com/ChristianChiarulli/nvcode-color-schemes.vim)
 - [mhinz/vim-signify](https://github.com/mhinz/vim-signify)
 - [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
 - [tpope/vim-rhubarb](https://github.com/tpope/vim-rhubarb)
@@ -157,10 +157,10 @@ to install all plugins of editor. `:q` to quit and open it again.
 - [tpope/vim-commentary](https://github.com/tpope/vim-commentary)
 - [fatih/vim-go](https://github.com/fatih/vim-go)
 - [rust-lang/rust.vim](https://github.com/rust-lang/rust.vim)
-- [racer-rust/vim-racer](https://github.com/racer-rust/vim-racer)
-- [autozimu/LanguageClient-neovim](https://github.com/autozimu/LanguageClient-neovim)
 - [chrisbra/csv.vim](https://github.com/chrisbra/csv.vim)
 - [markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
 - [kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+- [glepnir/galaxyline.nvim](https://github.com/glepnir/galaxyline.nvim)
+- [romgrk/barbar.nvim](https://github.com/romgrk/barbar.nvim)
 - and more in plugin.lua file...

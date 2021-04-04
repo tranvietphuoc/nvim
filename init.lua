@@ -25,8 +25,9 @@ require('_lazygit')
 require('_colorizer')
 require('_ts-rainbow')
 require('_which-key')
-require('_lightline')
 require('autopairs')
+require('_barbar')
+require('_galaxyline')
 
 
 -- database

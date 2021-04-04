@@ -17,7 +17,7 @@ vim.o.showmode = true
 vim.cmd('set nobackup')
 vim.cmd('set noswapfile')
 vim.cmd("set showcmd")
-vim.o.cmdheight = 2
+vim.o.cmdheight = 1
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.showmatch = true
@@ -53,7 +53,7 @@ vim.cmd[[ set smarttab ]]
 -- global
 O = {
     auto_complete = true,
-    colorscheme = 'PaperColor',
+    colorscheme = 'nvcode',
     lua = {
         -- @usage can be 'lua-format'
         formatter = '',
@@ -83,9 +83,9 @@ O = {
         diagnostics = {virtual_text = true, signs = true, underline = true}
     },
      python = {
-        linter = 'black',
+        linter = 'flake8',
         -- @usage can be 'yapf', 'black'
-        formatter = '',
+        formatter = 'yapf',
         autoformat = false,
         isort = false,
         diagnostics = {virtual_text = true, signs = true, underline = true}

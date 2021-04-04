@@ -5,7 +5,7 @@ vim.cmd[[ autocmd BufWritePost plugins.lua PackerCompile ]]
 
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    vim.api.nvim_command('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+    vim.api.nvim_command('!git clone https://github.com/wbthomason/packer.nvim '.. install_path)
     vim.api.nvim_command('packadd packer.nvim')
 end
 
@@ -17,7 +17,8 @@ return require('packer').startup(function(use)
     use 'nanotee/nvim-lua-guide'
 
     -- colorscheme
-    use 'NLKNguyen/papercolor-theme'
+    -- use 'NLKNguyen/papercolor-theme'
+    use 'christianchiarulli/nvcode-color-schemes.vim'
 
     -- git
     use 'mhinz/vim-signify'
@@ -50,8 +51,6 @@ return require('packer').startup(function(use)
     use 'machakann/vim-highlightedyank'
 
     -- syntax check
-    -- use 'dense-analysis/ale'
-    -- use {'neoclide/coc.nvim', branch='release'}
     use 'prettier/vim-prettier'
 
     -- telescope for fuzzy find
@@ -93,7 +92,6 @@ return require('packer').startup(function(use)
     -- rust
     use 'rust-lang/rust.vim'
     use 'racer-rust/vim-racer'
-    -- use 'autozimu/LanguageClient-neovim'
 
     -- csv
     use 'chrisbra/csv.vim'
@@ -135,12 +133,21 @@ return require('packer').startup(function(use)
 	-- colorizer
 	use 'norcalli/nvim-colorizer.lua'
 
-	-- lightline
-    use 'itchyny/lightline.vim'
-	use 'mengelbrecht/lightline-bufferline'
-
     -- auto-pairs
 	use 'jiangmiao/auto-pairs'
 	-- use 'windwp/nvim-autopairs'
+
+    -- barbar
+    use {'romgrk/barbar.nvim', require = 'kyazdani42/nvim-web-devicons'}
+
+    -- galaxyline
+    use {
+        'glepnir/galaxyline.nvim',
+        branch = 'main',
+        -- your statusline
+        config = function() require'_galaxyline' end,
+        -- some optional icons
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    }
 
 end)
