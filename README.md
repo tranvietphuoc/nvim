@@ -5,6 +5,7 @@ This configuration supports (includes syntax highlighting and autocompletion) fo
 
 - `Python`
 - `Javascript`
+- `Typescript`
 - `Rust`
 - `C`
 - `C++`
@@ -13,6 +14,8 @@ This configuration supports (includes syntax highlighting and autocompletion) fo
 - `Css`
 - `Lua`
 - `Cmake`
+- `Json`
+- `Docker`
 - `Yaml`
 
 ## Prequisition:
