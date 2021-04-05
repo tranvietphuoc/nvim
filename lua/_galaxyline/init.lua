@@ -22,9 +22,20 @@ local colors = {
 
 local condition = require('galaxyline.condition')
 local gls = gl.section
-gl.short_line_list = {'NERDTree', 'vista', 'dbui', 'packer'}
+gl.short_line_list = {'NERDTree', 'vista', 'dbui', 'packer', 'fugitive', 'fugitiveblame', 'startify'}
 
 gls.left[1] = {
+    Space = {
+        provider = function()
+            return ' '
+        end,
+        separator = '',
+        separator_highlight = {'NONE', colors.bg},
+        highlight = {colors.orange, colors.bg}
+    }
+}
+
+gls.left[2] = {
     ViMode = {
         provider = function()
             local alias = {
@@ -43,7 +54,7 @@ gls.left[1] = {
                 v = colors.purple,
                 [''] = colors.purple,
                 V = colors.purple,
-                c = colors.magenta,
+                c = colors.string_orange,
                 no = colors.blue,
                 s = colors.orange,
                 S = colors.orange,
@@ -60,8 +71,7 @@ gls.left[1] = {
                 t = colors.blue
             }
             vim.api.nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()])
-            -- return '▊'
-            -- return alias[vim_mode] .. ' 
+            
             return alias[vim.fn.mode()]..' '
         end,
         highlight = {colors.red, colors.bg}
@@ -70,7 +80,7 @@ gls.left[1] = {
 print(vim.fn.getbufvar(0, 'ts'))
 vim.fn.getbufvar(0, 'ts')
 
-gls.left[2] = {
+gls.left[3] = {
     GitIcon = {
         provider = function()
             return '  '
@@ -82,7 +92,7 @@ gls.left[2] = {
     }
 }
 
-gls.left[3] = {
+gls.left[4] = {
     GitBranch = {
         provider = 'GitBranch',
         condition = condition.check_git_workspace,
@@ -92,7 +102,7 @@ gls.left[3] = {
     }
 }
 
-gls.left[4] = {
+gls.left[5] = {
     DiffAdd = {
         provider = 'DiffAdd',
         condition = condition.hide_in_width,
@@ -100,7 +110,7 @@ gls.left[4] = {
         highlight = {colors.green, colors.bg}
     }
 }
-gls.left[5] = {
+gls.left[6] = {
     DiffModified = {
         provider = 'DiffModified',
         condition = condition.hide_in_width,
@@ -117,7 +127,7 @@ gls.left[6] = {
     }
 }
 
-gls.left[7] = {
+gls.left[8] = {
   FileIcon = {
     provider = 'FileIcon',
     separator = "",
@@ -126,7 +136,7 @@ gls.left[7] = {
   },
 }
 
-gls.left[8] = {
+gls.left[9] = {
   FileName = {
     provider = 'FileName',
     condition = buffer_not_empty,
