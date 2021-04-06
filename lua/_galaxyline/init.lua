@@ -42,8 +42,8 @@ gls.left[2] = {
                 n = 'NORMAL',
                 i = 'INSERT',
                 ic = 'INSERT-COMPLETION',
-                c= 'COMMAND',
-                V= 'VISUAL-LINE',
+                c = 'COMMAND',
+                V = 'VISUAL-LINE',
                 [''] = 'VISUAL-BLOCK',
                 v ='VISUAL',
                 no  = 'OPERATOR-PENDING',
@@ -176,7 +176,7 @@ gls.right[5] = {
             if tbl[vim.bo.filetype] then return false end
             return true
         end,
-        icon = '  ',
+        icon = '  ',
         highlight = {colors.grey, colors.bg}
     }
 }
@@ -204,7 +204,7 @@ gls.right[7] = {
 gls.right[8] = {
     Tabstop = {
         provider = function()
-            return "Spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
+            return "SPACES: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
         end,
         condition = condition.hide_in_width,
         separator = '  ',
