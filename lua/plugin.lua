@@ -38,11 +38,6 @@ return require('packer').startup(function(use)
     -- emmet
     use 'mattn/emmet-vim'
 
-    -- js
-    use 'pangloss/vim-javascript'
-    use 'leafgarland/typescript-vim'
-    use 'peitalin/vim-jsx-typescript'
-    use 'mxw/vim-jsx'
 
     -- markdown
     use 'plasticboy/vim-markdown'
@@ -58,17 +53,9 @@ return require('packer').startup(function(use)
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-media-files.nvim'
-    -- use 'junegunn/fzf'
-    -- use 'junegunn/fzf.vim'
 
     -- startify
     use 'mhinz/vim-startify'
-
-    -- polyglot
-    use 'sheerun/vim-polyglot'
-
-    -- python syntax
-    use 'vim-python/python-syntax'
 
     -- floatterm
     use 'voldikss/vim-floaterm'
@@ -100,6 +87,7 @@ return require('packer').startup(function(use)
     -- lazygit
     use 'kdheepak/lazygit.nvim'
 
+	-- lsp
     use 'neovim/nvim-lspconfig'
     use 'kabouzeid/nvim-lspinstall'
     use 'kosayoda/nvim-lightbulb'
@@ -133,8 +121,12 @@ return require('packer').startup(function(use)
 	use 'jiangmiao/auto-pairs'
 	-- use 'windwp/nvim-autopairs'
 
+
+	--nvim-web-devicons
+	use 'kyazdani42/nvim-web-devicons'
+
     -- barbar
-    use {'romgrk/barbar.nvim', require = 'kyazdani42/nvim-web-devicons'}
+    use 'romgrk/barbar.nvim'
 
     -- galaxyline
     use {
@@ -142,10 +134,8 @@ return require('packer').startup(function(use)
         branch = 'main',
         -- your statusline
         config = function() require'_galaxyline' end,
-        -- some optional icons
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
 
-    use { 'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'} }
+    use 'kyazdani42/nvim-tree.lua'
 
 end)

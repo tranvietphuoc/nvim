@@ -1,4 +1,3 @@
-vim.cmd('autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=8 shiftwidth=8')
 vim.g.go_highlight_build_constraints = 1
 vim.g.go_highlight_extra_types = 1
 vim.g.go_highlight_fields = 1

@@ -6,6 +6,3 @@ vim.cmd('let g:racer_experimental_completer = 1')
 vim.cmd('let g:rustfmt_command = \'rustfmt\'')
 vim.cmd('let g:rustfmt_autosave = 0')
 
--- "let g:LanguageClient_serverCommands = {
--- "            \'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls', 'rust-analyzer'],
--- "            \}
