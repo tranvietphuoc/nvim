@@ -76,11 +76,7 @@ return require('packer').startup(function(use)
     -- tagbar
     use 'preservim/tagbar'
 
-    -- nerdtree
-    use 'preservim/nerdtree'
-    use 'jistr/vim-nerdtree-tabs'
-    use 'Xuyuanp/nerdtree-git-plugin'
-    use 'tiagofumo/vim-nerdtree-syntax-highlight'
+    -- vim-devicons
     use 'ryanoasis/vim-devicons'
 
     -- commentary
@@ -149,5 +145,7 @@ return require('packer').startup(function(use)
         -- some optional icons
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
+
+    use { 'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'} }
 
 end)
