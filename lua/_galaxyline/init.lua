@@ -41,11 +41,22 @@ gls.left[2] = {
             local alias = {
                 n = 'NORMAL',
                 i = 'INSERT',
-                c = 'COMMAND',
-                V = 'VISUAL',
-                [''] = 'VISUAL',
-                v = 'VISUAL',
-                R = 'REPLACE',
+                ic = 'INSERT-COMPLETION',
+                c= 'COMMAND',
+                V= 'VISUAL-LINE',
+                [''] = 'VISUAL-BLOCK',
+                v ='VISUAL',
+                no  = 'OPERATOR-PENDING',
+                ['r?'] = ':CONFIRM',
+                rm = '--MORE',
+                R  = 'REPLACE',
+                Rv = 'VIRTUAL',
+                s  = 'SELECT',
+                S  = 'SELECT-LINE',
+                ['r']  = 'HIT-ENTER',
+                [''] = 'SELECT',
+                t  = 'TERMINAL',
+                ['!']  = 'SHELL',
             }
             -- auto change color according the vim mode
             local mode_color = {
@@ -54,12 +65,12 @@ gls.left[2] = {
                 v = colors.purple,
                 [''] = colors.purple,
                 V = colors.purple,
-                c = colors.string_orange,
+                c = colors.yellow,
                 no = colors.blue,
                 s = colors.orange,
                 S = colors.orange,
                 [''] = colors.orange,
-                ic = colors.yellow,
+                ic = colors.string_orange,
                 R = colors.red,
                 Rv = colors.red,
                 cv = colors.blue,
@@ -72,7 +83,7 @@ gls.left[2] = {
             }
             vim.api.nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()])
             
-            return alias[vim.fn.mode()]..' '
+            return alias[vim.fn.mode()] .. ' '
         end,
         highlight = {colors.red, colors.bg}
     }
