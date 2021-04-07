@@ -85,6 +85,7 @@ I use `efm-langserver` for linting and formatting.
 
 to install all plugins of editor. `:q` to quit and open it again.
 
+
 ## Some basic keys mapping of this configuration.
 
 ---
@@ -140,7 +141,6 @@ to install all plugins of editor. `:q` to quit and open it again.
 - [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
 - [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 - [nvim-telescope/telescope-media-files.nvim](https://github.com/nvim-telescope/telescope-media-files.nvim)
-- [mhinz/vim-startify](https://github.com/mhinz/vim-startify)
 - [jiangmiao/auto-pairs](https://github.com/jiangmiao/auto-pairs)
 - [voldikss/vim-floaterm](https://github.com/voldikss/vim-floaterm)
 - [preservim/tagbar](https://github.com/preservim/tagbar)
