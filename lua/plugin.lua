@@ -136,6 +136,10 @@ return require('packer').startup(function(use)
         config = function() require'_galaxyline' end,
     }
 
+    -- nvim-tree
     use 'kyazdani42/nvim-tree.lua'
+
+    -- dashboard
+    use 'glepnir/dashboard-nvim'
 
 end)

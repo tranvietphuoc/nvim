@@ -18,4 +18,4 @@ vim.g.dashboard_custom_section = {
 	e = { description = {'  Settings            '}, command = ':e ~/.config/nvim/lua/config.lua' },
 }
 vim.g.indentLine_fileTypeExclude = {'dashboard'}
-vim.g.dashboard_custom_footer = {'https://github.com/tranvietphuoc'}
+vim.g.dashboard_custom_footer = {'Configured by Tran Viet Phuoc'}
