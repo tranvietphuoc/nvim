@@ -3,8 +3,7 @@ Formatters and linters
 ]] 
 
 -- general
-O.auto_complete = true
-O.auto_close_tree = 0
+O.auto_complete = true  -- auto completion
 O.colorscheme = 'nvcode'
 O.hidden_files = true
 O.wrap_line = false
@@ -12,6 +11,11 @@ O.numbers = true
 O.show_modes = true
 O.relative_numbers = true
 O.title = true
+O.ruler = true
+O.smart_indent = true
+O.show_match = true
+O.expand_tab = true
+O.cursor_line = true
 
 -- treesitter
 O.treesitter.ensure_installed = {"javascript", "html", "css", "bash", "lua", "c", "cpp", "python", "rust", "go", "json", "yaml", "tsx", "typescript", "regex", "vue"}

@@ -1,5 +1,4 @@
 O = {
-    auto_close_tree = 0,
     auto_complete = true,
     colorscheme = 'nvcode',
     hidden_files = true,
@@ -8,13 +7,19 @@ O = {
     show_modes = true,
     relative_numbers = true,
     title = true,
+	ruler = true,
+	smart_indent = true,
+	show_match = true,
+	expand_tab = true,
+	cursor_line = true,
+
     -- @usage pass a table with your desired languages
     treesitter = {
         ensure_installed = {
             "javascript",
             "html",
             "css",
-"bash",
+			"bash",
             "lua",
             "c",
             "cpp",
@@ -31,7 +36,7 @@ O = {
         ignore_install = {"haskell"},
         highlight = {enabled = true},
         playground = {enabled = true},
-        rainbow = {enabled = true}
+        rainbow = {enabled = true},
     },
 
     database = {save_location = '~/.config/nvim/db', auto_execute = 1},

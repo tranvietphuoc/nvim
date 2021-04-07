@@ -8,9 +8,9 @@ vim.cmd('filetype plugin indent on')
 vim.cmd('set nocompatible')
 vim.o.fileencoding = "utf-8"
 vim.o.conceallevel = 0  -- to see `` in markdown files
-vim.bo.smartindent = true
+vim.bo.smartindent = O.smart_indent
 vim.wo.number = O.numbers
-vim.wo.cursorline = true
+vim.wo.cursorline = O.cursor_line
 vim.wo.wrap = O.wrap_line   -- display long lines as just one
 vim.o.mouse = "a"
 vim.o.showmode = O.show_modes
@@ -20,13 +20,13 @@ vim.cmd("set showcmd")
 vim.o.cmdheight = 1
 vim.o.splitright = true
 vim.o.splitbelow = true
-vim.o.showmatch = true
-vim.bo.expandtab = true  -- convert tabs to spaces
+vim.o.showmatch = O.show_match
+vim.bo.expandtab = O.expand_tab  -- convert tabs to spaces
 vim.o.showtabline = 2
 vim.o.t_Co = "256"
 vim.cmd('set ts=4')
 vim.cmd('set sw=4')
-vim.o.ruler = true
+vim.o.ruler = O.ruler
 vim.o.updatetime = 300  -- faster completion
 vim.o.timeoutlen = 500  -- timeout to 1s
 vim.cmd('set whichwrap+=<,>,[,],h,l')
