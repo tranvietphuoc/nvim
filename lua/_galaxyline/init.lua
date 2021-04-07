@@ -20,16 +20,6 @@ local colors = {
     info_yellow = '#FFEE66',
 }
 
--- get file encode
-function get_file_encode()
-    local encode = vim.bo.fenc ~= '' and vim.bo.fenc or vim.o.enc
-    return ' ' .. encode:lower()
-end
-
-function get_file_type()
-    return vim.bo.filetype:lower()
-end
-
 local condition = require('galaxyline.condition')
 local gls = gl.section
 gl.short_line_list = {'nvimtree', 'vista', 'dbui', 'packer', 'fugitive', 'fugitiveblame', 'startify'}
@@ -203,7 +193,7 @@ gls.right[5] = {
 
 gls.right[6] = {
     BufferType = {
-        provider = get_file_type,
+        provider = 'FileTypeName',
         condition = condition.hide_in_width,
         separator = ' ',
         separator_highlight = {'NONE', colors.bg},
@@ -213,7 +203,7 @@ gls.right[6] = {
 
 gls.right[7] = {
     FileEncode = {
-        provider = get_file_encode,
+        provider = 'FileEncode',
         condition = condition.hide_in_width,
         separator = ' ',
         separator_highlight = {'NONE', colors.bg},
@@ -224,7 +214,7 @@ gls.right[7] = {
 gls.right[8] = {
     Tabstop = {
         provider = function()
-            return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
+            return "Spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
         end,
         condition = condition.hide_in_width,
         separator = ' ',
