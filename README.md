@@ -156,4 +156,5 @@ to install all plugins of editor. `:q` to quit and open it again.
 - [romgrk/barbar.nvim](https://github.com/romgrk/barbar.nvim)
 - [colorizer](https://github.com/norcalli/nvim-colorizer.lua)
 - [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
+- [glepnir/dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
 - and more in plugin.lua file...

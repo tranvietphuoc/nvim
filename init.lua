@@ -1,3 +1,5 @@
+require('global-config')
+require('user-config')
 require('plugin')
 require('config')
 require('colorscheme')
@@ -33,7 +35,6 @@ require('_dbcompletion')
 vim.cmd('source ~/.config/nvim/vimscript/db.vim')
 
 -- lsp config
-vim.cmd('luafile ~/.config/nvim/lua/global-config.lua')
 require('lsp')
 require('lsp.compe')
 vim.cmd('source ~/.config/nvim/vimscript/compe.vim')

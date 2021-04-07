@@ -1,33 +1,76 @@
+O = {
+    auto_close_tree = 0,
+    auto_complete = true,
+    colorscheme = 'nvcode',
+    hidden_files = true,
+    wrap_line = false,
+    numbers = true,
+    show_modes = true,
+    relative_numbers = true,
+    title = true,
+    -- @usage pass a table with your desired languages
+    treesitter = {
+        ensure_installed = {
+            "javascript",
+            "html",
+            "css",
+"bash",
+            "lua",
+            "c",
+            "cpp",
+            "python",
+            "rust",
+            "go",
+            "json",
+            "yaml",
+            "tsx",
+            "typescript",
+            "regex",
+            "vue",
+        },
+        ignore_install = {"haskell"},
+        highlight = {enabled = true},
+        playground = {enabled = true},
+        rainbow = {enabled = true}
+    },
 
---[[O is the global options object
-Formatters and linters should be
-filled in as strings with either
-a global executable or a path to
-an executable
-]] -- general
-O.auto_complete = true
-O.auto_close_tree = 0
+    database = {save_location = '~/.config/nvim/db', auto_execute = 1},
+    python = {
+        linter = '',
+        -- @usage can be 'yapf', 'black'
+        formatter = '',
+        autoformat = false,
+        isort = false,
+        diagnostics = {virtual_text = true, signs = true, underline = true}
+    },
+    lua = {
+        -- @usage can be 'lua-format'
+        formatter = '',
+        autoformat = false,
+        diagnostics = {virtual_text = true, signs = true, underline = true}
+    },
+    sh = {
+        -- @usage can be 'shellcheck'
+        linter = '',
+        -- @usage can be 'shfmt'
+        formatter = '',
+        autoformat = false,
+        diagnostics = {virtual_text = true, signs = true, underline = true}
+    },
+    tsserver = {
+        -- @usage can be 'eslint'
+        linter = '',
+        -- @usage can be 'prettier'
+        formatter = '',
+        autoformat = false,
+        diagnostics = {virtual_text = true, signs = true, underline = true}
+    },
+    json = {
+        -- @usage can be 'prettier'
+        formatter = '',
+        autoformat = false,
+        diagnostics = {virtual_text = true, signs = true, underline = true}
+    },
+    clangd = {diagnostics = {virtual_text = true, signs = true, underline = true}}
+}
 
--- python
--- add things like O.python.formatter.yapf.exec_path
--- add things like O.python.linter.flake8.exec_path
--- add things like O.python.formatter.isort.exec_path
-O.python.formatter = 'yapf'
-O.python.linter = 'flake8'
-O.python.isort = true
-O.python.autoformat = true
-O.python.diagnostics.virtual_text = true
-O.python.diagnostics.signs = true
-O.python.diagnostics.underline = true
-
--- lua
-O.lua.formatter = 'lua-format'
-O.lua.autoformat = true
-
--- javascript
-O.tsserver.formatter = 'prettier'
-O.tsserver.linter = 'eslint'
-O.tsserver.autoformat = true
-
--- json
-O.json.autoformat = true
