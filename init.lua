@@ -26,7 +26,7 @@ require('_which-key')
 require('autopairs')
 require('_barbar')
 require('_galaxyline')
-
+require('_dashboard')
 
 -- database
 require('_dbcompletion')
