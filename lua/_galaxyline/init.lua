@@ -20,6 +20,16 @@ local colors = {
     info_yellow = '#FFEE66',
 }
 
+-- get file encode
+function get_file_encode()
+    local encode = vim.bo.fenc ~= '' and vim.bo.fenc or vim.o.enc
+    return ' ' .. encode:lower()
+end
+
+function get_file_type()
+    return vim.bo.filetype:lower()
+end
+
 local condition = require('galaxyline.condition')
 local gls = gl.section
 gl.short_line_list = {'nvimtree', 'vista', 'dbui', 'packer', 'fugitive', 'fugitiveblame', 'startify'}
@@ -139,6 +149,16 @@ gls.left[6] = {
 }
 
 gls.left[8] = {
+    FileSize = {
+        provider = 'FileSize',
+        condition = buffer_not_empty,
+        highlight = { colors.fg, colors.bg },
+        separator = '',
+        separator_highlight = {colors.section_bg, colors.bg},
+    }
+}
+
+gls.left[9] = {
   FileIcon = {
     provider = 'FileIcon',
     separator = "",
@@ -147,7 +167,7 @@ gls.left[8] = {
   },
 }
 
-gls.left[9] = {
+gls.left[10] = {
   FileName = {
     provider = 'FileName',
     condition = buffer_not_empty,
@@ -183,9 +203,9 @@ gls.right[5] = {
 
 gls.right[6] = {
     BufferType = {
-        provider = 'FileTypeName',
+        provider = get_file_type,
         condition = condition.hide_in_width,
-        separator = '  ',
+        separator = ' ',
         separator_highlight = {'NONE', colors.bg},
         highlight = {colors.grey, colors.bg}
     }
@@ -193,7 +213,7 @@ gls.right[6] = {
 
 gls.right[7] = {
     FileEncode = {
-        provider = 'FileEncode',
+        provider = get_file_encode,
         condition = condition.hide_in_width,
         separator = ' ',
         separator_highlight = {'NONE', colors.bg},
@@ -204,10 +224,10 @@ gls.right[7] = {
 gls.right[8] = {
     Tabstop = {
         provider = function()
-            return "SPACES: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
+            return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
         end,
         condition = condition.hide_in_width,
-        separator = '  ',
+        separator = ' ',
         separator_highlight = {'NONE', colors.bg},
         highlight = {colors.grey, colors.bg}
     }
