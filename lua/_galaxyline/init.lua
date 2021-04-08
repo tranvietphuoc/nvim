@@ -94,7 +94,7 @@ vim.fn.getbufvar(0, 'ts')
 gls.left[3] = {
     GitIcon = {
         provider = function()
-            return '  '
+            return ' '
         end,
         condition = condition.check_git_workspace,
         separator = ' ',

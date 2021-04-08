@@ -1,0 +1,65 @@
+version: 2
+root-markers:
+    - .git/
+commands:
+    - commands: nvim
+      arguments:
+          - ${INPUT}
+tools:
+    python-yapf: &python-yapf
+        format-command: 'yapf --quiet'
+        format-stdin: true
+
+    python-isort: &python-isort
+        format-command: 'isort --quiet -'
+        format-stdin: true
+
+    python-black: &python-black
+        format-command: 'black --quiet -'
+        format-stdin: true
+
+    python-flake8: &python-flake8
+        lint-command: 'flake8 --stdin-display-name ${INPUT} -'
+        lint-stdin: true
+        lint-formats:
+            - '%f:%l:%c: %m'
+
+    html-prettier: &html-prettier
+        format-command: './node_modules/.bin/prettier ${--tab-width:tabWidth} ${--single-quote:singleQuote} --parser html'
+
+    javascript-eslint: &javascript-eslint
+        lint-command: 'eslint -f visualstudio --stdin --stdin-filename ${INPUT}'
+        lint-ignore-exit-code: true
+        lint-stdin: true
+        lint-formats:
+            - "%f(%l,%c): %tarning %m"
+            - "%f(%l,%c): %rror %m"
+
+    css-prettier: &css-prettier
+        format-command: './node_modules/.bin/prettier ${--tab-width:tabWidth} ${--single-quote:singleQuote} --parser css'
+
+    json-prettier: &json-prettier
+        format-command: './node_modules/.bin/prettier ${--tab-width:tabWidth} --parser json'
+
+    lua-lua-format: &lua-lua-format
+        format-command: 'lua-format -i'
+        format-stdin: true
+
+languages:
+    python:
+        - <<: *python-flake8
+        # - <<: *python-mypy
+        # - <<: *python-autopep8
+        # - <<: *python-yapf
+        - <<: *python-black
+        - <<: *python-isort
+    javascript:
+        - <<: *javascript-eslint
+    html:
+        - <<: *html-prettier
+    css:
+        - <<: *css-prettier
+    json:
+        - <<: *json-prettier
+    lua:
+        - <<: *lua-lua-format

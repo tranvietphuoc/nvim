@@ -50,4 +50,6 @@ fi
 install_dependencies
 install_lsp_with_node
 install_lsp_with_pip
+mkdir -p $HOME/efm-langserver/
 cp ./dependencies/.ctags $HOME  # move ctags config to $HOME
+cp ./dependencies/efm-langserver/config.yaml $HOME/efm-langserver/

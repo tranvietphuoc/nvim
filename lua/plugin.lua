@@ -139,4 +139,7 @@ return require('packer').startup(function(use)
     -- dashboard
     use 'glepnir/dashboard-nvim'
 
+    -- goyo
+    use 'junegunn/goyo.vim'
+
 end)

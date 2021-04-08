@@ -28,6 +28,7 @@ require('autopairs')
 require('_barbar')
 require('_galaxyline')
 require('_dashboard')
+require('_goyo')
 
 -- database
 require('_dbcompletion')
