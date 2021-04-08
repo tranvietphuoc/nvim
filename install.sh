@@ -2,7 +2,7 @@
 
 set -o errexit
 
-installdependencies() {
+install_dependencies() {
     brew install lua
     brew install node
     brew install yarn
@@ -25,32 +25,29 @@ installdependencies() {
 
 }
 
-installlspwithnode() {
+install_lsp_with_node() {
     npm install -g pyright vscode-css-languageserver-bin vscode-html-languageserver-bin
-    npm install -g typescript typescript-language-server graphql-language-service-cli graphql-language-service-cli
+    npm install -g typescript typescript-language-server graphql-language-service-cli
     npm install -g dockerfile-language-server-nodejs vscode-json-languageserver 
-    npm install -g vls yaml-language-server
+    npm install -g vls yaml-language-server bash-language-server 
 }
 
-installlspwithpip() {
+install_lsp_with_pip() {
     pip3 install cmake-language-server
 }
 
-if [-d "$HOME/.config/nvim"];
-then
+if [-d "$HOME/.config/nvim"]; then
     mv $HOME/.config/nvim $HOME/.config/nvim.old
     git clone https://github.com/tranvietphuoc/nvim.git $HOME/.config/
     cd $HOME/.config/nvim/
-    installdependencies
-    installlspwithnode
-    installlspwithpip
-    cp ./dependencies/.ctags $HOME  # move ctags config to $HOME
+    
 else
     git clone https://github.com/tranvietphuoc/nvim.git $HOME/.config/
     cd $HOME/.config/nvim/
-    installdependencies
-    installlspwithnode
-    installlspwithpip
-    cp ./dependencies/.ctags $HOME  # move ctags config to $HOME
-
 fi
+
+# install dependencies
+install_dependencies
+install_lsp_with_node
+install_lsp_with_pip
+cp ./dependencies/.ctags $HOME  # move ctags config to $HOME
