@@ -24,24 +24,7 @@ O = {
 
     -- @usage pass a table with your desired languages
     treesitter = {
-        ensure_installed = {
-            "javascript",
-            "html",
-            "css",
-			"bash",
-            "lua",
-            "c",
-            "cpp",
-            "python",
-            "rust",
-            "go",
-            "json",
-            "yaml",
-            "tsx",
-            "typescript",
-            "regex",
-            "vue",
-        },
+        ensure_installed = {"all"},
         ignore_install = {"haskell"},
         highlight = {enabled = true},
         playground = {enabled = true},

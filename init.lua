@@ -1,6 +1,6 @@
 require('global-config')
 require('user-config')
-require('plugin')
+require('plugins')
 require('config')
 require('colorscheme')
 require('keymapping')

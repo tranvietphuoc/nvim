@@ -1,17 +1,21 @@
-local install_path = vim.fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local execute = vim.api.nvim_command
 
-vim.cmd [[packadd packer.nvim]]
-vim.cmd[[ autocmd BufWritePost plugins.lua PackerCompile ]]
-
+vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    vim.api.nvim_command('!git clone https://github.com/wbthomason/packer.nvim '.. install_path)
-    vim.api.nvim_command('packadd packer.nvim')
+    execute('!git clone https://github.com/wbthomason/packer.nvim '.. install_path)
+    execute 'packadd packer.nvim'
 end
 
+
+
+require('packer').init({display = {auto_clean = false}})
+
 return require('packer').startup(function(use)
+
     -- packer can manage itself as an optional plugin
-    use {'wbthomason/packer.nvim', opt = true}
+    use 'wbthomason/packer.nvim'
 
     -- information
     use 'nanotee/nvim-lua-guide'
@@ -37,7 +41,6 @@ return require('packer').startup(function(use)
 
     -- emmet
     use 'mattn/emmet-vim'
-
 
     -- markdown
     use 'plasticboy/vim-markdown'
@@ -117,7 +120,6 @@ return require('packer').startup(function(use)
     -- auto-pairs
 	use 'jiangmiao/auto-pairs'
 	-- use 'windwp/nvim-autopairs'
-
 
 	--nvim-web-devicons
 	use 'kyazdani42/nvim-web-devicons'

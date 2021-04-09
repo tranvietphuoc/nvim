@@ -32,7 +32,7 @@ You need to install these tools first:
 
 ### Neovim
 
-In order to have all the newest features, you should install the [Nightly version, the latest (>=0.5.0) here](https://github.com/neovim/neovim/releases/tag/nightly).
+In order to have all the newest features, you should install the [Nightly version](https://github.com/neovim/neovim/wiki/Installing-Neovim).
 
 ### Python providers
 

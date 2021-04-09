@@ -1,5 +1,5 @@
---[[O is the global options object
-Formatters and linters 
+--[[O is the global options object for settings,
+formatters and linters 
 ]] 
 
 -- general
@@ -21,13 +21,13 @@ O.font = "FiraCode\\ Nerd\\ Font:h13"  -- canbe change to another font
 O.mouse = "a"  -- mouse mode
 O.color = "256"  -- terminal color
 O.file_type = "on"
-O.cmd_height = 1  -- cmd height
+O.cmd_height = 2  -- cmd height
 O.show_tabline = 2  -- tabline
 O.update_time = 300  -- faster completion
 O.timeout_len = 500  -- timeout to type keybinding
 
 -- treesitter
-O.treesitter.ensure_installed = {"javascript", "html", "css", "bash", "lua", "c", "cpp", "python", "rust", "go", "json", "yaml", "tsx", "typescript", "regex", "vue"}
+O.treesitter.ensure_installed = {"all"}
 O.treesitter.ignore_install = {"haskell"}
 O.treesitter.highlight.enabled = true
 O.treesitter.playground.enabled = true
@@ -66,7 +66,7 @@ O.json.diagnostics.underline = true
 
 -- python
 O.python.linter = 'flake8'
-O.python.formatter = 'black'  -- @usage can be 'yapf', 'black'
+O.python.formatter = 'yapf'  -- @usage can be 'yapf', 'black'
 O.python.autoformat = true
 O.python.isort = true
 O.python.diagnostics.virtual_text = true
