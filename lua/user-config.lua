@@ -4,9 +4,9 @@ Formatters and linters
 
 -- general
 O.auto_complete = true  -- auto completion
-O.colorscheme = 'nvcode'
+O.colorscheme = 'nvcode'  -- can be change to another colorscheme
 O.hidden_files = true
-O.wrap_line = false
+O.wrap_line = true
 O.numbers = true
 O.show_modes = true
 O.relative_numbers = true
@@ -14,8 +14,17 @@ O.title = true
 O.ruler = true
 O.smart_indent = true
 O.show_match = true
-O.expand_tab = true
+O.expand_tab = true  -- convert tabs to spaces
 O.cursor_line = true
+O.syntax = "on"  -- can be 'on', 'enable'
+O.font = "FiraCode\\ Nerd\\ Font:h13"  -- canbe change to another font
+O.mouse = "a"  -- mouse mode
+O.color = "256"  -- terminal color
+O.file_type = "on"
+O.cmd_height = 1  -- cmd height
+O.show_tabline = 2  -- tabline
+O.update_time = 300  -- faster completion
+O.timeout_len = 500  -- timeout to type keybinding
 
 -- treesitter
 O.treesitter.ensure_installed = {"javascript", "html", "css", "bash", "lua", "c", "cpp", "python", "rust", "go", "json", "yaml", "tsx", "typescript", "regex", "vue"}
@@ -57,9 +66,9 @@ O.json.diagnostics.underline = true
 
 -- python
 O.python.linter = 'flake8'
-O.python.formatter = 'yapf'  -- @usage can be 'yapf', 'black'
+O.python.formatter = 'black'  -- @usage can be 'yapf', 'black'
 O.python.autoformat = true
-O.python.isort = false
+O.python.isort = true
 O.python.diagnostics.virtual_text = true
 O.python.diagnostics.signs = true
 O.python.diagnostics.underline = true

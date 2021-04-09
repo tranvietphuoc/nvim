@@ -2,7 +2,7 @@ O = {
     auto_complete = true,
     colorscheme = 'nvcode',
     hidden_files = true,
-    wrap_line = false,
+    wrap_line = true,
     numbers = true,
     show_modes = true,
     relative_numbers = true,
@@ -12,6 +12,15 @@ O = {
 	show_match = true,
 	expand_tab = true,
 	cursor_line = true,
+	syntax = "on",
+	font = "FiraCode\\ Nerd\\ Font:h13",
+	mouse = "a",
+	color = "256",
+	file_type = "on",
+	cmd_height = 1,  -- cmd height
+	show_tabline = 2,  -- tabline
+	update_time = 300,
+	timeout_len = 500,
 
     -- @usage pass a table with your desired languages
     treesitter = {
