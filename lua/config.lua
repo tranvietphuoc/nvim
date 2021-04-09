@@ -23,7 +23,8 @@ vim.cmd('set rtp+=~/.fzf')
 vim.cmd('set rtp+=/usr/local/opt/fzf')
 vim.cmd[[ set termguicolors ]]
 vim.cmd[[ set smarttab ]]
-vim.cmd[[ set redrawtime=1000 ]]
+vim.cmd [[set shortmess+=c]]
+vim.o.completeopt = "menuone,noselect"
 
 vim.o.syntax = O.syntax
 vim.o.guifont = O.font
