@@ -6,7 +6,7 @@ formatters and linters
 O.auto_complete = true  -- auto completion
 O.colorscheme = 'nvcode'  -- can be change to another colorscheme
 O.hidden_files = true
-O.wrap_line = true
+O.wrap_line = false
 O.numbers = true
 O.show_modes = true
 O.relative_numbers = true
@@ -27,7 +27,7 @@ O.update_time = 300  -- faster completion
 O.timeout_len = 500  -- timeout to type keybinding
 
 -- treesitter
-O.treesitter.ensure_installed = {"all"}
+O.treesitter.ensure_installed = "all"
 O.treesitter.ignore_install = {"haskell"}
 O.treesitter.highlight.enabled = true
 O.treesitter.playground.enabled = true

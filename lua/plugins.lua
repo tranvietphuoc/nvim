@@ -9,7 +9,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 
-
 require('packer').init({display = {auto_clean = false}})
 
 return require('packer').startup(function(use)

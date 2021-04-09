@@ -22,7 +22,7 @@ local colors = {
 
 local condition = require('galaxyline.condition')
 local gls = gl.section
-gl.short_line_list = {'nvimtree', 'vista', 'dbui', 'packer', 'fugitive', 'fugitiveblame', 'startify'}
+gl.short_line_list = {'NvimTree', 'dbui', 'packer', 'dashboard'}
 
 gls.left[1] = {
     Space = {
@@ -267,3 +267,4 @@ gls.short_line_left[2] = {
 }
 
 gls.short_line_right[1] = {BufferIcon = {provider = 'BufferIcon', highlight = {colors.grey, colors.bg}}}
+
