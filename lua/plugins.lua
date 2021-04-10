@@ -4,8 +4,8 @@ local execute = vim.api.nvim_command
 vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    execute('!git clone https://github.com/wbthomason/packer.nvim '.. install_path)
-    execute 'packadd packer.nvim'
+  execute('!git clone https://github.com/wbthomason/packer.nvim '.. install_path)
+  execute 'packadd packer.nvim'
 end
 
 
@@ -13,84 +13,84 @@ require('packer').init({display = {auto_clean = false}})
 
 return require('packer').startup(function(use)
 
-    -- packer can manage itself as an optional plugin
-    use 'wbthomason/packer.nvim'
+  -- packer can manage itself as an optional plugin
+  use 'wbthomason/packer.nvim'
 
-    -- information
-    use 'nanotee/nvim-lua-guide'
+  -- information
+  use 'nanotee/nvim-lua-guide'
 
-    -- colorscheme
-    -- use 'NLKNguyen/papercolor-theme'
-    use 'christianchiarulli/nvcode-color-schemes.vim'
+  -- colorscheme
+  -- use 'NLKNguyen/papercolor-theme'
+  use 'christianchiarulli/nvcode-color-schemes.vim'
 
-    -- git
-    use 'mhinz/vim-signify'
-    use 'tpope/vim-fugitive'
-    use 'tpope/vim-rhubarb'
-    use 'junegunn/gv.vim'
+  -- git
+  use 'mhinz/vim-signify'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb'
+  use 'junegunn/gv.vim'
 
-    -- treesitter
-    use {'nvim-treesitter/nvim-treesitter', run=':TSUpdate'}
+  -- treesitter
+  use {'nvim-treesitter/nvim-treesitter', run=':TSUpdate'}
 
-    -- multiple cursors
-    use 'terryma/vim-multiple-cursors'
+  -- multiple cursors
+  use 'terryma/vim-multiple-cursors'
 
-    -- indent line
-    use 'Yggdroot/indentLine'
+  -- indent line
+  use 'Yggdroot/indentLine'
 
-    -- emmet
-    use 'mattn/emmet-vim'
+  -- emmet
+  use 'mattn/emmet-vim'
 
-    -- markdown
-    use 'plasticboy/vim-markdown'
-    use {'iamcco/markdown-preview.nvim', run = ':call mkdp#util#install()'}
-    use 'christoomey/vim-tmux-navigator'
-    use 'machakann/vim-highlightedyank'
+  -- markdown
+  use 'plasticboy/vim-markdown'
+  use {'iamcco/markdown-preview.nvim', run = ':call mkdp#util#install()'}
+  use 'christoomey/vim-tmux-navigator'
+  use 'machakann/vim-highlightedyank'
 
-    -- syntax check
-    use 'prettier/vim-prettier'
+  -- syntax check
+  use 'prettier/vim-prettier'
 
-    -- telescope for fuzzy find
-    use 'nvim-lua/popup.nvim'
-    use 'nvim-lua/plenary.nvim'
-    use 'nvim-telescope/telescope.nvim'
-    use 'nvim-telescope/telescope-media-files.nvim'
+  -- telescope for fuzzy find
+  use 'nvim-lua/popup.nvim'
+  use 'nvim-lua/plenary.nvim'
+  use 'nvim-telescope/telescope.nvim'
+  use 'nvim-telescope/telescope-media-files.nvim'
 
-    -- floatterm
-    use 'voldikss/vim-floaterm'
+  -- floatterm
+  use 'voldikss/vim-floaterm'
 
-    -- tagbar
-    use 'preservim/tagbar'
+  -- tagbar
+  use 'preservim/tagbar'
 
-    -- vim-devicons
-    use 'ryanoasis/vim-devicons'
+  -- vim-devicons
+  use 'ryanoasis/vim-devicons'
 
-    -- commentary
-    use 'tpope/vim-commentary'
+  -- commentary
+  use 'tpope/vim-commentary'
 
-    -- go vim
-    use {'fatih/vim-go', run=':GoUpdateBinaries'}
+  -- go vim
+  use {'fatih/vim-go', run=':GoUpdateBinaries'}
 
-    -- rust
-    use 'rust-lang/rust.vim'
-    use 'racer-rust/vim-racer'
+  -- rust
+  use 'rust-lang/rust.vim'
+  use 'racer-rust/vim-racer'
 
-    -- csv
-    use 'chrisbra/csv.vim'
+  -- csv
+  use 'chrisbra/csv.vim'
 
-    -- vim easy align
-    use 'junegunn/vim-easy-align'
+  -- vim easy align
+  use 'junegunn/vim-easy-align'
 
-    use {'turbio/bracey.vim', run = 'npm install --prefix server'}
+  use {'turbio/bracey.vim', run = 'npm install --prefix server'}
 
-    -- lazygit
-    use 'kdheepak/lazygit.nvim'
+  -- lazygit
+  use 'kdheepak/lazygit.nvim'
 
 	-- lsp
-    use 'neovim/nvim-lspconfig'
-    use 'kabouzeid/nvim-lspinstall'
-    use 'kosayoda/nvim-lightbulb'
-    use 'onsails/lspkind-nvim'
+  use 'neovim/nvim-lspconfig'
+  use 'kabouzeid/nvim-lspinstall'
+  use 'kosayoda/nvim-lightbulb'
+  use 'onsails/lspkind-nvim'
 	use 'glepnir/lspsaga.nvim'
 	use 'hrsh7th/nvim-compe'
 
@@ -116,31 +116,31 @@ return require('packer').startup(function(use)
 	-- colorizer
 	use 'norcalli/nvim-colorizer.lua'
 
-    -- auto-pairs
+  -- auto-pairs
 	use 'jiangmiao/auto-pairs'
 	-- use 'windwp/nvim-autopairs'
 
-	--nvim-web-devicons
+	-- nvim-web-devicons
 	use 'kyazdani42/nvim-web-devicons'
 
-    -- barbar
-    use 'romgrk/barbar.nvim'
+  -- barbar
+  use 'romgrk/barbar.nvim'
 
-    -- galaxyline
-    use {
-        'glepnir/galaxyline.nvim',
-        branch = 'main',
-        -- your statusline
-        config = function() require'_galaxyline' end,
-    }
+  -- galaxyline
+  use {
+    'glepnir/galaxyline.nvim',
+    branch = 'main',
+    -- your statusline
+    config = function() require'_galaxyline' end,
+  }
 
-    -- nvim-tree
-    use 'kyazdani42/nvim-tree.lua'
+  -- nvim-tree
+  use 'kyazdani42/nvim-tree.lua'
 
-    -- dashboard
-    use 'glepnir/dashboard-nvim'
+  -- dashboard
+  use 'glepnir/dashboard-nvim'
 
-    -- goyo
-    use 'junegunn/goyo.vim'
+  -- goyo
+  use 'junegunn/goyo.vim'
 
 end)

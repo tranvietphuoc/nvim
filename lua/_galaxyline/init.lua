@@ -217,7 +217,7 @@ gls.right[8] = {
             return "Spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
         end,
         condition = condition.hide_in_width,
-        separator = ' ',
+        separator = '  ',
         separator_highlight = {'NONE', colors.bg},
         highlight = {colors.grey, colors.bg}
     }
