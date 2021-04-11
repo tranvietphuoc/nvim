@@ -1,17 +1,15 @@
 
+vim.g.nvim_tree_disable_netrw = 0
+vim.g.nvim_tree_indent_markers = 1
+vim.g.nvim_tree_auto_close = 1
+vim.g.nvim_tree_show_icons = {git = 0, folders = 1, files = 1}
+vim.g.nvim_tree_ignore = { '.git', 'node_modules', '__pycache__' }
+vim.g.nvim_tree_auto_ignore_ft = { 'dashboard' }
+vim.g.nvim_tree_follow = 1
+
 vim.api.nvim_set_keymap('n', '<Leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>F', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>R', ':NvimTreeRefresh<CR>', { noremap = true, silent = true })
-
-vim.g.nvim_tree_hide_dotfiles = 1
-vim.g.nvim_tree_indent_markers = 1
-vim.g.nvim_tree_auto_close = 1
-vim.g.nvim_tree_auto_open = 0
-vim.g.nvim_tree_quit_on_open = 1
-vim.g.nvim_tree_disable_netrw = 0
-vim.g.nvim_tree_root_folder_modifier = ':.'
-vim.g.nvim_tree_show_icons = {git = 0, folders = 0, files = 1}
-vim.g.nvim_tree_ignore = { '.git', 'node_modules', '__pycache__' }
 
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 vim.g.nvim_tree_bindings = {
@@ -44,4 +42,15 @@ vim.g.nvim_tree_bindings = {
   ["-"] = tree_cb("dir_up"),
   ["q"] = tree_cb("close"),
 }
-
+vim.g.nvim_tree_icons = {
+  default = '',
+  symlink = '',
+  git = {
+    unstaged = "",
+    staged = "",
+    unmerged = "",
+    renamed = "➜",
+    untracked = "",
+    -- ignored = "◌"
+  },
+}

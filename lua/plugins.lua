@@ -9,15 +9,17 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 
-require('packer').init({display = {auto_clean = false}})
+
+--require('packer').init({display = {auto_clean = false}})
+
+local get_config = function(file)
+  require(file)
+end
 
 return require('packer').startup(function(use)
 
   -- packer can manage itself as an optional plugin
   use 'wbthomason/packer.nvim'
-
-  -- information
-  use 'nanotee/nvim-lua-guide'
 
   -- colorscheme
   -- use 'NLKNguyen/papercolor-theme'
@@ -45,10 +47,10 @@ return require('packer').startup(function(use)
   use 'plasticboy/vim-markdown'
   use {'iamcco/markdown-preview.nvim', run = ':call mkdp#util#install()'}
   use 'christoomey/vim-tmux-navigator'
+
+  -- highlight yank
   use 'machakann/vim-highlightedyank'
 
-  -- syntax check
-  use 'prettier/vim-prettier'
 
   -- telescope for fuzzy find
   use 'nvim-lua/popup.nvim'
@@ -73,14 +75,11 @@ return require('packer').startup(function(use)
 
   -- rust
   use 'rust-lang/rust.vim'
-  use 'racer-rust/vim-racer'
-
-  -- csv
-  use 'chrisbra/csv.vim'
 
   -- vim easy align
   use 'junegunn/vim-easy-align'
 
+  -- bracey vim
   use {'turbio/bracey.vim', run = 'npm install --prefix server'}
 
   -- lazygit
@@ -95,17 +94,17 @@ return require('packer').startup(function(use)
 	use 'hrsh7th/nvim-compe'
 
 	-- snippet
-	use { 'hrsh7th/vim-vsnip' }
-	use { 'cstrap/python-snippets' }
-	use { 'ylcnfrht/vscode-python-snippet-pack' }
-	use { 'xabikos/vscode-javascript' }
-	use { 'golang/vscode-go' }
-	use { 'rust-lang/vscode-rust' }
+	use {'hrsh7th/vim-vsnip'}
+	use {'cstrap/python-snippets'}
+	use {'ylcnfrht/vscode-python-snippet-pack'}
+	use {'xabikos/vscode-javascript'}
+	use {'golang/vscode-go'}
+	use {'rust-lang/vscode-rust'}
 
 	-- database
-	use { 'kristijanhusak/vim-dadbod-completion' }
-	use { 'tpope/vim-dadbod' }
-	use { 'kristijanhusak/vim-dadbod-ui' }
+	use {'kristijanhusak/vim-dadbod-completion'}
+	use {'tpope/vim-dadbod'}
+	use {'kristijanhusak/vim-dadbod-ui'}
 
 	-- which-key
 	use {'AckslD/nvim-whichkey-setup.lua', requires = {'liuchengxu/vim-which-key'}}
@@ -127,12 +126,7 @@ return require('packer').startup(function(use)
   use 'romgrk/barbar.nvim'
 
   -- galaxyline
-  use {
-    'glepnir/galaxyline.nvim',
-    branch = 'main',
-    -- your statusline
-    config = function() require'_galaxyline' end,
-  }
+  use {'glepnir/galaxyline.nvim', config = get_config('_galaxyline')}
 
   -- nvim-tree
   use 'kyazdani42/nvim-tree.lua'
@@ -142,5 +136,8 @@ return require('packer').startup(function(use)
 
   -- goyo
   use 'junegunn/goyo.vim'
+
+  -- documentation generator
+  use {'kkoomen/vim-doge', run = ':call doge#install()'}
 
 end)

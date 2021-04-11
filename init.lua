@@ -1,21 +1,29 @@
+require('plugins')
 require('global-config')
 require('user-config')
-require('plugins')
 require('config')
-require('colorscheme')
 require('keymapping')
 require('providers')
+require('colorscheme')
+
+-- lsp config
+require('lsp')
+require('lsp.compe')
+vim.cmd('source ~/.config/nvim/vimscript/compe.vim')
+
+-- plugins
 require('_treesitter')
 require('_nvimtree')
+require('_galaxyline')
+require('_barbar')
 require('_telescope')
-require('_rs')
 require('_fugitive')
 require('_signify')
 require('_tagbar')
 require('_floatterm')
 require('_emmet')
 require('_go')
-require('_csv')
+require('_rs')
 require('_commentary')
 require('_markdown')
 require('_easyalign')
@@ -25,19 +33,13 @@ require('_colorizer')
 require('_ts-rainbow')
 require('_which-key')
 require('autopairs')
-require('_barbar')
-require('_galaxyline')
 require('_dashboard')
 require('_goyo')
+require('_doge')
 
 -- database
 require('_dbcompletion')
 vim.cmd('source ~/.config/nvim/vimscript/db.vim')
-
--- lsp config
-require('lsp')
-require('lsp.compe')
-vim.cmd('source ~/.config/nvim/vimscript/compe.vim')
 
 -- lsp server
 require('lsp.bash-lsp')

@@ -2,12 +2,13 @@ vim.cmd[[ set foldmethod=expr ]]
 vim.cmd[[ set foldexpr=nvim_treesitter#foldexpr() ]]
 
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = O.treesitter.ensure_installed,
+  ensure_installed = O.treesitter.ensure_installed,
 	ignored_install = O.treesitter.ignore_install,
     highlight = {
         enable = O.treesitter.highlight.enable,
         disable = {},              -- false will disable the whole extension
     },
+    indent = {enable = {"javascriptreact"}},
     playground = {
         enable = O.treesitter.playground.enabled,
         disable = {},
@@ -17,9 +18,13 @@ require'nvim-treesitter.configs'.setup {
     rainbow = {
         enable = O.treesitter.rainbow.enabled,
     },
-    refactor = {
-        highlight_definitions = {
-            enable = true,
+    autotag = {enable = true},
+    context_commentstring = {
+      enable = true,
+      config = {
+        javascriptreact = {
+          style_element = '{/*%s*/}'
         }
-    }
-}
+      }
+    },
+  }

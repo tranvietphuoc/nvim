@@ -1,13 +1,15 @@
--- vim.api.nvim_set_keymap('n', ',', ',', { noremap = true, silent = true })
+local map = vim.api.nvim_set_keymap
+
 vim.g.mapleader = ","
 
 -- no hl
 -- :nnoremap <silent> <Leader><Space> :set hlsearch<CR>
-vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', { noremap = true, silent = true })
+map('n', '<Leader>h', ':set hlsearch!<CR>', { noremap = true, silent = true })
 
 -- tab to next buffer in normal mode
-vim.api.nvim_set_keymap('n', '<TAB>', ':bnext<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<S-TAB>', ':bprevious<CR>', { noremap = true, silent = true })
+map('n', '<TAB>', ':bnext<CR>', { noremap = true, silent = true })
+map('n', '<S-TAB>', ':bprevious<CR>', { noremap = true, silent = true })
+
 -- delete current buffer
 vim.api.nvim_set_keymap('n', '<S-c>', ':bdelete<CR>', { noremap = true, silent = true })
 
@@ -20,26 +22,23 @@ vim.cmd([[
 ]])
 
 -- fast escaping
--- vim.api.nvim_set_keymap('', 'qq', 'qq', {noremap = true, silent = true})
--- vim.api.nvim_set_keymap('i', 'qq', 'qq', {noremap = true, silent = true})
-vim.cmd([[
-  inoremap qq <Esc>
-  nnoremap qq <Esc>
-  vnoremap qq <Esc>
-  xnoremap qq <Esc>
-  snoremap qq <Esc>
-  onoremap qq <Esc>
-  cnoremap qq <Esc>
-]])
+map('i', 'qq', '<ESC>', {noremap = true, silent = true})
+map('n', 'qq', '<ESC>', {noremap = true, silent = true})
+map('v', 'qq', '<ESC>', {noremap = true, silent = true})
+map('x', 'qq', '<ESC>', {noremap = true, silent = true})
+map('s', 'qq', '<ESC>', {noremap = true, silent = true})
+map('o', 'qq', '<ESC>', {noremap = true, silent = true})
+map('c', 'qq', '<ESC>', {noremap = true, silent = true})
+
 
 -- saving
-vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', {noremap = true, silent = true})
+map('n', '<Leader>w', ':w<CR>', {noremap = true, silent = true})
 
 -- fast quitting
-vim.api.nvim_set_keymap('n', '<Leader>q', ':q<CR>', {noremap = true, silent = false})
+map('n', '<Leader>q', ':q<CR>', {noremap = true, silent = false})
 
 
 -- move selected line / blocks of text in V-mode
 -- Move selected line / block of text in visual mode
-vim.api.nvim_set_keymap('x', 'H', ':move \'<-2<CR>gv-gv', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('x', 'L', ':move \'>+1<CR>gv-gv', { noremap = true, silent = true })
+map('x', 'H', ':move \'<-2<CR>gv-gv', { noremap = true, silent = true })
+map('x', 'L', ':move \'>+1<CR>gv-gv', { noremap = true, silent = true })

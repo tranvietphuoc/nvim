@@ -16,18 +16,18 @@ O.smart_indent = true
 O.show_match = true
 O.expand_tab = true  -- convert tabs to spaces
 O.cursor_line = true
-O.syntax = "on"  -- can be 'on', 'enable'
-O.font = "FiraCode\\ Nerd\\ Font:h13"  -- canbe change to another font
+O.syntax = "on"  -- can be 'on', 'enable', 'off'
+O.fonts = "FiraCode Nerd Font:h14"  -- canbe change to another font
 O.mouse = "a"  -- mouse mode
 O.color = "256"  -- terminal color
-O.file_type = "on"
-O.cmd_height = 2  -- cmd height
+O.cmd_height = 1  -- cmd height
 O.show_tabline = 2  -- tabline
 O.update_time = 300  -- faster completion
-O.timeout_len = 500  -- timeout to type keybinding
+O.timeout_len = 300  -- timeout to type keybinding
+O.termguicolors = true
 
 -- treesitter
-O.treesitter.ensure_installed = "all"
+O.treesitter.ensure_installed = {"javascript", "html", "css", "bash", "lua", "c", "cpp", "python", "rust", "go", "json", "yaml", "tsx", "typescript", "regex", "vue"}
 O.treesitter.ignore_install = {"haskell"}
 O.treesitter.highlight.enabled = true
 O.treesitter.playground.enabled = true
@@ -81,3 +81,5 @@ O.clangd.diagnostics.underline = true
 -- dbui
 O.database.save_location = '~/.config/nvim/db'
 O.database.auto_execute = 1
+
+

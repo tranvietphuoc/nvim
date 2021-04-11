@@ -13,18 +13,35 @@ O = {
 	expand_tab = true,
 	cursor_line = true,
 	syntax = "on",
-	font = "FiraCode\\ Nerd\\ Font:h13",
+	fonts = "FiraCode\\ Nerd\\ Font:h13",
 	mouse = "a",
 	color = "256",
-	file_type = "on",
 	cmd_height = 1,  -- cmd height
 	show_tabline = 2,  -- tabline
 	update_time = 300,
-	timeout_len = 500,
+	timeout_len = 300,
+  termguicolors = true,
 
   -- @usage pass a table with your desired languages
   treesitter = {
-    ensure_installed = "all",
+    ensure_installed = {
+      "javascript",
+      "html",
+      "css",
+      "bash",
+      "lua",
+      "c",
+      "cpp",
+      "python",
+      "rust",
+      "go",
+      "json",
+      "yaml",
+      "tsx",
+      "typescript",
+      "regex",
+      "vue",
+    },
     ignore_install = {"haskell"},
     highlight = {enabled = true},
     playground = {enabled = true},
@@ -71,3 +88,5 @@ O = {
   clangd = {diagnostics = {virtual_text = true, signs = true, underline = true}}
 }
 
+DATA = vim.fn.stdpath('data')
+CACHE = vim.fn.stdpath('cache')
