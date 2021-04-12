@@ -13,6 +13,7 @@ vim.cmd('set inccommand=split')
 vim.cmd(' set clipboard+=unnamedplus')
 vim.cmd('set shortmess+=c')
 vim.o.completeopt = "menuone,noselect"
+vim.cmd('colorscheme ' .. O.colorscheme)  -- colorscheme
 
 vim.o.compatible = false
 vim.o.pumheight = 10

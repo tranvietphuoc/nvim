@@ -1,10 +1,10 @@
+-- general
 require('plugins')
 require('keymapping')
 require('providers')
 require('global-config')
 require('user-config')
 require('config')
-require('colorscheme')
 
 -- lsp config
 require('lsp')
