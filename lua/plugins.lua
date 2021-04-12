@@ -120,7 +120,7 @@ return require('packer').startup(function(use)
   use 'romgrk/barbar.nvim'
 
   -- galaxyline
-  use {'glepnir/galaxyline.nvim', config = get_config('_galaxyline')}
+  use {'glepnir/galaxyline.nvim', config = get_config('nvim-galaxyline')}
 
   -- nvim-tree
   use 'kyazdani42/nvim-tree.lua'
