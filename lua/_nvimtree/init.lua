@@ -4,7 +4,7 @@ vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_auto_close = 1
 vim.g.nvim_tree_show_icons = {git = 0, folders = 1, files = 1}
 vim.g.nvim_tree_ignore = { '.git', 'node_modules', '__pycache__' }
-vim.g.nvim_tree_auto_ignore_ft = { 'dashboard' }
+vim.g.nvim_tree_auto_ignore_ft = 'dashboard'
 vim.g.nvim_tree_follow = 1
 
 vim.api.nvim_set_keymap('n', '<Leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
@@ -53,4 +53,11 @@ vim.g.nvim_tree_icons = {
     untracked = "",
     -- ignored = "◌"
   },
+  folder = {
+    default = "",
+    open = "",
+    empty = "",
+    empty_open = "",
+    symlink = ""
+  }
 }

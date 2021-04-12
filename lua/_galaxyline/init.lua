@@ -1,9 +1,10 @@
 local gl = require('galaxyline')
 local condition = require('galaxyline.condition')
 local gls = gl.section
+gl.short_line_list = {'NvimTree', 'dbui', 'packer'}
 
 local colors = {
-  bg = '#292D38',
+  bg = '#292D36',
   yellow = '#DCDCAA',
   dark_yellow = '#D7BA7D',
   cyan = '#4EC9B0',
@@ -223,7 +224,6 @@ gls.right[12] = {
 }
 
 ------ short line ------
-gl.short_line_list = {'NvimTree', 'dbui', 'packer'}
 
 gls.short_line_left[1] = {
   BufferType = {

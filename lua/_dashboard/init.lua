@@ -19,3 +19,7 @@ vim.g.dashboard_custom_section = {
 }
 vim.g.indentLine_fileTypeExclude = {'dashboard'}
 vim.g.dashboard_custom_footer = {'Configured by Tran Viet Phuoc'}
+vim.cmd('autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2')
+vim.g.dashboard_preview_file_height = 12
+vim.g.dashboard_preview_file_width = 80
+

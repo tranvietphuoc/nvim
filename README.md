@@ -85,6 +85,8 @@ I use `efm-langserver` for linting and formatting.
 
 to install all plugins of editor. `:q` to quit and open it again.
 
+You can config your settings in `user-config.lua` file
+
 
 ## Some basic keys mapping of this configuration.
 

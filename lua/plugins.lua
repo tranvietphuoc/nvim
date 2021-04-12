@@ -8,9 +8,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   execute 'packadd packer.nvim'
 end
 
-
-
---require('packer').init({display = {auto_clean = false}})
+require('packer').init({display = {auto_clean = false}})
 
 local get_config = function(file)
   require(file)
@@ -22,7 +20,6 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- colorscheme
-  -- use 'NLKNguyen/papercolor-theme'
   use 'christianchiarulli/nvcode-color-schemes.vim'
 
   -- git
@@ -37,14 +34,11 @@ return require('packer').startup(function(use)
   -- multiple cursors
   use 'terryma/vim-multiple-cursors'
 
-  -- indent line
-  use 'Yggdroot/indentLine'
-
   -- emmet
   use 'mattn/emmet-vim'
 
   -- markdown
-  use 'plasticboy/vim-markdown'
+  use 'tpope/vim-markdown'
   use {'iamcco/markdown-preview.nvim', run = ':call mkdp#util#install()'}
   use 'christoomey/vim-tmux-navigator'
 
@@ -139,5 +133,8 @@ return require('packer').startup(function(use)
 
   -- documentation generator
   use {'kkoomen/vim-doge', run = ':call doge#install()'}
+
+  -- indent
+  use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
 
 end)

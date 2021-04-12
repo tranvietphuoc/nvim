@@ -1,5 +1,4 @@
 vim.cmd('filetype plugin indent on')
--- vim.cmd('set nocompatible')
 vim.cmd("set showcmd")
 vim.cmd('set ts=4')
 vim.cmd('set sw=4')
@@ -11,6 +10,7 @@ vim.cmd('set nofoldenable')
 -- vim.cmd('set rtp+=~/.fzf')  -- for fzf
 vim.cmd('set colorcolumn=99999')
 vim.cmd('set inccommand=split')
+vim.cmd(' set clipboard+=unnamedplus')
 vim.cmd('set shortmess+=c')
 vim.o.completeopt = "menuone,noselect"
 

@@ -1,9 +1,9 @@
 require('plugins')
+require('keymapping')
+require('providers')
 require('global-config')
 require('user-config')
 require('config')
-require('keymapping')
-require('providers')
 require('colorscheme')
 
 -- lsp config
@@ -13,12 +13,12 @@ vim.cmd('source ~/.config/nvim/vimscript/compe.vim')
 
 -- plugins
 require('_treesitter')
-require('_nvimtree')
-require('_galaxyline')
 require('_barbar')
 require('_telescope')
 require('_fugitive')
 require('_signify')
+require('_nvimtree')
+-- require('_galaxyline')
 require('_tagbar')
 require('_floatterm')
 require('_emmet')
@@ -36,6 +36,7 @@ require('autopairs')
 require('_dashboard')
 require('_goyo')
 require('_doge')
+require('_indent')
 
 -- database
 require('_dbcompletion')
@@ -58,6 +59,6 @@ require('lsp.vue-lsp')
 require('lsp.yaml-lsp')
 require('lsp.lua-lsp')
 
--- formmater
+-- linter and formmater
 require('lsp.efm-lsp')
 
