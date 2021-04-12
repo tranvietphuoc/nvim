@@ -16,7 +16,7 @@ O.smart_indent = true
 O.show_match = true
 O.expand_tab = true  -- convert tabs to spaces
 O.cursor_line = true
-O.syntax = "enable"  -- can be 'on', 'enable', 'off'
+O.syntax = "on"  -- can be 'on', 'enable', 'off'
 O.fonts = "FiraCode Nerd Font:h14"  -- canbe change to another font
 O.mouse = "a"  -- mouse mode
 O.color = "256"  -- terminal color
@@ -27,7 +27,7 @@ O.timeout_len = 300  -- timeout to type keybinding
 O.termguicolors = true
 
 -- treesitter
-O.treesitter.ensure_installed = {"javascript", "html", "css", "bash", "lua", "c", "cpp", "python", "rust", "go", "json", "yaml", "tsx", "typescript", "regex", "vue"}
+O.treesitter.ensure_installed = {"javascript", "html", "css", "bash", "lua", "c", "cpp", "python", "rust", "go", "json", "tsx", "typescript", "regex", "vue"}
 O.treesitter.ignore_install = {"haskell"}
 O.treesitter.highlight.enabled = true
 O.treesitter.playground.enabled = true
