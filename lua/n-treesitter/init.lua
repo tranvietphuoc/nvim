@@ -7,7 +7,7 @@ require'nvim-treesitter.configs'.setup {
     disable = {},              -- false will disable the whole extension
   },
   -- indent = {enable = {"javascriptreact"}},
-  indent = {enable = true},
+  -- indent = {enable = true},
   playground = {
     enable = O.treesitter.playground.enabled,
     disable = {},
