@@ -25,6 +25,7 @@ You need to install these tools first:
 - `neovim`
 - `python3.+`
 - `nodejs` and `npm`
+- `luajit`
 - [lua-language-server](<https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)>)
 - [rust-analyzer](https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary)
 - [gopls](https://github.com/golang/tools/blob/master/gopls/doc/vim.md)
@@ -33,6 +34,8 @@ You need to install these tools first:
 ### Neovim
 
 In order to have all the newest features, you should install the [Nightly version](https://github.com/neovim/neovim/wiki/Installing-Neovim).
+
+And also need to install `luajit` by command: `brew install --HEAD luajit`
 
 ### Python providers
 
