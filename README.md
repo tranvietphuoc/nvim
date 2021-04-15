@@ -40,7 +40,7 @@ And also need to install `luajit` by command: `brew install --HEAD luajit`
 ### Python providers
 
 I've used `python3` as a default version on my mac. If you use another versions of `Python`.
-Please edit the `g:python3_host_prog` variable to probably path to your `Python`.
+Please edit the `g:python3_host_prog` variable to your probably path of `Python` in `user-config.lua` file.
 If your machine doesn't have any versions of `Python`, you could install [follow this](https://www.python.org/).
 After install `Python`, you must install `pynvim`
 
@@ -85,14 +85,6 @@ then install the LSP with [LspInstall](https://github.com/kabouzeid/nvim-lspinst
 I use `efm-langserver` for linting and formatting.
 
 `:LspInstall efm`
-
-Then install formatters and linters:
-
-`pip3 install flake8`
-`pip3 install yapf`
-`pip3 install black`
-`npm install -g prettier`
-`luarocks install --server=https://luarocks.org/dev luaformatter`
 
 to install all plugins of editor. `:q` to quit and open it again.
 

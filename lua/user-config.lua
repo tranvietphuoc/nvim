@@ -25,9 +25,27 @@ O.show_tabline = 2  -- tabline
 O.update_time = 300  -- faster completion
 O.timeout_len = 300  -- timeout to type keybinding
 O.termguicolors = true
+O.py_provider = "$HOME/.pyenv/versions/3.9.4/bin/python"
 
 -- treesitter
-O.treesitter.ensure_installed = {"javascript", "html", "css", "bash", "lua", "c", "cpp", "python", "rust", "go", "json", "tsx", "typescript", "regex", "vue"}
+O.treesitter.ensure_installed = {
+  "javascript",
+  "html",
+  "css",
+  "bash",
+  "lua",
+  "c",
+  "cpp",
+  "python",
+  "rust",
+  "go",
+  "json",
+  "tsx",
+  "typescript",
+  "regex",
+  "vue",
+  "svelte"
+}
 O.treesitter.ignore_install = {"haskell"}
 O.treesitter.highlight.enabled = true
 O.treesitter.playground.enabled = true

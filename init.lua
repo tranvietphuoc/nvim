@@ -3,13 +3,14 @@
 -- else
   
 -- end
+
 -- general
-require('plugins')
-require('keymapping')
-require('providers')
 require('global-config')
 require('user-config')
 require('config')
+require('providers')
+require('plugins')
+require('keymapping')
 require('colorscheme')
 
 -- lsp config
@@ -65,3 +66,4 @@ require('lsp.lua-lsp')
 
 -- linter and formmater
 require('lsp.efm-lsp')
+

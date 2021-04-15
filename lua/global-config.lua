@@ -21,6 +21,7 @@ O = {
 	update_time = 300,
 	timeout_len = 300,
   termguicolors = true,
+  py_provider = "$HOME/.pyenv/versions/3.9.4/bin/python",
 
   -- @usage pass a table with your desired languages
   treesitter = {
@@ -40,6 +41,7 @@ O = {
       "typescript",
       "regex",
       "vue",
+      "svelte",
     },
     ignore_install = {"haskell"},
     highlight = {enabled = true},
