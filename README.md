@@ -86,6 +86,14 @@ I use `efm-langserver` for linting and formatting.
 
 `:LspInstall efm`
 
+Then install formatters and linters:
+
+`pip3 install flake8`
+`pip3 install yapf`
+`pip3 install black`
+`npm install -g prettier`
+`luarocks install --server=https://luarocks.org/dev luaformatter`
+
 to install all plugins of editor. `:q` to quit and open it again.
 
 You can config your settings in `user-config.lua` file

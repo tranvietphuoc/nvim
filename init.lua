@@ -1,3 +1,8 @@
+-- if vim.fn.exists('g:vscode') then
+--   --
+-- else
+  
+-- end
 -- general
 require('plugins')
 require('keymapping')
@@ -10,9 +15,8 @@ require('colorscheme')
 -- lsp config
 require('lsp')
 require('lsp.compe')
-vim.cmd('source ~/.config/nvim/vimscript/compe.vim')
 
--- plugins
+  -- plugins
 require('n-treesitter')
 require('n-barbar')
 require('n-telescope')
@@ -41,7 +45,6 @@ require('n-indent')
 
 -- database
 require('n-dbcompletion')
-vim.cmd('source ~/.config/nvim/vimscript/db.vim')
 
 -- lsp server
 require('lsp.bash-lsp')
@@ -62,4 +65,3 @@ require('lsp.lua-lsp')
 
 -- linter and formmater
 require('lsp.efm-lsp')
-
