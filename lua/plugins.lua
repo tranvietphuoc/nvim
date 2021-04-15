@@ -58,9 +58,6 @@ return require('packer').startup(function(use)
   -- tagbar
   use 'preservim/tagbar'
 
-  -- vim-devicons
-  use 'ryanoasis/vim-devicons'
-
   -- commentary
   use 'tpope/vim-commentary'
 
@@ -123,7 +120,7 @@ return require('packer').startup(function(use)
   use {'glepnir/galaxyline.nvim', config = get_config('n-galaxyline')}
 
   -- nvim-tree
-  use 'kyazdani42/nvim-tree.lua'
+  -- use 'kyazdani42/nvim-tree.lua'
 
   -- dashboard
   use 'glepnir/dashboard-nvim'
@@ -136,5 +133,10 @@ return require('packer').startup(function(use)
 
   -- indent
   use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
+
+  use 'preservim/nerdtree'
+  use 'ryanoasis/vim-devicons'
+  use 'Xuyuanp/nerdtree-git-plugin'
+  use 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 end)

@@ -12,6 +12,7 @@ vim.cmd('set colorcolumn=99999')
 vim.cmd('set inccommand=split')
 vim.cmd(' set clipboard+=unnamedplus')
 vim.cmd('set shortmess+=c')
+vim.cmd('set autoindent')
 vim.o.completeopt = "menuone,noselect"
 
 vim.o.compatible = false
