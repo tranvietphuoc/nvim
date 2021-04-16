@@ -1,53 +1,50 @@
--- if vim.fn.exists('g:vscode') then
---   --
--- else
-  
--- end
 
 -- general
+require('plugins')
 require('global-config')
 require('user-config')
 require('config')
 require('providers')
-require('plugins')
 require('keymapping')
 require('colorscheme')
 
--- lsp config
-require('lsp')
-require('lsp.compe')
-
 -- plugins
-require('n-fugitive')
-require('n-signify')
-require('n-treesitter')
-require('n-barbar')
-require('n-telescope')
-require('n-nerdtree')
-vim.cmd('source $HOME/.config/nvim/vimscript/nerdtree.vim')
--- require('n-nvimtree')
 require('n-galaxyline')
+require('n-barbar')
+require('n-dashboard')
+require('n-telescope')
+require('n-treesitter')
+-- require('n-nerdtree')
+-- vim.cmd('source $HOME/.config/nvim/vimscript/nerdtree.vim')
 require('n-tagbar')
+require('n-bracey')
+require('n-goyo')
+require('n-doge')
+require('n-indent')
+require('n-rnvimr')
+-- require('n-nvimtree')
+-- vim.cmd('source $HOME/.config/nvim/vimscript/nvimtree.vim')
+require('n-colorizer')
+require('n-ts-rainbow')
+require('n-which-keys')
+require('n-autopairs')
+require('n-markdown')
+require('n-easyalign')
 require('n-floatterm')
 require('n-emmet')
 require('n-go')
 require('n-rs')
 require('n-commentary')
-require('n-markdown')
-require('n-easyalign')
-require('n-bracey')
+require('n-fugitive')
+require('n-signify')
 require('n-lazygit')
-require('n-colorizer')
-require('n-ts-rainbow')
-require('n-which-keys')
-require('n-autopairs')
-require('n-dashboard')
-require('n-goyo')
-require('n-doge')
-require('n-indent')
 
 -- database
 require('n-dbcompletion')
+
+-- lsp config
+require('lsp')
+require('lsp.compe')
 
 -- lsp server
 require('lsp.bash-lsp')

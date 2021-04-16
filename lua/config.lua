@@ -46,7 +46,6 @@ vim.o.ruler = O.ruler
 vim.o.updatetime = O.update_time  -- faster completion
 vim.o.timeoutlen = O.timeout_len  -- timeout to 1s
 vim.wo.relativenumber = O.relative_numbers
-vim.o.titlestring="%<%F%=%l/%L - nvim"
 
 -- config ts and sw for special files
 vim.cmd('autocmd BufRead,BufNewFile *.py setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79')

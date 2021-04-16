@@ -1,6 +1,7 @@
 local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 local execute = vim.api.nvim_command
 
+
 vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -8,11 +9,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   execute 'packadd packer.nvim'
 end
 
-require('packer').init({display = {auto_clean = false}})
-
-local get_config = function(file)
-  require(file)
-end
 
 return require('packer').startup(function(use)
 
@@ -20,7 +16,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- colorscheme
-  use 'christianchiarulli/nvcode-color-schemes.vim'
+  use {'christianchiarulli/nvcode-color-schemes.vim'}
 
   -- git
   use 'mhinz/vim-signify'
@@ -47,9 +43,9 @@ return require('packer').startup(function(use)
 
 
   -- telescope for fuzzy find
-  use 'nvim-lua/popup.nvim'
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
+  use {'nvim-lua/popup.nvim'}
+  use {'nvim-lua/plenary.nvim'}
+  use {'nvim-telescope/telescope.nvim'}
   use 'nvim-telescope/telescope-media-files.nvim'
 
   -- floatterm
@@ -77,12 +73,12 @@ return require('packer').startup(function(use)
   use 'kdheepak/lazygit.nvim'
 
 	-- lsp
-  use 'neovim/nvim-lspconfig'
-  use 'kabouzeid/nvim-lspinstall'
+  use {'neovim/nvim-lspconfig'}
+  use {'kabouzeid/nvim-lspinstall'}
   use 'kosayoda/nvim-lightbulb'
   use 'onsails/lspkind-nvim'
-	use 'glepnir/lspsaga.nvim'
-	use 'hrsh7th/nvim-compe'
+	use {'glepnir/lspsaga.nvim'}
+	use {'hrsh7th/nvim-compe'}
 
 	-- snippet
 	use {'hrsh7th/vim-vsnip'}
@@ -98,7 +94,7 @@ return require('packer').startup(function(use)
 	use {'kristijanhusak/vim-dadbod-ui'}
 
 	-- which-key
-	use {'AckslD/nvim-whichkey-setup.lua', requires = {'liuchengxu/vim-which-key'}}
+	-- use {'AckslD/nvim-whichkey-setup.lua', requires = {'liuchengxu/vim-which-key'}}
 
 	-- ts-rainbow
 	use 'p00f/nvim-ts-rainbow'
@@ -111,16 +107,16 @@ return require('packer').startup(function(use)
 	-- use 'windwp/nvim-autopairs'
 
 	-- nvim-web-devicons
-	use 'kyazdani42/nvim-web-devicons'
+	use {'kyazdani42/nvim-web-devicons'}
 
   -- barbar
-  use 'romgrk/barbar.nvim'
+  use {'romgrk/barbar.nvim'}
 
   -- galaxyline
-  use {'glepnir/galaxyline.nvim', config = get_config('n-galaxyline')}
+  use {'glepnir/galaxyline.nvim'}
 
   -- nvim-tree
-  -- use 'kyazdani42/nvim-tree.lua'
+  -- use {'kyazdani42/nvim-tree.lua'}
 
   -- dashboard
   use 'glepnir/dashboard-nvim'
@@ -134,9 +130,17 @@ return require('packer').startup(function(use)
   -- indent
   use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
 
-  use 'preservim/nerdtree'
-  use 'ryanoasis/vim-devicons'
-  use 'Xuyuanp/nerdtree-git-plugin'
-  use 'tiagofumo/vim-nerdtree-syntax-highlight'
+  -- rnvimr
+  use 'kevinhwang91/rnvimr'
 
+  -- -- nerdtree
+  -- use 'preservim/nerdtree'
+  -- use 'ryanoasis/vim-devicons'
+  -- use 'Xuyuanp/nerdtree-git-plugin'
+  -- use 'tiagofumo/vim-nerdtree-syntax-highlight'
+  --
+
+  -- require_plugin('nvim-tree.lua')
+  -- require_plugin('nvcode-color-schemes.vim')
+  -- require_plugin('nvim-web-devicons')
 end)
