@@ -38,6 +38,8 @@ install_dependencies() {
 
 	luarocks install --server=https://luarocks.org/dev luaformatter
 
+    pip3 install ranger-fm
+
 }
 
 install_lsp() {
