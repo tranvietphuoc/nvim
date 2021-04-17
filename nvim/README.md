@@ -123,6 +123,6 @@ You can config your settings in `user-config.lua` file
 Thanks to all authors of [these plugin](./lua/plugins.lua).
 
 
-## LICSENCE
+## LICENSE
 
 MIT
