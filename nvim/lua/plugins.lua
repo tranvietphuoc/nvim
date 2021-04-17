@@ -1,14 +1,12 @@
 local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 local execute = vim.api.nvim_command
 
-
 vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   execute('!git clone https://github.com/wbthomason/packer.nvim '.. install_path)
   execute 'packadd packer.nvim'
 end
-
 
 return require('packer').startup(function(use)
 
@@ -138,9 +136,5 @@ return require('packer').startup(function(use)
   -- use 'ryanoasis/vim-devicons'
   -- use 'Xuyuanp/nerdtree-git-plugin'
   -- use 'tiagofumo/vim-nerdtree-syntax-highlight'
-  --
 
-  -- require_plugin('nvim-tree.lua')
-  -- require_plugin('nvcode-color-schemes.vim')
-  -- require_plugin('nvim-web-devicons')
 end)

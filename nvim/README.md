@@ -100,64 +100,29 @@ You can config your settings in `user-config.lua` file
 |     `,`      |           `Leader`(`n`, `v` mode)            |
 | `<Leader>/`  |              `:Commentary<CR>`               |
 | `<Leader>t`  |             `:TagbarToggle<CR>`              |
-| `<Leader>n`  |            `:NERDTreeToggle<CR>`             |
-|   `<TAB>`    |                 `:bnext<CR>`                 |
-|  `<S-TAB>`   |               `:bprevious<CR>`               |
-|   `<S-c>`    |                  `:bdelete<CR>`              |
+| `<Leader>r`  |            `:RnvimrToggle<CR>`               |
+|   `<TAB>`    |                 `:BufferNext<CR>`            |
+|  `<S-TAB>`   |               `:BufferPrevious<CR>`          |
+|   `<S-c>`    |                  `:BufferClose<CR>`          |
 |     `qq`     |                   `<Esc>`                    |
-| `<Leader>ff` |       `<cmd>Telescope find_files<CR>`        |
-| `<Leader>fg` |        `<cmd>Telescope live_grep<CR>`        |
+| `<Leader>f`  |       `<cmd>Telescope find_files<CR>`        |
+| `<Leader>F`  |        `<cmd>Telescope live_grep<CR>`        |
 | `<Leader>fb` |         `<cmd>Telescope buffers<CR>`         |
 | `<Leader>fh` |        `<cmd>Telescope help_tags<CR>`        |
 |     `,,`     | Trigger `Leader` key in `i` mode of `emmet`  |
-| `<Leader>ft` |         `g:floatterm_keymap_toggle`          |
-| `<Leader>fn` |          `g:floatterm_keymap_next`           |
-| `<Leader>fp` |          `g:floatterm_keymap_prev`           |
-| `<Leader>fw` |           `g:floatterm_keymap_new`           |
+| `<Leader>T`  |         `g:floatterm_keymap_toggle`          |
 | `<Leader>mp` |  `<Plug>MarkdownPreview` live server for md  |
-| `<Leader>ms` | `<Plug>MarkdownPreviewStop` stop live server |
-| `<Leader>lg` |                `:LazyGit<CR>`                |
-| `<Leader>li` | `:Bracey<CR>` live server for html, js, css  |
-| `<Leader>ls` |      `:BraceyStop<CR>` stop live server      |
+| `<Leader>mq` | `<Plug>MarkdownPreviewStop` stop live server |
+| `<Leader>L`  |                `:LazyGit<CR>`                |
+| `<Leader>b`  | `:Bracey<CR>` live server for html, js, css  |
+| `<Leader>B`  |      `:BraceyStop<CR>` stop live server      |
 
 ---
 
 
-## Thanks to these plugins.
+Thanks to all authors of [these plugin](./lua/plugins.lua).
 
-- [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim)
-- [nanotee/nvim-lua-guide](https://github.com/nanotee/nvim-lua-guide)
-- [ChristianChiarulli/nvcode-color-schemes.vim](https://github.com/ChristianChiarulli/nvcode-color-schemes.vim)
-- [mhinz/vim-signify](https://github.com/mhinz/vim-signify)
-- [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
-- [tpope/vim-rhubarb](https://github.com/tpope/vim-rhubarb)
-- [junegunn/gv.vim](https://github.com/junegunn/gv.vim)
-- [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-- [itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)
-- [mengelbrecht/lightline-bufferline](https://github.com/mengelbrecht/lightline-bufferline)
-- [terryma/vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors)
-- [Yggdroot/indentLine](https://github.com/Yggdroot/indentLine)
-- [mattn/emmet-vim](https://github.com/mattn/emmet-vim)
-- [plasticboy/vim-markdown](https://github.com/plasticboy/vim-markdown)
-- [christoomey/vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
-- [machakann/vim-highlightedyank](https://github.com/machakann/vim-highlightedyank)
-- [nvim-lua/popup.nvim](https://github.com/nvim-lua/popup.nvim)
-- [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
-- [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-- [nvim-telescope/telescope-media-files.nvim](https://github.com/nvim-telescope/telescope-media-files.nvim)
-- [jiangmiao/auto-pairs](https://github.com/jiangmiao/auto-pairs)
-- [voldikss/vim-floaterm](https://github.com/voldikss/vim-floaterm)
-- [preservim/tagbar](https://github.com/preservim/tagbar)
-- [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
-- [tpope/vim-commentary](https://github.com/tpope/vim-commentary)
-- [fatih/vim-go](https://github.com/fatih/vim-go)
-- [rust-lang/rust.vim](https://github.com/rust-lang/rust.vim)
-- [markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
-- [kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)
-- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-- [glepnir/galaxyline.nvim](https://github.com/glepnir/galaxyline.nvim)
-- [romgrk/barbar.nvim](https://github.com/romgrk/barbar.nvim)
-- [colorizer](https://github.com/norcalli/nvim-colorizer.lua)
-- [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
-- [glepnir/dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
-- and more in plugin.lua file...
+
+## LICSENCE
+
+MIT

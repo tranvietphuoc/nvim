@@ -4,4 +4,4 @@ vim.g.lazygit_floating_window_corner_chars = {'╭', '╮', '╰', '╯'} --cust
 vim.g.lazygit_floating_window_use_plenary = 0 -- use plenary.nvim to manage floating window if available
 vim.g.lazygit_use_neovim_remote = 0
 
-vim.api.nvim_set_keymap('n', '<Leader>lg', ':LazyGit<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>L', ':LazyGit<CR>', { noremap = true, silent = true })
