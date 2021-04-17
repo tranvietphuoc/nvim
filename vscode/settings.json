@@ -1,0 +1,124 @@
+
+{
+  "workbench.settings.useSplitJSON": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.settings.editor": "json",
+  "workbench.settings.openDefaultSettings": true,
+  "editor.fontFamily": "FiraCode-Retina",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.fontWeight": "500",
+  "editor.fontLigature": true,
+  "editor.wordWrap": "on",
+  "editor.lineNumbers": "on",
+  "editor.wordWrapColumn": 79,
+  "editor.autoIndent": "advanced",
+  "editor.insertSpaces": true,
+  "editor.tabSize": 4,
+  "editor.detectIndentation": true,
+  "eslint.format.enable": true,
+  "python.pythonPath": "$HOME/.pyenv/shims/python",
+  "python.linting.enabled": true,
+  "python.formatting.provider": "black",
+  "python.autoComplete.addBrackets": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "debug.console.fontFamily": "FiraCode-Retina",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "node_modules": true
+  },
+  "terminal.integrated.env.osx": {},
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font",
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.fontWeight": "400",
+  "terminal.integrated.inheritEnv": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[html]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue-html]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue-postcss]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsx-tags]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.enable": true,
+  "code-runner.executorMap": {
+    "python": "$pythonPath -u $fullFileName",
+    "javascript": "node"
+  },
+  "code-runner.showExecutionMessage": false,
+  "code-runner.clearPreviousOutput": true,
+  "[plaintext]": {
+    "editor.quickSuggestions": false
+  },
+  "zenMode.centerLayout": false,
+  "zenMode.fullScreen": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideTabs": false,
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "plaintext": "pug"
+  },
+  "emmet.syntaxProfiles": {
+    "html": {
+      "attr_quotes": "double"
+    },
+    "jsx": {
+      "self_closing_tag": true
+    }
+  },
+  "editor.autoClosingQuotes": "languageDefined",
+  "editor.autoClosingBrackets": "languageDefined",
+  "cSpell.enabled": true,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+  "python.jediEnabled": false,
+  "python.languageServer": "Microsoft",
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
+  "cSpell.enableFiletypes": [
+    "jupyter"
+  ],
+  "liveServer.settings.donotShowInfoMsg": true,
+  "workbench.colorTheme": "Dracula Soft",
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/nvim/vimscript/vscode-neovim/init.vim",
+  "rust-analyzer.updates.askBeforeDownload": false,
+  
+}
+
