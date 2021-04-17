@@ -64,7 +64,7 @@ npm install -g neovim
 Run this command:
 
 ```
-curl -sSL https://github.com/tranvietphuoc/nvim/blob/master/install.sh | sh
+curl -sSL https://github.com/tranvietphuoc/dotfiles/blob/master/nvim/install.sh | sh
 ```
 
 and then type to the terminal command:
