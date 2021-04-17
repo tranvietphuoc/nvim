@@ -54,11 +54,13 @@ install_lsp() {
 
 if [-d "$HOME/.config/nvim"]; then
     mv $HOME/.config/nvim $HOME/.config/nvim.old
-    git clone https://github.com/tranvietphuoc/nvim.git $HOME/.config/
+    git clone https://github.com/tranvietphuoc/dotfiles.git $HOME/Downloads/
+    mv -v $HOME/Downloads/dotfiles/nvim $HOME/.config/
     cd $HOME/.config/nvim/
     
 else
-    git clone https://github.com/tranvietphuoc/nvim.git $HOME/.config/
+    git clone https://github.com/tranvietphuoc/dotfiles.git $HOME/Downloads/
+    mv -v $HOME/Downloads/dotfiles/nvim $HOME/.config/
     cd $HOME/.config/nvim/
 fi
 
