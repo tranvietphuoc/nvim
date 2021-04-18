@@ -2,7 +2,7 @@
 
 ### Alacritty
 
-I use [alacritty](https://github.com/zenixls2/alacritty/tree/ligature) as my main terminal emulator becasue this repo has font ligatures, in spire of it's not stable.
+I use [alacritty](https://github.com/zenixls2/alacritty/tree/ligature) as my main terminal emulator becasue this repo has font ligatures, in spite of it's not stable.
 
 The configuration file is located at [here](./alacritty/alacritty.yml)
 
