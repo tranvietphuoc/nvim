@@ -39,6 +39,9 @@ install_dependencies() {
 	luarocks install --server=https://luarocks.org/dev luaformatter
 
     pip3 install ranger-fm
+    
+    # install tree-sitter
+    brew install tree-sitter
 
 }
 
@@ -52,11 +55,16 @@ install_lsp() {
 	pip3 install cmake-language-server
 }
 
-if [-d "$HOME/.config/nvim"]; then
-    mv $HOME/.config/nvim $HOME/.config/nvim.old
+move_old_nvim() {
+    echo "Your nvim config is already exists"
+    echo "Please go to '$HOME/.config/' and move nvim folder to nvim.old folder"
+    exit
+}
 
-fi
+# move old nvim directory if it exists
+[ -d "$HOME/.config/nvim" ] && move_old_nvim
 
+echo "Start installing..."
 mkdir -p $HOME/Downloads/dotfiles/
 git clone https://github.com/tranvietphuoc/dotfiles.git $HOME/Downloads/dotfiles/
 mv -v $HOME/Downloads/dotfiles/nvim $HOME/.config/
