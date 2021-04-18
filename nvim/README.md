@@ -117,8 +117,8 @@ You can config your settings in `user-config.lua` file
 | `<Leader>fh` |        `<cmd>Telescope help_tags<CR>`        |
 |     `,,`     | Trigger `Leader` key in `i` mode of `emmet`  |
 | `<Leader>T`  |         `g:floatterm_keymap_toggle`          |
-| `<Leader>mp` |  `<Plug>MarkdownPreview` live server for md  |
-| `<Leader>mq` | `<Plug>MarkdownPreviewStop` stop live server |
+| `<Leader>m`  |  `<Plug>MarkdownPreview` live server for md  |
+| `<Leader>M`  | `<Plug>MarkdownPreviewStop` stop live server |
 | `<Leader>L`  |                `:LazyGit<CR>`                |
 | `<Leader>b`  | `:Bracey<CR>` live server for html, js, css  |
 | `<Leader>B`  |      `:BraceyStop<CR>` stop live server      |

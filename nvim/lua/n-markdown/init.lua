@@ -12,7 +12,8 @@ vim.g.markdown_fenced_languages = {'html', 'python', 'bash=sh', 'javascript'}
 vim.g.markdown_syntax_conceal = 0
 
 -- markdown previewer
-vim.api.nvim_set_keymap('n', '<Leader>mp', '<Plug>MarkdownPreview', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>mq', '<Plug>MarkdownPreviewStop', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>mt', '<Plug>MarkdownPreviewToggle', {noremap = true, silent = true})
+vim.cmd 'nmap <Leader>m <Plug>MarkdownPreview'
+vim.cmd 'nmap <Leader>M <Plug>MarkdownPreviewStop'
+vim.cmd 'nmap <C-t> <Plug>MarkdownPreviewToggle'
+
 vim.cmd('let g:mkdp_filetypes = [\'markdown\']')
