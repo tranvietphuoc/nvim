@@ -45,5 +45,5 @@ It can be install with [pspg](https://github.com/okbob/pspg) to get better UI.
 
 ### ctags
 
-I use tagbar in my [neovim](./nvim), so I've installed [ctags](https://github.com/universal-ctags/ctags). Here is the [configuration](./ctags/.ctags)
+I use tagbar in my [neovim](./nvim), so I've installed [ctags](https://github.com/universal-ctags/ctags). Here is the [configuration](./ctag/.ctags)
 
