@@ -64,7 +64,7 @@ style = "bold red"
 [character]
 success_symbol = "[->](bold green)"
 error_symbol = "[->](bold red)"
-use_symbol_for_status = true  # Show "✖" when the command faild
+vicmd_symbol = "[V](bold green) "
 
 [git_branch]
 symbol = " "
@@ -94,10 +94,10 @@ format = "[$path]($style)[$read_only]($read_only_style) "
 format = "with [$env_value]($style) "
 
 [username]
+style_user = "white bold"
+style_root = "red bold"
+disabled = false
 show_always = true
-disable = false
-style_user = "bold dimmed yellow"
-style_root = "bold red"
 
 [hostname]
 format = "[$hostname]($style) in "
@@ -114,6 +114,7 @@ time_format = "%T"
 format = "took [$duration]($style) "
 
 [conda]
+symbol = "⭘ "
 format = "[$symbol$environment](dimmed green) "
 
 [aws]
@@ -128,7 +129,7 @@ symbol = " "
 symbol = " "
 
 [golang]
-symbol = " "
+symbol = "ﳑ "
 
 [nodejs]
 symbol = " "
@@ -136,7 +137,7 @@ symbol = " "
 [lua]
 symbol = " "
 
-[docker]
+[docker_context]
 symbol = " "
 
 [cmake]
@@ -150,5 +151,4 @@ symbol = " "
 
 [ruby]
 symbol = " "
-
 
