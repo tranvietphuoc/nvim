@@ -114,7 +114,7 @@ return require('packer').startup(function(use)
   use {'glepnir/galaxyline.nvim'}
 
   -- nvim-tree
-  -- use {'kyazdani42/nvim-tree.lua'}
+  use {'kyazdani42/nvim-tree.lua'}
 
   -- dashboard
   use 'glepnir/dashboard-nvim'
@@ -130,6 +130,9 @@ return require('packer').startup(function(use)
 
   -- rnvimr
   use 'kevinhwang91/rnvimr'
+
+  -- truezen
+  -- use 'kdav5758/TrueZen.nvim'
 
   -- -- nerdtree
   -- use 'preservim/nerdtree'
