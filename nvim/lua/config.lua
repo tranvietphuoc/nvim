@@ -14,6 +14,9 @@ vim.cmd(' set clipboard+=unnamedplus')
 vim.cmd('set shortmess+=c')
 vim.cmd('set autoindent')
 vim.o.completeopt = "menuone,noselect"
+TERMINAL = vim.fn.expand('$TERMINAL')
+vim.cmd('let &titleold="'..TERMINAL..'"')
+vim.g.nvim_tree_disable_netrw = O.nvim_tree_disable_netrw
 
 vim.o.compatible = false
 vim.o.pumheight = 10

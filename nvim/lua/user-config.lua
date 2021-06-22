@@ -23,9 +23,10 @@ O.color = "256"  -- terminal color
 O.cmd_height = 2  -- cmd height
 O.show_tabline = 2  -- tabline
 O.update_time = 300  -- faster completion
-O.timeout_len = 300  -- timeout to type keybinding
+O.timeout_len = 400  -- timeout to type keybinding
 O.termguicolors = true
 O.py_provider = "$HOME/.pyenv/versions/3.9.4/bin/python"
+O.nvim_tree_disable_netrw = 0
 
 -- treesitter
 O.treesitter.ensure_installed = {

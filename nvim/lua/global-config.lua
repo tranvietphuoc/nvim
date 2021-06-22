@@ -2,7 +2,7 @@ O = {
   auto_complete = true,
   colorscheme = 'nvcode',
   hidden_files = true,
-  wrap_line = true,
+  wrap_line = false,
   numbers = true,
   show_modes = true,
   relative_numbers = true,
@@ -22,6 +22,7 @@ O = {
 	timeout_len = 300,
   termguicolors = true,
   py_provider = "$HOME/.pyenv/versions/3.9.4/bin/python",
+  nvim_tree_disable_netrw = 0,
 
   -- @usage pass a table with your desired languages
   treesitter = {

@@ -1,15 +1,11 @@
-
-# conda
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-eval /Users/phuoc/miniconda3/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
-#
+set -g SHELL "/bin/zsh"
 
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 # set if your term supports `pipenv shell --fancy`
 
 starship init fish | source
+
+set -e fish_user_paths
 
 # Created by `userpath` on 2020-06-01 07:18:59
 set -gx PATH "$HOME/.local/bin" $PATH
@@ -42,13 +38,21 @@ set -gx PATH "$POETRY_ROOT/bin" $PATH
 
 # pyenv
 set PYENV_ROOT "$HOME/.pyenv"
-set -Ux fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-# set -gx PATH "$PYENV_ROOT/bin" $PATH
+set -Ux PATH $PYENV_ROOT/bin $PATH
+
+# pyenv init
+if command -v pyenv 1>/dev/null 2>&1
+  pyenv init --path | source
+end
+
+# fish_user_paths
+# set U fish_user_paths "/usr/bin"
+
 
 set -gx LDFLAGS "-L/usr/local/opt/openssl@1.1/lib"
 set -gx CPPFLAGS "-I/usr/local/opt/openssl@1.1/include"
 
-set -g fish_user_paths "/usr/local/opt/openssl@1.1/bin" $fish_user_paths
+set -gx PATH "/usr/local/opt/openssl@1.1/bin" $PATH
 
 
 #set -e PATH[7]
@@ -59,10 +63,6 @@ set --export FZF_DEFAULT_OPTS '--height 50% --layout=reverse --border'
 # set -gx LDFLAGS "-L/usr/local/opt/llvm/lib"
 #  set -gx CPPFLAGS "-I/usr/local/opt/llvm/include"
 
-# pyenv init
-if command -v pyenv 1>/dev/null 2>&1
-  pyenv init - | source
-end
 
 
 function __fish_config_interactive -d "Initializations that should be performed when entering interactive mode"
