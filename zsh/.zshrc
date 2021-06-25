@@ -14,6 +14,10 @@ export ZSH="/Users/phuoc/.oh-my-zsh"
 # poetry
 export PATH="$HOME/.poetry/bin:$PATH"
 
+# pyenv
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH=$PYENV_ROOT/bin:$PATH
+
 # go
 export GOPATH="$HOME/go-workspace"
 export GOROOT=/usr/local/opt/go/libexec
@@ -21,8 +25,11 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
 # fzf
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-# export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
+# export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,.venv} --type f"
+export FZF_DEFAULT_COMMAND="rg --files"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -114,9 +121,10 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR="vim"
 else
-  export EDITOR='nvim'
+  export EDITOR="nvim"
+  export VISUAL="nvim"
 fi
 
 # Compilation flags
@@ -135,3 +143,5 @@ alias ohmyzsh="mate ~/.oh-my-zsh"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source /Users/phuoc/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
