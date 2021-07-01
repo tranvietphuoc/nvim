@@ -28,6 +28,11 @@ O = {
   treesitter = {
     ensure_installed = {
       "javascript",
+      "dockerfile",
+      "scss",
+      "julia",
+      "toml",
+      "rst",
       "html",
       "css",
       "bash",

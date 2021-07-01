@@ -16,6 +16,8 @@ vim.cmd('set autoindent')
 vim.o.completeopt = "menuone,noselect"
 TERMINAL = vim.fn.expand('$TERMINAL')
 vim.cmd('let &titleold="'..TERMINAL..'"')
+vim.cmd('set foldmethod=expr')
+vim.cmd('set foldexpr=nvim_treesitter#foldexpr()')
 vim.g.nvim_tree_disable_netrw = O.nvim_tree_disable_netrw
 
 vim.o.compatible = false
@@ -44,7 +46,7 @@ vim.o.cmdheight = O.cmd_height
 vim.o.showmatch = O.show_match
 vim.bo.expandtab = O.expand_tab  -- convert tabs to spaces
 vim.o.showtabline = O.show_tabline
-vim.o.t_Co = O.color
+--vim.o.t_Co = O.color
 vim.o.ruler = O.ruler
 vim.o.updatetime = O.update_time  -- faster completion
 vim.o.timeoutlen = O.timeout_len  -- timeout to 1s

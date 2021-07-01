@@ -76,7 +76,9 @@ return require('packer').startup(function(use)
   use 'kosayoda/nvim-lightbulb'
   use 'onsails/lspkind-nvim'
 	use {'glepnir/lspsaga.nvim'}
-	use {'hrsh7th/nvim-compe'}
+	use {
+    'hrsh7th/nvim-compe',
+  }
 
 	-- snippet
 	use {'hrsh7th/vim-vsnip'}
@@ -92,7 +94,7 @@ return require('packer').startup(function(use)
 	use {'kristijanhusak/vim-dadbod-ui'}
 
 	-- which-key
-	-- use {'AckslD/nvim-whichkey-setup.lua', requires = {'liuchengxu/vim-which-key'}}
+	use {'AckslD/nvim-whichkey-setup.lua', requires = {'liuchengxu/vim-which-key'}}
 
 	-- ts-rainbow
 	use 'p00f/nvim-ts-rainbow'
@@ -101,8 +103,7 @@ return require('packer').startup(function(use)
 	use 'norcalli/nvim-colorizer.lua'
 
   -- auto-pairs
-	use 'jiangmiao/auto-pairs'
-	-- use 'windwp/nvim-autopairs'
+	use {'windwp/nvim-autopairs'}
 
 	-- nvim-web-devicons
 	use {'kyazdani42/nvim-web-devicons'}
@@ -129,7 +130,7 @@ return require('packer').startup(function(use)
   use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
 
   -- rnvimr
-  use 'kevinhwang91/rnvimr'
+  -- use 'kevinhwang91/rnvimr'
 
   -- truezen
   -- use 'kdav5758/TrueZen.nvim'

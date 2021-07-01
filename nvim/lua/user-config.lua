@@ -31,6 +31,11 @@ O.nvim_tree_disable_netrw = 0
 -- treesitter
 O.treesitter.ensure_installed = {
   "javascript",
+  "dockerfile",
+  "julia",
+  "rst",
+  "scss",
+  "toml",
   "html",
   "css",
   "bash",

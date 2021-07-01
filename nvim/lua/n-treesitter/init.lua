@@ -4,7 +4,6 @@ require'nvim-treesitter.configs'.setup {
 	ignored_install = O.treesitter.ignore_install,
   highlight = {
     enable = O.treesitter.highlight.enabled,
-    disable = {},              -- false will disable the whole extension
   },
   -- indent = {enable = {"javascriptreact"}},
   -- indent = {enable = true},
@@ -19,4 +18,8 @@ require'nvim-treesitter.configs'.setup {
   },
   autotag = {enable = true},
   context_commentstring = {enable = true},
+  indent = {enable = true},
+  matchup = {
+    enable = true,
+  }
 }
