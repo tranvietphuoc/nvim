@@ -1,24 +1,27 @@
-vim.cmd('filetype plugin indent on')
+vim.cmd('filetype plugin on') -- filetype detection
 vim.cmd("set showcmd")
-vim.cmd('set ts=4')
-vim.cmd('set sw=4')
-vim.cmd('set whichwrap+=<,>,[,],h,l')  -- move to next line with theses keys
 vim.cmd('set iskeyword+=-')  -- treat dash seperate words as word text object
--- vim.cmd('set laststatus=2')
+vim.opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
+vim.o.conceallevel = 0 -- So that I can see `` in markdown files
+vim.opt.tabstop = 4 -- Insert 2 spaces for a tab
+vim.opt.shiftwidth = 4 -- Change the number of space characters inserted for indentation
+vim.opt.expandtab = true -- Converts tabs to spaces
+vim.cmd('set whichwrap+=<,>,[,],h,l')  -- move to next line with theses keys
+
 -- vim.cmd('set modifiable')
 vim.cmd('set nofoldenable')
 -- vim.cmd('set rtp+=~/.fzf')  -- for fzf
 vim.cmd('set colorcolumn=99999')
 vim.cmd('set inccommand=split')
 vim.cmd(' set clipboard+=unnamedplus')
-vim.cmd('set shortmess+=c')
-vim.cmd('set autoindent')
+-- vim.cmd('set autoindent')
 vim.o.completeopt = "menuone,noselect"
 TERMINAL = vim.fn.expand('$TERMINAL')
 vim.cmd('let &titleold="'..TERMINAL..'"')
+vim.o.titlestring="%<%F%=%l/%L - nvim"
 vim.cmd('set foldmethod=expr')
 vim.cmd('set foldexpr=nvim_treesitter#foldexpr()')
-vim.g.nvim_tree_disable_netrw = O.nvim_tree_disable_netrw
+-- vim.g.nvim_tree_disable_netrw = O.nvim_tree_disable_netrw
 
 vim.o.compatible = false
 vim.o.pumheight = 10
@@ -27,24 +30,22 @@ vim.wo.signcolumn = "yes"  -- alway show sign column
 vim.o.backup = false
 vim.o.swapfile = false
 vim.o.writebackup = false
-vim.o.termguicolors = O.termguicolors
+vim.o.termguicolors = true
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.syntax = O.syntax
 vim.o.guifont = O.fonts
 vim.o.hidden = O.hidden_files  -- keep open multiple buffers
-vim.o.title = O.title
+vim.o.title = true
 vim.o.fileencoding = "utf-8"
 vim.o.conceallevel = 0  -- to see `` in markdown files
 vim.bo.smartindent = O.smart_indent
 vim.wo.number = O.numbers
 vim.wo.cursorline = O.cursor_line
 vim.wo.wrap = O.wrap_line   -- display long lines as just one
-vim.o.mouse = O.mouse
-vim.o.showmode = O.show_modes
-vim.o.cmdheight = O.cmd_height
-vim.o.showmatch = O.show_match
-vim.bo.expandtab = O.expand_tab  -- convert tabs to spaces
+vim.o.mouse = "a"
+vim.o.showmode = false
+vim.o.cmdheight = 2
 vim.o.showtabline = O.show_tabline
 --vim.o.t_Co = O.color
 vim.o.ruler = O.ruler

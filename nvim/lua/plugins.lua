@@ -103,7 +103,8 @@ return require('packer').startup(function(use)
 	use 'norcalli/nvim-colorizer.lua'
 
   -- auto-pairs
-	use {'windwp/nvim-autopairs'}
+	-- use {'windwp/nvim-autopairs'}
+  use {'jiangmiao/auto-pairs'}
 
 	-- nvim-web-devicons
 	use {'kyazdani42/nvim-web-devicons'}
@@ -135,10 +136,5 @@ return require('packer').startup(function(use)
   -- truezen
   -- use 'kdav5758/TrueZen.nvim'
 
-  -- -- nerdtree
-  -- use 'preservim/nerdtree'
-  -- use 'ryanoasis/vim-devicons'
-  -- use 'Xuyuanp/nerdtree-git-plugin'
-  -- use 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 end)

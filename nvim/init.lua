@@ -35,13 +35,13 @@ require('n-commentary')
 require('n-fugitive')
 require('n-signify')
 require('n-lazygit')
+require('n-compe')
 
 -- database
 require('n-dbcompletion')
 
 -- lsp config
 require('lsp')
-require('lsp.compe')
 
 -- lsp server
 require('lsp.bash-lsp')
