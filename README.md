@@ -1,49 +1,134 @@
-## This repo stores all my configuration files
+# My configurations for Neovim editor
 
-### Alacritty
+Currently, I use `Neovim` on `macOS`, so this guide will work well on `macOS` only. I'll update for another platforms later...
+This configuration supports (includes syntax highlighting and autocompletion) for these languages:
 
-I use [alacritty](https://github.com/zenixls2/alacritty/tree/ligature) as my main terminal emulator becasue this repo has font ligatures, in spite of it's not stable.
+- `Python`
+- `Javascript`
+- `Typescript`
+- `Rust`
+- `C`
+- `C++`
+- `Go`
+- `Html`
+- `Css`
+- `Lua`
+- `Cmake`
+- `Json`
+- `Docker`
+- `Yaml`
 
-The configuration file is located at [here](./alacritty/alacritty.yml)
+## Prequisition:
 
-### Fish shell
+You need to install these tools first:
 
-I use [fish](https://fishshell.com/) as my shell.init.vim is located at ~/.config/nvim/init.vim
+- `neovim`
+- `python3.+`
+- `nodejs` and `npm`
+- `luajit`
+- [lua-language-server](<https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)>)
+- [rust-analyzer](https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary)
+- [gopls](https://github.com/golang/tools/blob/master/gopls/doc/vim.md)
+- [clangd](https://clangd.llvm.org/installation.html)
 
-The configuration file is located at [here](./fish/config.fish)
+### Neovim
 
-### Editors
+In order to have all the newest features, you should install the [Nightly version](https://github.com/neovim/neovim/wiki/Installing-Neovim).
 
-##### Neovim
+And also need to install `luajit` by command: `brew install --HEAD luajit`
 
-This is my [main](https://github.com/neovim/neovim) editor. The configuration is located at [here](./nvim/). You can config your self follow the guide.
+### Python providers
 
-##### Visual studio code
+I've used `python3` as a default version on my mac. If you use another versions of `Python`.
+Please edit the `g:python3_host_prog` variable to your probably path of `Python` in `user-config.lua` file.
+If your machine doesn't have any versions of `Python`, you could install [follow this](https://www.python.org/).
+After install `Python`, you must install `pynvim`
 
-[VSCode](https://github.com/microsoft/vscode) is an awesome editor. The configs are located at [here](./vscode/settings.json)
+```
+pip3 install pynvim
+```
 
-##### Sublime Text 3
+### Nodejs and npm
 
-[Sublime Text 3](https://www.sublimetext.com/) is also an awesome editor. The configuration in [here](./sublime/sublime-settings.json).
+There're a lot of plugins that use external packages (like language server protocol,...) of Neovim. And we need to install [Nodejs and npm via download](https://nodejs.org/en/download/)
+[or via package manager](https://nodejs.org/en/download/package-manager/).
 
-### Shell prompt
+`neovim` Nodejs client is also needed:
 
-[starship](https://starship.rs/) is a beautiful, minimal and blazing fast shell prompt. Here is the [configs](./starship/starship.toml).
+```
+npm install -g neovim
+```
 
-### Ranger
+## How to use it?
 
-[ranger](https://github.com/ranger/ranger) is a vim-inspired filemanager for console. The configuration file is located at [here](./ranger/rc.conf).
+Run this command if you use fish shell:
 
-### pgcli
+```
+bash (curl -s https://raw.githubusercontent.com/tranvietphuoc/dotfiles/master/nvim/install.sh | psub)
+```
 
-[pgcli](https://github.com/dbcli/pgcli) is Postgres CLI with autocompletion and syntax highlighting, here is the [configs](./pgcli/config).
-It can be install with [pspg](https://github.com/okbob/pspg) to get better UI.
+or if you use another shell:
 
-### tmux
+```
+bash <(curl -s https://raw.githubusercontent.com/tranvietphuoc/dotfiles/master/nvim/install.sh)
+```
 
-[tmux](https://github.com/tmux/tmux) is great tool for terminal multiplexer. Here is the [configs](./tmux/.tmux.conf)
+and then type to the terminal command:
 
-### ctags
+```
+nvim
+```
 
-I use tagbar in my [neovim](./nvim), so I've installed [ctags](https://github.com/universal-ctags/ctags). Here is the [configuration](./ctag/.ctags)
+to open the editor first, then run command:
 
+```
+:PackerInstall
+
+```
+
+then install the LSP with [LspInstall](https://github.com/kabouzeid/nvim-lspinstall)
+
+I use `efm-langserver` for linting and formatting.
+
+`:LspInstall efm`
+
+to install all plugins of editor. `:q` to quit and open it again.
+
+You can config your settings in `user-config.lua` file
+
+
+## Some basic keys mapping of this configuration.
+
+---
+
+|     Keys     |                   Command                    |
+| :----------: | :------------------------------------------: |
+|     `,`      |           `Leader`(`n`, `v` mode)            |
+| `<Leader>/`  |              `:Commentary<CR>`               |
+| `<Leader>T`  |             `:TagbarToggle<CR>`              |
+| `<Leader>n`  |            `:NvimTreeToggle<CR>`             |
+|   `<TAB>`    |                 `:BufferNext<CR>`            |
+|  `<S-TAB>`   |               `:BufferPrevious<CR>`          |
+|   `<S-c>`    |                  `:BufferClose<CR>`          |
+|     `qq`     |                   `<Esc>`                    |
+| `<Leader>f`  |       `<cmd>Telescope find_files<CR>`        |
+| `<Leader>g`  |        `<cmd>Telescope live_grep<CR>`        |
+| `<Leader>fb` |         `<cmd>Telescope buffers<CR>`         |
+| `<Leader>fh` |        `<cmd>Telescope help_tags<CR>`        |
+|     `,,`     | Trigger `Leader` key in `i` mode of `emmet`  |
+| `<Leader>t`  |         `g:floatterm_keymap_toggle`          |
+| `<Leader>m`  |  `<Plug>MarkdownPreview` live server for md  |
+| `<Leader>M`  | `<Plug>MarkdownPreviewStop` stop live server |
+| `<Leader>L`  |                `:LazyGit<CR>`                |
+| `<Leader>b`  | `:Bracey<CR>` live server for html, js, css  |
+| `<Leader>B`  |      `:BraceyStop<CR>` stop live server      |
+
+---
+
+
+Thanks to all authors of [these plugin](./lua/plugins.lua).
+
+
+## LICENSE
+
+[MIT](./LICENSE)
