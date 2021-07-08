@@ -128,7 +128,7 @@ return require('packer').startup(function(use)
   use {'kkoomen/vim-doge', run = ':call doge#install()'}
 
   -- indent
-  use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
+  use {'lukas-reineke/indent-blankline.nvim', branch = 'master'}
 
   -- rnvimr
   -- use 'kevinhwang91/rnvimr'

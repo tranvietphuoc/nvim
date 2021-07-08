@@ -1,5 +1,5 @@
 vim.cmd ('let g:tagbar_width = max([30, winwidth(0)/5])')
-vim.api.nvim_set_keymap('n', '<Leader>t', ':TagbarToggle<CR>', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>T', ':TagbarToggle<CR>', { noremap = true, silent = true})
 
 
 vim.cmd('let g:tagbar_type_javascript = { \'ctagstype\': \'javascript\', \'kinds\': [ \'a:arrays\', \'p:properties\', \'t:tags\', \'o:objects\', \'g:generator functions\', \'f:functions\', \'c:constructors/classes\', \'m:methods\', \'v:variables\', \'i:imports\', \'e:exports\', \'s:styled components\' ] }')
