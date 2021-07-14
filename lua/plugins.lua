@@ -161,7 +161,7 @@ return require('packer').startup(function(use)
     config = function()
       require("FTerm").setup({
         dimensions = {
-          height = 0.5,
+          height = 0.7,
           width = 0.5,
           x = 1,
           y = 0,
