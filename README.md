@@ -116,7 +116,8 @@ You can config your settings in `user-config.lua` file
 | `<Leader>fb` |         `<cmd>Telescope buffers<CR>`         |
 | `<Leader>fh` |        `<cmd>Telescope help_tags<CR>`        |
 |     `,,`     | Trigger `Leader` key in `i` mode of `emmet`  |
-| `<Leader>t`  |         `g:floatterm_keymap_toggle`          |
+| `<Leader>t`  |  `<CMD>lua require("FTerm").toggle()<CR>`    |
+| `<Leader>z`  |            `:ZenMode<CR>`                    |
 | `<Leader>m`  |  `<Plug>MarkdownPreview` live server for md  |
 | `<Leader>M`  | `<Plug>MarkdownPreviewStop` stop live server |
 | `<Leader>L`  |                `:LazyGit<CR>`                |

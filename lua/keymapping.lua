@@ -37,6 +37,13 @@ map('n', '<Leader>w', ':w<CR>', {noremap = true, silent = true})
 -- fast quitting
 map('n', '<Leader>q', ':q<CR>', {noremap = true, silent = false})
 
+-- toggle zen mode
+map('n', '<Leader>z', ':ZenMode<CR>', {noremap = true, silent = true})
+
+-- toggle float term
+map('n', '<Leader>t', '<CMD>lua require("FTerm").toggle()<CR>', {noremap = true, silent = true})
+map('t', '<Leader>t', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', {noremap = true, silent = true})
+
 
 -- move selected line / blocks of text in V-mode
 -- Move selected line / block of text in visual mode

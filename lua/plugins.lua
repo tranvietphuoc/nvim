@@ -46,9 +46,6 @@ return require('packer').startup(function(use)
   use {'nvim-telescope/telescope.nvim'}
   use 'nvim-telescope/telescope-media-files.nvim'
 
-  -- floatterm
-  use 'voldikss/vim-floaterm'
-
   -- tagbar
   use 'preservim/tagbar'
 
@@ -121,9 +118,6 @@ return require('packer').startup(function(use)
   -- dashboard
   use 'glepnir/dashboard-nvim'
 
-  -- goyo
-  use 'junegunn/goyo.vim'
-
   -- documentation generator
   use {'kkoomen/vim-doge', run = ':call doge#install()'}
 
@@ -133,8 +127,53 @@ return require('packer').startup(function(use)
   -- rnvimr
   -- use 'kevinhwang91/rnvimr'
 
-  -- truezen
-  -- use 'kdav5758/TrueZen.nvim'
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup {
+        window = {
+          backdrop = 0.95,
+          width = 120, -- width of the Zen window
+          height = 1, -- height of the Zen window
+          options = {
+            signcolumn = "no",
+            number = true,
+            relativenumber = true,
+            cursorline = true,
+            cursorcolumn = false,
+            list = false,
+          },
+          plugins = {
+            options = {
+              enabled = true,
+              ruler = false, -- disables the ruler text in the cmd line area
+              showcmd = false, -- disables the command in the last line of the screen
+            },
+            tmux = { enabled = false },
+          }
+        }
+      }
+    end
+  }
+  -- floatterm
+  use {
+    "numtostr/FTerm.nvim",
+    config = function()
+      require("FTerm").setup({
+        dimensions = {
+          height = 0.5,
+          width = 0.5,
+          x = 1,
+          y = 0,
+        },
+        border = 'single'
+      })
+    end
+  }
+
+  -- git blame
+  use {'f-person/git-blame.nvim' }
+
 
 
 end)

@@ -16,7 +16,6 @@ require('n-telescope')
 require('n-treesitter')
 require('n-tagbar')
 require('n-bracey')
-require('n-goyo')
 require('n-doge')
 require('n-indent')
 -- require('n-rnvimr')
@@ -27,7 +26,6 @@ require('n-which-keys')
 require('n-autopairs')
 require('n-markdown')
 require('n-easyalign')
-require('n-floatterm')
 require('n-emmet')
 require('n-go')
 require('n-rs')
@@ -35,6 +33,9 @@ require('n-commentary')
 require('n-fugitive')
 require('n-signify')
 require('n-lazygit')
+-- git blame
+require('n-blame')
+-- autocomplete
 require('n-compe')
 
 -- database
@@ -62,4 +63,6 @@ require('lsp.lua-lsp')
 
 -- linter and formmater
 require('lsp.efm-lsp')
+
+
 
