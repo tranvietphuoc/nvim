@@ -104,7 +104,7 @@ You can config your settings in `user-config.lua` file
 |     Keys     |                   Command                    |
 | :----------: | :------------------------------------------: |
 |     `,`      |           `Leader`(`n`, `v` mode)            |
-| `<Leader>/`  |              `:Commentary<CR>`               |
+| `<Leader>/`  |              `:CommentToggle<CR>`            |
 | `<Leader>T`  |             `:TagbarToggle<CR>`              |
 | `<Leader>n`  |            `:NvimTreeToggle<CR>`             |
 |   `<TAB>`    |                 `:BufferNext<CR>`            |
