@@ -49,9 +49,6 @@ return require('packer').startup(function(use)
   -- tagbar
   use 'preservim/tagbar'
 
-  -- commentary
-  use 'tpope/vim-commentary'
-
   -- go vim
   use {'fatih/vim-go', run=':GoUpdateBinaries'}
 
@@ -174,6 +171,21 @@ return require('packer').startup(function(use)
   -- git blame
   use {'f-person/git-blame.nvim' }
 
-
+  -- Comments
+  use {
+    "terrortylor/nvim-comment",
+    event = "BufRead",
+    config = function()
+      local status_ok, nvim_comment = pcall(require, "nvim_comment")
+      if not status_ok then
+        return
+      end
+      nvim_comment.setup({
+        line_mapping = "<leader>/",
+        operator_mapping = "<leader>/",
+        comment_empty = false,
+      })
+    end,
+  }
 
 end)

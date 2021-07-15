@@ -49,3 +49,10 @@ map('t', '<Leader>t', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', {nore
 -- Move selected line / block of text in visual mode
 map('x', 'H', ':move \'<-2<CR>gv-gv', { noremap = true, silent = true })
 map('x', 'L', ':move \'>+1<CR>gv-gv', { noremap = true, silent = true })
+
+-- comment toggle
+map('n', '<Leader>/', ":CommentToggle<CR>", {noremap = true, silent = true})
+map('i', '<Leader>/', ":CommentToggle<CR>", {noremap = true, silent = true})
+map('x', '<Leader>/', ":CommentToggle<CR>", {noremap = true, silent = true})
+map('v', '<Leader>/', ":CommentToggle<CR>", {noremap = true, silent = true})
+
