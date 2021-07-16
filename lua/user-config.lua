@@ -5,51 +5,9 @@ formatters and linters
 -- general
 O.auto_complete = true  -- auto completion
 O.colorscheme = 'nvcode'  -- can be change to another colorscheme
-O.hidden_files = true
-O.wrap_line = false
-O.numbers = true
-O.relative_numbers = true
-O.ruler = true
-O.smart_indent = true
-O.show_match = true
-O.cursor_line = true
-O.syntax = "on"  -- can be 'on', 'enable', 'off'
-O.fonts = "FiraCode Nerd Font:h14"  -- canbe change to another font
 O.color = "256"  -- terminal color
-O.show_tabline = 2  -- tabline
-O.update_time = 300  -- faster completion
-O.timeout_len = 400  -- timeout to type keybinding
-O.py_provider = "$HOME/.pyenv/versions/3.9.4/bin/python"
+O.py_provider = "$HOME/.pyenv/shims/python"
 O.nvim_tree_disable_netrw = 0
-
--- treesitter
-O.treesitter.ensure_installed = {
-  "javascript",
-  "dockerfile",
-  "julia",
-  "rst",
-  "scss",
-  "toml",
-  "html",
-  "css",
-  "bash",
-  "lua",
-  "c",
-  "cpp",
-  "python",
-  "rust",
-  "go",
-  "json",
-  "tsx",
-  "typescript",
-  "regex",
-  "vue",
-  "svelte"
-}
-O.treesitter.ignore_install = {"haskell"}
-O.treesitter.highlight.enabled = true
-O.treesitter.playground.enabled = true
-O.treesitter.rainbow.enabled = true
 
 -- lua
 -- @usage can be 'lua-format'

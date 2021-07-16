@@ -140,14 +140,6 @@ return require('packer').startup(function(use)
             cursorcolumn = false,
             list = false,
           },
-          plugins = {
-            options = {
-              enabled = true,
-              ruler = false, -- disables the ruler text in the cmd line area
-              showcmd = false, -- disables the command in the last line of the screen
-            },
-            tmux = { enabled = false },
-          }
         }
       }
     end
@@ -158,7 +150,7 @@ return require('packer').startup(function(use)
     config = function()
       require("FTerm").setup({
         dimensions = {
-          height = 0.7,
+          height = 0.6,
           width = 0.5,
           x = 1,
           y = 0,
@@ -180,12 +172,20 @@ return require('packer').startup(function(use)
       if not status_ok then
         return
       end
-      nvim_comment.setup({
-        line_mapping = "<leader>/",
-        operator_mapping = "<leader>/",
-        comment_empty = false,
-      })
+      nvim_comment.setup()
     end,
+  }
+  -- Javascript / Typescript
+  use {
+    "jose-elias-alvarez/nvim-lsp-ts-utils",
+    ft = {
+      "javascript",
+      "javascriptreact",
+      "javascript.jsx",
+      "typescript",
+      "typescriptreact",
+      "typescript.tsx",
+    },
   }
 
 end)
