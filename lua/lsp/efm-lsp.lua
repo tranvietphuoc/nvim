@@ -44,7 +44,7 @@ if O.tsserver.linter == 'eslint' then table.insert(tsserver_args, eslint) end
 require"lspconfig".efm.setup {
   cmd = {DATA .. "/lspinstall/efm/efm-langserver"},
   init_options = {documentFormatting = true, codeAction = false},
-  filetypes = {"lua", "python", "javascriptreact", "javascript", "typescript", "html", "css", "json", "yaml"},
+  filetypes = {"lua", "python", "javascriptreact", "javascript", "typescript", "html", "json", "yaml"},
   settings = {
     rootMarkers = {".git/"},
     languages = {
@@ -54,7 +54,7 @@ require"lspconfig".efm.setup {
       javascriptreact = tsserver_args,
 			typescript = tsserver_args,
       html = {prettier},
-      css = {prettier},
+      -- css = {prettier},
       json = {prettier},
       yaml = {prettier},
     }
