@@ -3,6 +3,7 @@ local actions = require('telescope.actions')
 require('telescope').load_extension('media_files')
 require('telescope').setup {
   defaults = {
+    file_ignore_patterns = {"node_modules", ".venv"},
     find_command = {'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'},
     entry_prefix = "  ",
     prompt_prefix = "> ",
@@ -23,7 +24,6 @@ require('telescope').setup {
       }
     },
     file_sorter = require'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = {},
     generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
     path_display = {},
     winblend = 0,
