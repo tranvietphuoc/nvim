@@ -26,8 +26,10 @@ if O.lua.formatter == 'lua-format' then table.insert(lua_args, luaFormat) end
 
 -- tsserver
 local tsserver_args = {}
+
 -- prettier
 local prettier = {formatCommand = "prettier --stdin-filepath ${INPUT}", formatStdin = true}
+
 -- eslint
 local eslint = {
   lintCommand = "./node_modules/.bin/eslint -f unix --stdin --stdin-filename ${INPUT}",
@@ -53,7 +55,7 @@ require"lspconfig".efm.setup {
       javascript = tsserver_args,
       javascriptreact = tsserver_args,
 			typescript = tsserver_args,
-      html = {prettier},
+      -- html = {prettier},
       -- css = {prettier},
       json = {prettier},
       yaml = {prettier},

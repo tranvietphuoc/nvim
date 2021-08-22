@@ -7,16 +7,16 @@ O = {
   
   database = {save_location = '~/.config/nvim/db', auto_execute = 1},
   python = {
-    linter = '',
+    linter = 'flake8',
     -- @usage can be 'yapf', 'black'
-    formatter = '',
+    formatter = 'yapf',
     autoformat = false,
     isort = false,
     diagnostics = {virtual_text = true, signs = true, underline = true}
   },
   lua = {
     -- @usage can be 'lua-format'
-    formatter = '',
+    formatter = 'lua-format',
     autoformat = false,
     diagnostics = {virtual_text = true, signs = true, underline = true}
   },
@@ -30,15 +30,15 @@ O = {
   },
   tsserver = {
     -- @usage can be 'eslint'
-    linter = '',
+    linter = 'eslint',
     -- @usage can be 'prettier'
-    formatter = '',
+    formatter = 'prettier',
     autoformat = false,
     diagnostics = {virtual_text = true, signs = true, underline = true}
   },
   json = {
     -- @usage can be 'prettier'
-    formatter = '',
+    formatter = 'prettier',
     autoformat = false,
     diagnostics = {virtual_text = true, signs = true, underline = true}
   },

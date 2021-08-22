@@ -187,5 +187,45 @@ return require('packer').startup(function(use)
       "typescript.tsx",
     },
   }
-
+  -- formatter
+  use {
+    'mhartington/formatter.nvim',
+    config = function ()
+      require('formatter').setup({
+        logging = false,
+        filetype = {
+          javascript = {
+            --prettier
+            function ()
+              return {
+                exe = "prettier",
+                args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), '--single-quote'},
+                stdin = true,
+              }
+            end
+          },
+          rust = {
+            function ()
+              return {
+                exe = "rustfmt",
+                args = {"--emit=stdout"},
+                stdin = true,
+              }
+            end
+          },
+          cpp = {
+            function ()
+              return {
+                exe = "clang-format",
+                args = {},
+                stdin = true,
+                cwd = vim.fn.expand('%:p:h')  -- run clang-format in cwd of the file
+              }
+            end
+          }
+        }
+      })
+    end
+  }
+  
 end)
