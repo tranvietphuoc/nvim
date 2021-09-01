@@ -62,5 +62,3 @@ augroup FormatAutogroup
 augroup END
 ]], true)
 
--- linter
-vim.cmd[[au BufWritePost <buffer> lua require('lint').try_lint()]]

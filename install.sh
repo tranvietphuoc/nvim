@@ -43,6 +43,9 @@ install_dependencies() {
     # install tree-sitter
     brew install tree-sitter
 
+    # install gitui
+    brew install gitui
+
 }
 
 install_lsp() {
