@@ -3,7 +3,7 @@ local actions = require('telescope.actions')
 require('telescope').load_extension('media_files')
 require('telescope').setup {
   defaults = {
-    file_ignore_patterns = {"node_modules", ".venv"},
+    file_ignore_patterns = {"node_modules", ".venv", "assets", "target"},
     find_command = {'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'},
     entry_prefix = "  ",
     prompt_prefix = "> ",

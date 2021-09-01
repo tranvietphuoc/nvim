@@ -56,13 +56,13 @@ require('lsp.python-lsp')
 require('lsp.rust-lsp')
 require('lsp.tsserver-lsp')
 require('lsp.vim-lsp')
-require('lsp.vue-lsp')
+-- require('lsp.vue-lsp')
 require('lsp.yaml-lsp')
 require('lsp.lua-lsp')
 require('lsp.svelte-lsp')
+require('lsp.tailwind-lsp')
 
 -- linter and formmater
 require('lsp.efm-lsp')
 
-
-
+require('n-gitui')

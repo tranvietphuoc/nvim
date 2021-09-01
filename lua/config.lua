@@ -61,3 +61,6 @@ augroup FormatAutogroup
   autocmd BufWritePost *.js,*.rs,*.cpp,*.cc,*.h FormatWrite
 augroup END
 ]], true)
+
+-- linter
+vim.cmd[[au BufWritePost <buffer> lua require('lint').try_lint()]]

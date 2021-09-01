@@ -44,6 +44,10 @@ map('n', '<Leader>z', ':ZenMode<CR>', {noremap = true, silent = true})
 map('n', '<Leader>t', '<CMD>lua require("FTerm").toggle()<CR>', {noremap = true, silent = true})
 map('t', '<Leader>t', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', {noremap = true, silent = true})
 
+-- toggle gitui
+map('n', '<Leader>G', '<CMD>lua _G.__fterm_gitui()<CR>', {noremap = true, silent = true})
+map('t', '<Leader>G', '<CMD>lua _G.__fterm_gitui()<CR>', {noremap = true, silent = true})
+
 
 -- move selected line / blocks of text in V-mode
 -- Move selected line / block of text in visual mode
