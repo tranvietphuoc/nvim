@@ -31,7 +31,6 @@ require('n-go')
 require('n-rs')
 require('n-fugitive')
 require('n-signify')
-require('n-lazygit')
 -- git blame
 require('n-blame')
 -- autocomplete
