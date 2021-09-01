@@ -26,6 +26,7 @@ You need to install these tools first:
 - `python3.+`
 - `nodejs` and `npm`
 - `luajit`
+- `gitui`
 - [lua-language-server](<https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)>)
 - [rust-analyzer](https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary)
 - [gopls](https://github.com/golang/tools/blob/master/gopls/doc/vim.md)
@@ -104,23 +105,23 @@ You can config your settings in `user-config.lua` file
 |     Keys     |                   Command                    |
 | :----------: | :------------------------------------------: |
 |     `,`      |           `Leader`(`n`, `v` mode)            |
-| `<Leader>/`  |              `:CommentToggle<CR>`            |
-| `<Leader>T`  |             `:TagbarToggle<CR>`              |
-| `<Leader>n`  |            `:NvimTreeToggle<CR>`             |
-|   `<TAB>`    |                 `:BufferNext<CR>`            |
-|  `<S-TAB>`   |               `:BufferPrevious<CR>`          |
-|   `<S-c>`    |                  `:BufferClose<CR>`          |
-|     `qq`     |                   `<Esc>`                    |
-| `<Leader>f`  |       `<cmd>Telescope find_files<CR>`        |
-| `<Leader>g`  |        `<cmd>Telescope live_grep<CR>`        |
+| `<Leader>/`  |           `:CommentToggle<CR>` toggle comment|
+| `<Leader>T`  |             `:TagbarToggle<CR>` toggle tagbar|
+| `<Leader>n`  |        `:NvimTreeToggle<CR>` toggle nvim-tree|
+|   `<TAB>`    |            `:BufferNext<CR>` move to next tab|
+|  `<S-TAB>`   |    `:BufferPrevious<CR>` move to previous tab|
+|   `<S-c>`    |                  `:BufferClose<CR>` close tab|
+|     `qq`     |                   `<Esc>` ESC                |
+| `<Leader>f`  |    `<cmd>Telescope find_files<CR>` find files|
+| `<Leader>g`  | `<cmd>Telescope live_grep<CR>` find with grep|
 | `<Leader>fb` |         `<cmd>Telescope buffers<CR>`         |
 | `<Leader>fh` |        `<cmd>Telescope help_tags<CR>`        |
 |     `,,`     | Trigger `Leader` key in `i` mode of `emmet`  |
 | `<Leader>t`  |  `<CMD>lua require("FTerm").toggle()<CR>`    |
-| `<Leader>z`  |            `:ZenMode<CR>`                    |
+| `<Leader>z`  |            `:ZenMode<CR>` toggle ZenMode     |
 | `<Leader>m`  |  `<Plug>MarkdownPreview` live server for md  |
 | `<Leader>M`  | `<Plug>MarkdownPreviewStop` stop live server |
-| `<Leader>L`  |                `:LazyGit<CR>`                |
+| `<Leader>G`  |`<CMD>lua _G.__fterm_gitui()<CR>` toggle gitui|
 | `<Leader>b`  | `:Bracey<CR>` live server for html, js, css  |
 | `<Leader>B`  |      `:BraceyStop<CR>` stop live server      |
 
