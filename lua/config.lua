@@ -58,7 +58,7 @@ vim.cmd('autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=8 shiftwid
 vim.api.nvim_exec([[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.js,*.rs,*.cpp,*.cc,*.h FormatWrite
+  autocmd BufWritePost *.js,*.rs,*.cpp,*.cc,*.h,*.c FormatWrite
 augroup END
 ]], true)
 
