@@ -24,6 +24,18 @@ local rustfmt = function ()
   return { exe = "rustfmt", args = {"--emit=stdout"}, stdin = true }
 end
 
+local luafmt = function ()
+  return { exe = "luafmt", args = {"--indent-count", 2, "--stdin"}, stdin = true }
+end
+
+local goFmt = function ()
+  return {
+    exe = "gofmt",
+    args = {vim.api.nvim_buf_get_name(0)},
+    stdin = true,
+  }
+end
+
 -- config
 require("formatter").setup({
   filetype = {
@@ -33,7 +45,8 @@ require("formatter").setup({
     cpp = { clangFormat },
     c = { clangFormat },
     cc= { clangFormat },
-    h = { clangFormat }
+    h = { clangFormat },
+    go = { goFmt }
   }
 })
 
@@ -41,7 +54,7 @@ require("formatter").setup({
 vim.api.nvim_exec([[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.py,*.js,*.rs,*.cpp,*.cc,*.h,*.c FormatWrite
+  autocmd BufWritePost *.py,*.js,*.rs,*.cpp,*.cc,*.h,*.c,*.go FormatWrite
 augroup END
 ]], true)
 
