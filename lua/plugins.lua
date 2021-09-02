@@ -58,7 +58,7 @@ return require('packer').startup(function(use)
   -- vim easy align
   use 'junegunn/vim-easy-align'
 
-  -- bracey vim
+  -- bracey vim (a live server)
   use {'turbio/bracey.vim', run = 'npm install --prefix server'}
 
   -- lazygit

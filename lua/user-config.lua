@@ -42,7 +42,7 @@ O.json.diagnostics.underline = true
 
 -- python
 O.python.linter = 'flake8'
-O.python.formatter = 'yapf'  -- @usage can be 'yapf', 'black'
+O.python.formatter = 'black'  -- @usage can be 'yapf', 'black'
 O.python.autoformat = true
 O.python.isort = true
 O.python.diagnostics.virtual_text = true

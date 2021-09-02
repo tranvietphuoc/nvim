@@ -9,7 +9,7 @@ O = {
   python = {
     linter = 'flake8',
     -- @usage can be 'yapf', 'black'
-    formatter = 'yapf',
+    formatter = 'black',
     autoformat = false,
     isort = false,
     diagnostics = {virtual_text = true, signs = true, underline = true}

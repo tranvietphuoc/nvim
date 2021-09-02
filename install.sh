@@ -22,9 +22,6 @@ install_dependencies() {
     # install fzf
     brew install fzf
 
-    #install efm-langserver
-    brew install efm-langserver
-
 	# install lua
 	brew install --HEAD luajit
 	brew install luarocks
@@ -81,8 +78,6 @@ install_lsp
 
 echo "Copying important files..."
 
-mkdir -p $HOME/efm-langserver/
 cp ./dependencies/.ctags $HOME  # move ctags config to $HOME
-cp ./dependencies/efm-langserver/config.yaml $HOME/efm-langserver/
 
 echo "Done"
