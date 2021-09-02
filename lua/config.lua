@@ -51,14 +51,7 @@ vim.wo.relativenumber  = true
 -- config ts and sw for special files
 vim.cmd('autocmd BufRead,BufNewFile *.py setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80')
 vim.cmd[[
-    autocmd BufRead,BufNewFile *.html,*.js,*.ts,*.tsx,*.jsx,*.css,*.scss,*.sass,*.json,*.yml,*.lua,*.svelte setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+  autocmd BufRead,BufNewFile *.html,*.js,*.ts,*.tsx,*.jsx,*.css,*.scss,*.json,*.yml,*.lua,*.svelte setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 ]]
 vim.cmd('autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=8 shiftwidth=8')
-
-vim.api.nvim_exec([[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost *.js,*.rs,*.cpp,*.cc,*.h,*.c FormatWrite
-augroup END
-]], true)
 

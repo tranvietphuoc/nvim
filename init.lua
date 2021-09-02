@@ -65,3 +65,5 @@ require('lsp.tailwind-lsp')
 require('lsp.efm-lsp')
 
 require('n-gitui')
+
+require('n-formatter')
