@@ -49,7 +49,7 @@ vim.o.timeoutlen       = 400  -- timeout to 1s
 vim.wo.relativenumber  = true
 
 -- config ts and sw for special files
-vim.cmd('autocmd BufRead,BufNewFile *.py setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80')
+vim.cmd('autocmd BufRead,BufNewFile *.py setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 textwidth=120')
 vim.cmd[[
   autocmd BufRead,BufNewFile *.html,*.js,*.ts,*.tsx,*.jsx,*.css,*.scss,*.json,*.yml,*.lua,*.svelte setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 ]]

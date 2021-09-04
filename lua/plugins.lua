@@ -70,12 +70,14 @@ return require('packer').startup(function(use)
   use 'kosayoda/nvim-lightbulb'
   use 'onsails/lspkind-nvim'
 	use {'glepnir/lspsaga.nvim'}
-	use {
-    'hrsh7th/nvim-compe',
+  use {
+    "hrsh7th/nvim-compe",
+    requires = {
+      "hrsh7th/vim-vsnip",
+    }
   }
 
 	-- snippet
-	use {'hrsh7th/vim-vsnip'}
 	use {'cstrap/python-snippets'}
 	use {'ylcnfrht/vscode-python-snippet-pack'}
 	use {'xabikos/vscode-javascript'}
