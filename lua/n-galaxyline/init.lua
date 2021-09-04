@@ -4,7 +4,8 @@ local gls = gl.section
 gl.short_line_list = {'NvimTree', 'dbui', 'packer'}
 
 local colors = {
-  bg = '#292D36',
+  fg = '#ffffE0',
+  bg = '#292D3F',
   yellow = '#DCDCAA',
   dark_yellow = '#D7BA7D',
   cyan = '#4EC9B0',
@@ -177,7 +178,7 @@ gls.right[5] = {
       return true
     end,
     icon = ' ',
-    highlight = {colors.grey, colors.bg},
+    highlight = {colors.fg, colors.bg},
   }
 }
 gls.right[6] = {
@@ -186,7 +187,7 @@ gls.right[6] = {
     condition = condition.hide_in_width,
     separator = ' ',
     separator_highlight = {'NONE', colors.bg},
-    highlight = {colors.grey, colors.bg},
+    highlight = {colors.fg, colors.bg},
   }
 }
 
@@ -196,7 +197,7 @@ gls.right[7] = {
     condition = condition.hide_in_width,
     separator = ' ',
     separator_highlight = {'NONE', colors.bg},
-    highlight = {colors.grey, colors.bg},
+    highlight = {colors.fg, colors.bg},
   }
 }
 
@@ -206,7 +207,7 @@ gls.right[8] = {
     condition = condition.hide_in_width,
     separator = ' ',
     separator_highlight = {'NONE', colors.bg},
-    highlight = {colors.grey, colors.bg},
+    highlight = {colors.fg, colors.bg},
   }
 }
 
@@ -218,7 +219,7 @@ gls.right[9] = {
     condition = condition.hide_in_width,
     separator = ' ',
     separator_highlight = {'NONE', colors.bg},
-    highlight = {colors.grey, colors.bg},
+    highlight = {colors.fg, colors.bg},
   }
 }
 
@@ -229,7 +230,7 @@ gls.right[10] = {
     end,
     separator = ' ',
     separator_highlight = {'NONE', colors.bg},
-    highlight = {colors.grey, colors.bg},
+    highlight = {colors.fg, colors.bg},
   }
 }
 
@@ -238,7 +239,7 @@ gls.right[11] = {
     provider = 'LinePercent',
     separator = ' ',
     separator_highlight = {'NONE', colors.bg},
-    highlight = {colors.grey, colors.bg},
+    highlight = {colors.fg, colors.bg},
   }
 }
 
@@ -256,7 +257,7 @@ gls.short_line_left[1] = {
     provider = 'FileTypeName',
     separator = ' ',
     separator_highlight = {'NONE', colors.bg},
-    highlight = {colors.grey, colors.bg},
+    highlight = {colors.fg, colors.bg},
   }
 }
 
@@ -264,13 +265,13 @@ gls.short_line_left[2] = {
   SFileName = {
     provider = 'SFileName',
     condition = condition.buffer_not_empty,
-    highlight = {colors.grey, colors.bg},
+    highlight = {colors.fg, colors.bg},
   }
 }
 
 gls.short_line_right[1] = {
   BufferIcon = {
     provider = 'BufferIcon',
-    highlight = {colors.grey, colors.bg},
+    highlight = {colors.fg, colors.bg},
   }
 }

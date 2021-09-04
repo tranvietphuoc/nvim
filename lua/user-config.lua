@@ -4,7 +4,7 @@ formatters and linters
 
 -- general
 O.auto_complete = true  -- auto completion
-O.colorscheme = 'nvcode'  -- can be change to another colorscheme
+O.colorscheme = 'onedark'  -- can be change to another colorscheme
 O.color = "256"  -- terminal color
 O.py_provider = "$HOME/.pyenv/shims/python"
 O.nvim_tree_disable_netrw = 0
