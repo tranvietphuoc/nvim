@@ -5,7 +5,7 @@ gl.short_line_list = {'NvimTree', 'dbui', 'packer'}
 
 local colors = {
   fg = '#ffffE0',
-  bg = '#292D3F',
+  bg = '#31353F',
   yellow = '#DCDCAA',
   dark_yellow = '#D7BA7D',
   cyan = '#4EC9B0',

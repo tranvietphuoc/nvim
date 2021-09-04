@@ -14,7 +14,8 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- colorscheme
-  use {'christianchiarulli/nvcode-color-schemes.vim'}
+  -- use {'christianchiarulli/nvcode-color-schemes.vim'}
+  use {'navarasu/onedark.nvim'}
 
   -- git
   use 'mhinz/vim-signify'
