@@ -119,6 +119,9 @@ You can config your settings in `user-config.lua` file
 | `<Leader>G`  |`<CMD>lua _G.__fterm_gitui()<CR>` toggle gitui|
 | `<Leader>b`  | `:Bracey<CR>` live server for html, js, css  |
 | `<Leader>B`  |      `:BraceyStop<CR>` stop live server      |
+| `<leader>Gd` | `:Gvdiffsplit<CR>` open fugitive diff        |
+| `<Leader>dh` | `:diffget //2<CR>` to buffer diff left       |
+| `<Leader>dl` | `:diffget //3<CR>` to buffer diff right      |
 
 ---
 

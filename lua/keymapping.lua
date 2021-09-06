@@ -60,4 +60,7 @@ map('i', '<Leader>/', ":CommentToggle<CR>", {noremap = true, silent = true})
 map('x', '<Leader>/', ":CommentToggle<CR>", {noremap = true, silent = true})
 map('v', '<Leader>/', ":CommentToggle<CR>", {noremap = true, silent = true})
 
-
+-- git fugitive
+map('n', '<Leader>Gd', ':Gvdiffsplit<CR>', {noremap = true, silent = true})
+map('n', '<Leader>dh', ':diffget //2<CR>', {noremap = true, silent = true})
+map('n', '<Leader>dl', ':diffget //3<CR>', {noremap = true, silent = true})
