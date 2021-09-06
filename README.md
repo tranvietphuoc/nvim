@@ -122,6 +122,10 @@ You can config your settings in `user-config.lua` file
 | `<leader>Gd` | `:Gvdiffsplit<CR>` open fugitive diff        |
 | `<Leader>dh` | `:diffget //2<CR>` to buffer diff left       |
 | `<Leader>dl` | `:diffget //3<CR>` to buffer diff right      |
+| `K`          | `:Lspsaga hover_doc<CR>` hover doc of lsp    |
+| `gd`         | `<Cmd>lua vim.lsp.buf.definition()<CR>'`     |
+| `gD`         | `<Cmd>lua vim.lsp.buf.declaration()<CR>`     |
+| `<Leader>gd` | `:Lspsaga preview_definition<CR>`            |
 
 ---
 
