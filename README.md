@@ -128,10 +128,10 @@ You can config your settings in `user-config.lua` file
 | `<Leader>gd` | `:Lspsaga preview_definition<CR>`       | `n`          | *lspsaga preview definition*  |
 | `K`          | `:move \'<-2<CR>gv-gv`                  | `v` or `x`   | *move lines of code up*       |
 | `J`          | `:move \'>+1<CR>gv-gv`                  | `v` or `x`   | *move lines of code down*     |
-| `<Leader>h`  | `:wincmd h<CR>`                         | `n`          | *move between split views*    |
-| `<Leader>j`  | `:wincmd j<CR>`                         | `n`          | *move between split views*    |
-| `<Leader>k`  | `:wincmd k<CR>`                         | `n`          | *move between split views*    |
-| `<Leader>l`  | `:wincmd l<CR>`                         | `n`          | *move between split views*    |
+| `<C-h>`      | `:wincmd h<CR>`                         | `n`          | *move between split views*    |
+| `<C-j>`      | `:wincmd j<CR>`                         | `n`          | *move between split views*    |
+| `<C-k>`      | `:wincmd k<CR>`                         | `n`          | *move between split views*    |
+| `<C-l>`      | `:wincmd l<CR>`                         | `n`          | *move between split views*    |
 | `ea`         | `:EasyAlign (_)`                        | `v`          | *Alignment with _ character*  |
 
 

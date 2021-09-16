@@ -55,10 +55,10 @@ map('n', '<Leader>dl', ':diffget //3<CR>', {noremap = true, silent = true})
 
 -- navigating
 --- move between splitted windows
-map('n', '<Leader>k', ':wincmd k<CR>', {noremap = true, silent = true})
-map('n', '<Leader>j', ':wincmd j<CR>', {noremap = true, silent = true})
-map('n', '<Leader>h', ':wincmd h<CR>', {noremap = true, silent = true})
-map('n', '<Leader>l', ':wincmd l<CR>', {noremap = true, silent = true})
+map('n', '<C-k>', ':wincmd k<CR>', {noremap = true, silent = true})
+map('n', '<C-j>', ':wincmd j<CR>', {noremap = true, silent = true})
+map('n', '<C-h>', ':wincmd h<CR>', {noremap = true, silent = true})
+map('n', '<C-l>', ':wincmd l<CR>', {noremap = true, silent = true})
 
 -- move selected line / blocks of text in V-mode
 -- Move selected line / block of text in visual mode
