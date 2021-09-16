@@ -11,7 +11,7 @@ local prettier = function ()
   }
 end
 
-local clangFormat = function ()
+local clangfmt = function ()
   return {
     exe = "clang-format",
     args = {"-style=file", "--assume-filename", vim.api.nvim_buf_get_name(0)},
@@ -28,7 +28,7 @@ local luafmt = function ()
   return { exe = "luafmt", args = {"--indent-count", 2, "--stdin"}, stdin = true }
 end
 
-local goFmt = function ()
+local gofmt = function ()
   return {
     exe = "gofmt",
     args = {vim.api.nvim_buf_get_name(0)},
@@ -41,12 +41,14 @@ require("formatter").setup({
   filetype = {
     python = { black },
     javascript = { prettier },
+    html = {prettier},
+    css = {prettier},
     rust = { rustfmt },
-    cpp = { clangFormat },
-    c = { clangFormat },
-    cc= { clangFormat },
-    h = { clangFormat },
-    go = { goFmt }
+    cpp = { clangfmt },
+    c = { clangfmt },
+    cc= { clangfmt },
+    h = { clangfmt },
+    go = { gofmt }
   }
 })
 

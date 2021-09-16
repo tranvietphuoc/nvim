@@ -97,35 +97,44 @@ You can config your settings in `user-config.lua` file
 
 ---
 
-|     Keys     |                   Command                    |
-| :----------: | :------------------------------------------: |
-|     `,`      |           `Leader`(`n`, `v` mode)            |
-| `<Leader>/`  |           `:CommentToggle<CR>` toggle comment|
-| `<Leader>T`  |             `:TagbarToggle<CR>` toggle tagbar|
-| `<Leader>n`  |        `:NvimTreeToggle<CR>` toggle nvim-tree|
-|   `<TAB>`    |            `:BufferNext<CR>` move to next tab|
-|  `<S-TAB>`   |    `:BufferPrevious<CR>` move to previous tab|
-|   `<S-c>`    |                  `:BufferClose<CR>` close tab|
-|     `qq`     |                   `<Esc>` ESC                |
-| `<Leader>f`  |    `<cmd>Telescope find_files<CR>` find files|
-| `<Leader>g`  | `<cmd>Telescope live_grep<CR>` find with grep|
-| `<Leader>fb` |         `<cmd>Telescope buffers<CR>`         |
-| `<Leader>fh` |        `<cmd>Telescope help_tags<CR>`        |
-|     `,,`     | Trigger `Leader` key in `i` mode of `emmet`  |
-| `<Leader>t`  |  `<CMD>lua require("FTerm").toggle()<CR>`    |
-| `<Leader>z`  |            `:ZenMode<CR>` toggle ZenMode     |
-| `<Leader>m`  |  `<Plug>MarkdownPreview` live server for md  |
-| `<Leader>M`  | `<Plug>MarkdownPreviewStop` stop live server |
-| `<Leader>G`  |`<CMD>lua _G.__fterm_gitui()<CR>` toggle gitui|
-| `<Leader>b`  | `:Bracey<CR>` live server for html, js, css  |
-| `<Leader>B`  |      `:BraceyStop<CR>` stop live server      |
-| `<leader>Gd` | `:Gvdiffsplit<CR>` open fugitive diff        |
-| `<Leader>dh` | `:diffget //2<CR>` to buffer diff left       |
-| `<Leader>dl` | `:diffget //3<CR>` to buffer diff right      |
-| `K`          | `:Lspsaga hover_doc<CR>` hover doc of lsp    |
-| `gd`         | `<Cmd>lua vim.lsp.buf.definition()<CR>'`     |
-| `gD`         | `<Cmd>lua vim.lsp.buf.declaration()<CR>`     |
-| `<Leader>gd` | `:Lspsaga preview_definition<CR>`            |
+|     Keys     |                   Command               | Mode         | Comment                       |
+| :----------: | :--------------------------------------:|:------------:|:-----------------------------:|
+|     `,`      | `Leader`                                | `n`, `v`     | *Leader key*                  |
+| `<Leader>/`  | `:CommentToggle<CR>`                    | **all mode** | *Comment out codes*           |
+| `<Leader>T`  | `:TagbarToggle<CR>`                     | `n`          | *Trigger tagbar*              |
+| `<Leader>n`  | `:NvimTreeToggle<CR>`                   | `n`          | *Trigger nvim-tree*           |
+|   `<TAB>`    | `:BufferNext<CR>`                       | `n`          | *Move to next tab*            |
+|  `<S-TAB>`   | `:BufferPrevious<CR>`                   | `n`          | *Move to previous tab*        |
+|   `<S-c>`    | `:BufferClose<CR>`                      | `n`          | *Close tab*                   |
+|     `qq`     | `<Esc>`                                 | **all mode** | *Esc*                         |
+| `<Leader>f`  | `<cmd>Telescope find_files<CR>`         | `n`          | *find files*                  |
+| `<Leader>g`  | `<cmd>Telescope live_grep<CR>`          | `n`          | *find words*                  |
+| `<Leader>fb` | `<cmd>Telescope buffers<CR>`            | `n`          | *find buffers*                |
+| `<Leader>fh` | `<cmd>Telescope help_tags<CR>`          | `n`          | *help telescope*              |
+|     `,,`     | `Leader` key of `emmet`                 | `i`          | *trigger leader key of emmet* |
+| `<Leader>t`  | `<CMD>lua require("FTerm").toggle()<CR>`| `n` or `t`   | *trigger float terminal*      |
+| `<Leader>z`  | `:ZenMode<CR>`                          | `n`          | *active zen mode*             |
+| `<Leader>m`  | `<Plug>MarkdownPreview`                 | `n`          | *live markdown preview*       |
+| `<Leader>M`  | `<Plug>MarkdownPreviewStop`             | `n`          | *stop markdown preview*       |
+| `<Leader>G`  | `<CMD>lua _G.__fterm_gitui()<CR>`       | `n`          | *trigger gitui*               |
+| `<Leader>b`  | `:Bracey<CR>`                           | `n`          | *live html server*            |
+| `<Leader>B`  | `:BraceyStop<CR>`                       | `n`          | *stop html server*            |
+| `<leader>Gd` | `:Gvdiffsplit<CR>`                      | `n`          | *open fugitive diff*          |
+| `<Leader>dh` | `:diffget //2<CR>`                      | `n`          | *to buffer diff left*         |
+| `<Leader>dl` | `:diffget //3<CR>`                      | `n`          | *to buffer diff right*        |
+| `K`          | `:Lspsaga hover_doc<CR>`                | `n`          | *hover doc of lsp*            |
+| `gd`         | `<Cmd>lua vim.lsp.buf.definition()<CR>` | `n`          | *go to definition*            |
+| `gD`         | `<Cmd>lua vim.lsp.buf.declaration()<CR>`| `n`          | *go to declaration*           |
+| `<Leader>gd` | `:Lspsaga preview_definition<CR>`       | `n`          | *lspsaga preview definition*  |
+| `K`          | `:move \'<-2<CR>gv-gv`                  | `v` or `x`   | *move lines of code up*       |
+| `J`          | `:move \'>+1<CR>gv-gv`                  | `v` or `x`   | *move lines of code down*     |
+| `<Leader>h`  | `:wincmd h<CR>`                         | `n`          | *move between split views*    |
+| `<Leader>j`  | `:wincmd j<CR>`                         | `n`          | *move between split views*    |
+| `<Leader>k`  | `:wincmd k<CR>`                         | `n`          | *move between split views*    |
+| `<Leader>l`  | `:wincmd l<CR>`                         | `n`          | *move between split views*    |
+| `ea`         | `:EasyAlign (_)`                        | `v`          | *Alignment with _ character*  |
+
+
 
 ---
 
