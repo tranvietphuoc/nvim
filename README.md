@@ -99,7 +99,7 @@ You can config your settings in `user-config.lua` file
 
 |     Keys     |                   Command               | Mode         | Comment                       |
 | :----------: | :--------------------------------------:|:------------:|:-----------------------------:|
-|     `,`      | `Leader`                                | `n`, `v`     | *Leader key*                  |
+|     `,`      | `Leader`                                | `n` or`v`    | *Leader key*                  |
 | `<Leader>/`  | `:CommentToggle<CR>`                    | **all mode** | *Comment out codes*           |
 | `<Leader>T`  | `:TagbarToggle<CR>`                     | `n`          | *Trigger tagbar*              |
 | `<Leader>n`  | `:NvimTreeToggle<CR>`                   | `n`          | *Trigger nvim-tree*           |
