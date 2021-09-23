@@ -13,7 +13,6 @@ map('n', '<S-TAB>', ':bprevious<CR>', { noremap = true, silent = true })
 -- delete current buffer
 vim.api.nvim_set_keymap('n', '<S-c>', ':bdelete<CR>', { noremap = true, silent = true })
 
-
 -- fast escaping
 map('i', 'qq', '<ESC>', {noremap = true, silent = true})
 map('n', 'qq', '<ESC>', {noremap = true, silent = true})
@@ -51,7 +50,6 @@ map('v', '<Leader>/', ":CommentToggle<CR>", {noremap = true, silent = true})
 map('n', '<Leader>Gd', ':Gvdiffsplit<CR>', {noremap = true, silent = true})
 map('n', '<Leader>dh', ':diffget //2<CR>', {noremap = true, silent = true})
 map('n', '<Leader>dl', ':diffget //3<CR>', {noremap = true, silent = true})
-
 
 -- navigating
 --- move between splitted windows
