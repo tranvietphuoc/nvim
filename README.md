@@ -148,3 +148,10 @@ Thanks to all authors of [these plugin](./lua/plugins.lua).
 ## LICENSE
 
 [MIT](./LICENSE)
+
+## Some images after config
+![pic1](./assets/pic1.png)
+![pic2](./assets/pic2.png)
+![pic3](./assets/pic3.png)
+![pic4](./assets/pic4.png)
+![pic5](./assets/pic5.png)
