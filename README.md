@@ -118,8 +118,8 @@ You can config your settings in `user-config.lua` file
 | `<Leader>l`  | `:Bracey<CR>`                           | `n`          | *live html server*                       |
 | `<Leader>L`  | `:BraceyStop<CR>`                       | `n`          | *stop html server*                       |
 | `<leader>Gd` | `:Gvdiffsplit<CR>`                      | `n`          | *open fugitive diff*                     |
-| `<Leader>dh` | `:diffget //2<CR>`                      | `n`          | *to buffer diff left*                    |
-| `<Leader>dl` | `:diffget //3<CR>`                      | `n`          | *to buffer diff right*                   |
+| `<Leader>Dh` | `:diffget //2<CR>`                      | `n`          | *to buffer diff left*                    |
+| `<Leader>Dl` | `:diffget //3<CR>`                      | `n`          | *to buffer diff right*                   |
 | `K`          | `:Lspsaga hover_doc<CR>`                | `n`          | *hover doc of lsp*                       |
 | `gd`         | `<Cmd>lua vim.lsp.buf.definition()<CR>` | `n`          | *go to definition*                       |
 | `gD`         | `<Cmd>lua vim.lsp.buf.declaration()<CR>`| `n`          | *go to declaration*                      |
@@ -133,8 +133,9 @@ You can config your settings in `user-config.lua` file
 | `ea`         | `:EasyAlign (_)`                        | `v`          | *Alignment with a character,then enter*  |
 
 
-
 ---
+
+* More keys mapping is instantiated which `WhichKey` plugin
 
 ## Todo
 - [ ] Config debugger using `nvim-dap`

@@ -43,8 +43,8 @@ map('v', '<Leader>/', ":CommentToggle<CR>", opts)
 
 -- git fugitive
 map('n', '<Leader>Gd', ':Gvdiffsplit<CR>', opts)
-map('n', '<Leader>dh', ':diffget //2<CR>', opts)
-map('n', '<Leader>dl', ':diffget //3<CR>', opts)
+map('n', '<Leader>Dh', ':diffget //2<CR>', opts)
+map('n', '<Leader>Dl', ':diffget //3<CR>', opts)
 
 -- navigating
 --- move between splitted windows

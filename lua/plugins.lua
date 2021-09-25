@@ -15,17 +15,19 @@ return require('packer').startup(function(use)
 
   -- colorscheme
   -- use {'christianchiarulli/nvcode-color-schemes.vim'}
-  use {'navarasu/onedark.nvim'}
   use {
     "projekt0n/github-nvim-theme",
-    config = function ()
+    config = function()
       require("github-theme").setup({
-        theme_style = "dark",
-
+        theme_style = "dark_default",
+        -- comment_style = "italic",
+        -- keyword_style = "italic",
+        -- function_style = "italic",
+        -- variable_style = "italic"
+        -- your github config
       })
     end
   }
-
   -- git
   use 'mhinz/vim-signify'
   use 'tpope/vim-fugitive'
