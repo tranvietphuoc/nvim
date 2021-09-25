@@ -69,6 +69,5 @@ require('telescope').setup {
     }
   }
 }
-vim.cmd('nnoremap <Leader>f <cmd>Telescope find_files<cr>')
-vim.cmd('nnoremap <Leader>F <cmd>Telescope live_grep<cr>')
+
 vim.cmd('autocmd User TelescopePreviewerLoaded setlocal wrap')

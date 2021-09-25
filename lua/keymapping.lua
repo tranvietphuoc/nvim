@@ -6,7 +6,6 @@ vim.g.mapleader = ","
 -- tab to next buffer in normal mode
 map('n', '<TAB>', ':bnext<CR>', opts)
 map('n', '<S-TAB>', ':bprevious<CR>', opts)
-
 -- delete current buffer
 vim.api.nvim_set_keymap('n', '<S-c>', ':bdelete<CR>', opts)
 
@@ -18,7 +17,6 @@ map('x', 'qq', '<ESC>', opts)
 map('s', 'qq', '<ESC>', opts)
 map('o', 'qq', '<ESC>', opts)
 map('c', 'qq', '<ESC>', opts)
-
 
 -- saving
 map('n', '<Leader>w', ':w<CR>', opts)
@@ -69,3 +67,15 @@ map('n', '<S-r>', ":lua require'dap'.repl.open()<CR>", opts)
 -- live server
 map('n', '<Leader>l', ':Bracey<CR>', opts)
 map('n', '<Leader>L', ':BraceyStop<CR>', opts)
+
+-- markdown preview
+map('n', '<Leader>m', '<Plug>MarkdownPreview<CR>', {noremap = false, silent = false})
+map('n', '<Leader>M', '<Plug>MarkdownPreviewStop<CR>', {noremap = false, silent = false})
+
+-- nvimtree
+map('n', '<Leader>n', ':NvimTreeToggle<CR>', opts)
+map('n', '<Leader>R', ':NvimTreeRefresh<CR>', opts)
+
+-- telescope
+map('n', '<Leader>f', '<cmd>Telescope find_files<CR>', opts)
+map('n', '<Leader>F', '<cmd>Telescope live_grep<cr>', opts)

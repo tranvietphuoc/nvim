@@ -1,6 +1,3 @@
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-
 -- vim.g.nvim_tree_width = 30 -- 30 by default
 vim.g.nvim_tree_ignore = {'.git', 'node_modules', '__pycache__', '.venv', '.pytest_cache'}  -- empty by default
 vim.g.nvim_tree_gitignore = 1 -- 0 by default
@@ -34,9 +31,6 @@ vim.g.nvim_tree_special_files = {}
 vim.g.nvim_tree_disable_window_picker = 1
 vim.g.nvim_tree_auto_ignore_ft = { 'startify', 'dashboard' } 
 
--- toggle - find - refesh
-map('n', '<Leader>n', ':NvimTreeToggle<CR>', opts)
-map('n', '<Leader>R', ':NvimTreeRefresh<CR>', opts)
 
 -- mappings
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
