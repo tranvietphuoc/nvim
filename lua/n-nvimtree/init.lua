@@ -36,7 +36,6 @@ vim.g.nvim_tree_auto_ignore_ft = { 'startify', 'dashboard' }
 
 -- toggle - find - refesh
 map('n', '<Leader>n', ':NvimTreeToggle<CR>', opts)
-map('n', '<Leader>F', ':NvimTreeFindFile<CR>', opts)
 map('n', '<Leader>R', ':NvimTreeRefresh<CR>', opts)
 
 -- mappings

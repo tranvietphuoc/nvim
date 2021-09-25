@@ -16,6 +16,15 @@ return require('packer').startup(function(use)
   -- colorscheme
   -- use {'christianchiarulli/nvcode-color-schemes.vim'}
   use {'navarasu/onedark.nvim'}
+  use {
+    "projekt0n/github-nvim-theme",
+    config = function ()
+      require("github-theme").setup({
+        theme_style = "dark",
+
+      })
+    end
+  }
 
   -- git
   use 'mhinz/vim-signify'
@@ -192,5 +201,18 @@ return require('packer').startup(function(use)
   }
   -- formatter
   use {'mhartington/formatter.nvim'}
+
+  -- debugger
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use {
+  "folke/which-key.nvim",
+  config = function()
+    require("which-key").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
 
 end)

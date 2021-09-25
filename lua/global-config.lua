@@ -1,6 +1,6 @@
 O = {
   auto_complete = true,
-  colorscheme = 'onedark',
+  -- colorscheme = '',
 	color = "256",
   py_provider = "$HOME/.pyenv/shims/python",
   nvim_tree_disable_netrw = 0,
