@@ -137,8 +137,8 @@ You can config your settings in `user-config.lua` file
 ---
 
 ## Todo
-- [] Debugger using `nvim-dap`
-- [] Config `which-key.nvim`
+- [ ] Config debugger using `nvim-dap`
+- [ ] Config `which-key`
 
 
 Thanks to all authors of [these plugin](./lua/plugins.lua).
