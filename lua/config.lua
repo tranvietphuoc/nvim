@@ -46,7 +46,7 @@ vim.o.cmdheight                                = 2
 vim.o.showtabline                              = 2
 vim.o.ruler                                    = true
 vim.o.updatetime                               = 300  -- faster completion
-vim.o.timeoutlen                               = 400  -- timeout to 1s
+vim.o.timeoutlen                               = 500  -- timeout to 1s
 vim.wo.relativenumber                          = true
 vim.o.termguicolors                            = true
 
