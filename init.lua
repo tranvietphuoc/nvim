@@ -16,6 +16,7 @@ require('n-telescope')
 require('n-treesitter')
 require('n-tagbar')
 require('n-doge')
+require('n-devicons')
 require('n-indent')
 -- require('n-rnvimr')
 require('n-nvimtree')
@@ -32,8 +33,9 @@ require('n-fugitive')
 require('n-signify')
 -- git blame
 require('n-blame')
+
 -- autocomplete
-require('n-compe')
+require('n-cmp')
 
 -- database
 require('n-dbcompletion')
@@ -66,4 +68,4 @@ require('n-gitui')
 require('n-formatter')
 -- debugger
 require('n-dap')
-require('n-dapui')
+-- require('n-dapui')

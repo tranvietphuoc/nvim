@@ -25,7 +25,7 @@ require("dapui").setup({
     position = "left", -- Can be "left", "right", "top", "bottom"
   },
   tray = {
-    open_on_start = true,
+    -- open_on_start = true,
     elements = { "repl" },
     size = 10,
     position = "bottom", -- Can be "left", "right", "top", "bottom"
