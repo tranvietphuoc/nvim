@@ -88,12 +88,8 @@ return require('packer').startup(function(use)
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
 
-  -- use {
-  --   "hrsh7th/nvim-compe",
-  --   requires = {
-  --     "hrsh7th/vim-vsnip",
-  --   }
-  -- }
+  -- filetype.nvim
+  use{'nathom/filetype.nvim'}
 
 	-- snippet
 	use {'cstrap/python-snippets'}

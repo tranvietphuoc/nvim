@@ -8,6 +8,8 @@ vim.cmd "set colorcolumn=99999"
 vim.cmd "set inccommand=split"
 vim.opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
 
+vim.g.did_load_filetypes = 1
+
 vim.o.foldmethod                               = 'expr'
 vim.o.foldexpr                                 = 'nvim_treesitter#foldexpr()'
 vim.o.foldlevel                                = 10
