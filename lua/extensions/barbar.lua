@@ -1,7 +1,7 @@
 -- Move to previous/next
-vim.api.nvim_set_keymap('n', '<Space><Left>', ':BufferNext<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Space><Right>', ':BufferPrevious<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<S-x>', ':BufferClose<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Space><Right>', ':BufferNext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Space><Left>', ':BufferPrevious<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Space>c', ':BufferClose<CR>', { noremap = true, silent = true })
 -- Re-order to previous/next
 -- Goto buffer in position...
 vim.cmd[[ nnoremap <silent>    1 :BufferGoto 1<CR> ]]
