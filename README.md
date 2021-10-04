@@ -104,8 +104,8 @@ You can config your settings in `user-config.lua` file
 | `<Leader>T`     | `:TagbarToggle<CR>`                     | `n`          | *Trigger tagbar*                         |
 | `<Leader>n`     | `:NvimTreeToggle<CR>`                   | `n`          | *Trigger nvim-tree*                      |
 | `<Space><Right>`| `:BufferNext<CR>`                       | `n`          | *Move to next tab*                       |
-|  `<S-TAB>`      | `:BufferPrevious<CR>`                   | `n`          | *Move to previous tab*                   |
-|   `<S-c>`       | `:BufferClose<CR>`                      | `n`          | *Close tab*                              |
+| `<Space><Left>` | `:BufferPrevious<CR>`                   | `n`          | *Move to previous tab*                   |
+|  `<Space>c`     | `:BufferClose<CR>`                      | `n`          | *Close tab*                              |
 |     `qq`        | `<Esc>`                                 | **all mode** | *Esc*                                    |
 | `<Leader>f`     | `<cmd>Telescope find_files<CR>`         | `n`          | *find files*                             |
 | `<Leader>F`     | `<cmd>Telescope live_grep<CR>`          | `n`          | *find words*                             |
