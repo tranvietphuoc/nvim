@@ -19,7 +19,7 @@ return require('packer').startup(function(use)
     "projekt0n/github-nvim-theme",
     config = function()
       require("github-theme").setup({
-        theme_style = "dark_default",
+        theme_style = "dark",
         -- comment_style = "italic",
         -- keyword_style = "italic",
         -- function_style = "italic",
@@ -33,6 +33,8 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
   use 'junegunn/gv.vim'
+    -- git blame
+  use {'f-person/git-blame.nvim' }
 
   -- treesitter
   use {'nvim-treesitter/nvim-treesitter', run=':TSUpdate'}
@@ -113,8 +115,7 @@ return require('packer').startup(function(use)
 	use 'norcalli/nvim-colorizer.lua'
 
   -- auto-pairs
-	-- use {'windwp/nvim-autopairs'}
-  use {'jiangmiao/auto-pairs'}
+	use {'windwp/nvim-autopairs'}
 
 	-- nvim-web-devicons
 	use {'kyazdani42/nvim-web-devicons'}
@@ -141,9 +142,6 @@ return require('packer').startup(function(use)
   -- indent
   use {'lukas-reineke/indent-blankline.nvim', branch = 'master'}
 
-  -- rnvimr
-  -- use 'kevinhwang91/rnvimr'
-
   use {
     "folke/zen-mode.nvim",
     config = function()
@@ -164,24 +162,8 @@ return require('packer').startup(function(use)
       }
     end
   }
-  -- floatterm
-  use {
-    "numtostr/FTerm.nvim",
-    config = function()
-      require("FTerm").setup({
-        dimensions = {
-          height = 0.6,
-          width = 0.5,
-          x = 1,
-          y = 0,
-        },
-        border = 'single'
-      })
-    end
-  }
 
-  -- git blame
-  use {'f-person/git-blame.nvim' }
+
 
   -- Comments
   use {
@@ -210,8 +192,25 @@ return require('packer').startup(function(use)
   -- formatter
   use {'mhartington/formatter.nvim'}
 
+  use {"akinsho/toggleterm.nvim"}
+  use {
+    "numtostr/FTerm.nvim",
+    config = function()
+      require("FTerm").setup({
+        dimensions = {
+          height = 0.6,
+          width = 0.5,
+          x = 1,
+          y = 0,
+        },
+        border = 'single'
+      })
+    end
+  }
+
   -- debugger
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use {"Pocco81/DAPInstall.nvim"}
   use {
   "folke/which-key.nvim",
   config = function()

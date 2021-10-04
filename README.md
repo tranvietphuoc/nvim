@@ -109,8 +109,13 @@ You can config your settings in `user-config.lua` file
 |     `qq`     | `<Esc>`                                 | **all mode** | *Esc*                                    |
 | `<Leader>f`  | `<cmd>Telescope find_files<CR>`         | `n`          | *find files*                             |
 | `<Leader>F`  | `<cmd>Telescope live_grep<CR>`          | `n`          | *find words*                             |
+<<<<<<< HEAD
 |     `,,`     | `Leader` key of `emmet`                 | `i`          | *trigger leader key of emmet*            |
 | `<Leader>t`  | `<CMD>lua require("FTerm").toggle()<CR>`| `n` or `t`   | *trigger float terminal*                 |
+=======
+|  `<Tab>`     | `Leader` key of `emmet`                 | `i`          | *trigger leader key of emmet*            |
+| `<Leader>t`  | `vim.g.toggleterm_terminal_mapping`     | `n` or `t`   | *trigger terminal*                       |
+>>>>>>> 48eff40 (re structed)
 | `<Leader>z`  | `:ZenMode<CR>`                          | `n`          | *active zen mode*                        |
 | `<Leader>m`  | `<Plug>MarkdownPreview`                 | `n`          | *live markdown preview*                  |
 | `<Leader>M`  | `<Plug>MarkdownPreviewStop`             | `n`          | *stop markdown preview*                  |

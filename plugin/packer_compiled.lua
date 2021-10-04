@@ -69,14 +69,18 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["DAPInstall.nvim"] = {
+    loaded = true,
+    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/DAPInstall.nvim"
+  },
   ["FTerm.nvim"] = {
-    config = { "\27LJ\2\nÅ\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\15dimensions\1\0\1\vborder\vsingle\1\0\4\6x\3\1\6y\3\0\vheight\4\0ÄÄÄˇ\3\nwidth\4\0ÄÄÄˇ\3\nsetup\nFTerm\frequire\0" },
+    config = { "\27LJ\2\nÖ\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\15dimensions\1\0\1\vborder\vsingle\1\0\4\6x\3\1\6y\3\0\vheight\4≥ÊÃô\3≥Êåˇ\3\nwidth\4\0ÄÄÄˇ\3\nsetup\nFTerm\frequire\0" },
     loaded = true,
     path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/FTerm.nvim"
   },
-  ["auto-pairs"] = {
+  LuaSnip = {
     loaded = true,
-    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/auto-pairs"
+    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/LuaSnip"
   },
   ["barbar.nvim"] = {
     loaded = true,
@@ -86,6 +90,18 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/bracey.vim"
   },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/cmp-buffer"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp"
+  },
+  cmp_luasnip = {
+    loaded = true,
+    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/cmp_luasnip"
+  },
   ["dashboard-nvim"] = {
     loaded = true,
     path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/dashboard-nvim"
@@ -94,6 +110,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/emmet-vim"
   },
+  ["filetype.nvim"] = {
+    loaded = true,
+    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/filetype.nvim"
+  },
+  ["formatter.nvim"] = {
+    loaded = true,
+    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/formatter.nvim"
+  },
   ["galaxyline.nvim"] = {
     loaded = true,
     path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
@@ -101,6 +125,11 @@ _G.packer_plugins = {
   ["git-blame.nvim"] = {
     loaded = true,
     path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/git-blame.nvim"
+  },
+  ["github-nvim-theme"] = {
+    config = { "\27LJ\2\nR\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\16theme_style\tdark\nsetup\17github-theme\frequire\0" },
+    loaded = true,
+    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/github-nvim-theme"
   },
   ["gv.vim"] = {
     loaded = true,
@@ -126,21 +155,40 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim"
   },
-  ["nvcode-color-schemes.vim"] = {
+  ["nvim-autopairs"] = {
     loaded = true,
-    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/nvcode-color-schemes.vim"
+    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+  },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/nvim-cmp"
   },
   ["nvim-colorizer.lua"] = {
     loaded = true,
     path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
-  ["nvim-compe"] = {
+  ["nvim-comment"] = {
+    config = { "\27LJ\2\nP\0\0\4\0\4\0\n6\0\0\0006\2\1\0'\3\2\0B\0\3\3\14\0\0\0X\2\1ÄK\0\1\0009\2\3\1B\2\1\1K\0\1\0\nsetup\17nvim_comment\frequire\npcall\0" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/opt/nvim-comment"
+  },
+  ["nvim-dap"] = {
     loaded = true,
-    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/nvim-compe"
+    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/nvim-dap"
+  },
+  ["nvim-dap-ui"] = {
+    loaded = true,
+    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/nvim-dap-ui"
   },
   ["nvim-lightbulb"] = {
     loaded = true,
     path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
+  },
+  ["nvim-lsp-ts-utils"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/opt/nvim-lsp-ts-utils"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -151,6 +199,7 @@ _G.packer_plugins = {
     path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
   ["nvim-tree.lua"] = {
+    config = { "\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14nvim-tree\frequire\0" },
     loaded = true,
     path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
   },
@@ -202,9 +251,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
-  ["vim-commentary"] = {
+  ["toggleterm.nvim"] = {
     loaded = true,
-    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/vim-commentary"
+    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/toggleterm.nvim"
   },
   ["vim-dadbod"] = {
     loaded = true,
@@ -258,10 +307,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator"
   },
-  ["vim-vsnip"] = {
-    loaded = true,
-    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/vim-vsnip"
-  },
   ["vim-which-key"] = {
     loaded = true,
     path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/vim-which-key"
@@ -282,22 +327,55 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/vscode-rust"
   },
+  ["which-key.nvim"] = {
+    config = { "\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0" },
+    loaded = true,
+    path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/which-key.nvim"
+  },
   ["zen-mode.nvim"] = {
-    config = { "\27LJ\2\nù\2\0\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\v\0005\3\3\0005\4\4\0=\4\5\0035\4\a\0005\5\6\0=\5\5\0045\5\b\0=\5\t\4=\4\n\3=\3\f\2B\0\2\1K\0\1\0\vwindow\1\0\0\fplugins\ttmux\1\0\1\fenabled\1\1\0\0\1\0\3\fshowcmd\1\nruler\1\fenabled\2\foptions\1\0\6\17cursorcolumn\1\tlist\1\15signcolumn\ano\15cursorline\2\19relativenumber\2\vnumber\2\1\0\3\vheight\3\1\nwidth\3x\rbackdrop\4ÊÃô≥\6ÊÃπˇ\3\nsetup\rzen-mode\frequire\0" },
+    config = { "\27LJ\2\nÕ\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0005\4\4\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\vwindow\1\0\0\foptions\1\0\6\17cursorcolumn\1\15cursorline\2\tlist\1\vnumber\2\19relativenumber\2\15signcolumn\ano\1\0\3\rbackdrop\4ÊÃô≥\6ÊÃπˇ\3\vheight\3\1\nwidth\3x\nsetup\rzen-mode\frequire\0" },
     loaded = true,
     path = "/Users/phuoc/.local/share/nvim/site/pack/packer/start/zen-mode.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
+time([[Config for which-key.nvim]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
+time([[Config for nvim-tree.lua]], false)
 -- Config for: FTerm.nvim
 time([[Config for FTerm.nvim]], true)
-try_loadstring("\27LJ\2\nÅ\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\15dimensions\1\0\1\vborder\vsingle\1\0\4\6x\3\1\6y\3\0\vheight\4\0ÄÄÄˇ\3\nwidth\4\0ÄÄÄˇ\3\nsetup\nFTerm\frequire\0", "config", "FTerm.nvim")
+try_loadstring("\27LJ\2\nÖ\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\15dimensions\1\0\1\vborder\vsingle\1\0\4\6x\3\1\6y\3\0\vheight\4≥ÊÃô\3≥Êåˇ\3\nwidth\4\0ÄÄÄˇ\3\nsetup\nFTerm\frequire\0", "config", "FTerm.nvim")
 time([[Config for FTerm.nvim]], false)
 -- Config for: zen-mode.nvim
 time([[Config for zen-mode.nvim]], true)
-try_loadstring("\27LJ\2\nù\2\0\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\v\0005\3\3\0005\4\4\0=\4\5\0035\4\a\0005\5\6\0=\5\5\0045\5\b\0=\5\t\4=\4\n\3=\3\f\2B\0\2\1K\0\1\0\vwindow\1\0\0\fplugins\ttmux\1\0\1\fenabled\1\1\0\0\1\0\3\fshowcmd\1\nruler\1\fenabled\2\foptions\1\0\6\17cursorcolumn\1\tlist\1\15signcolumn\ano\15cursorline\2\19relativenumber\2\vnumber\2\1\0\3\vheight\3\1\nwidth\3x\rbackdrop\4ÊÃô≥\6ÊÃπˇ\3\nsetup\rzen-mode\frequire\0", "config", "zen-mode.nvim")
+try_loadstring("\27LJ\2\nÕ\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0005\4\4\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\vwindow\1\0\0\foptions\1\0\6\17cursorcolumn\1\15cursorline\2\tlist\1\vnumber\2\19relativenumber\2\15signcolumn\ano\1\0\3\rbackdrop\4ÊÃô≥\6ÊÃπˇ\3\vheight\3\1\nwidth\3x\nsetup\rzen-mode\frequire\0", "config", "zen-mode.nvim")
 time([[Config for zen-mode.nvim]], false)
+-- Config for: github-nvim-theme
+time([[Config for github-nvim-theme]], true)
+try_loadstring("\27LJ\2\nR\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\16theme_style\tdark\nsetup\17github-theme\frequire\0", "config", "github-nvim-theme")
+time([[Config for github-nvim-theme]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType javascript.jsx ++once lua require("packer.load")({'nvim-lsp-ts-utils'}, { ft = "javascript.jsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescript ++once lua require("packer.load")({'nvim-lsp-ts-utils'}, { ft = "typescript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'nvim-lsp-ts-utils'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescript.tsx ++once lua require("packer.load")({'nvim-lsp-ts-utils'}, { ft = "typescript.tsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascript ++once lua require("packer.load")({'nvim-lsp-ts-utils'}, { ft = "javascript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascriptreact ++once lua require("packer.load")({'nvim-lsp-ts-utils'}, { ft = "javascriptreact" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+  -- Event lazy-loads
+time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-comment'}, { event = "BufRead *" }, _G.packer_plugins)]]
+time([[Defining lazy-load event autocommands]], false)
+vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 end)
