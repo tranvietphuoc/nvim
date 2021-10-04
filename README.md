@@ -110,7 +110,7 @@ You can config your settings in `user-config.lua` file
 | `<Leader>f`  | `<cmd>Telescope find_files<CR>`         | `n`          | *find files*                             |
 | `<Leader>F`  | `<cmd>Telescope live_grep<CR>`          | `n`          | *find words*                             |
 |  `<Tab>`     | `Leader` key of `emmet`                 | `i`          | *trigger leader key of emmet*            |
-| `<Leader>t`  | `vim.g.toggleterm_terminal_mapping`     | `n` or `t`   | *trigger terminal*                       |
+| `<S-t>`      | `vim.g.toggleterm_terminal_mapping`     | `n` or `t`   | *trigger terminal*                       |
 | `<Leader>z`  | `:ZenMode<CR>`                          | `n`          | *active zen mode*                        |
 | `<Leader>m`  | `<Plug>MarkdownPreview`                 | `n`          | *live markdown preview*                  |
 | `<Leader>M`  | `<Plug>MarkdownPreviewStop`             | `n`          | *stop markdown preview*                  |
