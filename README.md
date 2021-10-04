@@ -97,40 +97,40 @@ You can config your settings in `user-config.lua` file
 
 ---
 
-|     Keys     |                   Command               | Mode         | Comment                                  |
-| :----------: | :--------------------------------------:|:------------:|:----------------------------------------:|
-|     `,`      | `Leader`                                | `n` or`v`    | *Leader key*                             |
-| `<Leader>/`  | `:CommentToggle<CR>`                    | **all mode** | *Comment out codes*                      |
-| `<Leader>T`  | `:TagbarToggle<CR>`                     | `n`          | *Trigger tagbar*                         |
-| `<Leader>n`  | `:NvimTreeToggle<CR>`                   | `n`          | *Trigger nvim-tree*                      |
-|   `<TAB>`    | `:BufferNext<CR>`                       | `n`          | *Move to next tab*                       |
-|  `<S-TAB>`   | `:BufferPrevious<CR>`                   | `n`          | *Move to previous tab*                   |
-|   `<S-c>`    | `:BufferClose<CR>`                      | `n`          | *Close tab*                              |
-|     `qq`     | `<Esc>`                                 | **all mode** | *Esc*                                    |
-| `<Leader>f`  | `<cmd>Telescope find_files<CR>`         | `n`          | *find files*                             |
-| `<Leader>F`  | `<cmd>Telescope live_grep<CR>`          | `n`          | *find words*                             |
-|  `<Tab>`     | `Leader` key of `emmet`                 | `i`          | *trigger leader key of emmet*            |
-| `<S-t>`      | `vim.g.toggleterm_terminal_mapping`     | `n` or `t`   | *trigger terminal*                       |
-| `<Leader>z`  | `:ZenMode<CR>`                          | `n`          | *active zen mode*                        |
-| `<Leader>m`  | `<Plug>MarkdownPreview`                 | `n`          | *live markdown preview*                  |
-| `<Leader>M`  | `<Plug>MarkdownPreviewStop`             | `n`          | *stop markdown preview*                  |
-| `<Leader>G`  | `<CMD>lua _G.__fterm_gitui()<CR>`       | `n`          | *trigger gitui*                          |
-| `<Leader>l`  | `:Bracey<CR>`                           | `n`          | *live html server*                       |
-| `<Leader>L`  | `:BraceyStop<CR>`                       | `n`          | *stop html server*                       |
-| `<leader>Gd` | `:Gvdiffsplit<CR>`                      | `n`          | *open fugitive diff*                     |
-| `<Leader>Dh` | `:diffget //2<CR>`                      | `n`          | *to buffer diff left*                    |
-| `<Leader>Dl` | `:diffget //3<CR>`                      | `n`          | *to buffer diff right*                   |
-| `K`          | `:Lspsaga hover_doc<CR>`                | `n`          | *hover doc of lsp*                       |
-| `gd`         | `<Cmd>lua vim.lsp.buf.definition()<CR>` | `n`          | *go to definition*                       |
-| `gD`         | `<Cmd>lua vim.lsp.buf.declaration()<CR>`| `n`          | *go to declaration*                      |
-| `<Leader>gd` | `:Lspsaga preview_definition<CR>`       | `n`          | *lspsaga preview definition*             |
-| `K`          | `:move \'<-2<CR>gv-gv`                  | `v` or `x`   | *move lines of code up*                  |
-| `J`          | `:move \'>+1<CR>gv-gv`                  | `v` or `x`   | *move lines of code down*                |
-| `<C-h>`      | `:wincmd h<CR>`                         | `n`          | *move between split views*               |
-| `<C-j>`      | `:wincmd j<CR>`                         | `n`          | *move between split views*               |
-| `<C-k>`      | `:wincmd k<CR>`                         | `n`          | *move between split views*               |
-| `<C-l>`      | `:wincmd l<CR>`                         | `n`          | *move between split views*               |
-| `ea`         | `:EasyAlign (_)`                        | `v`          | *Alignment with a character,then enter*  |
+|     Keys        |                   Command               | Mode         | Comment                                  |
+| :-------------: | :--------------------------------------:|:------------:|:----------------------------------------:|
+|     `,`         | `Leader`                                | `n` or`v`    | *Leader key*                             |
+| `<Leader>/`     | `:CommentToggle<CR>`                    | **all mode** | *Comment out codes*                      |
+| `<Leader>T`     | `:TagbarToggle<CR>`                     | `n`          | *Trigger tagbar*                         |
+| `<Leader>n`     | `:NvimTreeToggle<CR>`                   | `n`          | *Trigger nvim-tree*                      |
+| `<Space><Right>`| `:BufferNext<CR>`                       | `n`          | *Move to next tab*                       |
+|  `<S-TAB>`      | `:BufferPrevious<CR>`                   | `n`          | *Move to previous tab*                   |
+|   `<S-c>`       | `:BufferClose<CR>`                      | `n`          | *Close tab*                              |
+|     `qq`        | `<Esc>`                                 | **all mode** | *Esc*                                    |
+| `<Leader>f`     | `<cmd>Telescope find_files<CR>`         | `n`          | *find files*                             |
+| `<Leader>F`     | `<cmd>Telescope live_grep<CR>`          | `n`          | *find words*                             |
+|  `<Tab>`        | `Leader` key of `emmet`                 | `i`          | *trigger leader key of emmet*            |
+| `<S-t>`         | `vim.g.toggleterm_terminal_mapping`     | `n` or `t`   | *trigger terminal*                       |
+| `<Leader>z`     | `:ZenMode<CR>`                          | `n`          | *active zen mode*                        |
+| `<Leader>m`     | `<Plug>MarkdownPreview`                 | `n`          | *live markdown preview*                  |
+| `<Leader>M`     | `<Plug>MarkdownPreviewStop`             | `n`          | *stop markdown preview*                  |
+| `<Leader>G`     | `<CMD>lua _G.__fterm_gitui()<CR>`       | `n`          | *trigger gitui*                          |
+| `<Leader>l`     | `:Bracey<CR>`                           | `n`          | *live html server*                       |
+| `<Leader>L`     | `:BraceyStop<CR>`                       | `n`          | *stop html server*                       |
+| `<leader>Gd`    | `:Gvdiffsplit<CR>`                      | `n`          | *open fugitive diff*                     |
+| `<Leader>Dh`    | `:diffget //2<CR>`                      | `n`          | *to buffer diff left*                    |
+| `<Leader>Dl`    | `:diffget //3<CR>`                      | `n`          | *to buffer diff right*                   |
+| `K`             | `:Lspsaga hover_doc<CR>`                | `n`          | *hover doc of lsp*                       |
+| `gd`            | `<Cmd>lua vim.lsp.buf.definition()<CR>` | `n`          | *go to definition*                       |
+| `gD`            | `<Cmd>lua vim.lsp.buf.declaration()<CR>`| `n`          | *go to declaration*                      |
+| `<Leader>gd`    | `:Lspsaga preview_definition<CR>`       | `n`          | *lspsaga preview definition*             |
+| `K`             | `:move \'<-2<CR>gv-gv`                  | `v` or `x`   | *move lines of code up*                  |
+| `J`             | `:move \'>+1<CR>gv-gv`                  | `v` or `x`   | *move lines of code down*                |
+| `<C-h>`         | `:wincmd h<CR>`                         | `n`          | *move between split views*               |
+| `<C-j>`         | `:wincmd j<CR>`                         | `n`          | *move between split views*               |
+| `<C-k>`         | `:wincmd k<CR>`                         | `n`          | *move between split views*               |
+| `<C-l>`         | `:wincmd l<CR>`                         | `n`          | *move between split views*               |
+| `ea`            | `:EasyAlign (_)`                        | `v`          | *Alignment with a character,then enter*  |
 
 
 ---
