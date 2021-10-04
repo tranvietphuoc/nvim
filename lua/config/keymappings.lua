@@ -3,12 +3,6 @@ local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = ","
 
--- tab to next buffer in normal mode
-map('n', '<TAB>', ':bnext<CR>', opts)
-map('n', '<S-TAB>', ':bprevious<CR>', opts)
--- delete current buffer
-vim.api.nvim_set_keymap('n', '<S-c>', ':bdelete<CR>', opts)
-
 -- fast escaping
 map('i', 'qq', '<ESC>', opts)
 map('n', 'qq', '<ESC>', opts)

@@ -54,7 +54,7 @@ o.cmdheight                                    = 2
 o.showtabline                                  = 2
 o.ruler                                        = true
 o.updatetime                                   = 300  -- faster completion
-o.timeoutlen                                   = 1000  -- timeout to 1s
+o.timeoutlen                                   = 500  -- timeout to 1s
 w.relativenumber                               = true
 o.termguicolors                                = true
 
