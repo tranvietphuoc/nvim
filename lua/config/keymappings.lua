@@ -85,4 +85,4 @@ map('n', '<Leader>Dh', ':diffget //2<CR>', opts)
 map('n', '<Leader>Dl', ':diffget //3<CR>', opts)
 
 -- toggle term
-vim.g.toggleterm_terminal_mapping = '<leader>t'
+vim.g.toggleterm_terminal_mapping = '<S-t>'
