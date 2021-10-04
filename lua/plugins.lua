@@ -83,12 +83,13 @@ return require('packer').startup(function(use)
   use {'kabouzeid/nvim-lspinstall'}
   use 'kosayoda/nvim-lightbulb'
   use 'onsails/lspkind-nvim'
-	use {'glepnir/lspsaga.nvim'}
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp'
   use 'hrsh7th/cmp-buffer'
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
+  use 'hrsh7th/vim-vsnip'
+  use 'hrsh7th/cmp-vsnip'
 
   -- filetype.nvim
   use{'nathom/filetype.nvim'}

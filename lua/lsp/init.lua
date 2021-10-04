@@ -2,7 +2,6 @@ local function map(...) vim.api.nvim_set_keymap(...) end
 local function buf_map(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 local cmd = vim.cmd
 local opts = { noremap=true, silent=true }
-local function sign_define(...) vim.fn.sign_define(...) end
 
 require'nvim-lightbulb'.update_lightbulb {
   sign = {
@@ -25,44 +24,44 @@ require'nvim-lightbulb'.update_lightbulb {
 
 -- lsp kind
 require('lspkind').init({
+  symbol_map = {
+      Text = "",
+      Method = "",
+      Function = "",
+      Constructor = "",
+      Field = "ﰠ",
+      Variable = "",
+      Class = "ﴯ",
+      Interface = "",
+      Module = "",
+      Property = "ﰠ",
+      Unit = "塞",
+      Value = "",
+      Enum = "",
+      Keyword = "",
+      Snippet = "",
+      Color = "",
+      File = "",
+      Reference = "",
+      Folder = "",
+      EnumMember = "",
+      Constant = "",
+      Struct = "פּ",
+      Event = "",
+      Operator = "",
+      TypeParameter = ""
+    },
 })
 
--- lspsaga
-require'lspsaga'.init_lsp_saga()
--- jump diagnostic
-map('n', '[e', ':Lspsaga diagnostic_jump_next<CR>', opts)
-map('n', ']e', ':Lspsaga diagnostic_jump_prev<CR>', opts)
--- signature_help
-map('n', '<Leader>gs', ':Lspsaga signature_help<CR>', opts)
--- rename
-map('n', '<Leader>gr', ':Lspsaga rename<CR>', opts)
--- preview definition
-map('n', '<Leader>gd', ':Lspsaga preview_definition<CR>', opts)
--- show diagnostic
-map('n', '<Leader>cd', '<cmd>lua require\'lspsaga.diagnostic\'.show_line_diagnostics()<CR>', opts)
--- async lsp finder
-map('n', '<Leader>gf', ':Lspsaga lsp_finder<CR>', opts)
--- scroll down hover doc or scroll in definition preview
-map('n', '<C-f>',  '<Cmd>lua require(\'lspsaga.action\').smart_scroll_with_saga(1)<CR>', opts)
--- scroll up hover doc
-map('n', '<C-b>', '<Cmd>lua require(\'lspsaga.action\').smart_scroll_with_saga(-1)<CR>', opts)
-map('n', '<Leader>ca', ':Lspsaga code_action<CR>', opts)
-map('v', '<Leader>ca', ':<C-U>Lspsaga range_code_action<CR>', opts)
 cmd[[command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()]]
 
--- edit sign
-sign_define("LspDiagnosticsSignError", {texthl = "LspDiagnosticsSignError", text = "", numhl="LspDiagnosticsSignError"})
-sign_define("LspDiagnosticsSignWarning",{texthl = "LspDiagnosticsSignWarning", text = "", numhl="LspDiagnosticsSignWarning"})
-sign_define("LspDiagnosticsSignHint",{texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint"})
-sign_define("LspDiagnosticsSignInformation",{texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"})
-
 -- lsp config
-buf_map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-buf_map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-buf_map('n', 'K', ':Lspsaga hover_doc<CR>', opts)
-buf_map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-buf_map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-
+map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+map('n', 'gs', "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
 local function documentHighlight(client, bufnr)
   -- Set autocommands conditional on server_capabilities
