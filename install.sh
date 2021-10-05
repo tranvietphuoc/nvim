@@ -22,18 +22,16 @@ install_dependencies() {
     # install fzf
     brew install fzf
 
-	# install lua
-	brew install --HEAD luajit
-	brew install luarocks
+    # install lua
+    brew install --HEAD luajit
+    brew install luarocks
 
-	# install formatters and linters
-	pip3 install flake8 --no-cache-dir
-	pip3 install yapf --no-cache-dir
-	pip3 install black --no-cache-dir
-
-	npm install -g prettier
-
-	luarocks install --server=https://luarocks.org/dev luaformatter
+    # install formatters and linters
+    pip3 install flake8 --no-cache-dir
+    pip3 install yapf --no-cache-dir
+    pip3 install black --no-cache-dir
+    npm install -g prettier
+    luarocks install --server=https://luarocks.org/dev luaformatter
 
     pip3 install ranger-fm
     
@@ -46,18 +44,19 @@ install_dependencies() {
 }
 
 install_lsp() {
-	
 	npm install -g pyright vscode-css-languageserver-bin vscode-html-languageserver-bin
-    npm install -g typescript typescript-language-server graphql-language-service-cli
-    npm install -g dockerfile-language-server-nodejs vscode-json-languageserver 
-    npm install -g vls yaml-language-server bash-language-server 
+    	npm install -g typescript typescript-language-server graphql-language-service-cli
+    	npm install -g dockerfile-language-server-nodejs vscode-json-languageserver 
+    	npm install -g vls yaml-language-server bash-language-server 
 
 	pip3 install cmake-language-server
 }
 
 move_old_nvim() {
     echo "Your nvim config is already exists"
-    echo "Please go to '$HOME/.config/' and move nvim folder to nvim.old folder"
+    echo "Moving nvim to nvim.old..."
+    mv $HOME/.config/nvim $HOME/.config/nvim.old
+    # echo "Please go to '$HOME/.config/' and move nvim folder to nvim.old folder"
     exit
 }
 
@@ -66,14 +65,16 @@ move_old_nvim() {
 
 echo "Start installing..."
 mkdir -p $HOME/Downloads/dotfiles/
-git clone https://github.com/tranvietphuoc/dotfiles.git $HOME/Downloads/dotfiles/
-mv -v $HOME/Downloads/dotfiles/nvim $HOME/.config/
+git clone https://github.com/tranvietphuoc/nvim.git $HOME/Downloads/
+mv -v $HOME/Downloads/nvim $HOME/.config/
 cd $HOME/.config/nvim/
 
 # install dependencies
 echo "Installing dependencies..."
 
 install_dependencies
+
+echo "Installing languager server"
 install_lsp
 
 echo "Copying important files..."
