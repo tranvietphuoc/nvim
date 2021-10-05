@@ -1,7 +1,11 @@
 local util = require('lspconfig/util')
 local path = util.path
+local lsputils = require('lsp.utils')
 
-local function get_python_path(workspace)
+local M = {}
+
+
+function M.get_python_path(workspace)
   -- Use activated virtualenv.
   if vim.env.VIRTUAL_ENV then
     return path.join(vim.env.VIRTUAL_ENV, 'bin', 'python')
@@ -18,19 +22,25 @@ local function get_python_path(workspace)
   return vim.fn.exepath('python3') or vim.fn.exepath('python') or 'python'
 end
 
-require'lspconfig'.pyright.setup {
--- require'nvim_lsp'.pyright.setup {
-	cmd = {DATA .. "/lspinstall/python/node_modules/.bin/pyright-langserver", "--stdio"},
-  on_attach = require'lsp'.common_on_attach,
-  handlers = {
-    ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-      virtual_text = O.python.diagnostics.virtual_text,
-      signs = O.python.diagnostics.signs,
-      underline = O.python.diagnostics.underline,
-      update_in_insert = true
-    })
-  },
-  on_init = function(client)
-    client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
-  end
-}
+function M.setup()
+  require'lspconfig'.pyright.setup {
+  -- require'nvim_lsp'.pyright.setup {
+	  cmd = {DATA .. "/lspinstall/python/node_modules/.bin/pyright-langserver", "--stdio"},
+    on_attach = require'lsp'.common_on_attach,
+    -- handlers = {
+    --   ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    --     virtual_text = true,
+    --     signs = true,
+    --     underline = true,
+    --     update_in_insert = true
+    --   })
+    -- },
+    handlers = lsputils.lsp_diagnostics(),
+    on_init = function(client)
+      client.config.settings.python.pythonPath = M.get_python_path(client.config.root_dir)
+    end
+  }
+end
+
+return M
+

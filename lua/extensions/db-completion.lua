@@ -4,8 +4,8 @@ vim.cmd 'nnoremap <silent> <leader>DB :DBUIToggle<CR>'
 vim.cmd 'nnoremap <silent> <leader>DF :DBUIFindBuffer<CR>'
 vim.cmd 'nnoremap <silent> <leader>DR :DBUIRenameBuffer<CR>'
 vim.cmd 'nnoremap <silent> <leader>DL :DBUILastQueryInfo<CR>'
-vim.g.db_ui_save_location = O.database.save_location
-vim.g.db_ui_auto_execute_table_helpers = O.database.auto_execute
+vim.g.db_ui_save_location = "$HOME/.config/nvim/db/"
+vim.g.db_ui_auto_execute_table_helpers = 1
 
 
 vim.g.dbs = {

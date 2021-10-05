@@ -65,7 +65,8 @@ map('n', '<F9>', ":lua require'dap'.toggle_breakpoint()<CR>", opts)
 map('n', '<F10>', ":lua require'dap'.step_over()<CR>", opts)
 map('n', '<F11>', ":lua require'dap'.step_into()<CR>", opts)
 map('n', '<F12>', ":lua require'dap'.step_out()<CR>", opts)
-map('n', '<F3>', ":lua require'dap'.repl_open()<CR>", opts)
+map('n', '<F3>', ":lua require'dapui'.open()<CR>", opts)
+map('n', '<F4>', ":lua require'dapui'.toggle()<CR>", opts)
 map('n', '<leader>b', ":lua require'dap'.toggle_breakpoint()<CR>", opts)
 map('n', '<leader>B', ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
 map('n', '<leader>lp', ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opts)
@@ -80,3 +81,6 @@ map('n', '<Leader>Dl', ':diffget //3<CR>', opts)
 
 -- toggle term
 vim.g.toggleterm_terminal_mapping = '<S-t>'
+
+-- close buffer without save
+map('n', 'bq', ':bd!<CR>', opts)

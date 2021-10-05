@@ -138,8 +138,7 @@ You can config your settings in `user-config.lua` file
 * More keys mapping is instantiated which `WhichKey` plugin
 
 ## Todo
-- [ ] Config debugger using `nvim-dap`
-- [ ] Config `which-key`
+- [ ] Config debugger using `nvim-dap` for `C/C++/Rust`
 
 
 Thanks to all authors of [these plugin](./lua/plugins.lua).

@@ -1,11 +1,23 @@
+local fn = vim.fn
+local execute = vim.api.nvim_command
+
+local function packer_init()
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    execute('!git clone https://github.com/wbthomason/packer.nvim '.. install_path)
+  end
+  vim.cmd 'packadd! packer.nvim'
+  vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
+
+end
+
+packer_init()
 
 -- general
-require('plugins')
-require('config.global')
-require('config.user')
-require('config')
+require('config.autocmd').setup()
+require('config').setup()
+require('plugins').setup()
 require('config.keymappings')
-require('config.colorscheme')
 
 -- extensions
 require('extensions')
@@ -18,7 +30,7 @@ require('extensions.devicon')
 require('extensions.doge')
 require('extensions.easy-align')
 require('extensions.emmet')
-require('extensions.formatters')
+require('extensions.formatters').setup()
 require('extensions.fugitive')
 require('extensions.galaxy-line')
 require('extensions.git-blame')
@@ -29,32 +41,36 @@ require('extensions.signify')
 require('extensions.tagbar')
 require('extensions.telescope')
 require('extensions.tree')
-require('extensions.treesitter')
 require('extensions.ts-rainbow')
 require('extensions.whichkey')
 -- require('extensions.zen-mode')
 require('extensions.terminal')
+require('extensions.lightbulb')
 
 -- lsp config
-require('lsp')
-require('lsp.completion')  -- autocomplete
+require('lsp').setup()
+require('extensions.cmp').setup()  -- autocomplete
 
 -- lsp server
-require('lsp.bash')
-require('lsp.clangd')
-require('lsp.cmake')
-require('lsp.css')
-require('lsp.docker')
-require('lsp.go')
-require('lsp.html')
-require('lsp.json')
-require('lsp.python')
-require('lsp.rust')
-require('lsp.tsserver')
-require('lsp.vim')
+require('lsp.bash').setup()
+require('lsp.clangd').setup()
+require('lsp.cmake').setup()
+require('lsp.css').setup()
+require('lsp.docker').setup()
+require('lsp.go').setup()
+require('lsp.html').setup()
+require('lsp.json').setup()
+require('lsp.python').setup()
+require('lsp.rust').setup()
+require('lsp.tsserver').setup()
+require('lsp.vim').setup()
 -- require('lsp.vue-lsp')
-require('lsp.yaml')
-require('lsp.lua')
-require('lsp.svelte')
-require('lsp.tailwindcss')
+require('lsp.yaml').setup()
+require('lsp.lua').setup()
+require('lsp.svelte').setup()
+require('lsp.tailwindcss').setup()
 
+-- debugger
+require('debugger').setup()
+require('debugger.dapinstall').setup()
+require('debugger.ui').setup()
