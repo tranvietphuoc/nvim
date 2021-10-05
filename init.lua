@@ -20,36 +20,14 @@ require('plugins').setup()
 require('config.keymappings')
 
 -- extensions
-require('extensions')
-require('extensions.autopairs')
-require('extensions.barbar')
-require('extensions.colorizer')
-require('extensions.dash')
-require('extensions.db-completion')
-require('extensions.devicon')
-require('extensions.doge')
-require('extensions.easy-align')
-require('extensions.emmet')
-require('extensions.formatters').setup()
-require('extensions.fugitive')
-require('extensions.galaxy-line')
-require('extensions.git-blame')
-require('extensions.git-ui')
-require('extensions.indent')
-require('extensions.markdown')
-require('extensions.signify')
-require('extensions.tagbar')
-require('extensions.telescope')
-require('extensions.tree')
-require('extensions.ts-rainbow')
-require('extensions.whichkey')
--- require('extensions.zen-mode')
-require('extensions.terminal')
-require('extensions.lightbulb')
+require('extensions').setup()
 
 -- lsp config
 require('lsp').setup()
 require('extensions.cmp').setup()  -- autocomplete
+
+-- formatter
+require('extensions.formatters').setup()
 
 -- lsp server
 require('lsp.bash').setup()

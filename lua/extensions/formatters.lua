@@ -45,6 +45,9 @@ function M.setup()
     filetype = {
       python = { black },
       javascript = { prettier },
+      typescript = { prettier },
+      javascriptreact = { prettier },
+      typescriptreact = { prettier },
       html = {prettier},
       css = {prettier},
       rust = { rustfmt },

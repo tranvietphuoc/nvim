@@ -10,11 +10,16 @@ function M.auto_cmds()
   vim.api.nvim_exec([[
   augroup FormatAutogroup
     autocmd!
-    autocmd BufWritePost *.js,*.rs,*.lua FormatWrite
+    autocmd BufWritePost *.js,*.ts,*.jsx,*.tsx,*.rs,*.lua,*.py,*.go,*.c,*.cpp,*.h,*.hpp,*.html,*.css FormatWrite
   augroup END
   ]], true)
 
   cmd[[command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()]]
+
+  cmd 'autocmd! TermOpen term://* lua set_terminal_keymaps()'
+
+  cmd 'autocmd User TelescopePreviewerLoaded setlocal wrap'
+
 end
 
 function M.setup()

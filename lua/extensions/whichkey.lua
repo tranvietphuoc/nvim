@@ -1,4 +1,10 @@
-local wk = require('which-key')
+local M = {}
 
-wk.register({
-})
+function M.setup()
+  local wk = require('which-key')
+  wk.register({
+
+  })
+end
+
+return M
