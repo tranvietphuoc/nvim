@@ -90,7 +90,7 @@ to open the editor first, then run command:
 then install the LSP with [LspInstall](https://github.com/kabouzeid/nvim-lspinstall)
 
 
-You can config your settings in `user-config.lua` file
+You can config your settings in `config/init.lua` file
 
 
 ## Some basic keys mapping of this configuration.
