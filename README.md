@@ -120,10 +120,9 @@ You can config your settings in `config/init.lua` file
 | `<leader>Gd`    | `:Gvdiffsplit<CR>`                      | `n`          | *open fugitive diff*                     |
 | `<leader>Dh`    | `:diffget //2<CR>`                      | `n`          | *to buffer diff left*                    |
 | `<leader>Dl`    | `:diffget //3<CR>`                      | `n`          | *to buffer diff right*                   |
-| `K`             | `:Lspsaga hover_doc<CR>`                | `n`          | *hover doc of lsp*                       |
+| `K`             | `<cmd>lua vim.lsp.buf.hover()<CR>`      | `n`          | *hover doc of lsp*                       |
 | `gd`            | `<Cmd>lua vim.lsp.buf.definition()<CR>` | `n`          | *go to definition*                       |
 | `gD`            | `<Cmd>lua vim.lsp.buf.declaration()<CR>`| `n`          | *go to declaration*                      |
-| `<leader>gd`    | `:Lspsaga preview_definition<CR>`       | `n`          | *lspsaga preview definition*             |
 | `K`             | `:move \'<-2<CR>gv-gv`                  | `v` or `x`   | *move lines of code up*                  |
 | `J`             | `:move \'>+1<CR>gv-gv`                  | `v` or `x`   | *move lines of code down*                |
 | `<C-h>`         | `:wincmd h<CR>`                         | `n`          | *move between split views*               |
