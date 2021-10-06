@@ -49,6 +49,7 @@ function M.setup()
       javascriptreact = { prettier },
       typescriptreact = { prettier },
       html = {prettier},
+      htmldjango = { prettier },
       css = {prettier},
       rust = { rustfmt },
       cpp = { clangfmt },

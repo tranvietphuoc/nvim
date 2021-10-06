@@ -62,6 +62,8 @@ npm install -g neovim
 
 ## How to use it?
 
+### 1. Install.
+
 Run this command if you use fish shell:
 
 ```
@@ -90,10 +92,18 @@ to open the editor first, then run command:
 then install the LSP with [LspInstall](https://github.com/kabouzeid/nvim-lspinstall)
 
 
+**For debuggers install**
+
+I use [nvim-dap](https://github.com/mfussenegger/nvim-dap) as a debugger adapter. Currently, this configuration just can debug with `Python` and `C/C++/Rust`
+You need to install `debugpy` and `vscode-lldb` using [DAPinstall](https://github.com/Pocco81/DAPInstall.nvim).
+
+**Notice here:** You need to edit your path to debugger adapter of `vscode-lldb` in the `./lua/debugger/init.lua` file.
+
+
 You can config your settings in `config/init.lua` file
 
 
-## Some basic keys mapping of this configuration.
+### 2. Some basic keys mapping of this configuration.
 
 ---
 
@@ -134,10 +144,24 @@ You can config your settings in `config/init.lua` file
 
 ---
 
-* More keys mapping is instantiated which `WhichKey` plugin
+* More keys mapping is instantiated which `Which-Key` plugin
+
+
+
+### 3. For debugging.
+
+* Toggle breakpoint using `F9` or `<leader>b`
+* Trigger debugging UI using `F3`
+* Toggle debugging UI using `F4`
+* Launch debugger using `F5`
+* Step into using `F11`
+* Step out using `F12`
+* Step over using `F10`
+
+
 
 ## Todo
-- [ ] Config debugger using `nvim-dap` for `C/C++/Rust`
+- [ ] Config debugger `Javascript/Typescript`
 
 
 Thanks to all authors of [these plugin](./lua/plugins.lua).

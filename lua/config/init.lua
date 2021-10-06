@@ -20,7 +20,10 @@ function M.setup()
   cmd "set nofoldenable"
   cmd "set colorcolumn=99999"
   cmd "set inccommand=split"
+  -- cmd "syntax on"
+  cmd "colorscheme onedark"
   opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
+ 
   g.did_load_filetypes                           = 1
   o.foldmethod                                   = 'expr'
   o.foldexpr                                     = 'nvim_treesitter#foldexpr()'

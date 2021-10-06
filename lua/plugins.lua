@@ -6,14 +6,8 @@ function M.setup()
     -- packer can manage itself as an optional plugin
     use {'wbthomason/packer.nvim'}
     -- colorscheme
-    use {
-      "projekt0n/github-nvim-theme",
-      config = function()
-        require("github-theme").setup({
-          theme_style = "dark",
-        })
-      end
-    }
+    use {'christianchiarulli/nvcode-color-schemes.vim'}
+    
     -- git
     use {'mhinz/vim-signify'}
     use {'tpope/vim-fugitive'}
