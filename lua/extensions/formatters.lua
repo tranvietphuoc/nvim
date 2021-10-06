@@ -40,6 +40,18 @@ function M.setup()
     }
   end
 
+  local stylua = function ()
+    return {
+      exe = 'stylua',
+      args = {
+        '--config-path '
+        .. ".stylua.toml",
+        "-",
+      },
+      stdin = true,
+    }
+  end
+
   -- config
   require("formatter").setup({
     filetype = {
@@ -57,7 +69,7 @@ function M.setup()
       cc= { clangfmt },
       h = { clangfmt },
       go = { gofmt },
-      lua = { luafmt },
+      lua = { stylua },
     }
   })
 

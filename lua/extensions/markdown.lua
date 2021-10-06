@@ -1,4 +1,4 @@
-vim.g.markdown_fenced_languages = {'html', 'python', 'bash=sh', 'javascript'}
+vim.g.markdown_fenced_languages = { "html", "python", "bash=sh", "javascript" }
 vim.g.markdown_syntax_conceal = 0
 
 -- markdown previewer
@@ -8,4 +8,4 @@ vim.g.markdown_syntax_conceal = 0
 -- vim.cmd 'nmap <Leader>m <Plug>MarkdownPreview'
 -- vim.cmd 'nmap <Leader>M <Plug>MarkdownPreviewStop'
 
-vim.cmd('let g:mkdp_filetypes = [\'markdown\']')
+vim.cmd("let g:mkdp_filetypes = ['markdown']")
