@@ -22,15 +22,17 @@ This configuration supports (includes syntax highlighting and autocompletion) fo
 
 You need to install these tools first:
 
-- `neovim`
+- [pyenv](https://github.com/pyenv/pyenv)
+- [neovim](https://github.com/neovim/neovim)
 - `python3.+`
 - `nodejs` and `npm`
-- `luajit`
-- `gitui`
+- [luajit](https://luajit.org/luajit.html)
+- [gitui](https://github.com/extrawurst/gitui)
 - [lua-language-server](<https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)>)
 - [rust-analyzer](https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary)
 - [gopls](https://github.com/golang/tools/blob/master/gopls/doc/vim.md)
 - [clangd](https://clangd.llvm.org/installation.html)
+- [stylua](https://github.com/JohnnyMorganz/StyLua)
 
 ### Neovim
 
@@ -124,7 +126,7 @@ You can config your settings in `config/init.lua` file
 | `<leader>z`     | `:ZenMode<CR>`                          | `n`          | *active zen mode*                        |
 | `<leader>m`     | `<Plug>MarkdownPreview`                 | `n`          | *live markdown preview*                  |
 | `<leader>M`     | `<Plug>MarkdownPreviewStop`             | `n`          | *stop markdown preview*                  |
-| `<leader>G`     | `<CMD>lua _G.__fterm_gitui()<CR>`       | `n`          | *trigger gitui*                          |
+| `<leader>G`     | `<CMD>lua _G.__fterm_gitui()<CR>`       | `n`          | *trigger gitui in nvim*                  |
 | `<leader>l`     | `:Bracey<CR>`                           | `n`          | *live html server*                       |
 | `<leader>L`     | `:BraceyStop<CR>`                       | `n`          | *stop html server*                       |
 | `<leader>Gd`    | `:Gvdiffsplit<CR>`                      | `n`          | *open fugitive diff*                     |
