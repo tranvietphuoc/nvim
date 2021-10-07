@@ -35,9 +35,13 @@ function M.setup()
     bo.tabstop = 4 -- Insert 2 spaces for a tab
     bo.shiftwidth = 4 -- Change the number of space characters inserted for indentation
     bo.expandtab = true -- Converts tabs to spaces
+    bo.softtabstop = 4
+    o.breakindent = true
+    o.scrolloff = 8
     --                            vim.o.compatible = true
     o.pumheight = 10
-    o.clipboard = "unnamedplus"
+    o.lazyredraw = true
+    o.clipboard = "unnamed,unnamedplus"
     wo.signcolumn = "yes:1" -- alway show sign column
     o.backup = false
     o.swapfile = false
@@ -57,6 +61,7 @@ function M.setup()
     wo.cursorline = true
     wo.wrap = false -- display long lines as just one
     o.mouse = "a"
+    wo.scrolloff = 8
     o.showmode = false
     o.cmdheight = 2
     o.showtabline = 2

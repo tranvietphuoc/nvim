@@ -2,13 +2,10 @@ local M = {}
 local cmd = vim.cmd
 
 function M.auto_cmds()
-    cmd(
-        "autocmd BufRead,BufNewFile *.js,*.ts,*.tsx,*.jsx,*.json setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2"
-    )
-    cmd(
-        "autocmd BufRead,BufNewFile *.html,*.css,*.scss,*.yml,*.svelte setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2"
-    )
-    cmd("autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=8 shiftwidth=8")
+    cmd("autocmd BufRead,BufNewFile *.js,*.ts,*.tsx,*.jsx,*.json setlocal expandtab ts=2 sw=2 sts=2")
+    cmd("autocmd BufRead,BufNewFile *.html,*.css,*.scss,*.yml,*.svelte setlocal expandtab ts=2 sw=2 sts=2")
+    cmd("autocmd BufNewFile,BufRead *.go setlocal noexpandtab ts=8 sw=8")
+    cmd("autocmd BufRead,BufNewFile *.lua setlocal expandtab ts=4 sw=4 sts=4")
     cmd("autocmd BufWritePost plugins.lua PackerCompile")
     cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
     vim.api.nvim_exec(
