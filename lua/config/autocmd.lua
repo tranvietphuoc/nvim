@@ -25,6 +25,7 @@ function M.auto_cmds()
 
     cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
     cmd("autocmd User TelescopePreviewerLoaded setlocal wrap")
+    cmd("autocmd FileType html,css,htmldjango,sass EmmetInstall")
 end
 
 function M.setup()

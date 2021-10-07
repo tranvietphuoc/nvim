@@ -18,15 +18,15 @@ require("config").setup()
 require("plugins").setup()
 require("config.keymappings").setup()
 
--- extensions
-require("extensions").setup()
+-- ext
+require("ext").setup()
 
 -- lsp config
 require("lsp").setup()
-require("extensions.cmp").setup() -- autocomplete
+require("ext.cmp").setup() -- autocomplete
 
--- formatter
-require("extensions.formatters").setup()
+-- code formatter
+require("ext.formatters").setup()
 
 -- lsp server
 require("lsp.bash").setup()
@@ -49,5 +49,3 @@ require("lsp.tailwindcss").setup()
 
 -- debugger
 require("debugger").setup()
-require("debugger.dapinstall").setup()
-require("debugger.ui").setup()

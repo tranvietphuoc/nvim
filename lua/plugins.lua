@@ -16,29 +16,54 @@ function M.setup()
         })
 
         -- git
-        use({ "mhinz/vim-signify" })
-        use({ "tpope/vim-fugitive" })
+        use({
+            "mhinz/vim-signify",
+            config = function()
+                require("ext.signify").setup()
+            end,
+        })
+        use({
+            "tpope/vim-fugitive",
+            config = function()
+                require("ext.fugitive").setup()
+            end,
+        })
         use({ "tpope/vim-rhubarb" })
         use({ "junegunn/gv.vim" })
         -- git blame
-        use({ "f-person/git-blame.nvim" })
+        use({
+            "f-person/git-blame.nvim",
+            config = function()
+                require("ext.git-blame").setup()
+            end,
+        })
 
         -- treesitter
         use({
             "nvim-treesitter/nvim-treesitter",
             run = ":TSUpdate",
             config = function()
-                require("extensions.treesitter").setup()
+                require("ext.treesitter").setup()
             end,
         })
         -- multiple cursors
         use({ "terryma/vim-multiple-cursors" })
 
         -- emmet
-        use({ "mattn/emmet-vim" })
+        use({
+            "mattn/emmet-vim",
+            config = function()
+                require("ext.emmet").setup()
+            end,
+        })
 
         -- markdown
-        use({ "tpope/vim-markdown" })
+        use({
+            "tpope/vim-markdown",
+            config = function()
+                require("ext.markdown").setup()
+            end,
+        })
         use({ "iamcco/markdown-preview.nvim", run = ":call mkdp#util#install()" })
         use({ "christoomey/vim-tmux-navigator" })
 
@@ -60,7 +85,12 @@ function M.setup()
         use({ "rust-lang/rust.vim" })
 
         -- vim easy align
-        use({ "junegunn/vim-easy-align" })
+        use({
+            "junegunn/vim-easy-align",
+            config = function()
+                require("ext.easy-align").setup()
+            end,
+        })
 
         -- bracey vim (a live server)
         use({ "turbio/bracey.vim", run = "npm install --prefix server" })
@@ -68,7 +98,12 @@ function M.setup()
         -- lsp
         use({ "neovim/nvim-lspconfig" })
         use({ "kabouzeid/nvim-lspinstall" })
-        use({ "kosayoda/nvim-lightbulb" })
+        use({
+            "kosayoda/nvim-lightbulb",
+            config = function()
+                require("ext.lightbulb").setup()
+            end,
+        })
         use({ "onsails/lspkind-nvim" })
         use({ "hrsh7th/nvim-cmp" }) -- Autocompletion plugin
         use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp'
@@ -93,16 +128,31 @@ function M.setup()
         use({ "kristijanhusak/vim-dadbod-ui" })
 
         -- ts-rainbow
-        use({ "p00f/nvim-ts-rainbow" })
+        use({
+            "p00f/nvim-ts-rainbow",
+            config = function()
+                require("ext.ts-rainbow").setup()
+            end,
+        })
 
         -- colorizer
-        use({ "norcalli/nvim-colorizer.lua" })
+        use({
+            "norcalli/nvim-colorizer.lua",
+            config = function()
+                require("ext.colorizer").setup()
+            end,
+        })
 
         -- auto-pairs
         use({ "windwp/nvim-autopairs" })
 
         -- nvim-web-devicons
-        use({ "kyazdani42/nvim-web-devicons" })
+        use({
+            "kyazdani42/nvim-web-devicons",
+            config = function()
+                require("ext.devicon").setup()
+            end,
+        })
 
         -- barbar
         use({ "romgrk/barbar.nvim" })
@@ -115,17 +165,31 @@ function M.setup()
             "kyazdani42/nvim-tree.lua",
             require = "kyazdani42/nvim-web-devicons",
             config = function()
-                require("nvim-tree").setup({})
+                require("ext.tree").setup()
             end,
         })
         -- dashboard
-        use({ "glepnir/dashboard-nvim" })
+        use({
+            "glepnir/dashboard-nvim",
+            config = function()
+                require("ext.dash").setup()
+            end,
+        })
 
         -- documentation generator
-        use({ "kkoomen/vim-doge", run = ":call doge#install()" })
+        use({
+            "kkoomen/vim-doge",
+            run = ":call doge#install()",
+        })
 
         -- indent
-        use({ "lukas-reineke/indent-blankline.nvim", branch = "master" })
+        use({
+            "lukas-reineke/indent-blankline.nvim",
+            branch = "master",
+            config = function()
+                require("ext.indent").setup()
+            end,
+        })
         use({
             "folke/zen-mode.nvim",
             config = function()
@@ -177,7 +241,12 @@ function M.setup()
             -- end,
         })
 
-        use({ "akinsho/toggleterm.nvim" })
+        use({
+            "akinsho/toggleterm.nvim",
+            config = function()
+                require("ext.terminal").setup()
+            end,
+        })
         use({
             "numtostr/FTerm.nvim",
             config = function()
