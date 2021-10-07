@@ -115,9 +115,9 @@ You can config your settings in `config/init.lua` file
 | `<leader>/`     | `:CommentToggle<CR>`                    | **all mode** | *Comment out codes*                      |
 | `<leader>T`     | `:TagbarToggle<CR>`                     | `n`          | *Trigger tagbar*                         |
 | `<leader>n`     | `:NvimTreeToggle<CR>`                   | `n`          | *Trigger nvim-tree*                      |
-| `<Space><Right>`| `:BufferNext<CR>`                       | `n`          | *Move to next tab*                       |
-| `<Space><Left>` | `:BufferPrevious<CR>`                   | `n`          | *Move to previous tab*                   |
-|  `<Space>c`     | `:BufferClose<CR>`                      | `n`          | *Close tab*                              |
+| `<Tab>`         | `:BufferNext<CR>`                       | `n`          | *Move to next tab*                       |
+| `<S-Tab>`       | `:BufferPrevious<CR>`                   | `n`          | *Move to previous tab*                   |
+|  `<S-c>`        | `:BufferClose<CR>`                      | `n`          | *Close tab*                              |
 |     `qq`        | `<Esc>`                                 | **all mode** | *Esc*                                    |
 | `<leader>f`     | `<cmd>Telescope find_files<CR>`         | `n`          | *find files*                             |
 | `<leader>F`     | `<cmd>Telescope live_grep<CR>`          | `n`          | *find words*                             |
