@@ -17,6 +17,14 @@ function M.setup()
             enabled = false,
             -- Text to show at virtual text
             text = "💡",
+            hl_mode = "replace",
+        },
+        status_text = {
+            enabled = false,
+            -- Text to provide when code actions are available
+            text = "💡",
+            -- Text to provide when no actions are available
+            text_unavailable = "",
         },
     })
 end

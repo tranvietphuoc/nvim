@@ -11,6 +11,7 @@ function M.setup()
     require("ext.autopairs").setup()
     require("ext.barbar").setup()
     require("ext.doge").setup()
+    -- require("ext.lightbulb").setup()
 end
 
 return M
