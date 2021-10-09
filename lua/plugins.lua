@@ -105,6 +105,7 @@ function M.setup()
             end,
         })
         use({ "onsails/lspkind-nvim" })
+        -- auto-completion
         use({ "hrsh7th/nvim-cmp" }) -- Autocompletion plugin
         use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp'
         use({ "hrsh7th/cmp-buffer" })
@@ -268,14 +269,6 @@ function M.setup()
             "folke/which-key.nvim",
             config = function()
                 require("which-key").setup()
-            end,
-        })
-
-        use({
-            "michaelb/sniprun",
-            run = "bash ./install.sh",
-            config = function()
-                require("ext.sniprun.lua").setup()
             end,
         })
     end)

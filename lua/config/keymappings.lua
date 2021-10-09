@@ -81,11 +81,6 @@ function M.setup()
 
     -- close buffer without save
     map("n", "bq", ":bd!<CR>", opts)
-
-    -- sniprun
-    map("n", "<leader>r", "<Plug>SnipRun<CR>", { silent = true })
-    map("n", "<leader>o", "<Plug>SnipRunOperator<CR>", { silent = true })
-    map("v", "r", "<Plug>SnipRun<CR>", { silent = true })
 end
 
 return M

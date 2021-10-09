@@ -1,5 +1,6 @@
 -- luasnip setup
 local luasnip = require("luasnip")
+local lspconfig = require("lspconfig")
 local M = {}
 
 function M.setup()
@@ -16,7 +17,8 @@ function M.setup()
     cmp.setup({
         snippet = {
             expand = function(args)
-                luasnip.lsp_expand(args.body)
+                luasnip.lsp_expand(args.body) -- for luasnip
+                -- vim.fn["vsnip#anonymous"](args.body) -- for vsnip
             end,
         },
         mapping = {
@@ -31,18 +33,20 @@ function M.setup()
                 select = true,
             }),
             ["<Tab>"] = function(fallback)
-                if vim.fn.pumvisible() == 1 then
-                    vim.fn.feedkeys(t("<C-n>"), "n")
-                elseif luasnip.expand_or_jumpable() then
+                if cmp.visible() then
+                    cmp.select_next_item()
+                elseif luasnip and luasnip.expand_or_jumpable() then
                     vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
+                elseif check_backspace() then
+                    vim.fn.feedkeys(t("<Tab>"), "")
                 else
                     fallback()
                 end
             end,
             ["<S-Tab>"] = function(fallback)
-                if vim.fn.pumvisible() == 1 then
-                    vim.fn.feedkeys(t("<C-p>"), "n")
-                elseif luasnip.jumpable(-1) then
+                if cmp.visible() then
+                    cmp.select_prev_item()
+                elseif luasnip and luasnip.jumpable(-1) then
                     vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
                 else
                     fallback()
@@ -50,12 +54,15 @@ function M.setup()
             end,
         },
         sources = {
-            { name = "nvim_lsp" },
-            { name = "vsnip" },
             { name = "luasnip" },
+            { name = "nvim_lsp" },
+            -- { name = "vsnip" },
             { name = "treesitter" },
         },
         completion = { completeopt = "menu,menuone,noinsert" },
+        formatting = {
+            format = require("lspkind").cmp_format(),
+        },
     })
     -- Autopairs
     require("nvim-autopairs.completion.cmp").setup({
@@ -63,6 +70,30 @@ function M.setup()
         map_complete = true,
         auto_select = true,
     })
+
+    local lsp_servers = {
+        "clangd",
+        "pyright",
+        "rust_analyzer",
+        "gopls",
+        "tsserver",
+        "cssls",
+        "sumneko_lua",
+        "vuels",
+        "yamlls",
+        "vimls",
+        "tailwindcss",
+        "svelte",
+        "jsonls",
+        "dockerls",
+        "html",
+    }
+    local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    for _, server in ipairs(lsp_servers) do
+        lspconfig[server].setup({
+            capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        })
+    end
 end
 
 return M
