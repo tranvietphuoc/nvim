@@ -40,6 +40,7 @@ function M.setup()
     o.scrolloff = 8
     --                            vim.o.compatible = true
     o.pumheight = 10
+    o.pumblend = 17
     o.lazyredraw = true
     o.clipboard = "unnamed,unnamedplus"
     wo.signcolumn = "yes:1" -- alway show sign column
@@ -63,7 +64,7 @@ function M.setup()
     o.mouse = "a"
     wo.scrolloff = 8
     o.showmode = false
-    o.cmdheight = 2
+    o.cmdheight = 1
     o.showtabline = 2
     o.ruler = true
     o.updatetime = 300 -- faster completion
