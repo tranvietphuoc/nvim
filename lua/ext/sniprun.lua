@@ -44,5 +44,3 @@ function M.setup()
         --# possible values are 'none', 'single', 'double', or 'shadow'
     })
 end
-
-return M

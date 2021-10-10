@@ -271,6 +271,13 @@ function M.setup()
                 require("which-key").setup()
             end,
         })
+        use({
+            "michaelb/sniprun",
+            run = "bash ./install.sh",
+            config = function()
+                require("ext.sniprun").setup()
+            end,
+        })
     end)
 end
 
