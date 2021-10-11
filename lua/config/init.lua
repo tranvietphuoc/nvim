@@ -40,7 +40,7 @@ function M.setup()
     o.scrolloff = 8
     --                            vim.o.compatible = true
     o.pumheight = 10
-    o.pumblend = 17
+    o.pumblend = 3
     o.lazyredraw = true
     o.clipboard = "unnamed,unnamedplus"
     wo.signcolumn = "yes:1" -- alway show sign column

@@ -17,7 +17,7 @@ function M.setup()
             layout_strategy = "horizontal",
             layout_config = {
                 width = 0.8,
-                prompt_position = "top",
+                prompt_position = "bottom",
                 preview_cutoff = 120,
                 horizontal = {
                     mirror = false,
