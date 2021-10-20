@@ -8,7 +8,7 @@ function M.setup()
 
     local colors = {
         fg = "#ffffE0",
-        bg = "#31353F",
+        bg = "#454545",
         yellow = "#DCDCAA",
         dark_yellow = "#D7BA7D",
         cyan = "#4EC9B0",

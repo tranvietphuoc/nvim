@@ -30,7 +30,7 @@ function M.setup()
             update_cwd = false,
             -- list of buffer names / filetypes that will not update the cwd if the file isn't found under the current root directory
             -- only relevant when `update_focused_file.update_cwd` is true and `update_focused_file.enable` is true
-            ignore_list = {},
+            ignore_list = { ".venv", "node_modules", ".pytest_cache", ".git" },
         },
         update_to_buf_dir = {
             -- enable the feature
@@ -64,6 +64,8 @@ function M.setup()
             },
         },
     })
+
+    vim.g.nvim_tree_ignore = { ".git", "node_modules", ".cache" }
 end
 
 return M

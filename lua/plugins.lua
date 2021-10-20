@@ -6,12 +6,23 @@ function M.setup()
         -- packer can manage itself as an optional plugin
         use({ "wbthomason/packer.nvim" })
         -- colorscheme
-        -- use {'christianchiarulli/nvcode-color-schemes.vim'}
+
         use({
-            "Th3Whit3Wolf/onebuddy",
-            requires = { "tjdevries/colorbuddy.vim" },
+            "EdenEast/nightfox.nvim",
             config = function()
-                require("colorbuddy").colorscheme("onebuddy")
+                local nightfox = require("nightfox")
+                nightfox.setup({
+                    fox = "nordfox", -- change the colorscheme to use nordfox
+                    styles = {
+                        comments = "italic", -- change style of comments to be italic
+                        keywords = "bold", -- change style of keywords to be bold
+                        functions = "italic,bold", -- styles can be a comma separated list
+                    },
+                    inverse = {
+                        match_paren = true, -- inverse the highlighting of match_parens
+                    },
+                })
+                nightfox.load()
             end,
         })
 
