@@ -32,7 +32,7 @@ function M.setup()
                 behavior = cmp.ConfirmBehavior.Replace,
                 select = true,
             }),
-            ["<Tab>"] = function(fallback)
+            ["<S-j>"] = function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
                 elseif luasnip and luasnip.expand_or_jumpable() then
@@ -43,7 +43,7 @@ function M.setup()
                     fallback()
                 end
             end,
-            ["<S-Tab>"] = function(fallback)
+            ["<S-k>"] = function(fallback)
                 if cmp.visible() then
                     cmp.select_prev_item()
                 elseif luasnip and luasnip.jumpable(-1) then
@@ -65,12 +65,10 @@ function M.setup()
         },
     })
     -- Autopairs
-    require("nvim-autopairs.completion.cmp").setup({
-        map_cr = true,
-        map_complete = true,
-        auto_select = true,
-    })
+    local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
+    -- lsp servers
     local lsp_servers = {
         "clangd",
         "pyright",

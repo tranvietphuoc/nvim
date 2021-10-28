@@ -289,6 +289,9 @@ function M.setup()
                 require("ext.sniprun").setup()
             end,
         })
+
+        -- github copilot
+        use({ "github/copilot.vim" })
     end)
 end
 
