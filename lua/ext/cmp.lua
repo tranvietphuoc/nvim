@@ -32,7 +32,7 @@ function M.setup()
                 behavior = cmp.ConfirmBehavior.Replace,
                 select = true,
             }),
-            ["<S-j>"] = function(fallback)
+            ["<Right>"] = function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
                 elseif luasnip and luasnip.expand_or_jumpable() then
@@ -43,7 +43,7 @@ function M.setup()
                     fallback()
                 end
             end,
-            ["<S-k>"] = function(fallback)
+            ["<Left>"] = function(fallback)
                 if cmp.visible() then
                     cmp.select_prev_item()
                 elseif luasnip and luasnip.jumpable(-1) then

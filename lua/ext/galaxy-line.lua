@@ -99,7 +99,7 @@ function M.setup()
             provider = "GitBranch",
             condition = condition.check_git_workspace,
             separator = " ",
-            icon = "  ",
+            icon = "  ",
             separator_highlight = { "NONE", colors.bg },
             highlight = { colors.orange, colors.bg },
         },
