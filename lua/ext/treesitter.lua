@@ -2,7 +2,7 @@ local M = {}
 function M.setup()
     require("nvim-treesitter.configs").setup({
         autopairs = {
-            enable = false,
+            enable = true,
         },
         indent = {
             enable = true,

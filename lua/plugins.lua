@@ -282,6 +282,8 @@ function M.setup()
                 require("which-key").setup()
             end,
         })
+
+        -- snip runner
         use({
             "michaelb/sniprun",
             run = "bash ./install.sh",

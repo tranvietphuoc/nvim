@@ -18,7 +18,7 @@ This configuration supports (includes syntax highlighting and autocompletion) fo
 - `Docker`
 - `Yaml`
 
-## Prequisition:
+## Prerequisites:
 
 You need to install these tools first:
 

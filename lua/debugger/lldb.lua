@@ -7,7 +7,7 @@ function M.setup()
         local stdout = vim.loop.new_pipe(false)
         local stderr = vim.loop.new_pipe(false)
         -- CHANGE THIS!
-        local cmd = "/Users/phuoc/.vscode/extensions/vadimcn.vscode-lldb-1.6.8/adapter/codelldb"
+        local cmd = "/Users/phuoc/.vscode/extensions/vadimcn.vscode-lldb-1.6.10/adapter/codelldb"
         local handle, pid_or_err
         local opts = {
             stdio = { nil, stdout, stderr },
@@ -61,7 +61,7 @@ function M.setup()
                 return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
             end,
             cwd = "${workspaceFolder}",
-            stopOnEntry = false,
+            stopOnEntry = true,
         },
     }
 
