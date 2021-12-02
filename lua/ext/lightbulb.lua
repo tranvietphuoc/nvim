@@ -8,19 +8,20 @@ function M.setup()
             priority = 10,
         },
         float = {
-            enabled = false,
+            enabled = true,
             -- Text to show in the popup float
             text = "💡",
+
             win_opts = {},
         },
         virtual_text = {
-            enabled = false,
+            enabled = true,
             -- Text to show at virtual text
             text = "💡",
             hl_mode = "replace",
         },
         status_text = {
-            enabled = false,
+            enabled = true,
             -- Text to provide when code actions are available
             text = "💡",
             -- Text to provide when no actions are available
