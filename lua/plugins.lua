@@ -108,7 +108,7 @@ function M.setup()
 
         -- lsp
         use({ "neovim/nvim-lspconfig" })
-        use({ "kabouzeid/nvim-lspinstall" })
+        use({ "williamboman/nvim-lsp-installer" })
         use({
             "kosayoda/nvim-lightbulb",
             config = function()

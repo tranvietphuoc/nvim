@@ -3,7 +3,7 @@ local M = {}
 local util = require("lspconfig/util")
 function M.setup()
     require("lspconfig").tsserver.setup({
-        cmd = { DATA .. "/lspinstall/typescript/node_modules/.bin/typescript-language-server", "--stdio" },
+        cmd = { DATA .. "/lsp_servers/tsserver/node_modules/.bin/typescript-language-server", "--stdio" },
 
         filetypes = {
             "javascript",

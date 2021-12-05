@@ -4,7 +4,7 @@ local M = {}
 
 function M.setup()
     require("lspconfig").dockerls.setup({
-        cmd = { DATA .. "/lspinstall/dockerfile/node_modules/.bin/docker-langserver", "--stdio" },
+        cmd = { DATA .. "/lsp_servers/dockerfile/node_modules/.bin/docker-langserver", "--stdio" },
         -- cmd = {"docker-langserver", "--stdio"},
         on_attach = require("lsp").common_on_attach,
         filetypes = { "Dockerfile", "dockerfile" },

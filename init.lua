@@ -23,7 +23,7 @@ require("ext").setup()
 
 -- lsp config
 require("lsp").setup()
-require("ext.cmp").setup() -- autocomplete
+require("ext.cmp").setup()
 
 -- code formatter
 require("ext.formatters").setup()
@@ -36,15 +36,15 @@ require("lsp.css").setup()
 require("lsp.docker").setup()
 require("lsp.go").setup()
 require("lsp.html").setup()
-require("lsp.json").setup()
 require("lsp.python").setup()
 require("lsp.rust").setup()
 require("lsp.tsserver").setup()
 require("lsp.vim").setup()
 -- require('lsp.vue-lsp')
 require("lsp.yaml").setup()
+require("lsp.sql").setup()
+require("lsp.tex").setup()
 require("lsp.lua").setup()
-require("lsp.svelte").setup()
 require("lsp.tailwindcss").setup()
 
 -- debugger

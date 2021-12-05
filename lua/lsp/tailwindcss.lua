@@ -3,18 +3,11 @@ local M = {}
 
 function M.setup()
     require("lspconfig").tailwindcss.setup({
-        cmd = { "tailwindcss-language-server", "--stdio" },
+        cmd = { DATA .. "/lsp_servers/tailwindcss_npm/node_modules/.bin/tailwindcss-language-server", "--stdio" },
         filetypes = {
             "css",
-            "scss",
-            "html",
-            "javascript",
-            "javascriptreact",
-            "typescript",
-            "typescriptreact",
             "svelte",
             "postcss",
-            "django-html",
             "markdown",
             "vue",
         },

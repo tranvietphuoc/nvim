@@ -2,7 +2,11 @@ local M = {}
 
 function M.setup()
     require("lspconfig").gopls.setup({
-        cmd = { DATA .. "/lspinstall/go/gopls" },
+        cmd = { DATA .. "/lsp_servers/go/gopls" },
+        cmd_env = {
+            GLOB_PATTERN = "*@(.sh|.inc|.bash|.command)",
+        },
+        filetypes = { "sh" },
         settings = { gopls = { analyses = { unusedparams = true }, staticcheck = true } },
         root_dir = require("lspconfig").util.root_pattern(".git", "go.mod"),
         init_options = { usePlaceholders = true, completeUnimported = true },
