@@ -5,9 +5,12 @@ function M.setup()
     vim.opt.listchars:append("space:⋅")
 
     require("indent_blankline").setup({
-        char = "▏",
+        filetype_exclude = { "dashboard" },
+        buftype_exclude = { "terminal" },
+        char = "|",
         space_char_blankline = " ",
         show_current_context = true,
+        show_current_context_start = true,
     })
 end
 

@@ -11,7 +11,9 @@ function M.setup()
             enabled = true,
             -- Text to show in the popup float
             text = "💡",
-
+            width = 20,
+            height = 10,
+            winblend = 0.5,
             win_opts = {},
         },
         virtual_text = {
