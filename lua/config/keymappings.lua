@@ -45,8 +45,8 @@ function M.setup()
     map("x", "J", ":move '>+1<CR>gv-gv", opts)
 
     -- live server
-    map("n", "<Leader>l", ":Bracey<CR>", opts)
-    map("n", "<Leader>L", ":BraceyStop<CR>", opts)
+    map("n", "<Leader>l", ":Bracey<CR>", { noremap = true, silent = false })
+    map("n", "<Leader>L", ":BraceyStop<CR>", { noremap = true, silent = false })
 
     -- markdown preview
     map("n", "<Leader>m", "<Plug>MarkdownPreview<CR>", { noremap = false, silent = false })
@@ -57,7 +57,7 @@ function M.setup()
     map("n", "<Leader>R", ":NvimTreeRefresh<CR>", opts)
 
     -- telescope
-    map("n", "<Leader>f", "<cmd>Telescope find_files<CR>", opts)
+    map("n", "<Leader>f", "<cmd>Telescope find_files<cr>", opts)
     map("n", "<Leader>F", "<cmd>Telescope live_grep<cr>", opts)
 
     -- map debugger in nvim-dap

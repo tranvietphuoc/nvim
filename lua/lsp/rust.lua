@@ -2,6 +2,9 @@
 --   require'completion'.on_attach(client)
 -- end
 local M = {}
+
+local root_pattern = require("lspconfig/util").root_pattern
+
 function M.setup()
     require("lspconfig").rust_analyzer.setup({
         cmd = { DATA .. "/lsp_servers/rust/rust-analyzer" },
@@ -9,7 +12,7 @@ function M.setup()
         filetypes = { "rust" },
         on_attach = require("lsp").common_on_attach,
         -- on_attach = on_attach,
-        -- root_dir = root_pattern("Cargo.toml", "rust-project.json"),
+        root_dir = root_pattern("Cargo.toml", "rust-project.json"),
         settings = {
             ["rust-analyzer"] = {
                 assist = {

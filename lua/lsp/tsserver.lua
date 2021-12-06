@@ -6,6 +6,7 @@ function M.setup()
         cmd = { DATA .. "/lsp_servers/tsserver/node_modules/.bin/typescript-language-server", "--stdio" },
 
         filetypes = {
+            "ejs",
             "javascript",
             "javascriptreact",
             "javascript.jsx",

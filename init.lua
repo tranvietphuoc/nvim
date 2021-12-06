@@ -46,6 +46,7 @@ require("lsp.sql").setup()
 require("lsp.tex").setup()
 require("lsp.lua").setup()
 require("lsp.tailwindcss").setup()
+require("lsp.emmet").setup()
 
 -- debugger
 require("debugger").setup()

@@ -65,6 +65,16 @@ function M.setup()
                 },
             },
         },
+        pickers = {
+            find_files = {
+                theme = "ivy",
+                winblend = 10,
+            },
+            live_grep = {
+                theme = "ivy",
+                winblend = 10,
+            },
+        },
         extensions = {
             fzy_native = {
                 override_generic_sorter = false,

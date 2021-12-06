@@ -64,7 +64,7 @@ function M.setup()
         use({
             "mattn/emmet-vim",
             config = function()
-                require("ext.emmet").setup()
+                require("lsp.emmet").setup()
             end,
         })
 
@@ -104,7 +104,13 @@ function M.setup()
         })
 
         -- bracey vim (a live server)
-        use({ "turbio/bracey.vim", run = "npm install --prefix server" })
+        use({
+            "turbio/bracey.vim",
+            run = "npm install --prefix server",
+            config = function()
+                require("ext.bracey").setup()
+            end,
+        })
 
         -- lsp
         use({ "neovim/nvim-lspconfig" })
