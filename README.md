@@ -113,6 +113,8 @@ You can config your settings in `config/init.lua` file
 | :-------------: | :--------------------------------------:|:------------:|:----------------------------------------:|
 |     `,`         | `Leader`                                | `n` or`v`    | *Leader key*                             |
 | `<leader>/`     | `:CommentToggle<CR>`                    | **all mode** | *Comment out codes*                      |
+| `<leader>|`     | `:vsplit<CR>`                           | `n`          | *Toggle Vertical Split view*             |
+| `<leader>-`     | `:split<CR>`                            | `n`          | *Toggle split view*                      |
 | `<leader>T`     | `:TagbarToggle<CR>`                     | `n`          | *Trigger tagbar*                         |
 | `<leader>n`     | `:NvimTreeToggle<CR>`                   | `n`          | *Trigger nvim-tree*                      |
 | `<Tab>`         | `:BufferNext<CR>`                       | `n`          | *Move to next tab*                       |
@@ -174,8 +176,10 @@ Thanks to all authors of [these plugin](./lua/plugins.lua).
 [MIT](./LICENSE)
 
 ## Some images after config
-![pic1](./assets/pic1.png)
-![pic2](./assets/pic2.png)
-![pic3](./assets/pic3.png)
-![pic4](./assets/pic4.png)
-![pic5](./assets/pic5.png)
+<img src="./assets/pic1.png" width="500px" height="250px"/>
+<img src="./assets/pic2.png" width="500px" height="250px"/>
+<img src="./assets/pic3.png" width="500px" height="250px"/>
+<img src="./assets/pic4.png" width="500px" height="250px"/>
+<img src="./assets/pic5.png" width="500px" height="250px"/>
+
+

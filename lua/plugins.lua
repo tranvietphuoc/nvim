@@ -107,9 +107,6 @@ function M.setup()
         use({
             "turbio/bracey.vim",
             run = "npm install --prefix server",
-            config = function()
-                require("ext.bracey").setup()
-            end,
         })
 
         -- lsp

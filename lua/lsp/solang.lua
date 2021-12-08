@@ -1,10 +1,10 @@
 local M = {}
 
 function M.setup()
-    require("lspconfig").solargraph.setup({
-        cmd = { DATA .. "/lsp_servers/solang/solang" },
+    require("lspconfig").solang.setup({
+        cmd = { DATA .. "/lsp_servers/solang/solang", "--language-server", "--target", "ewasm" },
         filetypes = { "solidity" },
-        root_dir = require("lspconfig/util").find_git_ancestor,
+        root_dir = require("lspconfig/util").find_git_ancestor(),
     })
 end
 

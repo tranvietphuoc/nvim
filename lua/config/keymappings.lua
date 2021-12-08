@@ -6,13 +6,15 @@ function M.setup()
 
     vim.g.mapleader = "," -- global leader key
     -- fast escaping
-    map("i", "qq", "<ESC>", opts)
-    map("n", "qq", "<ESC>", opts)
-    map("v", "qq", "<ESC>", opts)
-    map("x", "qq", "<ESC>", opts)
-    map("s", "qq", "<ESC>", opts)
-    map("o", "qq", "<ESC>", opts)
-    map("c", "qq", "<ESC>", opts)
+    -- map("i", "JK", "<ESC>", opts)
+    -- map("i", "KJ", "<ESC>", opts)
+    -- map("v", "qq", "<ESC>", opts)
+    -- map("x", "qq", "<ESC>", opts)
+    -- map("n", "qq", "<ESC>", opts)
+    -- map("c", "qq", "<ESC>", opts)
+    --split view
+    map("n", "<leader>|", ":vsplit<CR>", opts)
+    map("n", "<leader>-", ":split<CR>", opts)
 
     -- saving
     map("n", "<Leader>w", ":w<CR>", opts)

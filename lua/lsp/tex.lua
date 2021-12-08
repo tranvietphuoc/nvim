@@ -4,7 +4,7 @@ local util = require("lspconfig/util")
 function M.setup()
     require("lspconfig").texlab.setup({
         cmd = { DATA .. "/lsp_servers/latex/texlab" },
-        filetypes = { "tex", "bib" },
+        filetypes = { "tex", "bib", "plaintex", "markdown", "rst" },
         on_attach = require("lsp").common_on_attach,
         settings = {
             texlab = {
