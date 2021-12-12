@@ -3,7 +3,6 @@ local actions = require("telescope.actions")
 local M = {}
 
 function M.setup()
-    require("telescope").load_extension("media_files")
     require("telescope").setup({
         defaults = {
             file_ignore_patterns = { "node_modules", ".venv", "assets", "target" },
@@ -76,12 +75,20 @@ function M.setup()
             },
         },
         extensions = {
+            bookmarks = {
+                selected_browser = "firefox",
+                url_open_command = "open",
+                url_open_plugin = nil,
+                firefox_profile_name = nil,
+            },
             fzy_native = {
                 override_generic_sorter = false,
                 override_file_sorter = false,
             },
         },
     })
+    require("telescope").load_extension("bookmarks")
+    require("telescope").load_extension("media_files")
 end
 
 return M

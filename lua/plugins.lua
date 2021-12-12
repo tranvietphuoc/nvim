@@ -49,7 +49,7 @@ function M.setup()
             end,
         })
 
-        -- treesitter
+        -- -- treesitter
         use({
             "nvim-treesitter/nvim-treesitter",
             run = ":TSUpdate",
@@ -297,6 +297,11 @@ function M.setup()
 
         -- github copilot
         use({ "github/copilot.vim" })
+
+        -- telescope-bookmarks
+        use("dhruvmanila/telescope-bookmarks.nvim")
+
+        use("rajasegar/vim-search-web")
     end)
 end
 

@@ -71,7 +71,7 @@ function M.setup()
     map("n", "<F3>", ":lua require'dapui'.open()<CR>", opts)
     map("n", "<F4>", ":lua require'dapui'.toggle()<CR>", opts)
     map("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>", opts)
-    map("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+    -- map("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
     map("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>", opts)
     map("n", "<leader>dl", ":lua require'dap'.run_last()<CR>", opts)
 
@@ -87,6 +87,8 @@ function M.setup()
     map("n", "<leader>r", "<Plug>SnipRun<CR>", { silent = true })
     map("n", "<leader>o", "<Plug>SnipRunOperator<CR>", { silent = true })
     map("v", "r", "<Plug>SnipRun<CR>", { silent = true })
+
+    map("n", "<leader>B", ":lua require('telescope').extensions.bookmarks.bookmarks(opts)<CR>", opts)
 end
 
 return M

@@ -13,9 +13,9 @@ function M.setup()
         },
         layout = {
             height = { min = 4, max = 15 }, -- min and max height of the columns
-            width = { min = 15, max = 50 }, -- min and max width of the columns
+            width = { min = 20, max = 50 }, -- min and max width of the columns
             spacing = 3, -- spacing between columns
-            align = "center", -- align columns left, center or right
+            align = "left", -- align columns left, center or right
         },
     })
 end

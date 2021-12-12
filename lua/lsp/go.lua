@@ -6,7 +6,7 @@ function M.setup()
         cmd_env = {
             GLOB_PATTERN = "*@(.sh|.inc|.bash|.command)",
         },
-        filetypes = { "sh" },
+        filetypes = { "go", "gomod" },
         settings = { gopls = { analyses = { unusedparams = true }, staticcheck = true } },
         root_dir = require("lspconfig").util.root_pattern(".git", "go.mod"),
         init_options = { usePlaceholders = true, completeUnimported = true },

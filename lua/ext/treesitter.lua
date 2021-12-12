@@ -1,5 +1,13 @@
 local M = {}
 function M.setup()
+    -- require("nvim-treesitter.parsers").get_parser_configs().Solidity = {
+    --     install_info = {
+    --         url = "https://github.com/JoranHonig/tree-sitter-solidity",
+    --         files = { "src/parser.c" },
+    --         requires_generate_from_grammar = true,
+    --     },
+    --     filetype = "solidity",
+    -- }
     require("nvim-treesitter.configs").setup({
         autopairs = {
             enable = true,
@@ -30,8 +38,14 @@ function M.setup()
             "regex",
             "vue",
             "svelte",
+            -- "solidity",
+            "java",
+            "php",
+            "elixir",
+            "ocaml",
+            -- "haskell",
         },
-        ignore_install = { "haskell", "hcl" },
+        ignore_install = { "hcl" },
         highlight = {
             enable = true,
         },
