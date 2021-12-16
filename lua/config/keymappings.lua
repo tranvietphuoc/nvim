@@ -57,7 +57,7 @@ function M.setup()
     map("n", "<Leader>F", "<cmd>Telescope live_grep<cr>", opts)
 
     -- map debugger in nvim-dap
-    map("n", "<leader>vc", ":lua require('telescope').extensions.vimspector.configurations()<CR>)", opts)
+    map("n", "<leader>vc", ":lua require('telescope').extensions.vimspector.configurations()<CR>", opts)
     map("n", "<leader>vl", ":call vimspector#Launch()<CR>", opts)
     map("n", "<leader>vr", ":VimspectorReset<CR>", opts)
     map("n", "<leader>ve", ":VimspectorEval", opts)

@@ -288,13 +288,13 @@ function M.setup()
         })
 
         -- snip runner
-        -- use({
-        --     "michaelb/sniprun",
-        --     run = "bash ./install.sh",
-        --     config = function()
-        --         require("ext.sniprun").setup()
-        --     end,
-        -- })
+        use({
+            "michaelb/sniprun",
+            run = "bash ./install.sh",
+            config = function()
+                require("ext.sniprun").setup()
+            end,
+        })
 
         -- github copilot
         use({ "github/copilot.vim" })
