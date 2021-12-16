@@ -14,17 +14,17 @@ function M.setup()
         "                                ░                  ",
     }
 
-    vim.g.dashboard_default_executive = "telescope"
+    vim.g.dashboard_default_executive = "fzf"
     vim.g.dashboard_custom_section = {
         a = { description = { " Open last session                     SPC s l" }, command = "SessionLoad" },
-        b = { description = { " Recently opened files                 SPC f h" }, command = "Telescope oldfiles" },
+        b = { description = { " Recently opened files                 SPC f h" }, command = "History" },
         c = {
             description = { " Find files                            SPC f f" },
-            command = "Telescope find_files",
+            command = "Files",
         },
         d = {
             description = { " Find words                            SPC f a" },
-            command = "Telescope live_grep",
+            command = "Rg",
         },
         e = {
             description = { " New file                              SPC c n" },
@@ -32,11 +32,11 @@ function M.setup()
         },
         f = {
             description = { " Change colorscheme                    SPC t c" },
-            command = "Telescope colorscheme",
+            command = "Colors",
         },
         g = {
             description = { " Bookmarks                             SPC f b" },
-            command = "Telescope marks",
+            command = "Marks",
         },
         h = {
             description = { " Go to configuration                   SPC t n" },

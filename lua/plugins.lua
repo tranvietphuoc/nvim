@@ -81,11 +81,8 @@ function M.setup()
         -- highlight yank
         use({ "machakann/vim-highlightedyank" })
 
-        -- telescope for fuzzy find
         use({ "nvim-lua/popup.nvim" })
         use({ "nvim-lua/plenary.nvim" })
-        use({ "nvim-telescope/telescope.nvim" })
-        use({ "nvim-telescope/telescope-media-files.nvim" })
 
         -- tagbar
         use({ "preservim/tagbar" })
@@ -279,7 +276,6 @@ function M.setup()
         })
         -- debugger
         use({ "puremourning/vimspector" })
-        use({ "nvim-telescope/telescope-vimspector.nvim" })
         use({
             "folke/which-key.nvim",
             config = function()
@@ -299,10 +295,12 @@ function M.setup()
         -- github copilot
         use({ "github/copilot.vim" })
 
-        -- telescope-bookmarks
-        use("dhruvmanila/telescope-bookmarks.nvim")
-
         use("rajasegar/vim-search-web")
+
+        -- fzf fuzzy finder
+        use({ "ibhagwan/fzf-lua" })
+        use("junegunn/fzf.vim")
+        use({ "junegunn/fzf", run = "./install --bin" })
     end)
 end
 

@@ -52,11 +52,17 @@ function M.setup()
     map("n", "<Leader>n", ":NvimTreeToggle<CR>", opts)
     map("n", "<Leader>R", ":NvimTreeRefresh<CR>", opts)
 
-    -- telescope
-    map("n", "<Leader>f", "<cmd>Telescope find_files<cr>", opts)
-    map("n", "<Leader>F", "<cmd>Telescope live_grep<cr>", opts)
+    -- fzf
+    map("n", "<Leader>f", "<cmd>lua require('fzf-lua').files()<CR>", opts)
+    map("n", "<Leader>F", "<cmd>lua require('fzf-lua').live_grep()<CR>", opts)
+    map("n", "<Leader>b", '<cmd>lua require("fzf-lua").buffers()<CR>', opts)
+    map("n", "<Leader>gf", '<cmd>lua require("fzf-lua").git_files()<CR>', opts)
+    map("n", "<Leader>gs", '<cmd>lua require("fzf-lua").git_status()<CR>', opts)
+    map("n", "<Leader>gb", '<cmd>lua require("fzf-lua").git_branches()<CR>', opts)
+    map("n", "<Leader>gc", '<cmd>lua require("fzf-lua").git_commits()<CR>', opts)
+    map("n", "<Leader>Q", '<cmd>lua require("fzf-lua").quickfix()<CR>', opts)
 
-    -- map debugger in nvim-dap
+    -- map debugger vimspector
     map("n", "<leader>vc", ":lua require('telescope').extensions.vimspector.configurations()<CR>", opts)
     map("n", "<leader>vl", ":call vimspector#Launch()<CR>", opts)
     map("n", "<leader>vr", ":VimspectorReset<CR>", opts)
@@ -78,8 +84,6 @@ function M.setup()
     map("n", "<leader>r", "<Plug>SnipRun<CR>", { silent = true })
     map("n", "<leader>o", "<Plug>SnipRunOperator<CR>", { silent = true })
     map("v", "r", "<Plug>SnipRun<CR>", { silent = true })
-
-    map("n", "<leader>B", ":lua require('telescope').extensions.bookmarks.bookmarks(opts)<CR>", opts)
 end
 
 return M

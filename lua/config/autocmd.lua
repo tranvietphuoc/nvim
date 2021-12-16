@@ -23,7 +23,7 @@ function M.auto_cmds()
     cmd([[command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()]])
 
     cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
-    cmd("autocmd User TelescopePreviewerLoaded setlocal wrap")
+    -- cmd("autocmd User TelescopePreviewerLoaded setlocal wrap")
     cmd("autocmd FileType html,css,htmldjango,sass EmmetInstall")
 end
 

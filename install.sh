@@ -19,6 +19,12 @@ install_dependencies() {
     # install ripgrep
     brew install ripgrep
 
+    # install git-delta
+    brew install git-delta
+
+    # brew install bat
+    brew install bat
+
     # install fzf
     brew install fzf
 
