@@ -12,7 +12,7 @@ function M.setup()
             -- "aboveleft vnew   : split left
             -- Only valid when using a float window
             -- (i.e. when 'split' is not defined)
-            height = 0.5, -- window height
+            height = 0.4, -- window height
             width = 1, -- window width
             row = 1, -- window row position (0=top, 1=bottom)
             col = 0, -- window col position (0=left, 1=right)

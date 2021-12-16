@@ -63,7 +63,7 @@ function M.setup()
     map("n", "<Leader>Q", '<cmd>lua require("fzf-lua").quickfix()<CR>', opts)
 
     -- map debugger vimspector
-    map("n", "<leader>vc", ":lua require('telescope').extensions.vimspector.configurations()<CR>", opts)
+    -- map("n", "<leader>vc", ":lua require('telescope').extensions.vimspector.configurations()<CR>", opts)
     map("n", "<leader>vl", ":call vimspector#Launch()<CR>", opts)
     map("n", "<leader>vr", ":VimspectorReset<CR>", opts)
     map("n", "<leader>ve", ":VimspectorEval", opts)
@@ -84,6 +84,8 @@ function M.setup()
     map("n", "<leader>r", "<Plug>SnipRun<CR>", { silent = true })
     map("n", "<leader>o", "<Plug>SnipRunOperator<CR>", { silent = true })
     map("v", "r", "<Plug>SnipRun<CR>", { silent = true })
+    -- rust tools
+    map("n", "<leader>i", ":lua require('rust-tools.inlay_hints').toggle_inlay_hints()<CR>", opts)
 end
 
 return M

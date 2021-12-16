@@ -13,6 +13,7 @@ function M.setup()
     require("ext.doge").setup()
     require("ext.fzf").setup()
     -- require("ext.lightbulb").setup()
+    require("ext.rust").setup()
 end
 
 return M

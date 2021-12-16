@@ -91,6 +91,7 @@ function M.setup()
 
         -- rust
         use({ "rust-lang/rust.vim" })
+        use({ "simrat39/rust-tools.nvim" })
 
         -- vim easy align
         use({
@@ -120,7 +121,7 @@ function M.setup()
         use({ "hrsh7th/nvim-cmp" }) -- Autocompletion plugin
         use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp'
         use({ "hrsh7th/cmp-buffer" })
-        use("hrsh7th/cmp-path")
+        use({ "hrsh7th/cmp-path" })
         use({ "L3MON4D3/LuaSnip" })
         use({ "saadparwaiz1/cmp_luasnip" })
         use({ "hrsh7th/vim-vsnip" })
@@ -298,7 +299,7 @@ function M.setup()
         use("rajasegar/vim-search-web")
 
         -- fzf fuzzy finder
-        use({ "ibhagwan/fzf-lua" })
+        use({ "ibhagwan/fzf-lua", requires = { "kyazdani42/nvim-web-devicons" } })
         use("junegunn/fzf.vim")
         use({ "junegunn/fzf", run = "./install --bin" })
     end)

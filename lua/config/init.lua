@@ -21,9 +21,10 @@ function M.setup()
     cmd("set colorcolumn=99999")
     cmd("set inccommand=split")
     cmd("set rtp+=/usr/local/opt/fzf")
+    cmd("set shortmess+=c")
     -- cmd "syntax on"
     -- cmd "colorscheme nvcode"
-    opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
+    -- opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
 
     g.did_load_filetypes = 1
     o.foldmethod = "expr"

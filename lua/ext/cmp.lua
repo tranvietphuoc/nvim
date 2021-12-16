@@ -56,8 +56,10 @@ function M.setup()
         sources = {
             { name = "luasnip" },
             { name = "nvim_lsp" },
-            -- { name = "vsnip" },
+            { name = "vsnip" },
             { name = "treesitter" },
+            { name = "path" },
+            { name = "buffer" },
         },
         completion = { completeopt = "menu,menuone,noinsert" },
         formatting = {
