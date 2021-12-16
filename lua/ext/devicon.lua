@@ -10,6 +10,11 @@ function M.setup()
                 color = "#428850",
                 name = "Zsh",
             },
+            sol = {
+                icon = "ﲹ",
+                color = "#964B0F",
+                name = "Solidity",
+            },
         },
         -- globally enable default icons (default to false)
         -- will get overriden by `get_icons` option
