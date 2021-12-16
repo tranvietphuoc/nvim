@@ -259,6 +259,16 @@ function M.setup()
         },
     }
 
+    -- gls.right[13] = {
+    --     Copilot = {
+    --         provider = "Copilot",
+    --         icon = " ",
+    --         separator = " ",
+    --         separator_highlight = { "NONE", colors.bg },
+    --         highlight = { colors.fg, colors.bg },
+    --     },
+    -- }
+
     ------ short line ------
 
     gls.short_line_left[1] = {

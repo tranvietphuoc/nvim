@@ -1,6 +1,6 @@
 # My configurations for Neovim editor
 
-Currently, I use `Neovim` on `macOS`, so this guide will work well on `macOS` only. I'll update for another platforms later...
+Currently, I use `Neovim` on `macOS`, so this guide will work well on `macOS` only. I will update for another platforms in future.
 This configuration supports (includes syntax highlighting and autocompletion) for these languages:
 
 - `Python`
@@ -17,6 +17,7 @@ This configuration supports (includes syntax highlighting and autocompletion) fo
 - `Json`
 - `Docker`
 - `Yaml`
+- `Solidity`
 
 ## Prerequisites:
 
@@ -91,70 +92,30 @@ to open the editor first, then run command:
 
 ```
 
-then install the LSP with [LspInstall](https://github.com/kabouzeid/nvim-lspinstall)
+then install the LSP with [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer)
 
 
 **For debuggers install**
 
-I use [nvim-dap](https://github.com/mfussenegger/nvim-dap) as a debugger adapter. Currently, this configuration just can debug with `Python` and `C/C++/Rust`
-You need to install `debugpy` and `vscode-lldb` using [DAPinstall](https://github.com/Pocco81/DAPInstall.nvim).
+I use [vimspector](https://github.com/puremourning/vimspector) as a debugger adapter.
 
-**Notice here:** You need to edit your path to debugger adapter of `vscode-lldb` in the `./lua/debugger/init.lua` file.
+You can add more `gadgets` by adding in `lua/debugger/init.lua`. Then run `:VimspectorInstall` to install gadgets.
 
-
-You can config your settings in `config/init.lua` file
+**You can config your settings in** `config/init.lua` **file.**
 
 
 ### 2. Some basic keys mapping of this configuration.
 
----
-
-|     Keys        |                   Command               | Mode         | Comment                                  |
-| :-------------: | :--------------------------------------:|:------------:|:----------------------------------------:|
-|     `,`         | `Leader`                                | `n` or`v`    | *Leader key*                             |
-| `<leader>/`     | `:CommentToggle<CR>`                    | **all mode** | *Comment out codes*                      |
-| `<leader>|`     | `:vsplit<CR>`                           | `n`          | *Toggle Vertical Split view*             |
-| `<leader>-`     | `:split<CR>`                            | `n`          | *Toggle split view*                      |
-| `<leader>T`     | `:TagbarToggle<CR>`                     | `n`          | *Trigger tagbar*                         |
-| `<leader>n`     | `:NvimTreeToggle<CR>`                   | `n`          | *Trigger nvim-tree*                      |
-| `<Tab>`         | `:BufferNext<CR>`                       | `n`          | *Move to next tab*                       |
-| `<S-Tab>`       | `:BufferPrevious<CR>`                   | `n`          | *Move to previous tab*                   |
-|  `<S-c>`        | `:BufferClose<CR>`                      | `n`          | *Close tab*                              |
-|     `qq`        | `<Esc>`                                 | **all mode** | *Esc*                                    |
-| `<leader>f`     | `<cmd>Telescope find_files<CR>`         | `n`          | *find files*                             |
-| `<leader>F`     | `<cmd>Telescope live_grep<CR>`          | `n`          | *find words*                             |
-|  `<Tab>`        | `Leader` key of `emmet`                 | `i`          | *trigger leader key of emmet*            |
-| `<leader>t`     | `vim.g.toggleterm_terminal_mapping`     | `n` or `t`   | *trigger terminal*                       |
-| `<leader>z`     | `:ZenMode<CR>`                          | `n`          | *active zen mode*                        |
-| `<leader>m`     | `<Plug>MarkdownPreview`                 | `n`          | *live markdown preview*                  |
-| `<leader>M`     | `<Plug>MarkdownPreviewStop`             | `n`          | *stop markdown preview*                  |
-| `<leader>G`     | `<CMD>lua _G.__fterm_gitui()<CR>`       | `n`          | *trigger gitui in nvim*                  |
-| `<leader>l`     | `:Bracey<CR>`                           | `n`          | *live html server*                       |
-| `<leader>L`     | `:BraceyStop<CR>`                       | `n`          | *stop html server*                       |
-| `<leader>Gd`    | `:Gvdiffsplit<CR>`                      | `n`          | *open fugitive diff*                     |
-| `<leader>Dh`    | `:diffget //2<CR>`                      | `n`          | *to buffer diff left*                    |
-| `<leader>Dl`    | `:diffget //3<CR>`                      | `n`          | *to buffer diff right*                   |
-| `K`             | `<cmd>lua vim.lsp.buf.hover()<CR>`      | `n`          | *hover doc of lsp*                       |
-| `gd`            | `<Cmd>lua vim.lsp.buf.definition()<CR>` | `n`          | *go to definition*                       |
-| `gD`            | `<Cmd>lua vim.lsp.buf.declaration()<CR>`| `n`          | *go to declaration*                      |
-| `K`             | `:move \'<-2<CR>gv-gv`                  | `v` or `x`   | *move lines of code up*                  |
-| `J`             | `:move \'>+1<CR>gv-gv`                  | `v` or `x`   | *move lines of code down*                |
-| `<C-h>`         | `:wincmd h<CR>`                         | `n`          | *move between split views*               |
-| `<C-j>`         | `:wincmd j<CR>`                         | `n`          | *move between split views*               |
-| `<C-k>`         | `:wincmd k<CR>`                         | `n`          | *move between split views*               |
-| `<C-l>`         | `:wincmd l<CR>`                         | `n`          | *move between split views*               |
-| `ea`            | `:EasyAlign (_)`                        | `v`          | *Alignment with a character,then enter*  |
-
-
----
-
-* More keys mapping is instantiated which `Which-Key` plugin
-
+Because this configuration using `which-key.nvim`. So you can see all keymapping when you almostly type in normal mode and visual mode.
 
 
 ### 3. For debugging.
 
-* Toggle breakpoint using `F9` or `<leader>b`
+You need to add `.vimspector.json` to your local project to add debugging configurations first. The guide's [here](https://puremourning.github.io/vimspector/configuration.html).
+
+This configuration of `Vimspector` uses `HUMAN` mode, so there are some key in debugging:
+
+* Toggle breakpoint using `F9`
 * Trigger debugging UI using `F3`
 * Toggle debugging UI using `F4`
 * Launch debugger using `F5`
@@ -163,9 +124,7 @@ You can config your settings in `config/init.lua` file
 * Step over using `F10`
 
 
-
 ## Todo
-- [ ] Config debugger `Javascript/Typescript`
 
 
 Thanks to all authors of [these plugin](./lua/plugins.lua).

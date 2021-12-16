@@ -123,6 +123,7 @@ function M.setup()
         use({ "hrsh7th/nvim-cmp" }) -- Autocompletion plugin
         use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp'
         use({ "hrsh7th/cmp-buffer" })
+        use("hrsh7th/cmp-path")
         use({ "L3MON4D3/LuaSnip" })
         use({ "saadparwaiz1/cmp_luasnip" })
         use({ "hrsh7th/vim-vsnip" })
@@ -277,8 +278,8 @@ function M.setup()
             end,
         })
         -- debugger
-        use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
-        use({ "Pocco81/DAPInstall.nvim" })
+        use({ "puremourning/vimspector" })
+        use({ "nvim-telescope/telescope-vimspector.nvim" })
         use({
             "folke/which-key.nvim",
             config = function()
@@ -287,13 +288,13 @@ function M.setup()
         })
 
         -- snip runner
-        use({
-            "michaelb/sniprun",
-            run = "bash ./install.sh",
-            config = function()
-                require("ext.sniprun").setup()
-            end,
-        })
+        -- use({
+        --     "michaelb/sniprun",
+        --     run = "bash ./install.sh",
+        --     config = function()
+        --         require("ext.sniprun").setup()
+        --     end,
+        -- })
 
         -- github copilot
         use({ "github/copilot.vim" })

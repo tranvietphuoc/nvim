@@ -5,13 +5,7 @@ function M.setup()
     local map = vim.api.nvim_set_keymap
 
     vim.g.mapleader = "," -- global leader key
-    -- fast escaping
-    -- map("i", "JK", "<ESC>", opts)
-    -- map("i", "KJ", "<ESC>", opts)
-    -- map("v", "qq", "<ESC>", opts)
-    -- map("x", "qq", "<ESC>", opts)
-    -- map("n", "qq", "<ESC>", opts)
-    -- map("c", "qq", "<ESC>", opts)
+
     --split view
     map("n", "<leader>|", ":vsplit<CR>", opts)
     map("n", "<leader>-", ":split<CR>", opts)
@@ -63,17 +57,14 @@ function M.setup()
     map("n", "<Leader>F", "<cmd>Telescope live_grep<cr>", opts)
 
     -- map debugger in nvim-dap
-    map("n", "<F5>", ":lua require'dap'.continue()<CR>", opts)
-    map("n", "<F9>", ":lua require'dap'.toggle_breakpoint()<CR>", opts)
-    map("n", "<F10>", ":lua require'dap'.step_over()<CR>", opts)
-    map("n", "<F11>", ":lua require'dap'.step_into()<CR>", opts)
-    map("n", "<F12>", ":lua require'dap'.step_out()<CR>", opts)
-    map("n", "<F3>", ":lua require'dapui'.open()<CR>", opts)
-    map("n", "<F4>", ":lua require'dapui'.toggle()<CR>", opts)
-    map("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>", opts)
-    -- map("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
-    map("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>", opts)
-    map("n", "<leader>dl", ":lua require'dap'.run_last()<CR>", opts)
+    map("n", "<leader>vc", ":lua require('telescope').extensions.vimspector.configurations()<CR>)", opts)
+    map("n", "<leader>vl", ":call vimspector#Launch()<CR>", opts)
+    map("n", "<leader>vr", ":VimspectorReset<CR>", opts)
+    map("n", "<leader>ve", ":VimspectorEval", opts)
+    map("n", "<leader>vw", ":VimspectorWatch", opts)
+    map("n", "<leader>vo", ":VimspectorShowOutput", opts)
+    map("n", "<leader>vi", "<Plug>VimspectorBalloonEval", opts)
+    map("x", "<leader>vi", "<Plug>VimspectorBalloonEval", opts)
 
     -- git fugitive
     map("n", "<Leader>Gd", ":Gvdiffsplit<CR>", opts)
