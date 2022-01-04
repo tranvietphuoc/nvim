@@ -1,6 +1,7 @@
 -- luasnip setup
 local luasnip = require("luasnip")
 local lspconfig = require("lspconfig")
+local lspkind = require("lspkind")
 local M = {}
 
 function M.setup()
@@ -53,22 +54,61 @@ function M.setup()
                 end
             end,
         },
-        sources = {
+        sources = cmp.config.sources({
             { name = "luasnip" },
             { name = "nvim_lsp" },
-            { name = "vsnip" },
+            -- { name = "vsnip" },
             { name = "treesitter" },
             { name = "path" },
             { name = "buffer" },
-        },
+        }),
         completion = { completeopt = "menu,menuone,noinsert" },
-        formatting = {
-            format = require("lspkind").cmp_format(),
-        },
     })
     -- Autopairs
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
     cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+    --lspkind
+    cmp.setup({
+        formatting = {
+            format = lspkind.cmp_format({
+                with_text = true, -- do not show text alongside icons
+                maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+                symbol_map = {
+                    Text = "",
+                    Method = "",
+                    Function = "",
+                    Constructor = "",
+                    Field = "ﰠ",
+                    Variable = "",
+                    Class = "ﴯ",
+                    Interface = "",
+                    Module = "",
+                    Property = "ﰠ",
+                    Unit = "塞",
+                    Value = "",
+                    Enum = "",
+                    Keyword = "",
+                    Snippet = "",
+                    Color = "",
+                    File = "",
+                    Reference = "",
+                    Folder = "",
+                    EnumMember = "",
+                    Constant = "",
+                    Struct = "פּ",
+                    Event = "",
+                    Operator = "",
+                    TypeParameter = "",
+                },
+                -- The function below will be called before any actual modifications from lspkind
+                -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+                before = function(entry, vim_item)
+                    return vim_item
+                end,
+            }),
+        },
+    })
 
     -- lsp servers
     local lsp_servers = {

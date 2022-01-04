@@ -10,12 +10,6 @@ function M.setup()
     map("n", "<leader>|", ":vsplit<CR>", opts)
     map("n", "<leader>-", ":split<CR>", opts)
 
-    -- saving
-    map("n", "<Leader>w", ":w<CR>", opts)
-
-    -- fast quitting
-    map("n", "<Leader>q", ":q<CR>", opts)
-
     -- toggle zen mode
     map("n", "<Leader>z", ":ZenMode<CR>", opts)
 
@@ -40,10 +34,6 @@ function M.setup()
     map("x", "K", ":move '<-2<CR>gv-gv", opts)
     map("x", "J", ":move '>+1<CR>gv-gv", opts)
 
-    -- live server
-    map("n", "<Leader>l", ":Bracey<CR>", { noremap = true, silent = false })
-    map("n", "<Leader>L", ":BraceyStop<CR>", { noremap = true, silent = false })
-
     -- markdown preview
     map("n", "<Leader>m", "<Plug>MarkdownPreview<CR>", { noremap = false, silent = false })
     map("n", "<Leader>M", "<Plug>MarkdownPreviewStop<CR>", { noremap = false, silent = false })
@@ -54,7 +44,7 @@ function M.setup()
 
     -- fzf
     map("n", "<Leader>f", "<cmd>lua require('fzf-lua').files()<CR>", opts)
-    map("n", "<Leader>F", "<cmd>lua require('fzf-lua').live_grep()<CR>", opts)
+    map("n", "<Leader>l", "<cmd>lua require('fzf-lua').live_grep()<CR>", opts)
     map("n", "<Leader>b", '<cmd>lua require("fzf-lua").buffers()<CR>', opts)
     map("n", "<Leader>gf", '<cmd>lua require("fzf-lua").git_files()<CR>', opts)
     map("n", "<Leader>gs", '<cmd>lua require("fzf-lua").git_status()<CR>', opts)
@@ -63,7 +53,7 @@ function M.setup()
     map("n", "<Leader>Q", '<cmd>lua require("fzf-lua").quickfix()<CR>', opts)
 
     -- map debugger vimspector
-    -- map("n", "<leader>vc", ":lua require('telescope').extensions.vimspector.configurations()<CR>", opts)
+    map("n", "<leader>vc", ":lua require('telescope').extensions.vimspector.configurations()<CR>", opts)
     map("n", "<leader>vl", ":call vimspector#Launch()<CR>", opts)
     map("n", "<leader>vr", ":VimspectorReset<CR>", opts)
     map("n", "<leader>ve", ":VimspectorEval", opts)
@@ -80,10 +70,11 @@ function M.setup()
     -- close buffer without save
     map("n", "bq", ":bd!<CR>", opts)
 
-    -- sniprun
-    map("n", "<leader>r", "<Plug>SnipRun<CR>", { silent = true })
-    map("n", "<leader>o", "<Plug>SnipRunOperator<CR>", { silent = true })
-    map("v", "r", "<Plug>SnipRun<CR>", { silent = true })
+    -- find and replace
+    map("n", "<leader>S", ":lua require('spectre').open()<CR>", opts)
+    map("v", "<leader>s", ":lua require('spectre').open_visual()<CR>", opts) -- search current word
+    map("n", "<leader>sw", ":lua require('spectre').open_visual({select_word=true})<CR>", opts)
+
     -- rust tools
     map("n", "<leader>i", ":lua require('rust-tools.inlay_hints').toggle_inlay_hints()<CR>", opts)
 end

@@ -101,12 +101,6 @@ function M.setup()
             end,
         })
 
-        -- bracey vim (a live server)
-        use({
-            "turbio/bracey.vim",
-            run = "npm install --prefix server",
-        })
-
         -- lsp
         use({ "neovim/nvim-lspconfig" })
         use({ "williamboman/nvim-lsp-installer" })
@@ -285,13 +279,13 @@ function M.setup()
         })
 
         -- snip runner
-        use({
-            "michaelb/sniprun",
-            run = "bash ./install.sh",
-            config = function()
-                require("ext.sniprun").setup()
-            end,
-        })
+        -- use({
+        --     "michaelb/sniprun",
+        --     run = "bash ./install.sh",
+        --     config = function()
+        --         require("ext.sniprun").setup()
+        --     end,
+        -- })
 
         -- github copilot
         use({ "github/copilot.vim" })
@@ -302,6 +296,36 @@ function M.setup()
         use({ "ibhagwan/fzf-lua", requires = { "kyazdani42/nvim-web-devicons" } })
         use("junegunn/fzf.vim")
         use({ "junegunn/fzf", run = "./install --bin" })
+
+        -- statusline components
+        use({
+            "SmiteshP/nvim-gps",
+            requires = "nvim-treesitter/nvim-treesitter",
+            config = function()
+                require("nvim-gps").setup()
+            end,
+        })
+        use({
+            "pwntester/octo.nvim",
+            requires = { "nvim-telescope/telescope.nvim" },
+            config = function()
+                require("octo").setup()
+            end,
+        })
+
+        -- find and replace tool
+        use({ "windwp/nvim-spectre" })
+        use({
+            "folke/trouble.nvim",
+            requires = "kyazdani42/nvim-web-devicons",
+            config = function()
+                require("trouble").setup({
+                    -- your configuration comes here
+                    -- or leave it empty to use the default settings
+                    -- refer to the configuration section below
+                })
+            end,
+        })
     end)
 end
 

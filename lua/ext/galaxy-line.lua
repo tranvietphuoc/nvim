@@ -3,6 +3,7 @@ local M = {}
 function M.setup()
     local gl = require("galaxyline")
     local condition = require("galaxyline.condition")
+    local gps = require("nvim-gps")
     local gls = gl.section
     gl.short_line_list = { "NvimTree", "dbui", "packer" }
 
@@ -137,6 +138,17 @@ function M.setup()
             provider = "FileSize",
             condition = condition.buffer_not_empty,
             icon = "  ",
+            highlight = { colors.fg, colors.bg },
+        },
+    }
+    gls.left[8] = {
+        nvimGPS = {
+            provider = function()
+                return gps.get_location()
+            end,
+            condition = function()
+                return gps.is_available()
+            end,
             highlight = { colors.fg, colors.bg },
         },
     }

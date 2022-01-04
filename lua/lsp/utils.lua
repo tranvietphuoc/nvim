@@ -31,7 +31,7 @@ function M.lsp_diagnostics()
         local default_handler = vim.lsp.handlers[method]
         vim.lsp.handlers[method] = function(err, meth, result, client_id, bufnr, config)
             default_handler(err, meth, result, client_id, bufnr, config)
-            local diagnostics = vim.lsp.diagnostic.get_all()
+            local diagnostics = vim.lsp.diagnostic.get()
             local qflist = {}
             for buf, diagnostic in pairs(diagnostics) do
                 for _, d in ipairs(diagnostic) do
