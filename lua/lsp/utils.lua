@@ -19,10 +19,10 @@ end
 
 function M.lsp_diagnostics()
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = true,
-        underline = true,
+        virtual_text = false,
+        underline = false,
         signs = true,
-        update_in_insert = true,
+        update_in_insert = false,
     })
     local on_references = vim.lsp.handlers["textDocument/references"]
     vim.lsp.handlers["textDocument/references"] = vim.lsp.with(on_references, { loclist = true, virtual_text = true })

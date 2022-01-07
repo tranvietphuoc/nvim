@@ -68,6 +68,15 @@ function M.setup()
             end,
         })
 
+        -- tabline
+        use({
+            "romgrk/barbar.nvim",
+            requires = { "kyazdani42/nvim-web-devicons" },
+            config = function()
+                require("ext.barbar").setup()
+            end,
+        })
+
         -- markdown
         use({
             "tpope/vim-markdown",
@@ -104,13 +113,9 @@ function M.setup()
         -- lsp
         use({ "neovim/nvim-lspconfig" })
         use({ "williamboman/nvim-lsp-installer" })
-        use({
-            "kosayoda/nvim-lightbulb",
-            config = function()
-                require("ext.lightbulb").setup()
-            end,
-        })
+
         use({ "onsails/lspkind-nvim" })
+        use({ "glepnir/lspsaga.nvim" })
         -- auto-completion
         use({ "hrsh7th/nvim-cmp" }) -- Autocompletion plugin
         use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp'
@@ -118,7 +123,7 @@ function M.setup()
         use({ "hrsh7th/cmp-path" })
         use({ "L3MON4D3/LuaSnip" })
         use({ "saadparwaiz1/cmp_luasnip" })
-        use({ "hrsh7th/vim-vsnip" })
+        -- use({ "hrsh7th/vim-vsnip" })
         use({ "hrsh7th/cmp-vsnip" })
 
         -- filetype.nvim
@@ -162,11 +167,11 @@ function M.setup()
             end,
         })
 
-        -- barbar
-        use({ "romgrk/barbar.nvim" })
-
-        -- galaxyline
-        use({ "glepnir/galaxyline.nvim" })
+        -- lualine
+        use({
+            "nvim-lualine/lualine.nvim",
+            requires = { "kyazdani42/nvim-web-devicons", opt = true },
+        })
 
         -- nvim-tree
         use({
@@ -289,8 +294,6 @@ function M.setup()
 
         -- github copilot
         use({ "github/copilot.vim" })
-
-        use("rajasegar/vim-search-web")
 
         -- fzf fuzzy finder
         use({ "ibhagwan/fzf-lua", requires = { "kyazdani42/nvim-web-devicons" } })

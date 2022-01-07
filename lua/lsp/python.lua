@@ -26,14 +26,6 @@ function M.setup()
         -- require'nvim_lsp'.pyright.setup {
         cmd = { DATA .. "/lsp_servers/python/node_modules/.bin/pyright-langserver", "--stdio" },
         on_attach = require("lsp").common_on_attach,
-        -- handlers = {
-        --   ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        --     virtual_text = true,
-        --     signs = true,
-        --     underline = true,
-        --     update_in_insert = true
-        --   })
-        -- },
         handlers = lsputils.lsp_diagnostics(),
         on_init = function(client)
             client.config.settings.python.pythonPath = M.get_python_path(client.config.root_dir)

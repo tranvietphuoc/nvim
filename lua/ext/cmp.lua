@@ -2,6 +2,7 @@
 local luasnip = require("luasnip")
 local lspconfig = require("lspconfig")
 local lspkind = require("lspkind")
+
 local M = {}
 
 function M.setup()

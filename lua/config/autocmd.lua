@@ -9,7 +9,6 @@ function M.auto_cmds()
     cmd("autocmd BufNewFile,BufRead *.go setlocal noexpandtab ts=8 sw=8")
     cmd("autocmd BufRead,BufNewFile *.lua setlocal expandtab ts=4 sw=4 sts=4")
     cmd("autocmd BufWritePost plugins.lua PackerCompile")
-    cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
     vim.api.nvim_exec(
         [[
   augroup FormatAutogroup
