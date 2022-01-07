@@ -39,7 +39,7 @@ function M.setup()
     map("n", "<Leader>M", "<Plug>MarkdownPreviewStop<CR>", { noremap = false, silent = false })
 
     -- nvimtree
-    map("n", "<Leader>n", ":NvimTreeToggle<CR>", opts)
+    map("n", "<Leader>e", ":NvimTreeToggle<CR>", opts)
     map("n", "<Leader>R", ":NvimTreeRefresh<CR>", opts)
 
     -- fzf
@@ -90,6 +90,9 @@ function M.setup()
     map("n", "<TAB>", ":bn<CR>", { noremap = true, silent = true })
     map("n", "<S-TAB>", ":bp<CR>", { noremap = true, silent = true })
     map("n", "<S-c>", ":bd<CR>", { noremap = true, silent = true })
+
+    -- neogit
+    map("n", "<leader>n", ":Neogit<CR>", opts)
 end
 
 return M

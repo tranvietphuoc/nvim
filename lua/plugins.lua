@@ -28,10 +28,15 @@ function M.setup()
 
         -- git
         use({
-            "mhinz/vim-signify",
+            "lewis6991/gitsigns.nvim",
+            requires = {
+                "nvim-lua/plenary.nvim",
+            },
+
             config = function()
-                require("ext.signify").setup()
+                require("ext.gitsign").setup()
             end,
+            -- tag = 'release' -- To use the latest release
         })
         use({
             "tpope/vim-fugitive",
@@ -46,6 +51,14 @@ function M.setup()
             "f-person/git-blame.nvim",
             config = function()
                 require("ext.git-blame").setup()
+            end,
+        })
+        -- neogit
+        use({
+            "TimUntersberger/neogit",
+            requires = "nvim-lua/plenary.nvim",
+            config = function()
+                require("ext.neogit").setup()
             end,
         })
 
