@@ -1,3 +1,5 @@
+-- copy and custom from evil_lualine by shadmansaleh
+
 local M = {}
 
 function M.setup()
