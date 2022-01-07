@@ -208,14 +208,22 @@ function M.setup()
     append_right({
         "fileformat",
         fmt = string.upper,
-        icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+        icons_enabled = false,
         color = { fg = colors.green, gui = "bold" },
     })
 
     append_right({
         "o:encoding", -- option component same as &encoding in viml
-        fmt = string.upper, -- I'm not sure why it's upper case either ;)
+        fmt = string.upper,
         cond = conditions.hide_in_width,
+        color = { fg = colors.green, gui = "bold" },
+    })
+
+    append_right({
+        "filetype",
+        cond = conditions.buffer_not_empty,
+        fmt = string.upper,
+        icons_enabled = false,
         color = { fg = colors.green, gui = "bold" },
     })
 

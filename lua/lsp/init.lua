@@ -26,7 +26,14 @@ local saga = require("lspsaga")
 
 function M.setup()
     -- lsp saga
-    saga.init_lsp_saga({})
+    saga.init_lsp_saga({
+        -- code_action_prompt = {
+        --     enable = true,
+        --     sign = true,
+        --     sign_priority = 20,
+        --     virtual_text = true,
+        -- },
+    })
 
     -- lsp config
     map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
