@@ -30,7 +30,7 @@ require("ext.formatters").setup()
 
 -- lsp server
 require("lsp.bash").setup()
-require("lsp.clangd").setup()
+require("lsp.cc").setup()
 require("lsp.cmake").setup()
 require("lsp.css").setup()
 require("lsp.docker").setup()

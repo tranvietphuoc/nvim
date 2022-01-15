@@ -128,7 +128,7 @@ function M.setup()
         use({ "williamboman/nvim-lsp-installer" })
 
         use({ "onsails/lspkind-nvim" })
-        use({ "glepnir/lspsaga.nvim" })
+        use({ "tami5/lspsaga.nvim" })
         -- auto-completion
         use({ "hrsh7th/nvim-cmp" }) -- Autocompletion plugin
         use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp'
