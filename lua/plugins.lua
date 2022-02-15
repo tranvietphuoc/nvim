@@ -6,25 +6,7 @@ function M.setup()
         -- packer can manage itself as an optional plugin
         use({ "wbthomason/packer.nvim" })
         -- colorscheme
-
-        use({
-            "EdenEast/nightfox.nvim",
-            config = function()
-                local nightfox = require("nightfox")
-                nightfox.setup({
-                    fox = "nordfox", -- change the colorscheme to use nordfox
-                    styles = {
-                        comments = "italic", -- change style of comments to be italic
-                        keywords = "bold", -- change style of keywords to be bold
-                        functions = "italic,bold", -- styles can be a comma separated list
-                    },
-                    inverse = {
-                        match_paren = true, -- inverse the highlighting of match_parens
-                    },
-                })
-                nightfox.load()
-            end,
-        })
+        use("Mofiqul/dracula.nvim")
 
         -- git
         use({
@@ -310,8 +292,7 @@ function M.setup()
 
         -- fzf fuzzy finder
         use({ "ibhagwan/fzf-lua", requires = { "kyazdani42/nvim-web-devicons" } })
-        use("junegunn/fzf.vim")
-        use({ "junegunn/fzf", run = "./install --bin" })
+        use({ "junegunn/fzf.vim", requires = { "junegunn/fzf", run = "./install --bin" } })
 
         -- statusline components
         use({
@@ -342,6 +323,7 @@ function M.setup()
                 })
             end,
         })
+        use({ "chrisbra/csv.vim" })
     end)
 end
 

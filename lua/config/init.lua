@@ -22,6 +22,7 @@ function M.setup()
     cmd("set inccommand=split")
     cmd("set rtp+=/usr/local/opt/fzf")
     cmd("set shortmess+=c")
+    cmd([[colorscheme dracula]])
     -- cmd "syntax on"
     -- cmd "colorscheme nvcode"
     -- opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.

@@ -73,7 +73,7 @@ function M.setup()
     cmp.setup({
         formatting = {
             format = lspkind.cmp_format({
-                with_text = true, -- do not show text alongside icons
+                mode = "symbol",
                 maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
                 symbol_map = {
                     Text = "",
@@ -104,7 +104,19 @@ function M.setup()
                 },
                 -- The function below will be called before any actual modifications from lspkind
                 -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-                before = function(entry, vim_item)
+                -- before = function(entry, vim_item)
+                --     return vim_item
+                -- end,
+                cb = function(entry, vim_item)
+                    local word = entry:get_insert_text()
+                    if entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet then
+                        word = vim.lsp.util.parse_snippet(word)
+                    end
+                    word = str.online(word)
+                    if entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet then
+                        word = word .. "~"
+                    end
+                    vim_item.abbr = word
                     return vim_item
                 end,
             }),
@@ -129,6 +141,7 @@ function M.setup()
         "dockerls",
         "html",
     }
+
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
     for _, server in ipairs(lsp_servers) do
         lspconfig[server].setup({

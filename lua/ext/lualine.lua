@@ -3,19 +3,20 @@
 local M = {}
 
 function M.setup()
-    local colors = {
-        bg = "#3b4252",
-        fg = "#bbc2cf",
-        yellow = "#ECBE7B",
-        cyan = "#008080",
-        darkblue = "#081633",
-        green = "#98be65",
-        orange = "#FF8800",
-        violet = "#a9a1e1",
-        magenta = "#c678dd",
-        blue = "#51afef",
-        red = "#ec5f67",
-    }
+    local colors = require("dracula").colors()
+    -- local colors = {
+    --     bg = "#3b4252",
+    --     fg = "#bbc2cf",
+    --     yellow = "#ECBE7B",
+    --     cyan = "#008080",
+    --     darkblue = "#081633",
+    --     green = "#98be65",
+    --     orange = "#FF8800",
+    --     violet = "#a9a1e1",
+    --     magenta = "#c678dd",
+    --     blue = "#51afef",
+    --     red = "#ec5f67",
+    -- }
 
     local conditions = {
         buffer_not_empty = function()
@@ -39,9 +40,10 @@ function M.setup()
                 -- We are going to use lualine_c an lualine_x as left and
                 -- right section. Both are highlighted by c theme .  So we
                 -- are just setting default looks o statusline
-                normal = { c = { fg = colors.fg, bg = colors.bg } },
-                inactive = { c = { fg = colors.fg, bg = colors.bg } },
+                normal = { c = { fg = colors.fg, bg = colors.selection } },
+                inactive = { c = { fg = colors.fg, bg = colors.selection } },
             },
+            -- theme = "dracula-nvim",
         },
         sections = {
             -- these are to remove the defaults
@@ -78,7 +80,7 @@ function M.setup()
         function()
             return "▊"
         end,
-        color = { fg = colors.violet }, -- Sets highlighting of component
+        color = { fg = colors.purple }, -- Sets highlighting of component
         padding = { left = 0, right = 1 }, -- We don't need space before this
     })
 
@@ -109,28 +111,29 @@ function M.setup()
             }
             -- auto change color according to neovims mode
             local mode_color = {
-                n = colors.blue,
+                n = colors.cyan,
                 i = colors.green,
-                v = colors.magenta,
-                [""] = colors.magenta,
-                V = colors.magenta,
+                v = colors.pink,
+                [""] = colors.pink,
+                V = colors.pink,
                 c = colors.yellow,
                 no = colors.red,
                 s = colors.orange,
                 S = colors.orange,
                 [""] = colors.orange,
-                ic = colors.yellow,
-                R = colors.violet,
-                Rv = colors.violet,
-                cv = colors.blue,
-                ce = colors.blue,
-                r = colors.cyan,
-                rm = colors.cyan,
-                ["r?"] = colors.cyan,
+                ic = colors.bright_yellow,
+                R = colors.bright_blue,
+                Rv = colors.bright_blue,
+                ["r?"] = colors.bright_blue,
+                cv = colors.bright_yellow,
+                ce = colors.bright_yellow,
+                r = colors.bright_cyan,
+                rm = colors.bright_cyan,
+                ["r?"] = colors.bright_green,
                 ["!"] = colors.red,
                 t = colors.red,
             }
-            vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.bg)
+            vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.selection)
             return alias[vim.fn.mode()]
         end,
         color = "LualineMode",
@@ -140,7 +143,7 @@ function M.setup()
     append_left({
         "branch",
         icon = "",
-        color = { fg = colors.violet, gui = "bold" },
+        color = { fg = colors.bright_blue, gui = "bold" },
     })
 
     append_left({
@@ -164,7 +167,7 @@ function M.setup()
     append_left({
         "filename",
         cond = conditions.buffer_not_empty,
-        color = { fg = colors.magenta, gui = "bold" },
+        color = { fg = colors.bright_green, gui = "bold" },
     })
     append_left({
         "diagnostics",
@@ -237,7 +240,7 @@ function M.setup()
         function()
             return "▊"
         end,
-        color = { fg = colors.violet },
+        color = { fg = colors.purple },
         padding = { left = 1 },
     })
 
