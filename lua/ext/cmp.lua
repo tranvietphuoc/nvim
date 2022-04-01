@@ -125,7 +125,7 @@ function M.setup()
 
     -- lsp servers
     local lsp_servers = {
-        "clangd",
+        "ccls",
         "pyright",
         "rust_analyzer",
         "gopls",

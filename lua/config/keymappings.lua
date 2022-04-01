@@ -63,8 +63,8 @@ function M.setup()
 
     -- git fugitive
     map("n", "<Leader>Gd", ":Gvdiffsplit<CR>", opts)
-    map("n", "<Leader>dh", ":diffget //2<CR>", opts)
-    map("n", "<Leader>dl", ":diffget //3<CR>", opts)
+    map("n", "<Leader>Dh", ":diffget //2<CR>", opts)
+    map("n", "<Leader>Dl", ":diffget //3<CR>", opts)
 
     -- close buffer without save
     map("n", "bq", ":bd!<CR>", opts)
