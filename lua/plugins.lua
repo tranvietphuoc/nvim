@@ -55,13 +55,13 @@ function M.setup()
         -- multiple cursors
         use({ "terryma/vim-multiple-cursors" })
 
-        -- -- emmet
-        -- use({
-        --     "mattn/emmet-vim",
-        --     config = function()
-        --         require("lsp.emmet").setup()
-        --     end,
-        -- })
+        -- emmet
+        use({
+            "mattn/emmet-vim",
+            config = function()
+                require("lsp.emmet").setup()
+            end,
+        })
 
         -- tabline
         use({
