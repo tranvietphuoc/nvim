@@ -116,9 +116,10 @@ function M.setup()
         use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp'
         use({ "hrsh7th/cmp-buffer" })
         use({ "hrsh7th/cmp-path" })
+        use({ "hrsh7th/cmp-cmdline" })
         use({ "L3MON4D3/LuaSnip" })
         use({ "saadparwaiz1/cmp_luasnip" })
-        -- use({ "hrsh7th/vim-vsnip" })
+        use({ "hrsh7th/vim-vsnip" })
         use({ "hrsh7th/cmp-vsnip" })
 
         -- filetype.nvim
@@ -185,15 +186,14 @@ function M.setup()
         })
 
         -- documentation generator
-        use({
-            "kkoomen/vim-doge",
-            run = ":call doge#install()",
-        })
-
+        -- use({
+        --     "kkoomen/vim-doge",
+        --     run = ":call doge#install()",
+        -- })
+        --
         -- indent
         use({
             "lukas-reineke/indent-blankline.nvim",
-            branch = "master",
             config = function()
                 require("ext.indent").setup()
             end,

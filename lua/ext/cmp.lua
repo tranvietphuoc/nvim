@@ -20,10 +20,13 @@ function M.setup()
         snippet = {
             expand = function(args)
                 luasnip.lsp_expand(args.body) -- for luasnip
-                -- vim.fn["vsnip#anonymous"](args.body) -- for vsnip
+                -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
             end,
         },
-        mapping = {
+
+        window = {},
+
+        mapping = cmp.mapping.preset.insert({
             ["<C-p>"] = cmp.mapping.select_prev_item(),
             ["<C-n>"] = cmp.mapping.select_next_item(),
             ["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -54,7 +57,7 @@ function M.setup()
                     fallback()
                 end
             end,
-        },
+        }),
         sources = cmp.config.sources({
             { name = "luasnip" },
             { name = "nvim_lsp" },
@@ -68,6 +71,14 @@ function M.setup()
     -- Autopairs
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
     cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+    cmp.setup.filetype("gitcommit", {
+        sources = cmp.config.sources({
+            { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
+        }, {
+            { name = "buffer" },
+        }),
+    })
 
     --lspkind
     cmp.setup({

@@ -19,7 +19,7 @@ end
 
 function M.tsserver_on_attach(client, bufnr)
     M.common_on_attach(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.document_formatting = false
 end
 
 local saga = require("lspsaga")
