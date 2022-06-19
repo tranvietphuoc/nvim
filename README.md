@@ -70,13 +70,13 @@ npm install -g neovim
 Run this command if you use fish shell:
 
 ```
-bash (curl -s https://raw.githubusercontent.com/tranvietphuoc/nvim/master/install.sh | psub)
+bash (curl -s https://raw.githubusercontent.com/tvph/nvim/master/install.sh | psub)
 ```
 
 or if you use another shell:
 
 ```
-bash <(curl -s https://raw.githubusercontent.com/tranvietphuoc/nvim/master/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/tvph/nvim/master/install.sh)
 ```
 
 and then type to the terminal command:
