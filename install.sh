@@ -70,9 +70,9 @@ move_old_nvim() {
 [ -d "$HOME/.config/nvim" ] && move_old_nvim
 
 echo "Start installing..."
-mkdir -p $HOME/downloads/dotfiles/
+mkdir -p $HOME/dl/dotfiles/
 git clone https://github.com/tranvietphuoc/nvim.git $HOME/Downloads/
-mv -v $HOME/downloads/nvim $HOME/.config/
+mv -v $HOME/dl/nvim $HOME/.config/
 cd $HOME/.config/nvim/
 
 # install dependencies
