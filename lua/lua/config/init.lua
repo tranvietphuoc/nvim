@@ -11,6 +11,7 @@ local M = {}
 DATA = path("data")
 CACHE = path("cache")
 
+
 function M.setup()
     cmd("filetype plugin indent on") -- filetype detection
     cmd("set showcmd")
@@ -23,6 +24,7 @@ function M.setup()
     cmd("set rtp+=/usr/local/opt/fzf")
     cmd("set shortmess+=c")
     cmd([[colorscheme dracula]])
+
     -- cmd "syntax on"
     -- cmd "colorscheme nvcode"
     -- opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
