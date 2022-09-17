@@ -34,7 +34,7 @@ function M.setup()
                 -- scrollbar_e = 'PmenuSbar',     -- scrollbar "empty" section highlight
             },
             preview = {
-                -- default     = 'bat',           -- override the default previewer?
+                default     = 'bat',           -- override the default previewer?
                 -- default uses the 'builtin' previewer
                 border = "border", -- border|noborder, applies only to
                 -- native fzf previewers (bat/cat/git/etc)
@@ -170,7 +170,7 @@ function M.setup()
         },
         -- provider setup
         files = {
-            -- previewer      = "cat",          -- uncomment to override previewer
+            previewer      = "bat",          -- uncomment to override previewer
             prompt = "Files❯ ",
             multiprocess = true, -- run command in a separate process
             git_icons = true, -- show git icons?

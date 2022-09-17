@@ -74,9 +74,6 @@ function M.setup()
     map("v", "<leader>s", ":lua require('spectre').open_visual()<CR>", opts) -- search current word
     map("n", "<leader>sw", ":lua require('spectre').open_visual({select_word=true})<CR>", opts)
 
-    -- rust tools
-    map("n", "<leader>i", ":lua require('rust-tools.inlay_hints').toggle_inlay_hints()<CR>", opts)
-
     -- Lua
     map("n", "<leader>xx", "<cmd>Trouble<cr>", { silent = true, noremap = true })
     map("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", { silent = true, noremap = true })
@@ -92,6 +89,10 @@ function M.setup()
 
     -- neogit
     map("n", "<leader>n", ":Neogit<CR>", opts)
+
+    -- live server
+    map("n", "<leader>Ls", ":LiveServer start<CR>", opts)
+    map("n", "<leader>LS", ":LiveServer stop<CR>", opts)
 end
 
 return M

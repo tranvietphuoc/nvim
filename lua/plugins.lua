@@ -1,6 +1,18 @@
 local M = {}
+local fn = vim.fn
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+    packer_bootstrap =
+        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+end
 
 function M.setup()
+    local fn = vim.fn
+    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+    if fn.empty(fn.glob(install_path)) > 0 then
+        packer_bootstrap =
+            fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+    end
     local packer = require("packer")
     packer.startup(function(use)
         -- packer can manage itself as an optional plugin
@@ -44,7 +56,7 @@ function M.setup()
             end,
         })
 
-        -- -- treesitter
+        -- treesitter
         use({
             "nvim-treesitter/nvim-treesitter",
             run = ":TSUpdate",
@@ -52,16 +64,17 @@ function M.setup()
                 require("ext.treesitter").setup()
             end,
         })
+
         -- multiple cursors
         use({ "terryma/vim-multiple-cursors" })
 
         -- emmet
-        use({
-            "mattn/emmet-vim",
-            config = function()
-                require("lsp.emmet").setup()
-            end,
-        })
+        -- use({
+        --     "mattn/emmet-vim",
+        --     config = function()
+        --         require("lsp.emmet").setup()
+        --     end,
+        -- })
 
         -- tabline
         use({
@@ -324,6 +337,13 @@ function M.setup()
             end,
         })
         use({ "chrisbra/csv.vim" })
+
+        -- live server
+        use({ "manzeloth/live-server" })
+
+        if packer_bootstrap then
+            packer.sync()
+        end
     end)
 end
 

@@ -11,6 +11,7 @@ local M = {}
 DATA = path("data")
 CACHE = path("cache")
 
+
 function M.setup()
     cmd("filetype plugin indent on") -- filetype detection
     cmd("set showcmd")
@@ -23,6 +24,7 @@ function M.setup()
     cmd("set rtp+=/usr/local/opt/fzf")
     cmd("set shortmess+=c")
     cmd([[colorscheme dracula]])
+
     -- cmd "syntax on"
     -- cmd "colorscheme nvcode"
     -- opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
@@ -53,7 +55,7 @@ function M.setup()
     o.splitbelow = true
     o.splitright = true
     o.syntax = "on"
-    o.guifont = "FiraCode\\ Nerd\\ Font:h13"
+    o.guifont = "Hack\\ Nerd\\ Font:h13"
     o.hidden = false -- keep open multiple buffers
     o.title = true
     o.fileencoding = "utf-8"
@@ -75,6 +77,6 @@ function M.setup()
     wo.relativenumber = true
     o.termguicolors = true
     g.loaded_python_provider = 0
-    g.python3_host_prog = "$HOME/.pyenv/shims/python"
+    g.python3_host_prog = "$HOME/.pyenv/shims/python3"
 end
 return M

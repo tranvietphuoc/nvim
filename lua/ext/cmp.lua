@@ -37,6 +37,7 @@ function M.setup()
                 behavior = cmp.ConfirmBehavior.Replace,
                 select = true,
             }),
+
             ["<C-j>"] = function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
@@ -137,6 +138,7 @@ function M.setup()
     -- lsp servers
     local lsp_servers = {
         "ccls",
+        -- "clangd",
         "pyright",
         "rust_analyzer",
         "gopls",
