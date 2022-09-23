@@ -11,7 +11,6 @@ local M = {}
 DATA = path("data")
 CACHE = path("cache")
 
-
 function M.setup()
     cmd("filetype plugin indent on") -- filetype detection
     cmd("set showcmd")

@@ -17,6 +17,7 @@ function M.setup()
     --     blue = "#51afef",
     --     red = "#ec5f67",
     -- }
+    -- local colors = require("github-nvim-theme").colors()
 
     local conditions = {
         buffer_not_empty = function()

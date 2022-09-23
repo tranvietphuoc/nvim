@@ -20,7 +20,7 @@ function M.setup()
         filetype = { "c", "cpp", "objc", "objcpp" },
         offset_encoding = "utf-8",
         root_dir = require("lspconfig/util").root_pattern("compile_commands.json", ".ccls", ".git"),
-        single_file_support = true,
+        single_file_support = false,
         cache = {
             directory = ".ccls-cache",
         },

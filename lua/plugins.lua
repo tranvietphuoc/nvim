@@ -19,6 +19,12 @@ function M.setup()
         use({ "wbthomason/packer.nvim" })
         -- colorscheme
         use("Mofiqul/dracula.nvim")
+        -- use({
+        --     "projekt0n/github-nvim-theme",
+        --     config = function()
+        --         require("github-theme").setup({})
+        --     end,
+        -- })
 
         -- git
         use({
@@ -179,7 +185,15 @@ function M.setup()
         -- lualine
         use({
             "nvim-lualine/lualine.nvim",
+            -- after = "github-nvim-theme",
             requires = { "kyazdani42/nvim-web-devicons", opt = true },
+            -- config = function()
+            --     require("lualine").setup({
+            --         options = {
+            --             theme = "github_dark",
+            --         },
+            --     })
+            -- end,
         })
 
         -- nvim-tree
@@ -301,7 +315,7 @@ function M.setup()
         -- })
 
         -- github copilot
-        use({ "github/copilot.vim" })
+        -- use({ "github/copilot.vim" })
 
         -- fzf fuzzy finder
         use({ "ibhagwan/fzf-lua", requires = { "kyazdani42/nvim-web-devicons" } })
