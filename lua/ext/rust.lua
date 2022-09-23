@@ -13,13 +13,15 @@ function M.setup()
             executor = require("rust-tools/executors").termopen,
             on_initialized = nil,
             reload_workspace_from_cargo_toml = true,
+            only_current_line = true,
+            show_parameter_hints = true,
 
             inlay_hints = {
                 auto = true,
                 only_current_line = false,
                 show_parameter_hints = true,
-                parameter_hints_prefix = "<- ",
-                other_hints_prefix = "=> ",
+                parameter_hints_prefix = "",
+                other_hints_prefix = "",
                 max_len_align = false,
                 max_len_align_padding = 1,
                 right_align = false,
@@ -61,11 +63,12 @@ function M.setup()
                 command = "lldb-vscode",
                 name = "rt_lldb",
             },
-        }
+        },
     }
 
     rt.setup(opts)
-    -- require("rust-tools.inlay_hints").set_inlay_hints()
+    rt.inlay_hints.set()
+    rt.inlay_hints.enable()
 end
 
 return M
