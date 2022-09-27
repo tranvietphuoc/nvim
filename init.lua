@@ -6,7 +6,7 @@ local function packer_init()
     if fn.empty(fn.glob(install_path)) > 0 then
         execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
     end
-    vim.cmd("packadd! packer.nvim")
+    -- vim.cmd("packadd packer.nvim")
     vim.cmd("autocmd BufWritePost plugins.lua PackerCompile")
 end
 
@@ -26,7 +26,12 @@ require("lsp").setup()
 require("ext.cmp").setup()
 
 -- code formatter
-require("ext.formatters").setup()
+-- require("ext.formatters").setup()
+require("ext.nullls").setup()
+
+
+
+
 
 -- lsp server
 require("lsp.bash").setup()

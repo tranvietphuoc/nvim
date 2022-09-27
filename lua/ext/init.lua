@@ -14,6 +14,7 @@ function M.setup()
     require("ext.fzf").setup()
     -- require("ext.lightbulb").setup()
     require("ext.rust").setup()
+    require('ext.nullls').setup()
 end
 
 return M

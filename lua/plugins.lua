@@ -17,6 +17,9 @@ function M.setup()
     packer.startup(function(use)
         -- packer can manage itself as an optional plugin
         use({ "wbthomason/packer.nvim" })
+
+        -- mason
+        use({ "williamboman/mason.nvim" })
         -- colorscheme
         use("Mofiqul/dracula.nvim")
         -- use({
@@ -269,12 +272,14 @@ function M.setup()
                 "typescript.tsx",
             },
         })
-        use({
-            "mhartington/formatter.nvim",
-            -- config = function ()
-            --   require('extensions.formatters').setup()
-            -- end,
-        })
+        -- use({
+        --     "mhartington/formatter.nvim",
+        --     -- config = function ()
+        --     --   require('extensions.formatters').setup()
+        --     -- end,
+        -- })
+
+        use({ "jose-elias-alvarez/null-ls.nvim" })
 
         use({
             "akinsho/toggleterm.nvim",
