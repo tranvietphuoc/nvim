@@ -60,7 +60,9 @@ function M.setup()
             code_actions.gitsigns,
             -- completion.luasnip,
             formatting.prettier.with({
-                args = { "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), "--single-quote" },
+                extra_args = function(params)
+                    return params.options and params.options.tabSize and { "--tab-width", params.options.tabSize }
+                end,
             }),
             formatting.rustfmt.with({
                 args = { "--emit=stdout" },
@@ -68,11 +70,13 @@ function M.setup()
             formatting.gofmt,
             formatting.black.with({
                 args = { "--quiet", "-" },
-                extra_args = { "--line-length", "80" },
+                extra_args = { "--line-length", "79" },
             }),
             -- formatting.isort,
             diagnostics.cppcheck,
-            diagnostics.mypy,
+            diagnostics.mypy.with({
+                methods = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+            }),
             diagnostics.pycodestyle,
         },
         on_attach = function(client, bufnr)

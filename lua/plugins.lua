@@ -3,7 +3,7 @@ local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
     packer_bootstrap =
-    fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
 end
 
 function M.setup()
@@ -11,7 +11,7 @@ function M.setup()
     local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
     if fn.empty(fn.glob(install_path)) > 0 then
         packer_bootstrap =
-        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+            fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
     end
     local packer = require("packer")
     packer.startup(function(use)
@@ -272,6 +272,12 @@ function M.setup()
                 "typescript.tsx",
             },
         })
+        -- use({
+        --     "mhartington/formatter.nvim",
+        --     -- config = function ()
+        --     --   require('extensions.formatters').setup()
+        --     -- end,
+        -- })
 
         use({ "jose-elias-alvarez/null-ls.nvim" })
 
@@ -304,6 +310,14 @@ function M.setup()
             end,
         })
 
+        -- snip runner
+        -- use({
+        --     "michaelb/sniprun",
+        --     run = "bash ./install.sh",
+        --     config = function()
+        --         require("ext.sniprun").setup()
+        --     end,
+        -- })
 
         -- github copilot
         -- use({ "github/copilot.vim" })
