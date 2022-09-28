@@ -6,6 +6,7 @@ local lspkind = require("lspkind")
 local M = {}
 
 function M.setup()
+    require('luasnip.loaders.from_vscode').lazy_load()
     local t = function(str)
         return vim.api.nvim_replace_termcodes(str, true, true, true)
     end
