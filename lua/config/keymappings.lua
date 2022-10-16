@@ -82,11 +82,6 @@ function M.setup()
     map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, noremap = true })
     map("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
 
-    -- buffer
-    map("n", "<TAB>", ":bn<CR>", { noremap = true, silent = true })
-    map("n", "<S-TAB>", ":bp<CR>", { noremap = true, silent = true })
-    map("n", "<S-c>", ":bd<CR>", { noremap = true, silent = true })
-
     -- neogit
     map("n", "<leader>n", ":Neogit<CR>", opts)
 

@@ -3,7 +3,7 @@ local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
     packer_bootstrap =
-        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+    fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
 end
 
 function M.setup()
@@ -11,7 +11,7 @@ function M.setup()
     local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
     if fn.empty(fn.glob(install_path)) > 0 then
         packer_bootstrap =
-            fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
     end
     local packer = require("packer")
     packer.startup(function(use)
@@ -22,12 +22,6 @@ function M.setup()
         use({ "williamboman/mason.nvim" })
         -- colorscheme
         use("Mofiqul/dracula.nvim")
-        -- use({
-        --     "projekt0n/github-nvim-theme",
-        --     config = function()
-        --         require("github-theme").setup({})
-        --     end,
-        -- })
 
         -- git
         use({
@@ -216,12 +210,6 @@ function M.setup()
             end,
         })
 
-        -- documentation generator
-        -- use({
-        --     "kkoomen/vim-doge",
-        --     run = ":call doge#install()",
-        -- })
-        --
         -- indent
         use({
             "lukas-reineke/indent-blankline.nvim",
@@ -229,6 +217,8 @@ function M.setup()
                 require("ext.indent").setup()
             end,
         })
+
+
         use({
             "folke/zen-mode.nvim",
             config = function()
@@ -249,6 +239,8 @@ function M.setup()
                 })
             end,
         })
+
+
         -- Comments
         use({
             "terrortylor/nvim-comment",
@@ -261,6 +253,8 @@ function M.setup()
                 nvim_comment.setup()
             end,
         })
+
+
         -- Javascript / Typescript
         use({
             "jose-elias-alvarez/nvim-lsp-ts-utils",
@@ -273,12 +267,7 @@ function M.setup()
                 "typescript.tsx",
             },
         })
-        -- use({
-        --     "mhartington/formatter.nvim",
-        --     -- config = function ()
-        --     --   require('extensions.formatters').setup()
-        --     -- end,
-        -- })
+
 
         use({ "jose-elias-alvarez/null-ls.nvim" })
 
@@ -302,6 +291,7 @@ function M.setup()
                 })
             end,
         })
+
         -- debugger
         use({ "puremourning/vimspector" })
         use({
@@ -310,15 +300,6 @@ function M.setup()
                 require("which-key").setup()
             end,
         })
-
-        -- snip runner
-        -- use({
-        --     "michaelb/sniprun",
-        --     run = "bash ./install.sh",
-        --     config = function()
-        --         require("ext.sniprun").setup()
-        --     end,
-        -- })
 
         -- github copilot
         -- use({ "github/copilot.vim" })
@@ -360,6 +341,9 @@ function M.setup()
 
         -- live server
         use({ "manzeloth/live-server" })
+
+        -- scala metal
+        use({ "scalameta/nvim-metals", requires = { "nvim-lua/plenary.nvim" } })
 
         if packer_bootstrap then
             packer.sync()

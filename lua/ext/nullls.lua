@@ -73,7 +73,7 @@ function M.setup()
                 extra_args = { "--line-length", "79" },
             }),
             -- formatting.isort,
-            diagnostics.cppcheck,
+            diagnostics.cpplint,
             diagnostics.mypy.with({
                 methods = null_ls.methods.DIAGNOSTICS_ON_SAVE,
             }),

@@ -20,6 +20,7 @@ function M.setup()
             "javascript",
             "dockerfile",
             "scss",
+            "scala",
             "toml",
             "rst",
             "html",

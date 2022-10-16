@@ -10,9 +10,10 @@ function M.setup()
         vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
         vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
     end
+
     require("toggleterm").setup({
         -- size can be a number or function which is passed the current terminal
-        size = 8,
+        size = 11,
         open_mapping = [[<leader>t]],
         hide_numbers = true, -- hide the number column in toggleterm buffers
         shade_filetypes = {},
