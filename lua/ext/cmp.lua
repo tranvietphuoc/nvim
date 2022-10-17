@@ -40,7 +40,7 @@ function M.setup()
                 select = true,
             }),
 
-            ["<C-j>"] = function(fallback)
+            ["<Tab>"] = function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
                 elseif luasnip and luasnip.expand_or_jumpable() then
@@ -51,7 +51,7 @@ function M.setup()
                     fallback()
                 end
             end,
-            ["<C-k>"] = function(fallback)
+            ["<S-Tab>"] = function(fallback)
                 if cmp.visible() then
                     cmp.select_prev_item()
                 elseif luasnip and luasnip.jumpable(-1) then
