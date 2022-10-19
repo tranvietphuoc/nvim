@@ -1,73 +1,68 @@
 local M = {}
 
 function M.setup()
-    vim.g.dashboard_custom_header = {
-        "        ⢀⣴⡾⠃⠄⠄⠄⠄⠄⠈⠺⠟⠛⠛⠛⠛⠻⢿⣿⣿⣿⣿⣶⣤⡀  ",
-        "      ⢀⣴⣿⡿⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣸⣿⣿⣿⣿⣿⣿⣿⣷ ",
-        "     ⣴⣿⡿⡟⡼⢹⣷⢲⡶⣖⣾⣶⢄⠄⠄⠄⠄⠄⢀⣼⣿⢿⣿⣿⣿⣿⣿⣿⣿ ",
-        "    ⣾⣿⡟⣾⡸⢠⡿⢳⡿⠍⣼⣿⢏⣿⣷⢄⡀⠄⢠⣾⢻⣿⣸⣿⣿⣿⣿⣿⣿⣿ ",
-        "  ⣡⣿⣿⡟⡼⡁⠁⣰⠂⡾⠉⢨⣿⠃⣿⡿⠍⣾⣟⢤⣿⢇⣿⢇⣿⣿⢿⣿⣿⣿⣿⣿ ",
-        " ⣱⣿⣿⡟⡐⣰⣧⡷⣿⣴⣧⣤⣼⣯⢸⡿⠁⣰⠟⢀⣼⠏⣲⠏⢸⣿⡟⣿⣿⣿⣿⣿⣿ ",
-        " ⣿⣿⡟⠁⠄⠟⣁⠄⢡⣿⣿⣿⣿⣿⣿⣦⣼⢟⢀⡼⠃⡹⠃⡀⢸⡿⢸⣿⣿⣿⣿⣿⡟ ",
-        " ⣿⣿⠃⠄⢀⣾⠋⠓⢰⣿⣿⣿⣿⣿⣿⠿⣿⣿⣾⣅⢔⣕⡇⡇⡼⢁⣿⣿⣿⣿⣿⣿⢣ ",
-        " ⣿⡟⠄⠄⣾⣇⠷⣢⣿⣿⣿⣿⣿⣿⣿⣭⣀⡈⠙⢿⣿⣿⡇⡧⢁⣾⣿⣿⣿⣿⣿⢏⣾ ",
-        " ⣿⡇⠄⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢻⠇⠄⠄⢿⣿⡇⢡⣾⣿⣿⣿⣿⣿⣏⣼⣿ ",
-        " ⣿⣷⢰⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⢰⣧⣀⡄⢀⠘⡿⣰⣿⣿⣿⣿⣿⣿⠟⣼⣿⣿ ",
-        " ⢹⣿⢸⣿⣿⠟⠻⢿⣿⣿⣿⣿⣿⣿⣿⣶⣭⣉⣤⣿⢈⣼⣿⣿⣿⣿⣿⣿⠏⣾⣹⣿⣿ ",
-        " ⢸⠇⡜⣿⡟⠄⠄⠄⠈⠙⣿⣿⣿⣿⣿⣿⣿⣿⠟⣱⣻⣿⣿⣿⣿⣿⠟⠁⢳⠃⣿⣿⣿ ",
-        "  ⣰⡗⠹⣿⣄⠄⠄⠄⢀⣿⣿⣿⣿⣿⣿⠟⣅⣥⣿⣿⣿⣿⠿⠋  ⣾⡌⢠⣿⡿⠃ ",
-        " ⠜⠋⢠⣷⢻⣿⣿⣶⣾⣿⣿⣿⣿⠿⣛⣥⣾⣿⠿⠟⠛⠉            ",
+    local db = require("dashboard")
+    local home = os.getenv("HOME")
+
+    db.custom_header = {
+        "   ⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣴⣶⣶⣶⣶⣶⠶⣶⣤⣤⣀⠀⠀⠀⠀⠀⠀ ",
+        " ⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⣿⠁⠀⢀⠈⢿⢀⣀⠀⠹⣿⣿⣿⣦⣄⠀⠀⠀ ",
+        " ⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⠿⠀⠀⣟⡇⢘⣾⣽⠀⠀⡏⠉⠙⢛⣿⣷⡖⠀ ",
+        " ⠀⠀⠀⠀⠀⣾⣿⣿⡿⠿⠷⠶⠤⠙⠒⠀⠒⢻⣿⣿⡷⠋⠀⠴⠞⠋⠁⢙⣿⣄ ",
+        " ⠀⠀⠀⠀⢸⣿⣿⣯⣤⣤⣤⣤⣤⡄⠀⠀⠀⠀⠉⢹⡄⠀⠀⠀⠛⠛⠋⠉⠹⡇ ",
+        " ⠀⠀⠀⠀⢸⣿⣿⠀⠀⠀⣀⣠⣤⣤⣤⣤⣤⣤⣤⣼⣇⣀⣀⣀⣛⣛⣒⣲⢾⡷ ",
+        " ⢀⠤⠒⠒⢼⣿⣿⠶⠞⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠀⣼⠃ ",
+        " ⢮⠀⠀⠀⠀⣿⣿⣆⠀⠀⠻⣿⡿⠛⠉⠉⠁⠀⠉⠉⠛⠿⣿⣿⠟⠁⠀⣼⠃⠀ ",
+        " ⠈⠓⠶⣶⣾⣿⣿⣿⣧⡀⠀⠈⠒⢤⣀⣀⡀⠀⠀⣀⣀⡠⠚⠁⠀⢀⡼⠃⠀⠀ ",
+        " ⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣷⣤⣤⣤⣤⣭⣭⣭⣭⣭⣥⣤⣤⣤⣴⣟⠁    ",
         "",
         "            N E O V I M            ",
     }
-    -- vim.g.dhboard_custom_header = {
-    --     " ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓",
-    --     " ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒",
-    --     "▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░",
-    --     "▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██ ",
-    --     "▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒",
-    --     "░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░",
-    --     "░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░",
-    --     "   ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░   ",
-    --     "         ░    ░  ░    ░ ░        ░   ░         ░   ",
-    --     "                                ░                  ",
-    -- }
 
-    vim.g.dashboard_default_executive = "fzf"
-    vim.g.dashboard_custom_section = {
-        a = { description = { " Open last session                     SPC s l" }, command = "SessionLoad" },
-        b = { description = { " Recently opened files                 SPC f h" }, command = "History" },
-        c = {
-            description = { " Find files                            SPC f f" },
-            command = "Files",
+    db.preview_command = "bat"
+    db.preview_file_width = 70
+    db.preview_file_height = 11
+    db.preview_file_path = home .. "/.config/nvim/init.lua"
+    db.custom_center = {
+        {
+            icon = "   ",
+            desc = "Recently latest session                  ",
+            shortcut = "SPC s l",
+            action = "SessionLoad",
         },
-        d = {
-            description = { " Find words                            SPC f a" },
-            command = "Rg",
+        {
+            icon = "  ",
+            desc = "Recently opened files                   ",
+            action = "DashboardFindHistory",
+            shortcut = "SPC f h",
         },
-        e = {
-            description = { " New file                              SPC c n" },
-            command = ":enew",
+        {
+            icon = "  ",
+            desc = "Find  File                              ",
+            action = "Telescope find_files find_command=rg,--hidden,--files",
+            shortcut = "SPC f f",
         },
-        -- f = {
-        --     description = { " Change colorscheme                    SPC t c" },
-        --     command = "Colors",
-        -- },
-        f = {
-            description = { " Bookmarks                             SPC f b" },
-            command = "Marks",
+        {
+            icon = "  ",
+            desc = "File Browser                            ",
+            action = "Telescope file_browser",
+            shortcut = "SPC f b",
         },
-        g = {
-            description = { " Go to configuration                   SPC t n" },
-            command = ":e ~/.config/nvim/lua/config/init.lua",
+        {
+            icon = "  ",
+            desc = "Find  word                              ",
+            action = "Telescope live_grep",
+            shortcut = "SPC f w",
+        },
+        {
+            icon = "  ",
+            desc = "Open Personal dotfiles                  ",
+            action = "Telescope dotfiles path=" .. home .. "/.config/nvim/init.lua",
+            shortcut = "SPC f d",
         },
     }
-    vim.g.indentLine_fileTypeExclude = { "dashboard" }
-    vim.g.indentLine_fileTypeExclude = { "dashboard" }
-    vim.g.dashboard_custom_footer = { "Configured by Tran Viet Phuoc" }
-    -- vim.cmd("autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2")
-    vim.g.dashboard_preview_file_height = 12
-    vim.g.dashboard_preview_file_width = 100
+
+    db.custom_footer = { "Configured by Tran Viet Phuoc" }
 end
 
 return M
