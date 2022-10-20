@@ -155,6 +155,7 @@ function M.setup()
         "jsonls",
         "dockerls",
         "html",
+
     }
 
     local cmp_nvim_lsp = require("cmp_nvim_lsp")

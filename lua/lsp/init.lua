@@ -23,6 +23,7 @@ function M.tsserver_on_attach(client, bufnr)
 end
 
 local saga = require("lspsaga")
+local metals_config = require("metals").bare_config() -- scala
 
 function M.setup()
     -- lsp saga
@@ -39,6 +40,7 @@ function M.setup()
     map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
     map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
     map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+    map("n", "<leader>ws", '<cmd>lua require"metals".hover_worksheet()<CR>') -- scala
     map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
     map("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
     -- map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
@@ -86,6 +88,27 @@ function M.setup()
 
     -- Outline
     map("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
+
+    -- scala metals
+    metals_config.settings = {
+        showImplicitArguments = true,
+        excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
+    }
+
+    metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+    local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+
+    vim.api.nvim_create_autocmd("FileType", {
+        -- NOTE: You may or may not want java included here. You will need it if you
+        -- want basic Java support but it may also conflict if you are using
+        -- something like nvim-jdtls which also works on a java filetype autocmd.
+        pattern = { "scala", "sbt", "java" },
+        callback = function()
+            require("metals").initialize_or_attach(metals_config)
+        end,
+        group = nvim_metals_group,
+    })
 end
 
 return M
