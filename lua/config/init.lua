@@ -72,10 +72,11 @@ function M.setup()
     o.showtabline = 2
     o.ruler = true
     o.updatetime = 300 -- faster completion
-    o.timeoutlen = 0 -- timeout to 1s
+    o.timeoutlen = 300 -- timeout to 1s
     wo.relativenumber = true
     o.termguicolors = true
     g.loaded_python_provider = 0
     g.python3_host_prog = "$HOME/.pyenv/shims/python3"
 end
+
 return M

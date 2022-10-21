@@ -17,9 +17,9 @@ function M.setup()
     map("n", "<Leader>GU", "<CMD>lua _G.__fterm_gitui()<CR>", opts)
 
     -- comment toggle
-    map("n", "<Leader>/", ":CommentToggle<CR>", opts)
-    map("x", "<Leader>/", ":CommentToggle<CR>", opts)
-    map("v", "<Leader>/", ":CommentToggle<CR>", opts)
+    -- map("n", "<Leader>/", ":CommentToggle<CR>", opts)
+    -- map("x", "<Leader>/", ":CommentToggle<CR>", opts)
+    -- map("v", "<Leader>/", ":CommentToggle<CR>", opts)
 
     -- navigating
     --- move between splitted windows

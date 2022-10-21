@@ -1,10 +1,14 @@
 local M = {}
+
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
     packer_bootstrap =
     fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
 end
+
+
+
 
 function M.setup()
     local fn = vim.fn
@@ -218,7 +222,6 @@ function M.setup()
             end,
         })
 
-
         use({
             "folke/zen-mode.nvim",
             config = function()
@@ -240,20 +243,13 @@ function M.setup()
             end,
         })
 
-
         -- Comments
         use({
-            "terrortylor/nvim-comment",
-            event = "BufRead",
+            "numToStr/Comment.nvim",
             config = function()
-                local status_ok, nvim_comment = pcall(require, "nvim_comment")
-                if not status_ok then
-                    return
-                end
-                nvim_comment.setup()
+                require("ext.comment").setup()
             end,
         })
-
 
         -- Javascript / Typescript
         use({
@@ -267,7 +263,6 @@ function M.setup()
                 "typescript.tsx",
             },
         })
-
 
         use({ "jose-elias-alvarez/null-ls.nvim" })
 
