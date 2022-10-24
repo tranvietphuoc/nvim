@@ -14,13 +14,11 @@ CACHE = path("cache")
 function M.setup()
     cmd("filetype plugin indent on") -- filetype detection
     cmd("set showcmd")
-    cmd("set iskeyword+=-") -- treat dash seperate words as word text object
     cmd("set whichwrap+=<,>,[,],h,l") -- move to next line with theses keys
     cmd("set modifiable")
     cmd("set nofoldenable")
     cmd("set colorcolumn=99999")
     cmd("set inccommand=split")
-    cmd("set rtp+=/usr/local/opt/fzf")
     cmd("set shortmess+=c")
     cmd([[colorscheme dracula]])
 
@@ -46,7 +44,6 @@ function M.setup()
     o.pumheight = 10
     o.pumblend = 3
     o.lazyredraw = true
-    o.clipboard = "unnamed,unnamedplus"
     wo.signcolumn = "yes:1" -- alway show sign column
     o.backup = false
     o.swapfile = false
@@ -77,6 +74,19 @@ function M.setup()
     o.termguicolors = true
     g.loaded_python_provider = 0
     g.python3_host_prog = "$HOME/.pyenv/shims/python3"
+
+    -- backspace
+    opt.backspace = "indent,eol,start"
+
+    -- clipboard
+    opt.clipboard:append("unnamed,unnamedplus")
+
+    opt.iskeyword:append("-") -- treat dash seperate words as word
+    opt.runtimepath:append("/usr/local/opt/fzf/") --runtimepath
+
+    g.doge_doc_standard_python = true
+    g.doge_doc_standard_javascript = true
+
 end
 
 return M

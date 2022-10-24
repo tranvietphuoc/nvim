@@ -72,6 +72,8 @@ function M.setup()
                 args = { "--quiet", "-" },
                 extra_args = { "--line-length", "79" },
             }),
+
+            formatting.clang_format,
             -- formatting.isort,
             diagnostics.cpplint,
             diagnostics.mypy.with({
