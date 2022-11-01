@@ -17,7 +17,7 @@ function M.setup()
     -- })
     require("lspconfig").ccls.setup({
         cmd = { DATA .. "/lsp_servers/ccls/bin/ccls" },
-        filetype = { "c", "cpp", "objc", "objcpp" },
+        filetype = { "c", "cpp", "cc", "h", "hpp" },
         offset_encoding = "utf-8",
         root_dir = require("lspconfig/util").root_pattern("compile_commands.json", ".ccls", ".git"),
         single_file_support = false,
