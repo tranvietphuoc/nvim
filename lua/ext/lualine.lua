@@ -3,21 +3,7 @@
 local M = {}
 
 function M.setup()
-    local colors = require("dracula").colors()
-    -- local colors = {
-    --     bg = "#3b4252",
-    --     fg = "#bbc2cf",
-    --     yellow = "#ECBE7B",
-    --     cyan = "#008080",
-    --     darkblue = "#081633",
-    --     green = "#98be65",
-    --     orange = "#FF8800",
-    --     violet = "#a9a1e1",
-    --     magenta = "#c678dd",
-    --     blue = "#51afef",
-    --     red = "#ec5f67",
-    -- }
-    -- local colors = require("github-nvim-theme").colors()
+    local colors = require("tokyonight.colors").default
 
     local conditions = {
         buffer_not_empty = function()
@@ -38,13 +24,9 @@ function M.setup()
             component_separators = "",
             section_separators = "",
             theme = {
-                -- We are going to use lualine_c an lualine_x as left and
-                -- right section. Both are highlighted by c theme .  So we
-                -- are just setting default looks o statusline
-                normal = { c = { fg = colors.fg, bg = colors.selection } },
-                inactive = { c = { fg = colors.fg, bg = colors.selection } },
+                normal = { c = { fg = colors.fg, bg = colors.bg_highlight } },
+                inactive = { c = { fg = colors.fg, bg = colors.bg_highlight } },
             },
-            -- theme = "dracula-nvim",
         },
         sections = {
             -- these are to remove the defaults
@@ -112,29 +94,31 @@ function M.setup()
             }
             -- auto change color according to neovims mode
             local mode_color = {
-                n = colors.cyan,
+                n = colors.blue,
                 i = colors.green,
-                v = colors.pink,
-                [""] = colors.pink,
-                V = colors.pink,
+                v = colors.magenta,
+                [""] = colors.magenta,
+                V = colors.magenta,
                 c = colors.yellow,
                 no = colors.red,
                 s = colors.orange,
                 S = colors.orange,
                 [""] = colors.orange,
-                ic = colors.bright_yellow,
-                R = colors.bright_blue,
-                Rv = colors.bright_blue,
-                ["r?"] = colors.bright_blue,
-                cv = colors.bright_yellow,
-                ce = colors.bright_yellow,
-                r = colors.bright_cyan,
-                rm = colors.bright_cyan,
-                ["r?"] = colors.bright_green,
+                ic = colors.yellow,
+                R = colors.blue5,
+                Rv = colors.blue5,
+                ["r?"] = colors.blue5,
+                cv = colors.yellow,
+                ce = colors.yellow,
+                r = colors.blue6,
+                rm = colors.blue6,
+                -- ["r?"] = colors.green1,
                 ["!"] = colors.red,
                 t = colors.red,
             }
-            vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.selection)
+            vim.api.nvim_command(
+                "hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.bg_highlight
+            )
             return alias[vim.fn.mode()]
         end,
         color = "LualineMode",
@@ -144,7 +128,7 @@ function M.setup()
     append_left({
         "branch",
         icon = "",
-        color = { fg = colors.bright_blue, gui = "bold" },
+        color = { fg = colors.blue6, gui = "bold" },
     })
 
     append_left({
@@ -168,7 +152,7 @@ function M.setup()
     append_left({
         "filename",
         cond = conditions.buffer_not_empty,
-        color = { fg = colors.bright_green, gui = "bold" },
+        color = { fg = colors.green1, gui = "bold" },
     })
     append_left({
         "diagnostics",
@@ -207,7 +191,7 @@ function M.setup()
             return msg
         end,
         icon = " LSP:",
-        color = { fg = "#ffffff", gui = "bold" },
+        color = { fg = colors.fg, gui = "bold" },
     })
 
     -- add components to right section

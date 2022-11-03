@@ -20,7 +20,8 @@ function M.setup()
     cmd("set colorcolumn=99999")
     cmd("set inccommand=split")
     cmd("set shortmess+=c")
-    cmd([[colorscheme dracula]])
+    -- cmd([[colorscheme dracula]])
+    cmd([[colorscheme tokyonight-storm]])
 
     -- cmd "syntax on"
     -- cmd "colorscheme nvcode"
@@ -86,7 +87,6 @@ function M.setup()
 
     g.doge_doc_standard_python = true
     g.doge_doc_standard_javascript = true
-
 end
 
 return M
