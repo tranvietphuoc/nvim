@@ -125,7 +125,7 @@ function M.setup()
     append_left({
         "branch",
         icon = "",
-        color = { fg = colors.blue6, gui = "bold" },
+        color = { fg = colors.orange.bright, gui = "bold" },
     })
 
     append_left({
