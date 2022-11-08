@@ -3,7 +3,7 @@
 local M = {}
 
 function M.setup()
-    local colors = require("tokyonight.colors").default
+    local colors = require("nightfox.palette.nordfox").palette
 
     local conditions = {
         buffer_not_empty = function()
@@ -24,8 +24,8 @@ function M.setup()
             component_separators = "",
             section_separators = "",
             theme = {
-                normal = { c = { fg = colors.fg, bg = colors.bg_highlight } },
-                inactive = { c = { fg = colors.fg, bg = colors.bg_highlight } },
+                normal = { c = { fg = colors.fg1, bg = colors.bg4 } },
+                inactive = { c = { fg = colors.fg1, bg = colors.bg4 } },
             },
         },
         sections = {
@@ -63,7 +63,7 @@ function M.setup()
         function()
             return "▊"
         end,
-        color = { fg = colors.purple }, -- Sets highlighting of component
+        color = { fg = colors.magenta.bright }, -- Sets highlighting of component
         padding = { left = 0, right = 1 }, -- We don't need space before this
     })
 
@@ -94,31 +94,28 @@ function M.setup()
             }
             -- auto change color according to neovims mode
             local mode_color = {
-                n = colors.blue,
-                i = colors.green,
-                v = colors.magenta,
-                [""] = colors.magenta,
-                V = colors.magenta,
-                c = colors.yellow,
-                no = colors.red,
-                s = colors.orange,
-                S = colors.orange,
-                [""] = colors.orange,
-                ic = colors.yellow,
-                R = colors.blue5,
-                Rv = colors.blue5,
-                ["r?"] = colors.blue5,
-                cv = colors.yellow,
-                ce = colors.yellow,
-                r = colors.blue6,
-                rm = colors.blue6,
-                -- ["r?"] = colors.green1,
-                ["!"] = colors.red,
-                t = colors.red,
+                n = colors.blue.bright,
+                i = colors.green.bright,
+                v = colors.magenta.bright,
+                [""] = colors.magenta.bright,
+                V = colors.magenta.bright,
+                c = colors.yellow.bright,
+                no = colors.red.bright,
+                s = colors.orange.bright,
+                S = colors.orange.bright,
+                [""] = colors.orange.bright,
+                ic = colors.yellow.bright,
+                R = colors.blue.dim,
+                Rv = colors.blue.dim,
+                ["r?"] = colors.blue.dim,
+                cv = colors.yellow.bright,
+                ce = colors.yellow.bright,
+                r = colors.blue.light,
+                rm = colors.blue.light,
+                ["!"] = colors.red.bright,
+                t = colors.red.bright,
             }
-            vim.api.nvim_command(
-                "hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.bg_highlight
-            )
+            vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.bg4)
             return alias[vim.fn.mode()]
         end,
         color = "LualineMode",
@@ -136,9 +133,9 @@ function M.setup()
         -- Is it me or the symbol for modified us really weird
         symbols = { added = " ", modified = "柳 ", removed = " " },
         diff_color = {
-            added = { fg = colors.green },
-            modified = { fg = colors.orange },
-            removed = { fg = colors.red },
+            added = { fg = colors.green.dim },
+            modified = { fg = colors.orange.dim },
+            removed = { fg = colors.red.dim },
         },
         cond = conditions.hide_in_width,
     })
@@ -152,16 +149,16 @@ function M.setup()
     append_left({
         "filename",
         cond = conditions.buffer_not_empty,
-        color = { fg = colors.green1, gui = "bold" },
+        color = { fg = colors.green.dim, gui = "bold" },
     })
     append_left({
         "diagnostics",
         sources = { "nvim_diagnostic" },
         symbols = { error = " ", warn = " ", info = " " },
         diagnostics_color = {
-            color_error = { fg = colors.red },
-            color_warn = { fg = colors.yellow },
-            color_info = { fg = colors.cyan },
+            color_error = { fg = colors.red.dim },
+            color_warn = { fg = colors.yellow.dim },
+            color_info = { fg = colors.cyan.dim },
         },
     })
 
@@ -191,7 +188,7 @@ function M.setup()
             return msg
         end,
         icon = " LSP:",
-        color = { fg = colors.fg, gui = "bold" },
+        color = { fg = colors.fg1, gui = "bold" },
     })
 
     -- add components to right section
@@ -199,14 +196,14 @@ function M.setup()
         "fileformat",
         fmt = string.upper,
         icons_enabled = false,
-        color = { fg = colors.green, gui = "bold" },
+        color = { fg = colors.yellow.dim, gui = "bold" },
     })
 
     append_right({
         "o:encoding", -- option component same as &encoding in viml
         fmt = string.upper,
         cond = conditions.hide_in_width,
-        color = { fg = colors.green, gui = "bold" },
+        color = { fg = colors.yellow.dim, gui = "bold" },
     })
 
     append_right({
@@ -214,18 +211,18 @@ function M.setup()
         cond = conditions.buffer_not_empty,
         fmt = string.upper,
         icons_enabled = false,
-        color = { fg = colors.green, gui = "bold" },
+        color = { fg = colors.yellow.dim, gui = "bold" },
     })
 
     append_right({ "location" })
 
-    append_right({ "progress", color = { fg = colors.fg, gui = "bold" } })
+    append_right({ "progress", color = { fg = colors.fg1, gui = "bold" } })
 
     append_right({
         function()
             return "▊"
         end,
-        color = { fg = colors.purple },
+        color = { fg = colors.magenta.bright },
         padding = { left = 1 },
     })
 

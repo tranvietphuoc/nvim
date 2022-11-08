@@ -20,8 +20,7 @@ function M.setup()
     cmd("set colorcolumn=99999")
     cmd("set inccommand=split")
     cmd("set shortmess+=c")
-    -- cmd([[colorscheme dracula]])
-    cmd([[colorscheme tokyonight-storm]])
+    cmd([[colorscheme nordfox]])
 
     -- cmd "syntax on"
     -- cmd "colorscheme nvcode"
