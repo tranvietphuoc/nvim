@@ -105,9 +105,23 @@ function M.setup()
         },
         filters = {
             dotfiles = false,
-            custom = {},
+            custom = {
+                ".DS_Store",
+                ".metals",
+                ".venv",
+                ".mypy_cache",
+                ".pytest_cache",
+                "__pycache__",
+                "node_modules",
+                ".git",
+                ".github",
+                ".ipynb_checkpoints",
+                ".cache",
+                ".vscode",
+            },
             exclude = {},
         },
+
         git = {
             enable = true,
             ignore = true,
