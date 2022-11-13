@@ -151,10 +151,12 @@ function M.setup()
         "yamlls",
         "vimls",
         "tailwindcss",
-        "svelte",
         "jsonls",
         "dockerls",
         "html",
+        "jdtls",
+        "emmet_ls",
+        "texlab",
     }
 
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
