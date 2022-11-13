@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup()
     require("lspconfig").gopls.setup({
-        cmd = { DATA .. "/lsp_servers/go/gopls" },
+        cmd = { DATA .. "/mason/bin/gopls" },
         cmd_env = {
             GLOB_PATTERN = "*@(.sh|.inc|.bash|.command)",
         },

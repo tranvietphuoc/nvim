@@ -3,7 +3,7 @@ local M = {}
 
 function M.setup()
     require("lspconfig").tailwindcss.setup({
-        cmd = { DATA .. "/lsp_servers/tailwindcss_npm/node_modules/.bin/tailwindcss-language-server", "--stdio" },
+        cmd = { DATA .. "/mason/bin/tailwindcss-language-server", "--stdio" },
         filetypes = {
             "css",
             "svelte",

@@ -2,20 +2,21 @@ local M = {}
 local lsputils = require("lsp.utils")
 
 function M.setup()
-    -- require("lspconfig").clangd.setup({
-    --     cmd = { DATA .. "/lsp_servers/clangd/clangd/bin/clangd" },
-    --     on_attach = require("lsp").common_on_attach,
-    --     -- handlers = {
-    --     --       ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.diagnostic.on_publish_diagnostics, {
-    --     --         virtual_text = true,
-    --     --         signs = true,
-    --     --         underline = true,
-    --     --         update_in_insert = true,
-    --     -- 		  })
-    --     -- }
-    --     handlers = lsputils.lsp_diagnostics(),
-    -- })
-    require("lspconfig").ccls.setup({
+    require("lspconfig").clangd.setup({
+        cmd = { DATA .. "/mason/bin/clangd" },
+        on_attach = require("lsp").common_on_attach,
+        -- handlers = {
+        -- ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.diagnostic.on_publish_diagnostics, {
+        -- virtual_text = true,
+        -- signs = true,
+        -- underline = true,
+        -- update_in_insert = true,
+        -- })
+        -- },
+        filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "cc", "h", "hpp" },
+        handlers = lsputils.lsp_diagnostics(),
+    })
+    --[[ require("lspconfig").ccls.setup({
         cmd = { DATA .. "/lsp_servers/ccls/bin/ccls" },
         filetype = { "c", "cpp", "cc", "h", "hpp" },
         offset_encoding = "utf-8",
@@ -33,7 +34,7 @@ function M.setup()
                 excludeArgs = { "-frounding-math" },
             },
         },
-    })
+    }) ]]
 end
 
 return M

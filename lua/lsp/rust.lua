@@ -9,7 +9,7 @@ function M.setup()
     -- lsp
     require("lspconfig").rust_analyzer.setup({
 
-        cmd = { DATA .. "/lsp_servers/rust/rust-analyzer" },
+        cmd = { DATA .. "/mason/bin/rust-analyzer" },
         -- cmd = { "rust-analyzer" },
         filetypes = { "rust" },
         on_attach = require("lsp").common_on_attach,

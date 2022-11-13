@@ -24,7 +24,7 @@ end
 function M.setup()
     require("lspconfig").pyright.setup({
         -- require'nvim_lsp'.pyright.setup {
-        cmd = { DATA .. "/lsp_servers/python/node_modules/.bin/pyright-langserver", "--stdio" },
+        cmd = { DATA .. "/mason/bin/pyright-langserver", "--stdio" },
         on_attach = require("lsp").common_on_attach,
         handlers = lsputils.lsp_diagnostics(),
         on_init = function(client)

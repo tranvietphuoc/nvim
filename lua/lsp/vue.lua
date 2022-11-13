@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup()
     require("lspconfig").vuels.setup({
-        cmd = { DATA .. "/lsp_servers/vuels/node_modules/.bin/vls" },
+        cmd = { DATA .. "/mason/bin/vls" },
         on_attach = require("lsp").common_on_attach,
         filetypes = { "vue" },
         root_dir = require("lspconfig/util").root_pattern("package.json", "vue.config.js"),

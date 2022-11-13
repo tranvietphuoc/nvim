@@ -5,7 +5,7 @@ local lsputils = require("lsp.utils")
 
 function M.setup()
     require("lspconfig").tsserver.setup({
-        cmd = { DATA .. "/lsp_servers/tsserver/node_modules/.bin/typescript-language-server", "--stdio" },
+        cmd = { DATA .. "/mason/bin/typescript-language-server", "--stdio" },
 
         filetypes = {
             "ejs",

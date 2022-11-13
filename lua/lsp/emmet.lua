@@ -26,7 +26,7 @@ function M.setup()
     --     }
     -- end
     lspconfig.emmet_ls.setup({
-        cmd = { DATA .. "/lsp_servers/emmet_ls/node_modules/.bin/emmet-ls", "--stdio" },
+        cmd = { DATA .. "/mason/bin/emmet-ls", "--stdio" },
         filetypes = { "html", "css", "javascriptreact", "typescriptreact", "sass", "scss" },
         init_options = {
             html = {

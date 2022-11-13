@@ -7,7 +7,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 function M.setup()
     require("lspconfig").cssls.setup({
         cmd = {
-            DATA .. "/lsp_servers/html/node_modules/.bin/vscode-css-language-server",
+            DATA .. "/mason/bin/vscode-css-language-server",
             "--stdio",
         },
         on_attach = require("lsp").common_on_attach,
