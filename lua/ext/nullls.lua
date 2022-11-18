@@ -73,7 +73,9 @@ function M.setup()
                 extra_args = { "--line-length", "79" },
             }),
 
-            formatting.clang_format,
+            formatting.clang_format.with({
+                filetypes = { "c", "cpp", "h", "hpp", "java" },
+            }),
             -- formatting.isort,
             diagnostics.cpplint,
             diagnostics.mypy.with({

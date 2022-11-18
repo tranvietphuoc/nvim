@@ -10,8 +10,6 @@ function M.setup()
         -- hijack netrw window on startup
         hijack_netrw = true,
 
-        hijack_cursor = false,
-
         hijack_unnamed_buffer_when_opening = false,
 
         -- open the tree when running this setup function
@@ -40,7 +38,7 @@ function M.setup()
             update_cwd = false,
             -- list of buffer names / filetypes that will not update the cwd if the file isn't found under the current root directory
             -- only relevant when `update_focused_file.update_cwd` is true and `update_focused_file.enable` is true
-            ignore_list = { ".venv", "node_modules", ".pytest_cache", ".git" },
+            ignore_list = { ".venv", "node_modules", ".pytest_cache", ".git", "target", "__pycache__" },
         },
 
         -- view = {
@@ -83,11 +81,11 @@ function M.setup()
             enable = true,
             auto_open = true,
         },
-        update_focused_file = {
+        --[[  update_focused_file = {
             enable = false,
             update_cwd = false,
             ignore_list = {},
-        },
+        }, ]]
         ignore_ft_on_setup = {},
         system_open = {
             cmd = "",
@@ -118,6 +116,7 @@ function M.setup()
                 ".ipynb_checkpoints",
                 ".cache",
                 ".vscode",
+                "target",
             },
             exclude = {},
         },
