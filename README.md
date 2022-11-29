@@ -34,6 +34,7 @@ You need to install these tools first:
 -   [gopls](https://github.com/golang/tools/blob/master/gopls/doc/vim.md)
 -   [clangd](https://clangd.llvm.org/installation.html)
 -   [stylua](https://github.com/JohnnyMorganz/StyLua)
+-   [pmd](https://pmd.github.io/latest/)
 
 ### Neovim
 
