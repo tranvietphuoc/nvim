@@ -82,6 +82,7 @@ function M.setup()
                 methods = null_ls.methods.DIAGNOSTICS_ON_SAVE,
             }),
             diagnostics.pycodestyle,
+            diagnostics.pmd, -- java
         },
         on_attach = function(client, bufnr)
             if client.supports_method("textDocument/formatting") then

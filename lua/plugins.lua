@@ -83,6 +83,8 @@ function M.setup()
             end,
         })
 
+        -- java
+        use("mfussenegger/nvim-jdtls")
         -- treesitter
         use({
             "nvim-treesitter/nvim-treesitter",
