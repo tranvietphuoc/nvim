@@ -27,6 +27,7 @@ function M.setup()
     -- Move selected line / block of text in visual mode
     map("x", "K", ":move '<-2<CR>gv-gv", opts)
     map("x", "J", ":move '>+1<CR>gv-gv", opts)
+    -- shifting selected line by select block and use > (or shift + .) and < (or shif + ,)
 
     -- markdown preview
     map("n", "<Leader>m", "<Plug>MarkdownPreview<CR>", { noremap = false, silent = false })

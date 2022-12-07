@@ -74,15 +74,20 @@ function M.setup()
             }),
 
             formatting.clang_format.with({
-                filetypes = { "c", "cpp", "h", "hpp", "java" },
+                filetypes = { "c", "cpp", "h", "hpp" },
             }),
+            formatting.djhtml,
+            formatting.pg_format,
             -- formatting.isort,
             diagnostics.cpplint,
             diagnostics.mypy.with({
                 methods = null_ls.methods.DIAGNOSTICS_ON_SAVE,
             }),
             diagnostics.pycodestyle,
-            diagnostics.pmd, -- java
+            formatting.google_java_format, -- java run `brew install google-java-format` first
+            diagnostics.checkstyle.with({ -- run `brew install checkstyle` first
+                extra_args = { "-c", "/google_checks.xml" }, -- or "/sun_checks.xml" or path to self written rules
+            }),
         },
         on_attach = function(client, bufnr)
             if client.supports_method("textDocument/formatting") then
