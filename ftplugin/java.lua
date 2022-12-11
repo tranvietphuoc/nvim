@@ -3,7 +3,7 @@ local workspace_dir = "." .. project_name
 
 local config = {
     cmd = {
-        "/Library/Java/JavaVirtualMachines/jdk-17.0.5.jdk/Contents/Home/bin/java",
+        "/usr/local/opt/openjdk@17/bin/java",
         "-Declipse.application=org.eclipse.jdt.ls.core.id1",
         "-Dosgi.bundles.defaultStartLevel=4",
         "-Declipse.product=org.eclipse.jdt.ls.core.product",

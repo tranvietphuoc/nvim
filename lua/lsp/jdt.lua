@@ -2,7 +2,13 @@ local M = {}
 
 function M.setup()
     require("lspconfig").jdtls.setup({
-        cmd = { DATA .. "/mason/bin/jdtls" },
+        cmd = {
+            DATA .. "/mason/bin/jdtls",
+            "-configuration",
+            "$HOME/.cache/jdtls/config/",
+            "-data",
+            "$HOME/.cache/jdtls/workspace/",
+        },
         init_options = {
             jvm_args = {},
             workspace = "~/.cache/jdtls/workspace",
@@ -17,7 +23,6 @@ function M.setup()
                 -- "settings.gradle.kts", -- Gradle
             },
             -- Multi-module projects
-            { "build.gradle", "build.gradle.kts" },
         } or vim.fn.getcwd(),
     })
 end

@@ -24,6 +24,7 @@ end
 
 local saga = require("lspsaga")
 local metals_config = require("metals").bare_config() -- scala
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 function M.setup()
     -- lsp saga
@@ -95,7 +96,7 @@ function M.setup()
         excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
     }
 
-    metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+    metals_config.capabilities = cmp_nvim_lsp.default_capabilities() --vim.lsp.protocol.make_client_capabilities())
 
     local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
 
