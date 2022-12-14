@@ -25,6 +25,7 @@ end
 local saga = require("lspsaga")
 local metals_config = require("metals").bare_config() -- scala
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
+local dap = require("dap")
 
 function M.setup()
     -- lsp saga
@@ -41,7 +42,7 @@ function M.setup()
     map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
     map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
     map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-    map("n", "<leader>ws", '<cmd>lua require"metals".hover_worksheet()<CR>') -- scala
+    map("n", "<leader>ws", '<cmd>lua require"metals".hover_worksheet()<CR>') -- scala metals
     map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
     map("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
     -- map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
@@ -50,7 +51,9 @@ function M.setup()
     map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
     map("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
     map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+
     local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+
     for type, icon in pairs(signs) do
         local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -97,6 +100,30 @@ function M.setup()
     }
 
     metals_config.capabilities = cmp_nvim_lsp.default_capabilities() --vim.lsp.protocol.make_client_capabilities())
+
+    -- scala debugger
+    dap.configurations.scala = {
+        {
+            type = "scala",
+            request = "launch",
+            name = "RunOrTest",
+            metals = {
+                runType = "runOrTestFile",
+                --args = { "firstArg", "secondArg", "thirdArg" }, -- here just as an example
+            },
+        },
+        {
+            type = "scala",
+            request = "launch",
+            name = "Test Target",
+            metals = {
+                runType = "testTarget",
+            },
+        },
+    }
+    metals_config.on_attach = function(client, bufnr)
+        require("metals").setup_dap()
+    end
 
     local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
 

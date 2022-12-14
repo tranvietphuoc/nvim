@@ -74,6 +74,7 @@ function M.setup()
     o.termguicolors = true
     g.loaded_python_provider = 0
     g.python3_host_prog = "$HOME/.pyenv/shims/python3"
+    g.loaded_python_provider = 0
 
     -- backspace
     opt.backspace = "indent,eol,start"

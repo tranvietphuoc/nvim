@@ -47,16 +47,6 @@ function M.setup()
     map("n", "<Leader>gc", '<cmd>lua require("fzf-lua").git_commits()<CR>', opts)
     map("n", "<Leader>Q", '<cmd>lua require("fzf-lua").quickfix()<CR>', opts)
 
-    -- map debugger vimspector
-    map("n", "<leader>vc", ":lua require('telescope').extensions.vimspector.configurations()<CR>", opts)
-    map("n", "<leader>vl", ":call vimspector#Launch()<CR>", opts)
-    map("n", "<leader>vr", ":VimspectorReset<CR>", opts)
-    map("n", "<leader>ve", ":VimspectorEval", opts)
-    map("n", "<leader>vw", ":VimspectorWatch", opts)
-    map("n", "<leader>vo", ":VimspectorShowOutput", opts)
-    map("n", "<leader>vi", "<Plug>VimspectorBalloonEval", opts)
-    map("x", "<leader>vi", "<Plug>VimspectorBalloonEval", opts)
-
     -- git fugitive
     map("n", "<Leader>Gd", ":Gvdiffsplit<CR>", opts)
     map("n", "<Leader>Dh", ":diffget //2<CR>", opts)
@@ -77,6 +67,16 @@ function M.setup()
     map("n", "<leader>xl", "<cmd>Trouble loclist<cr>", { silent = true, noremap = true })
     map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, noremap = true })
     map("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
+
+    -- vimspector
+    map("n", "<leader>vc", ":lua require('telescope').extensions.vimspector.configurations()<CR>", opts)
+    map("n", "<leader>vl", ":call vimspector#Launch()<CR>", opts)
+    map("n", "<leader>vr", ":VimspectorReset<CR>", opts)
+    map("n", "<leader>ve", ":VimspectorEval", opts)
+    map("n", "<leader>vw", ":VimspectorWatch", opts)
+    map("n", "<leader>vo", ":VimspectorShowOutput", opts)
+    map("n", "<leader>vi", "<Plug>VimspectorBalloonEval", opts)
+    map("x", "<leader>vi", "<Plug>VimspectorBalloonEval", opts)
 
     -- neogit
     map("n", "<leader>n", ":Neogit<CR>", opts)
