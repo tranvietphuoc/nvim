@@ -324,7 +324,6 @@ function M.setup()
         -- use({ "github/copilot.vim" })
 
         -- fzf fuzzy finder
-        use({ "ibhagwan/fzf-lua", requires = { "kyazdani42/nvim-web-devicons" } })
         use({ "junegunn/fzf.vim", requires = { "junegunn/fzf", run = "./install --bin" } })
 
         -- statusline components
@@ -335,6 +334,11 @@ function M.setup()
                 require("nvim-gps").setup()
             end,
         })
+        use {
+            'nvim-telescope/telescope.nvim', tag = '0.1.0',
+            -- or                            , branch = '0.1.x',
+            requires = { { 'nvim-lua/plenary.nvim' } }
+        }
         use({
             "pwntester/octo.nvim",
             requires = { "nvim-telescope/telescope.nvim" },

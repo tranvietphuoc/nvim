@@ -3,6 +3,7 @@ local M = {}
 local opts = { noremap = true, silent = true }
 function M.setup()
     local map = vim.api.nvim_set_keymap
+    local builtin = require("telescope.builtin")
 
     vim.g.mapleader = "," -- global leader key
 
@@ -27,7 +28,7 @@ function M.setup()
     -- Move selected line / block of text in visual mode
     map("x", "K", ":move '<-2<CR>gv-gv", opts)
     map("x", "J", ":move '>+1<CR>gv-gv", opts)
-    -- shifting selected line by select block and use > (or shift + .) and < (or shif + ,)
+    -- shifting selected line by select block and use > + l(or shift + . + l) and < + h (or shif + , + h)
 
     -- markdown preview
     map("n", "<Leader>m", "<Plug>MarkdownPreview<CR>", { noremap = false, silent = false })
@@ -37,15 +38,14 @@ function M.setup()
     map("n", "<Leader>b", ":NvimTreeToggle<CR>", opts) -- like vscode
     map("n", "<Leader>R", ":NvimTreeRefresh<CR>", opts)
 
-    -- fzf
-    map("n", "<Leader>f", "<cmd>lua require('fzf-lua').files()<CR>", opts)
-    map("n", "<Leader>l", "<cmd>lua require('fzf-lua').live_grep()<CR>", opts)
-    map("n", "<Leader>p", '<cmd>lua require("fzf-lua").buffers()<CR>', opts)
-    map("n", "<Leader>gf", '<cmd>lua require("fzf-lua").git_files()<CR>', opts)
-    map("n", "<Leader>gs", '<cmd>lua require("fzf-lua").git_status()<CR>', opts)
-    map("n", "<Leader>gb", '<cmd>lua require("fzf-lua").git_branches()<CR>', opts)
-    map("n", "<Leader>gc", '<cmd>lua require("fzf-lua").git_commits()<CR>', opts)
-    map("n", "<Leader>Q", '<cmd>lua require("fzf-lua").quickfix()<CR>', opts)
+    -- telescope
+    vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+    vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+    vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+    vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+    vim.keymap.set("n", "<leader>fs", builtin.search_history, {})
+    vim.keymap.set("n", "<leader>fc", builtin.command_history, {})
+    vim.keymap.set("n", "<leader>fq", builtin.quickfix, {})
 
     -- git fugitive
     map("n", "<Leader>Gd", ":Gvdiffsplit<CR>", opts)
