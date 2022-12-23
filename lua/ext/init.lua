@@ -14,7 +14,7 @@ function M.setup()
     require("ext.telescoped").setup()
     -- require("ext.lightbulb").setup()
     require("ext.rust").setup()
-    require('ext.nullls').setup()
+    require("ext.nullls").setup()
 end
 
 return M

@@ -4,7 +4,7 @@ local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
     packer_bootstrap =
-    fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
 end
 
 function M.setup()
@@ -12,7 +12,7 @@ function M.setup()
     local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
     if fn.empty(fn.glob(install_path)) > 0 then
         packer_bootstrap =
-        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+            fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
     end
     local packer = require("packer")
     packer.startup(function(use)
@@ -31,6 +31,7 @@ function M.setup()
         -- colorscheme
         -- use("Mofiqul/dracula.nvim")
         -- use({ "folke/tokyonight.nvim" })
+
         use({
             "EdenEast/nightfox.nvim",
             run = ":NightfoxCompile",
@@ -136,7 +137,6 @@ function M.setup()
         use({ "fatih/vim-go", run = ":GoUpdateBinaries" })
 
         -- rust
-        use({ "rust-lang/rust.vim" })
         use({ "simrat39/rust-tools.nvim" })
 
         -- vim easy align
@@ -211,11 +211,11 @@ function M.setup()
             -- after = "github-nvim-theme",
             requires = { "kyazdani42/nvim-web-devicons", opt = true },
             -- config = function()
-            --     require("lualine").setup({
-            --         options = {
-            --             theme = "github_dark",
-            --         },
-            --     })
+            -- require("lualine").setup({
+            -- options = {
+            -- theme = "github_dark_colorblind",
+            -- },
+            -- })
             -- end,
         })
 
@@ -310,8 +310,7 @@ function M.setup()
 
         -- debugger
         use({ "puremourning/vimspector" })
-        use 'mfussenegger/nvim-dap'
-
+        use("mfussenegger/nvim-dap")
 
         use({
             "folke/which-key.nvim",
@@ -334,11 +333,12 @@ function M.setup()
                 require("nvim-gps").setup()
             end,
         })
-        use {
-            'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        use({
+            "nvim-telescope/telescope.nvim",
+            tag = "0.1.0",
             -- or                            , branch = '0.1.x',
-            requires = { { 'nvim-lua/plenary.nvim' } }
-        }
+            requires = { { "nvim-lua/plenary.nvim" } },
+        })
         use({
             "pwntester/octo.nvim",
             requires = { "nvim-telescope/telescope.nvim" },

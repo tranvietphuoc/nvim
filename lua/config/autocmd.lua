@@ -10,7 +10,7 @@ function M.auto_cmds()
     cmd("autocmd BufRead,BufNewFile *.scala,*.sbt setlocal expandtab ts=3 sw=3 sts=3")
     cmd("autocmd BufRead,BufNewFile *.html,*.css,*.scss,*.yml,*.svelte setlocal expandtab ts=2 sw=2 sts=2")
     cmd("autocmd BufNewFile,BufRead *.go setlocal noexpandtab ts=8 sw=8")
-    cmd("autocmd BufRead,BufNewFile *.lua setlocal expandtab ts=4 sw=4 sts=4")
+    cmd("autocmd BufRead,BufNewFile *.lua,*.vue setlocal expandtab ts=4 sw=4 sts=4")
     cmd("autocmd BufWritePost plugins.lua PackerCompile")
     --   vim.api.nvim_exec(
     --       [[
