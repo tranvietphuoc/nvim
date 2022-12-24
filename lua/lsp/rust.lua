@@ -42,32 +42,6 @@ function M.setup()
             },
         },
     })
-
-    --[[ local rt = require("rust-tools")
-
-    local opts = {
-        tools = {
-            executor = require("rust-tools/executors").termopen,
-            on_initialized = nil,
-            reload_workspace_from_cargo_toml = true,
-
-            inlay_hints = {
-                auto = false,
-                only_current_line = false,
-                show_parameter_hints = true,
-                parameter_hints_prefix = "<- ",
-                max_len_align = false,
-                other_hints_prefix = " ",
-                highlight = "Comment",
-                right_align_padding = 7,
-                right_align = false,
-            },
-
-        },
-    }
-
-    rt.setup(opts)
-    rt.inlay_hints.enable() ]]
 end
 
 return M

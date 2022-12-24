@@ -2,7 +2,46 @@ local M = {}
 local lsputils = require("lsp.utils")
 
 function M.setup()
-    require("lspconfig").clangd.setup({
+
+    require('clangd_extensions').setup({
+        server = {
+            cmd = { DATA .. "/mason/bin/clangd" },
+            on_attach = require("lsp").common_on_attach,
+            filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "cc", "h", "hpp" },
+            handlers = lsputils.lsp_diagnostics(),
+
+        },
+        extensions = {
+            -- defaults:
+            -- Automatically set inlay hints (type hints)
+            autoSetHints = true,
+        },
+        ast = {
+            -- These are unicode, should be available in any font
+            role_icons = {
+                type = "🄣",
+                declaration = "🄓",
+                expression = "🄔",
+                statement = ";",
+                specifier = "🄢",
+                ["template argument"] = "🆃",
+            },
+            kind_icons = {
+                Compound = "🄲",
+                Recovery = "🅁",
+                TranslationUnit = "🅄",
+                PackExpansion = "🄿",
+                TemplateTypeParm = "🅃",
+                TemplateTemplateParm = "🅃",
+                TemplateParamObject = "🅃",
+            },
+            highlights = {
+                detail = "Comment",
+            },
+        },
+
+    })
+    --[[ require("lspconfig").clangd.setup({
         cmd = { DATA .. "/mason/bin/clangd" },
         on_attach = require("lsp").common_on_attach,
         -- handlers = {
@@ -15,7 +54,10 @@ function M.setup()
         -- },
         filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "cc", "h", "hpp" },
         handlers = lsputils.lsp_diagnostics(),
-    })
+        settings = {
+            autoSetHints = true,
+        }
+    }) ]]
     --[[ require("lspconfig").ccls.setup({
         cmd = { DATA .. "/lsp_servers/ccls/bin/ccls" },
         filetype = { "c", "cpp", "cc", "h", "hpp" },
