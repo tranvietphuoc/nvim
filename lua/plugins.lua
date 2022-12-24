@@ -322,9 +322,6 @@ function M.setup()
         -- github copilot
         -- use({ "github/copilot.vim" })
 
-        -- fzf fuzzy finder
-        use({ "junegunn/fzf.vim", requires = { "junegunn/fzf", run = "./install --bin" } })
-
         -- statusline components
         use({
             "SmiteshP/nvim-gps",
