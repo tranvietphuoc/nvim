@@ -12,9 +12,6 @@ function M.setup()
     -- require("ext.barbar").setup()
     require("ext.doge").setup()
     require("ext.telescoped").setup()
-    -- require("ext.lightbulb").setup()
-    require("ext.rust").setup()
-    require("ext.nullls").setup()
 end
 
 return M

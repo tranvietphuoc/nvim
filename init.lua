@@ -23,19 +23,14 @@ require("ext").setup()
 
 -- lsp config
 require("lsp").setup()
-require("ext.cmp").setup()
+-- require("ext.cmp").setup()
 
 -- code formatter
 -- require("ext.formatters").setup()
-require("ext.nullls").setup()
-
-
-
-
 
 -- lsp server
 require("lsp.bash").setup()
-require("lsp.cc").setup()
+require("lsp.cpp").setup()
 require("lsp.cmake").setup()
 require("lsp.css").setup()
 require("lsp.docker").setup()
@@ -53,6 +48,8 @@ require("lsp.lua").setup()
 require("lsp.tailwindcss").setup()
 require("lsp.emmet").setup()
 require("lsp.solidity").setup()
+require("lsp.nullls").setup()
+require("lsp.cmp").setup()
 
 -- debugger
 require("debugger").setup()

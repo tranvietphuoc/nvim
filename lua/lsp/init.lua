@@ -15,6 +15,7 @@ local M = {}
 
 function M.common_on_attach(client, bufnr)
     lsputils.lsp_highlight(client, bufnr)
+    require("lsp-inlayhints").on_attach(client, bufnr)
 end
 
 function M.tsserver_on_attach(client, bufnr)
@@ -62,26 +63,19 @@ function M.setup()
     -- lspsaga
     -- lsp finder
     map("n", "gh", "<cmd>Lspsaga lsp_finder<CR><CR>", opts)
-
     -- code actions
     map({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
-
     -- signature help
     map("n", "gs", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
-
     -- preview definition
     map("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
-
     -- rename
     map("n", "gr", "<cmd>Lspsaga rename<CR>", opts)
-
     -- diagnostics
     map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
     map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-
     -- hover
     map("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
-
     -- Only jump to error
     map("n", "[E", function()
         require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
@@ -89,7 +83,6 @@ function M.setup()
     map("n", "]E", function()
         require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
     end, opts)
-
     -- Outline
     map("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
 
@@ -137,6 +130,43 @@ function M.setup()
         end,
         group = nvim_metals_group,
     })
+
+    -- inlayHints
+    local inlayhints_config = {
+        inlay_hints = {
+            parameter_hints = {
+                show = true,
+                prefix = "<- ",
+                separator = ", ",
+                remove_colon_start = false,
+                remove_colon_end = true,
+            },
+            type_hints = {
+                -- type and other hints
+                show = true,
+                prefix = "",
+                separator = ", ",
+                remove_colon_start = false,
+                remove_colon_end = false,
+            },
+            only_current_line = false,
+            -- separator between types and parameter hints. Note that type hints are
+            -- shown before parameter
+            labels_separator = "  ",
+            -- whether to align to the length of the longest line in the file
+            max_len_align = false,
+            -- padding from the left if max_len_align is true
+            max_len_align_padding = 1,
+            -- highlight group
+            highlight = "Comment",
+            -- virt_text priority
+            priority = 0,
+        },
+        enabled_at_startup = true,
+        debug_mode = false,
+    }
+
+    require("lsp-inlayhints").setup(inlayhints_config)
 end
 
 return M

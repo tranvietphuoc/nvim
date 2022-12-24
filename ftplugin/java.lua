@@ -3,7 +3,7 @@ local workspace_dir = "." .. project_name
 
 local config = {
     cmd = {
-        "/usr/local/opt/openjdk@17/bin/java",
+        "/usr/local/opt/openjdk/bin/java",
         "-Declipse.application=org.eclipse.jdt.ls.core.id1",
         "-Dosgi.bundles.defaultStartLevel=4",
         "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -24,7 +24,14 @@ local config = {
         workspace_dir,
     },
     settings = {
-        java = {},
+        java = {
+            runtimes = {
+                {
+                    name = "JavaSE-17",
+                    path = "/usr/local/opt/openjdk",
+                },
+            },
+        },
     },
 
     init_options = {
@@ -32,4 +39,5 @@ local config = {
     },
     root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", ".git", "mvnw" }, { upward = true })[1]),
 }
+
 require("jdtls").start_or_attach(config)

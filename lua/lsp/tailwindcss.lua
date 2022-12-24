@@ -7,7 +7,6 @@ function M.setup()
         filetypes = {
             "css",
             "svelte",
-            "postcss",
             "markdown",
             "vue",
         },

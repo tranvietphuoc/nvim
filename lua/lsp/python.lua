@@ -1,6 +1,7 @@
 local util = require("lspconfig/util")
 local path = util.path
 local lsputils = require("lsp.utils")
+local lspconfig = require("lspconfig")
 
 local M = {}
 
@@ -22,7 +23,7 @@ function M.get_python_path(workspace)
 end
 
 function M.setup()
-    require("lspconfig").pyright.setup({
+    lspconfig.pyright.setup({
         -- require'nvim_lsp'.pyright.setup {
         cmd = { DATA .. "/mason/bin/pyright-langserver", "--stdio" },
         on_attach = require("lsp").common_on_attach,
@@ -30,6 +31,17 @@ function M.setup()
         on_init = function(client)
             client.config.settings.python.pythonPath = M.get_python_path(client.config.root_dir)
         end,
+        settings = {
+            python = {
+                analysis = {
+                    autoSearchPaths = true,
+                    diagnosticMode = "workspace",
+                    useLibraryCodeForTypes = true,
+                    typeCheckingMode = "basic",
+                },
+            },
+        },
+        single_file_support = true,
     })
 end
 
