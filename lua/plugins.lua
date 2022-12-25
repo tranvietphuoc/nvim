@@ -24,7 +24,7 @@ function M.setup()
         use({
             "williamboman/mason-lspconfig.nvim",
             config = function()
-                require("lsp.masonconf").setup()
+                require("lsp.masonlsp").setup()
             end,
         })
 

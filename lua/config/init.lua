@@ -20,7 +20,7 @@ function M.setup()
     cmd("set colorcolumn=99999")
     cmd("set inccommand=split")
     cmd("set shortmess+=c")
-    cmd([[colorscheme dayfox]])
+    cmd([[colorscheme dawnfox]])
 
     -- cmd "syntax on"
     -- cmd "colorscheme nvcode"
