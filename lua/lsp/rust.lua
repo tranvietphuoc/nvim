@@ -1,6 +1,3 @@
--- local on_attach = function(client)
---   require'completion'.on_attach(client)
--- end
 local M = {}
 
 local root_pattern = require("lspconfig/util").root_pattern
@@ -12,8 +9,7 @@ function M.setup()
         cmd = { DATA .. "/mason/bin/rust-analyzer" },
         filetypes = { "rust" },
         on_attach = require("lsp").common_on_attach,
-        -- on_attach = on_attach,
-        root_dir = root_pattern("Cargo.toml", "rust-project.json"),
+        root_dir = root_pattern("Cargo.toml"),
         settings = {
             ["rust-analyzer"] = {
                 imports = {
@@ -21,11 +17,6 @@ function M.setup()
                         group = "module",
                     },
                     prefix = "self",
-                },
-                inlayHints = {
-                    bindingModeHints = {
-                        enable = true,
-                    },
                 },
 
                 cargo = {
@@ -35,8 +26,12 @@ function M.setup()
                 },
                 procMacro = {
                     enable = true,
+                    attributes = {
+                        enable = true,
+                    },
                 },
                 checkOnSave = {
+                    enable = true,
                     command = "clippy",
                 },
             },

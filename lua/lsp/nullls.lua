@@ -21,7 +21,7 @@ function M.setup()
 
                 if res then
                     local client = vim.lsp.get_client_by_id(ctx.client_id)
-                    vim.lsp.util.apply_text_edits(res, bufnr, client and client.offset_encoding or "utf-16")
+                    vim.lsp.util.apply_text_edits(res, bufnr, client and client.offset_encoding or "utf-8")
                     vim.api.nvim_buf_call(bufnr, function()
                         vim.cmd("silent noautocmd update")
                     end)
@@ -43,16 +43,17 @@ function M.setup()
     -- formatting sources
     local formatting = null_ls.builtins.formatting
 
-    -- hover sources
-    -- local hover = null_ls.builtins.hover
-
-    -- completion sources
-    -- local completion = null_ls.builtins.completion
-
     null_ls.setup({
         debug = false,
         sources = {
+            formatting.trim_newlines.with({
+                disabled_filetypes = { "rust" },
+            }),
+            formatting.trim_whitespace.with({
+                disabled_filetypes = { "rust" },
+            }),
             formatting.stylua.with({
+                filetypes = { "lua" },
                 extra_args = { "--config-path", vim.fn.expand("~/.stylua.toml") },
             }),
             diagnostics.eslint,
@@ -60,15 +61,21 @@ function M.setup()
             code_actions.gitsigns,
             -- completion.luasnip,
             formatting.prettier.with({
+                filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
                 extra_args = function(params)
                     return params.options and params.options.tabSize and { "--tab-width", params.options.tabSize }
                 end,
             }),
+
             formatting.rustfmt.with({
-                args = { "--emit=stdout" },
+                filetypes = { "rust" },
+                extra_args = { "--emit=stdout" },
             }),
-            formatting.gofmt,
+            formatting.gofmt.with({
+                filetypes = { "go" },
+            }),
             formatting.black.with({
+                filetypes = { "python" },
                 args = { "--quiet", "-" },
                 extra_args = { "--line-length", "79" },
             }),
@@ -76,8 +83,12 @@ function M.setup()
             formatting.clang_format.with({
                 filetypes = { "c", "cpp", "h", "hpp" },
             }),
-            formatting.djhtml,
-            formatting.pg_format,
+            formatting.djhtml.with({
+                filetypes = { "html" },
+            }),
+            formatting.pg_format.with({
+                filetypes = { "sql" },
+            }),
             -- formatting.isort,
             diagnostics.cpplint,
             diagnostics.mypy.with({
