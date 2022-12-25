@@ -29,13 +29,13 @@ function M.setup()
         })
 
         -- colorscheme
-        -- use("Mofiqul/dracula.nvim")
+        use("Mofiqul/dracula.nvim")
         -- use({ "folke/tokyonight.nvim" })
 
         -- clangd extensions
         use("p00f/clangd_extensions.nvim")
 
-        use({
+        --[[ use({
             "EdenEast/nightfox.nvim",
             run = ":NightfoxCompile",
             config = function()
@@ -49,7 +49,7 @@ function M.setup()
                     },
                 })
             end,
-        })
+        }) ]]
 
         -- git
         use({

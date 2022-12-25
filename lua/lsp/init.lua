@@ -30,7 +30,14 @@ local dap = require("dap")
 
 function M.setup()
     -- lsp saga
-    saga.init_lsp_saga({})
+    saga.init_lsp_saga({
+
+        finder_icons = {
+            def = "  ",
+            ref = "諭 ",
+            link = "  ",
+        },
+    })
 
     -- lsp config
     -- map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
@@ -167,6 +174,29 @@ function M.setup()
     }
 
     require("lsp-inlayhints").setup(inlayhints_config)
+
+    -- lsp servers
+    require("lsp.bash").setup()
+    require("lsp.cpp").setup()
+    require("lsp.cmake").setup()
+    require("lsp.css").setup()
+    require("lsp.docker").setup()
+    require("lsp.go").setup()
+    require("lsp.html").setup()
+    require("lsp.python").setup()
+    require("lsp.rust").setup()
+    require("lsp.tsserver").setup()
+    require("lsp.vim").setup()
+    require("lsp.vue").setup()
+    require("lsp.yaml").setup()
+    require("lsp.sql").setup()
+    require("lsp.tex").setup()
+    require("lsp.lua").setup()
+    require("lsp.tailwindcss").setup()
+    require("lsp.emmet").setup()
+    require("lsp.solidity").setup()
+    require("lsp.nullls").setup()
+    require("lsp.cmp").setup()
 end
 
 return M
