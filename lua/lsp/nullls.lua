@@ -61,7 +61,15 @@ function M.setup()
             code_actions.gitsigns,
             -- completion.luasnip,
             formatting.prettier.with({
-                filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
+                filetypes = {
+                    "typescript",
+                    "javascript",
+                    "javascriptreact",
+                    "typescriptreact",
+                    "html",
+                    "css",
+                    "htmldjango",
+                },
                 extra_args = function(params)
                     return params.options and params.options.tabSize and { "--tab-width", params.options.tabSize }
                 end,
@@ -83,9 +91,9 @@ function M.setup()
             formatting.clang_format.with({
                 filetypes = { "c", "cpp", "h", "hpp" },
             }),
-            formatting.djhtml.with({
-                filetypes = { "html" },
-            }),
+            -- formatting.djhtml.with({
+            -- filetypes = { "html" },
+            -- }),
             formatting.pg_format.with({
                 filetypes = { "sql" },
             }),

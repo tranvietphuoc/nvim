@@ -195,8 +195,9 @@ function M.setup()
     require("lsp.tailwindcss").setup()
     require("lsp.emmet").setup()
     require("lsp.solidity").setup()
-    require("lsp.nullls").setup()
     require("lsp.cmp").setup()
+    require("lsp.nullls").setup()
+
 end
 
 return M

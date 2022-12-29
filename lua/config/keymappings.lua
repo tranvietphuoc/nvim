@@ -82,8 +82,8 @@ function M.setup()
     map("n", "<leader>n", ":Neogit<CR>", opts)
 
     -- live server
-    map("n", "<leader>Ls", ":LiveServer start<CR>", opts)
-    map("n", "<leader>LS", ":LiveServer stop<CR>", opts)
+    map("n", "<leader>ls", ":LiveServer start<CR>", opts)
+    map("n", "<leader>lS", ":LiveServer stop<CR>", opts)
 end
 
 return M

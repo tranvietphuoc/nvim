@@ -8,7 +8,7 @@ function M.setup()
     require("lspconfig").html.setup({
         cmd = { DATA .. "/mason/bin/vscode-html-language-server", "--stdio" },
         -- cmd = { "vscode-html-language-server", "--stdio" },
-        filetypes = { "html", "htmldjango" },
+        filetypes = { "html" },
         on_attach = require("lsp").common_on_attach,
         capabilities = capabilities,
         init_options = {
