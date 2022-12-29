@@ -1,9 +1,11 @@
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = "." .. project_name
 
+local jdtls = require("jdtls")
+
 local config = {
     cmd = {
-        "/usr/local/opt/openjdk/bin/java",
+        "java",
         "-Declipse.application=org.eclipse.jdt.ls.core.id1",
         "-Dosgi.bundles.defaultStartLevel=4",
         "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -17,19 +19,52 @@ local config = {
         "java.base/java.lang=ALL-UNNAMED",
 
         "-jar",
-        "$HOME/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
-        "-configuarion",
-        "$HOME/.local/share/nvim/mason/packages/jdtls/config_mac/",
+        -- "$HOME/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+        vim.fn.glob(DATA .. "/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6*.jar"),
+        "-configuration",
+        DATA .. "/mason/packages/jdtls/config_mac",
         "-data",
         workspace_dir,
     },
+
+    -- cmd = { DATA .. "/mason/packages/jdtls/bin/jdtls" },
     settings = {
         java = {
-            runtimes = {
-                {
-                    name = "JavaSE-17",
-                    path = "/usr/local/opt/openjdk",
+            configuration = {
+                runtimes = {
+                    {
+                        name = "JavaSE-19",
+                        path = "/usr/local/opt/openjdk/",
+                    },
                 },
+            },
+            signatureHelp = { enabled = true },
+            contentProvider = { preferred = "fernflower" },
+            completion = {
+                favoriteStaticMembers = {
+                    "org.hamcrest.MatcherAssert.assertThat",
+                    "org.hamcrest.Matchers.*",
+                    "org.hamcrest.CoreMatchers.*",
+                    "org.junit.jupiter.api.Assertions.*",
+                    "java.util.Objects.requireNonNull",
+                    "java.util.Objects.requireNonNullElse",
+                    "org.mockito.Mockito.*",
+                },
+            },
+            sources = {
+                organizeImports = {
+                    starThreshold = 9999,
+                    staticStarThreshold = 9999,
+                },
+            },
+            codeGeneration = {
+                toString = {
+                    template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
+                },
+                hashCodeEquals = {
+                    useJava7Objects = true,
+                },
+                useBlocks = true,
             },
         },
     },
@@ -37,7 +72,9 @@ local config = {
     init_options = {
         bundles = {},
     },
-    root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", ".git", "mvnw" }, { upward = true })[1]),
+    root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" }),
+    -- root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", ".git", "mvnw" }, { upward = true })[1]),
 }
 
-require("jdtls").start_or_attach(config)
+require("jdtls.setup").add_commands()
+jdtls.start_or_attach(config)
