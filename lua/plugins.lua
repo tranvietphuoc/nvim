@@ -134,13 +134,17 @@ function M.setup()
         use({ "nvim-lua/popup.nvim" })
         use({ "nvim-lua/plenary.nvim" })
 
-        -- tagbar
-        use({ "preservim/tagbar" })
         -- go vim
         use({ "fatih/vim-go", run = ":GoUpdateBinaries" })
 
         -- inlayHints
         use("lvimuser/lsp-inlayhints.nvim")
+
+        -- rust
+        use("simrat39/rust-tools.nvim")
+
+        -- symbol-outline
+        use("simrat39/symbols-outline.nvim")
 
         -- vim easy align
         use({

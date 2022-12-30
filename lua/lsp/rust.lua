@@ -2,6 +2,8 @@ local M = {}
 
 local root_pattern = require("lspconfig/util").root_pattern
 
+-- local rt = require("rust-tools")
+
 function M.setup()
     -- lsp
     require("lspconfig").rust_analyzer.setup({

@@ -68,6 +68,9 @@ function M.setup()
     map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, noremap = true })
     map("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
 
+    -- symbol-outline
+    map("n", "<leader>T", "<cmd>SymbolsOutline<cr>", opts)
+
     -- vimspector
     map("n", "<leader>vc", ":lua require('telescope').extensions.vimspector.configurations()<CR>", opts)
     map("n", "<leader>vl", ":call vimspector#Launch()<CR>", opts)
