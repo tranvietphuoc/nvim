@@ -5,17 +5,9 @@ function M.setup()
     local map = vim.api.nvim_set_keymap
     local builtin = require("telescope.builtin")
 
-    vim.g.mapleader = "," -- global leader key
-
     --split view
-    map("n", "<leader>|", ":vsplit<CR>", opts)
-    map("n", "<leader>-", ":split<CR>", opts)
-
-    -- toggle zen mode
-    map("n", "<Leader>z", ":ZenMode<CR>", opts)
-
-    -- toggle gitui
-    map("n", "<Leader>GU", "<CMD>lua _G.__fterm_gitui()<CR>", opts)
+    -- map("n", "<leader>|", ":vsplit<CR>", opts)
+    -- map("n", "<leader>-", ":split<CR>", opts)
 
     -- navigating
     --- move between splitted windows
@@ -30,25 +22,7 @@ function M.setup()
     map("x", "J", ":move '>+1<CR>gv-gv", opts)
     -- shifting selected line by select block and use > + l(or shift + . + l) and < + h (or shif + , + h)
 
-    -- markdown preview
-    map("n", "<Leader>m", "<Plug>MarkdownPreview<CR>", { noremap = false, silent = false })
-    map("n", "<Leader>M", "<Plug>MarkdownPreviewStop<CR>", { noremap = false, silent = false })
-
-    -- nvimtree
-    map("n", "<Leader>b", ":NvimTreeToggle<CR>", opts) -- like vscode
-    map("n", "<Leader>R", ":NvimTreeRefresh<CR>", opts)
-
-    -- telescope
-    vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-    vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-    vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-    vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-    vim.keymap.set("n", "<leader>fs", builtin.search_history, {})
-    vim.keymap.set("n", "<leader>fc", builtin.command_history, {})
-    vim.keymap.set("n", "<leader>fq", builtin.quickfix, {})
-
     -- git fugitive
-    map("n", "<Leader>Gd", ":Gvdiffsplit<CR>", opts)
     map("n", "<Leader>Dh", ":diffget //2<CR>", opts)
     map("n", "<Leader>Dl", ":diffget //3<CR>", opts)
 
@@ -68,9 +42,6 @@ function M.setup()
     map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, noremap = true })
     map("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
 
-    -- symbol-outline
-    map("n", "<leader>t", "<cmd>SymbolsOutline<cr>", opts)
-
     -- vimspector
     map("n", "<leader>vc", ":lua require('telescope').extensions.vimspector.configurations()<CR>", opts)
     map("n", "<leader>vl", ":call vimspector#Launch()<CR>", opts)
@@ -80,13 +51,6 @@ function M.setup()
     map("n", "<leader>vo", ":VimspectorShowOutput", opts)
     map("n", "<leader>vi", "<Plug>VimspectorBalloonEval", opts)
     map("x", "<leader>vi", "<Plug>VimspectorBalloonEval", opts)
-
-    -- neogit
-    map("n", "<leader>n", ":Neogit<CR>", opts)
-
-    -- live server
-    map("n", "<leader>ls", ":LiveServer start<CR>", opts)
-    map("n", "<leader>lS", ":LiveServer stop<CR>", opts)
 end
 
 return M

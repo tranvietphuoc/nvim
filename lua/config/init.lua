@@ -6,6 +6,8 @@ local g = vim.g
 local opt = vim.opt
 local path = vim.fn.stdpath
 
+vim.g.mapleader = ","
+
 local M = {}
 
 DATA = path("data")

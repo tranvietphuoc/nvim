@@ -1,7 +1,35 @@
 local M = {}
 
 function M.setup()
-    require("telescope").setup({
+    local command_center = require("command_center")
+    local telescope = require("telescope")
+    local noremap = { noremap = true, silent = true }
+
+    command_center.add({
+        {
+            desc = "Open command_center",
+            cmd = "<CMD>Telescope command_center<CR>",
+            keys = {
+                { "n", "<Leader>fc", noremap },
+            },
+        },
+        {
+            desc = "vertical split",
+            cmd = ":vsplit<cr>",
+            keys = {
+                { "n", "<leader>|", noremap },
+            },
+        },
+        {
+            desc = "horizontal split",
+            cmd = ":split<cr>",
+            keys = {
+                { "n", "<leader>-", noremap },
+            },
+        },
+    }, command_center.mode.REGISTER_ONLY)
+
+    telescope.setup({
         defaults = {
             file_ignore_patterns = {
                 "node_modules",
@@ -9,7 +37,7 @@ function M.setup()
                 "target",
                 ".venv",
                 ".git",
-                ".mypy_cache"
+                ".mypy_cache",
             },
 
             layout_config = {
@@ -54,10 +82,22 @@ function M.setup()
                 case_mode = "smart_case", -- or "ignore_case" or "respect_case"
                 -- the default case_mode is "smart_case"
             },
+            command_center = {
+                components = {
+                    command_center.component.DESC,
+                    command_center.component.KEYS,
+                },
+                sort_by = {
+                    command_center.component.DESC,
+                    command_center.component.KEYS,
+                },
+                auto_replace_desc_with_cmd = false,
+            },
         },
     })
 
-    require("telescope").load_extension("fzf")
+    telescope.load_extension("fzf")
+    telescope.load_extension("command_center")
 end
 
 return M

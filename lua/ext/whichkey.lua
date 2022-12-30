@@ -2,7 +2,35 @@ local M = {}
 
 function M.setup()
     local wk = require("which-key")
-    wk.register({})
+    wk.register({
+        ["<leader>"] = {
+            f = {
+                name = "+file",
+                f = { "<cmd>Telescope find_files<cr>", "Find file" },
+                g = { "<cmd>Telescope live_grep<cr>", "Live grep" },
+                b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+                q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
+                s = { "<cmd>Telescope search_history<cr>", "Search history" },
+            },
+            b = { "<cmd>NvimTreeToggle<cr>", "Open NvimTree" },
+            r = { "<cmd>NvimTreeRefresh<cr>", "Refresh NvimTree" },
+            z = { "<cmd>ZenMode<cr>", "Zen Mode" },
+            G = {
+                name = "+Git",
+                U = { "<cmd>lua _G.__fterm_gitui()<cr>", "Open GitUI" },
+                d = { "<cmd>Gvdiffsplit<cr>", "GitvDiff" },
+            },
+            t = { "<cmd>SymbolsOutline<cr>", "Symbols Outline" },
+            m = { "<cmd>MarkdownPreview<cr>", "Markdown Preview" },
+            M = { "<cmd>MarkdownPreviewStop<cr>", "Markdown Preview Stop" },
+            l = {
+                name = "+live server",
+                s = { "<cmd>LiveServer start<cr>", "Start" },
+                S = { "<cmd>LiveServer stop<cr>", "Stop" },
+            },
+            n = { "<cmd>Neogit<cr>", "Neogit" },
+        },
+    })
     wk.setup({
         window = {
             border = "none", -- none, single, double, shadow
