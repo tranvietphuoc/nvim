@@ -25,6 +25,18 @@ function M.setup()
                     prefix = "self",
                 },
 
+                inlayHints = {
+                    bindingModelHints = {
+                        enable = true,
+                    },
+                    closureReturnTypeHints = {
+                        enable = true,
+                    },
+                    typeHints = {
+                        enable = true,
+                    },
+                },
+
                 cargo = {
                     buildScripts = {
                         enable = true,

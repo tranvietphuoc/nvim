@@ -29,7 +29,6 @@ local cmp_nvim_lsp = require("cmp_nvim_lsp") -- completion
 local dap = require("dap") -- debugger
 
 function M.setup()
-
     -- lsp saga
     saga.init_lsp_saga({
 

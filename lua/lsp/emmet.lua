@@ -6,14 +6,10 @@ local lsp_flags = {
 }
 
 function M.setup()
-    -- vim.g.user_emmet_leader_key = ","
-    -- vim.g.user_emmet_expandabbr_key = ","
-    -- vim.g.user_emmet_install_global = 0
-    -- vim.g.user_emmet_mode = "iv"
     vim.g.tagalong_verbose = 1
     --
-    local lspconfig = require("lspconfig")
-    local configs = require("lspconfig/configs")
+    -- local lspconfig = require("lspconfig")
+    -- local configs = require("lspconfig/configs")
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -30,7 +26,7 @@ function M.setup()
     --         },
     --     }
     -- end
-    lspconfig["emmet_ls"].setup({
+    require("lspconfig")["emmet_ls"].setup({
         cmd = { DATA .. "/mason/bin/emmet-ls", "--stdio" },
         filetypes = { "html", "css", "javascriptreact", "typescriptreact", "sass", "scss" },
         flags = lsp_flags,
