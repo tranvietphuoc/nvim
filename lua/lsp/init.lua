@@ -24,9 +24,6 @@ function M.tsserver_on_attach(client, bufnr)
 end
 
 local saga = require("lspsaga")
-local metals_config = require("metals").bare_config() -- scala
-local cmp_nvim_lsp = require("cmp_nvim_lsp") -- completion
-local dap = require("dap") -- debugger
 
 function M.setup()
     -- lsp saga
@@ -93,50 +90,6 @@ function M.setup()
     -- Outline
     map("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
 
-    -- scala metals
-    metals_config.settings = {
-        showImplicitArguments = true,
-        excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
-    }
-
-    metals_config.capabilities = cmp_nvim_lsp.default_capabilities() --vim.lsp.protocol.make_client_capabilities())
-
-    -- scala debugger
-    dap.configurations.scala = {
-        {
-            type = "scala",
-            request = "launch",
-            name = "RunOrTest",
-            metals = {
-                runType = "runOrTestFile",
-                --args = { "firstArg", "secondArg", "thirdArg" }, -- here just as an example
-            },
-        },
-        {
-            type = "scala",
-            request = "launch",
-            name = "Test Target",
-            metals = {
-                runType = "testTarget",
-            },
-        },
-    }
-    metals_config.on_attach = function(client, bufnr)
-        require("metals").setup_dap()
-    end
-
-    local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-
-    vim.api.nvim_create_autocmd("FileType", {
-        -- NOTE: You may or may not want java included here. You will need it if you
-        -- want basic Java support but it may also conflict if you are using
-        -- something like nvim-jdtls which also works on a java filetype autocmd.
-        pattern = { "scala", "sbt" },
-        callback = function()
-            require("metals").initialize_or_attach(metals_config)
-        end,
-        group = nvim_metals_group,
-    })
 
     -- inlayHints
     local inlayhints_config = {
@@ -197,6 +150,7 @@ function M.setup()
     require("lsp.solidity").setup()
     require("lsp.cmp").setup()
     require("lsp.nullls").setup()
+    require('lsp.scala').setup()
 end
 
 return M
