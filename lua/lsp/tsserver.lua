@@ -2,9 +2,13 @@
 local M = {}
 local utils = require("lspconfig/util")
 local lsputils = require("lsp.utils")
+local lsp_flags = {
+    -- This is the default in Nvim 0.7+
+    debounce_text_changes = 150,
+}
 
 function M.setup()
-    require("lspconfig").tsserver.setup({
+    require("lspconfig")['tsserver'].setup({
         cmd = { DATA .. "/mason/bin/typescript-language-server", "--stdio" },
 
         filetypes = {
@@ -17,6 +21,7 @@ function M.setup()
             "typescript.tsx",
         },
         on_attach = require("lsp").tsserver_on_attach,
+        flags = lsp_flags,
         -- on_attach = require'lsp'.common_on_attach,
         root_dir = utils.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
         settings = {

@@ -6,12 +6,18 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
+local lsp_flags = {
+    -- This is the default in Nvim 0.7+
+    debounce_text_changes = 150,
+}
+
 local M = {}
 
 function M.setup()
-    require("lspconfig").sumneko_lua.setup({
+    require("lspconfig")['sumneko_lua'].setup({
         cmd = { sumneko_binary }, -- "-E", sumneko_root .. "/extension/server/bin/main.lua" },
         on_attach = require("lsp").common_on_attach,
+        flags = lsp_flags,
         settings = {
             Lua = {
                 runtime = {

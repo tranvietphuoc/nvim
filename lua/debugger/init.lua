@@ -2,6 +2,8 @@
 
 local M = {}
 
+local dap = require('dap')
+
 function M.setup()
     -- import adapters
     vim.g.vimspector_enable_mappings = "HUMAN"

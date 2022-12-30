@@ -1,8 +1,13 @@
 -- npm install -g @tailwindcss/language-server
 local M = {}
 
+local lsp_flags = {
+    -- This is the default in Nvim 0.7+
+    debounce_text_changes = 150,
+}
+
 function M.setup()
-    require("lspconfig").tailwindcss.setup({
+    require("lspconfig")["tailwindcss"].setup({
         cmd = { DATA .. "/mason/bin/tailwindcss-language-server", "--stdio" },
         filetypes = {
             "css",
@@ -10,6 +15,7 @@ function M.setup()
             "markdown",
             "vue",
         },
+        flags = lsp_flags,
         init_options = {
             useLanguages = {},
         },

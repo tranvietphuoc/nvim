@@ -1,5 +1,10 @@
 local M = {}
 
+local lsp_flags = {
+    -- This is the default in Nvim 0.7+
+    debounce_text_changes = 150,
+}
+
 function M.setup()
     -- vim.g.user_emmet_leader_key = ","
     -- vim.g.user_emmet_expandabbr_key = ","
@@ -25,9 +30,10 @@ function M.setup()
     --         },
     --     }
     -- end
-    lspconfig.emmet_ls.setup({
+    lspconfig["emmet_ls"].setup({
         cmd = { DATA .. "/mason/bin/emmet-ls", "--stdio" },
         filetypes = { "html", "css", "javascriptreact", "typescriptreact", "sass", "scss" },
+        flags = lsp_flags,
         init_options = {
             html = {
                 options = {

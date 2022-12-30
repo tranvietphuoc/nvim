@@ -25,10 +25,11 @@ end
 
 local saga = require("lspsaga")
 local metals_config = require("metals").bare_config() -- scala
-local cmp_nvim_lsp = require("cmp_nvim_lsp")
-local dap = require("dap")
+local cmp_nvim_lsp = require("cmp_nvim_lsp") -- completion
+local dap = require("dap") -- debugger
 
 function M.setup()
+
     -- lsp saga
     saga.init_lsp_saga({
 
@@ -175,7 +176,7 @@ function M.setup()
 
     require("lsp-inlayhints").setup(inlayhints_config)
 
-    -- lsp servers
+    -- lsp clients setup
     require("lsp.bash").setup()
     require("lsp.cpp").setup()
     require("lsp.cmake").setup()

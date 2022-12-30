@@ -1,15 +1,19 @@
 local M = {}
 local lsputils = require("lsp.utils")
 
-function M.setup()
+local lsp_flags = {
+    -- This is the default in Nvim 0.7+
+    debounce_text_changes = 150,
+}
 
-    require('clangd_extensions').setup({
+function M.setup()
+    require("clangd_extensions").setup({
         server = {
             cmd = { DATA .. "/mason/bin/clangd" },
             on_attach = require("lsp").common_on_attach,
+            flags = lsp_flags,
             filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "cc", "h", "hpp" },
             handlers = lsputils.lsp_diagnostics(),
-
         },
         extensions = {
             -- defaults:
@@ -39,7 +43,6 @@ function M.setup()
                 detail = "Comment",
             },
         },
-
     })
 end
 
