@@ -2,6 +2,7 @@ local M = {}
 
 function M.setup()
     local metals_config = require("metals").bare_config()
+    local metals = require("metals")
     local cmp_nvim_lsp = require("cmp_nvim_lsp") -- completion
     local dap = require("dap")
 
@@ -11,6 +12,7 @@ function M.setup()
     }
 
     metals_config.capabilities = cmp_nvim_lsp.default_capabilities()
+
     -- scala debugger
     dap.configurations.scala = {
         {
@@ -31,8 +33,9 @@ function M.setup()
             },
         },
     }
+
     metals_config.on_attach = function(client, bufnr)
-        require("metals").setup_dap()
+        metals.setup_dap()
     end
 
     local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
@@ -43,7 +46,7 @@ function M.setup()
         -- something like nvim-jdtls which also works on a java filetype autocmd.
         pattern = { "scala", "sbt" },
         callback = function()
-            require("metals").initialize_or_attach(metals_config)
+            metals.initialize_or_attach(metals_config)
         end,
         group = nvim_metals_group,
     })

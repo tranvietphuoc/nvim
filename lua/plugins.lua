@@ -1,19 +1,16 @@
 local M = {}
 
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap =
-    fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-end
-
 function M.setup()
     local fn = vim.fn
-    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-    if fn.empty(fn.glob(install_path)) > 0 then
+    local installed_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+    local packer_bootstrap
+
+
+    if fn.empty(fn.glob(installed_path)) > 0 then
         packer_bootstrap =
-        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", installed_path })
     end
+
     local packer = require("packer")
     packer.startup(function(use)
         -- packer can manage itself as an optional plugin
@@ -30,6 +27,8 @@ function M.setup()
 
         -- colorscheme
         use("Mofiqul/dracula.nvim")
+
+        use("Mofiqul/vscode.nvim")
         -- use({ "folke/tokyonight.nvim" })
 
         -- clangd extensions
@@ -224,6 +223,9 @@ function M.setup()
             -- },
             -- })
             -- end,
+            -- options = {
+            -- theme = 'vscode'
+            -- }
         })
 
         -- nvim-tree
@@ -347,10 +349,10 @@ function M.setup()
             "nvim-telescope/telescope-fzf-native.nvim",
             run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
         })
-        use {
+        use({
             "FeiyouG/command_center.nvim",
-            requires = { "nvim-telescope/telescope.nvim" }
-        }
+            requires = { "nvim-telescope/telescope.nvim" },
+        })
         use({
             "pwntester/octo.nvim",
             requires = { "nvim-telescope/telescope.nvim" },

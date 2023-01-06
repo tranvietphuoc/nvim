@@ -25,7 +25,6 @@ function M.setup()
     cmd([[colorscheme dracula]])
 
     -- cmd "syntax on"
-    -- cmd "colorscheme nvcode"
     -- opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
 
     g.did_load_filetypes = 1
@@ -35,14 +34,15 @@ function M.setup()
     TERMINAL = vim.fn.expand("$TERMINAL")
     cmd([[let &titleold                            = "' .. TERMINAL .. '"]])
     o.titlestring = "%<%F%=%l/%L - nvim"
-    o.completeopt = "menuone,noselect"
+    -- o.completeopt = "menuone,noselect"
+    vim.opt_global.completeopt = { "menuone", "noinsert", "noselect" }
     bo.tabstop = 4 -- Insert 2 spaces for a tab
     bo.shiftwidth = 4 -- Change the number of space characters inserted for indentation
     bo.expandtab = true -- Converts tabs to spaces
     bo.softtabstop = 4
     o.breakindent = true
     o.scrolloff = 8
-    --                            vim.o.compatible = true
+    -- o.compatible = true
     o.pumheight = 10
     o.pumblend = 3
     o.lazyredraw = true

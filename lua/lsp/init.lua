@@ -1,17 +1,12 @@
+local opts = { noremap = true, silent = true }
+local lsputils = require("lsp.utils")
+local saga = require("lspsaga")
+
+local M = {}
+
 local function map(...)
     vim.keymap.set(...)
 end
-
-local function buf_map(...)
-    vim.api.nvim_map(bufnr, ...)
-end
-
-local cmd = vim.cmd
-
-local opts = { noremap = true, silent = true }
-local lsputils = require("lsp.utils")
-
-local M = {}
 
 function M.common_on_attach(client, bufnr)
     lsputils.lsp_highlight(client, bufnr)
@@ -22,8 +17,6 @@ function M.tsserver_on_attach(client, bufnr)
     M.common_on_attach(client, bufnr)
     client.server_capabilities.document_formatting = false
 end
-
-local saga = require("lspsaga")
 
 function M.setup()
     -- lsp saga
@@ -38,7 +31,7 @@ function M.setup()
 
     -- lsp config
     -- map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     -- map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
     map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     map("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)

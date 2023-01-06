@@ -6,7 +6,7 @@ function M.setup()
         ["<leader>"] = {
             f = {
                 name = "+file",
-                f = { "<cmd>Telescope find_files<cr>", "Find file" },
+                f = { "<cmd>Telescope find_files<cr>", "Find files" },
                 g = { "<cmd>Telescope live_grep<cr>", "Live grep" },
                 b = { "<cmd>Telescope buffers<cr>", "Buffers" },
                 q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },

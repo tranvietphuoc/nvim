@@ -2,6 +2,8 @@
 local luasnip = require("luasnip")
 local lspconfig = require("lspconfig")
 local lspkind = require("lspkind")
+local cmp = require("cmp")
+
 
 local M = {}
 
@@ -17,7 +19,6 @@ function M.setup()
         return col == 0 or vim.fn.getline("."):sub(col, col):match("%s%") ~= nil
     end
 
-    local cmp = require("cmp")
     cmp.setup({
         snippet = {
             expand = function(args)
