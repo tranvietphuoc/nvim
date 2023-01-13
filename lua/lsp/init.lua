@@ -20,12 +20,45 @@ end
 
 function M.setup()
     -- lsp saga
-    saga.init_lsp_saga({
+    saga.setup({
 
         finder_icons = {
             def = "  ",
             ref = "諭 ",
             link = "  ",
+        },
+
+        lightbulb = {
+            enable = true,
+            enable_in_insert = true,
+            sign = true,
+            sign_priority = 40,
+            virtual_text = true,
+        },
+        diagnostic = {
+            twice_into = false,
+            show_code_action = true,
+            show_source = true,
+            keys = {
+                exec_action = "o",
+                quit = "q",
+            },
+        },
+
+        outline = {
+            win_position = "right",
+            win_with = "",
+            win_width = 30,
+            show_detail = true,
+            auto_preview = true,
+            auto_refresh = true,
+            auto_close = true,
+            custom_sort = nil,
+            keys = {
+                jump = "o",
+                expand_collaspe = "u",
+                quit = "q",
+            },
         },
     })
 
@@ -82,7 +115,6 @@ function M.setup()
     end, opts)
     -- Outline
     map("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
-
 
     -- inlayHints
     local inlayhints_config = {
@@ -143,7 +175,7 @@ function M.setup()
     require("lsp.solidity").setup()
     require("lsp.cmp").setup()
     require("lsp.nullls").setup()
-    require('lsp.scala').setup()
+    require("lsp.scala").setup()
 end
 
 return M

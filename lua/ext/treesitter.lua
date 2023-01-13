@@ -17,6 +17,7 @@ function M.setup()
             enable = false,
         },
         ensure_installed = {
+            "markdown",
             "javascript",
             "dockerfile",
             "scss",
