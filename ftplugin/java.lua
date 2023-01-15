@@ -3,7 +3,34 @@ local workspace_dir = "." .. project_name
 
 local jdtls = require("jdtls")
 
+local capabilities = {
+    workspace = {
+        configuration = true,
+    },
+    textDocument = {
+        completion = {
+            completionItem = {
+                snippetSupport = true,
+            },
+        },
+    },
+}
+
+local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
+extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
+
+local on_attach = function(client, bufnr)
+    require("jdtls.setup").add_commands()
+    require("jdtls").setup_dap()
+end
+
 local config = {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = {
+        allow_incremental_sync = true,
+    },
+
     cmd = {
         "java",
         "-Declipse.application=org.eclipse.jdt.ls.core.id1",
@@ -66,11 +93,17 @@ local config = {
                 },
                 useBlocks = true,
             },
+            inlayHints = {
+                parameterNames = {
+                    enabled = false,
+                },
+            },
         },
     },
 
     init_options = {
         bundles = {},
+        extendedClientCapabilities = extendedClientCapabilities,
     },
     root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" }),
     -- root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", ".git", "mvnw" }, { upward = true })[1]),
