@@ -35,6 +35,7 @@ You need to install these tools first:
 -   [clangd](https://clangd.llvm.org/installation.html)
 -   [stylua](https://github.com/JohnnyMorganz/StyLua)
 -   [pmd](https://pmd.github.io/latest/)
+-   [openjdk](https://www.freecodecamp.org/news/install-openjdk-free-java-multi-os-guide/)
 
 ### Neovim
 
