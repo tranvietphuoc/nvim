@@ -65,7 +65,7 @@ function M.setup()
 
     -- lsp config
     -- map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    -- map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     -- map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
     map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     map("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
@@ -80,7 +80,7 @@ function M.setup()
     -- map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
     -- map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
     -- map("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+    -- map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
     map("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
     map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
@@ -99,23 +99,40 @@ function M.setup()
     -- signature help
     map("n", "gs", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
     -- preview definition
-    map("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
+    map("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts)
+    -- go to definition
+    map("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
     -- rename
     map("n", "gr", "<cmd>Lspsaga rename<CR>", opts)
     -- diagnostics
     map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
     map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+
+    -- show_line_diagnostics
+    map("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
+
+    -- show cursor diagnostics
+    map("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
+
+    -- show buf diagnostics
+    map("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>", opts)
+
+    -- toggle outline
+    map("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts)
+
     -- hover
     map("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
+
     -- Only jump to error
     map("n", "[E", function()
         require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
     end, opts)
+
     map("n", "]E", function()
         require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
     end, opts)
     -- Outline
-    map("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
+    map("n", "<leader>o", "<cmd>Lspsaga outline<cr>", opts)
 
     -- inlayHints
     local inlayhints_config = {

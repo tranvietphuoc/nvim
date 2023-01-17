@@ -23,6 +23,8 @@ function M.setup()
     cmd("set inccommand=split")
     cmd("set shortmess+=c")
     cmd([[colorscheme dracula]])
+    -- cmd([[colorscheme tokyonight-day]])
+    -- cmd([[colorscheme dawnfox]])
 
     -- cmd "syntax on"
     -- opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
@@ -88,6 +90,7 @@ function M.setup()
 
     g.doge_doc_standard_python = true
     g.doge_doc_standard_javascript = true
+    vim.g.background = "light"
 end
 
 return M

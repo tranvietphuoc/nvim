@@ -5,10 +5,9 @@ function M.setup()
     local installed_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
     local packer_bootstrap
 
-
     if fn.empty(fn.glob(installed_path)) > 0 then
         packer_bootstrap =
-        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", installed_path })
+            fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", installed_path })
     end
 
     local packer = require("packer")
@@ -27,6 +26,8 @@ function M.setup()
 
         -- colorscheme
         use("Mofiqul/dracula.nvim")
+        use("folke/tokyonight.nvim")
+        use("EdenEast/nightfox.nvim")
 
         use("Mofiqul/vscode.nvim")
         -- use({ "folke/tokyonight.nvim" })
