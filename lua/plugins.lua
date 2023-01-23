@@ -7,7 +7,7 @@ function M.setup()
 
     if fn.empty(fn.glob(installed_path)) > 0 then
         packer_bootstrap =
-            fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", installed_path })
+        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", installed_path })
     end
 
     local packer = require("packer")
@@ -171,8 +171,6 @@ function M.setup()
         use({ "hrsh7th/vim-vsnip" })
         use({ "hrsh7th/cmp-vsnip" })
 
-        -- filetype.nvim
-        use({ "nathom/filetype.nvim" })
         -- snippet
         use({ "cstrap/python-snippets" })
         use({ "ylcnfrht/vscode-python-snippet-pack" })
