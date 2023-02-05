@@ -18,6 +18,7 @@ This configuration supports (includes syntax highlighting and autocompletion) fo
 -   `Docker`
 -   `Yaml`
 -   `Java`
+-   `Scala`
 
 ## Prerequisites:
 
