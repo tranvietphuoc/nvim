@@ -1,4 +1,4 @@
-local M = {}
+--[[ local M = {}
 
 function M.setup()
     require("lspconfig").jdtls.setup({
@@ -27,4 +27,4 @@ function M.setup()
     })
 end
 
-return M
+return M ]]

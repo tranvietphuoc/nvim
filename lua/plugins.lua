@@ -151,10 +151,9 @@ function M.setup()
         use({ "onsails/lspkind-nvim" })
         use({
             "glepnir/lspsaga.nvim",
-            event = "BufRead",
             branch = "main",
             requires = { { "nvim-tree/nvim-web-devicons" } }
-        })
+        }) 
         -- auto-completion
         use({ "hrsh7th/nvim-cmp" }) -- Autocompletion plugin
         use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp'

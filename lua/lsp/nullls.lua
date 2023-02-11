@@ -97,6 +97,9 @@ function M.setup()
             formatting.pg_format.with({
                 filetypes = { "sql" },
             }),
+
+            formatting.scalafmt,
+
             -- formatting.isort,
             diagnostics.cpplint,
             diagnostics.mypy.with({
