@@ -1,13 +1,15 @@
 local M = {}
 
 function M.setup()
+    vim.cmd([[packadd packer.nvim]])
+
     local fn = vim.fn
     local installed_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
     local packer_bootstrap
 
     if fn.empty(fn.glob(installed_path)) > 0 then
         packer_bootstrap =
-        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", installed_path })
+            fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", installed_path })
     end
 
     local packer = require("packer")
@@ -50,14 +52,12 @@ function M.setup()
                 })
             end,
         }) ]]
-
         -- git
         use({
             "lewis6991/gitsigns.nvim",
             requires = {
                 "nvim-lua/plenary.nvim",
             },
-
             config = function()
                 require("ext.gitsign").setup()
             end,
@@ -97,22 +97,13 @@ function M.setup()
                 require("ext.treesitter").setup()
             end,
         })
-
         -- multiple cursors
         use({ "terryma/vim-multiple-cursors" })
-
-        -- emmet
-        -- use({
-        --     "mattn/emmet-vim",
-        --     config = function()
-        --         require("lsp.emmet").setup()
-        --     end,
-        -- })
 
         -- tabline
         use({
             "romgrk/barbar.nvim",
-            requires = { "kyazdani42/nvim-web-devicons" },
+            requires = { "nvim-tree/nvim-web-devicons" },
             config = function()
                 require("ext.barbar").setup()
             end,
@@ -158,7 +149,12 @@ function M.setup()
         use({ "neovim/nvim-lspconfig" })
 
         use({ "onsails/lspkind-nvim" })
-        use({ "glepnir/lspsaga.nvim" })
+        use({
+            "glepnir/lspsaga.nvim",
+            event = "BufRead",
+            branch = "main",
+            requires = { { "nvim-tree/nvim-web-devicons" } }
+        })
         -- auto-completion
         use({ "hrsh7th/nvim-cmp" }) -- Autocompletion plugin
         use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp'
@@ -204,7 +200,7 @@ function M.setup()
 
         -- nvim-web-devicons
         use({
-            "kyazdani42/nvim-web-devicons",
+            "nvim-tree/nvim-web-devicons",
             config = function()
                 require("ext.devicon").setup()
             end,
@@ -214,7 +210,7 @@ function M.setup()
         use({
             "nvim-lualine/lualine.nvim",
             -- after = "github-nvim-theme",
-            requires = { "kyazdani42/nvim-web-devicons", opt = true },
+            requires = { "nvim-tree/nvim-web-devicons", opt = true },
             -- config = function()
             -- require("lualine").setup({
             -- options = {
@@ -229,8 +225,8 @@ function M.setup()
 
         -- nvim-tree
         use({
-            "kyazdani42/nvim-tree.lua",
-            require = "kyazdani42/nvim-web-devicons",
+            "nvim-tree/nvim-tree.lua",
+            require = "nvim-tree/nvim-web-devicons",
             config = function()
                 require("ext.tree").setup()
             end,
@@ -364,7 +360,7 @@ function M.setup()
         use({ "windwp/nvim-spectre" })
         use({
             "folke/trouble.nvim",
-            requires = "kyazdani42/nvim-web-devicons",
+            requires = "nvim-tree/nvim-web-devicons",
             config = function()
                 require("trouble").setup({
                     -- your configuration comes here
