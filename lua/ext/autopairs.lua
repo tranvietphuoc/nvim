@@ -12,7 +12,7 @@ function M.setup()
         ts_config = {
             lua = { "string" }, -- it will not add a pair on that treesitter node
             javascript = { "template_string" },
-            java = true, -- don't check treesitter on java
+            -- java = true, -- don't check treesitter on java
         },
     })
 
@@ -25,49 +25,49 @@ function M.setup()
 
     npairs.add_rules({
         Rule(" ", " ")
-            :with_pair(function(opts)
-                local pair = opts.line:sub(opts.col - 1, opts.col)
-                return vim.tbl_contains({ "()", "{}", "[]", "{%%}" }, pair)
-            end)
-            :with_move(cond.none())
-            :with_cr(cond.none())
-            :with_del(function(opts)
-                local col = vim.api.nvim_win_get_cursor(0)[2]
-                local context = opts.line:sub(col - 1, col + 2)
-                return vim.tbl_contains({ "(  )", "{  }", "[  ]", "{% %}" }, context)
-            end),
+        :with_pair(function(opts)
+            local pair = opts.line:sub(opts.col - 1, opts.col)
+            return vim.tbl_contains({ "()", "{}", "[]", "{%%}" }, pair)
+        end)
+        :with_move(cond.none())
+        :with_cr(cond.none())
+        :with_del(function(opts)
+            local col = vim.api.nvim_win_get_cursor(0)[2]
+            local context = opts.line:sub(col - 1, col + 2)
+            return vim.tbl_contains({ "(  )", "{  }", "[  ]", "{% %}" }, context)
+        end),
         Rule("", " )")
-            :with_pair(cond.none())
-            :with_move(function(opts)
-                return opts.char == ")"
-            end)
-            :with_cr(cond.none())
-            :with_del(cond.none())
-            :use_key(")"),
+        :with_pair(cond.none())
+        :with_move(function(opts)
+            return opts.char == ")"
+        end)
+        :with_cr(cond.none())
+        :with_del(cond.none())
+        :use_key(")"),
         Rule("", " }")
-            :with_pair(cond.none())
-            :with_move(function(opts)
-                return opts.char == "}"
-            end)
-            :with_cr(cond.none())
-            :with_del(cond.none())
-            :use_key("}"),
+        :with_pair(cond.none())
+        :with_move(function(opts)
+            return opts.char == "}"
+        end)
+        :with_cr(cond.none())
+        :with_del(cond.none())
+        :use_key("}"),
         Rule("", " ]")
-            :with_pair(cond.none())
-            :with_move(function(opts)
-                return opts.char == "]"
-            end)
-            :with_cr(cond.none())
-            :with_del(cond.none())
-            :use_key("]"),
+        :with_pair(cond.none())
+        :with_move(function(opts)
+            return opts.char == "]"
+        end)
+        :with_cr(cond.none())
+        :with_del(cond.none())
+        :use_key("]"),
         Rule("", " %}")
-            :with_pair(cond.none())
-            :with_move(function(opts)
-                return opts.char == "%}"
-            end)
-            :with_cr(cond.none())
-            :with_del(cond.none())
-            :use_key("%}"),
+        :with_pair(cond.none())
+        :with_move(function(opts)
+            return opts.char == "%}"
+        end)
+        :with_cr(cond.none())
+        :with_del(cond.none())
+        :use_key("%}"),
     })
 end
 
