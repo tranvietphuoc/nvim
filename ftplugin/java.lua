@@ -30,7 +30,6 @@ local config = {
     flags = {
         allow_incremental_sync = true,
     },
-
     cmd = {
         "java",
         "-Declipse.application=org.eclipse.jdt.ls.core.id1",
@@ -47,13 +46,12 @@ local config = {
 
         "-jar",
         -- "$HOME/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
-        vim.fn.glob(DATA .. "/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6*.jar"),
+        vim.fn.glob(DATA .. "/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar"),
         "-configuration",
         DATA .. "/mason/packages/jdtls/config_mac",
         "-data",
         workspace_dir,
     },
-
     -- cmd = { DATA .. "/mason/packages/jdtls/bin/jdtls" },
     settings = {
         java = {
@@ -100,7 +98,6 @@ local config = {
             },
         },
     },
-
     init_options = {
         bundles = {},
         extendedClientCapabilities = extendedClientCapabilities,
