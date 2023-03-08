@@ -26,6 +26,7 @@ function M.setup()
             "tailwindcss",
             "texlab",
             "yamlls",
+            "docker_compose_language_service",
         },
     })
 end
