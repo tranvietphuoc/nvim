@@ -44,7 +44,7 @@ function M.setup()
     bo.expandtab = true -- Converts tabs to spaces
     bo.softtabstop = 4
     o.breakindent = true
-    o.scrolloff = 8
+    -- o.scrolloff = 8
     -- o.compatible = true
     o.pumheight = 10
     o.pumblend = 3

@@ -152,10 +152,10 @@ function M.setup()
         use({
             "glepnir/lspsaga.nvim",
             branch = "main",
-            requires = { { "nvim-tree/nvim-web-devicons" } }
-        }) 
+            requires = { { "nvim-tree/nvim-web-devicons" } },
+        })
         -- auto-completion
-        use({ "hrsh7th/nvim-cmp" }) -- Autocompletion plugin
+        use({ "hrsh7th/nvim-cmp" })     -- Autocompletion plugin
         use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp'
         use({ "hrsh7th/cmp-buffer" })
         use({ "hrsh7th/cmp-path" })
@@ -180,7 +180,7 @@ function M.setup()
 
         -- ts-rainbow
         use({
-            "p00f/nvim-ts-rainbow",
+            "mrjones2014/nvim-ts-rainbow",
             config = function()
                 require("ext.ts-rainbow").setup()
             end,
@@ -253,7 +253,7 @@ function M.setup()
                     window = {
                         backdrop = 0.95,
                         width = 120, -- width of the Zen window
-                        height = 1, -- height of the Zen window
+                        height = 1,  -- height of the Zen window
                         options = {
                             signcolumn = "no",
                             number = true,
@@ -341,7 +341,8 @@ function M.setup()
         })
         use({
             "nvim-telescope/telescope-fzf-native.nvim",
-            run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+            run =
+            "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
         })
         use({
             "FeiyouG/command_center.nvim",
@@ -376,6 +377,20 @@ function M.setup()
         -- scala metal
         use({ "scalameta/nvim-metals", requires = { "nvim-lua/plenary.nvim" } })
 
+        -- chatgpt
+        --[[ use({
+            "jackMort/ChatGPT.nvim",
+            config = function()
+                require("chatgpt").setup({
+                    -- optional configuration
+                })
+            end,
+            requires = {
+                "MunifTanjim/nui.nvim",
+                "nvim-lua/plenary.nvim",
+                "nvim-telescope/telescope.nvim",
+            },
+        }) ]]
         if packer_bootstrap then
             packer.sync()
         end

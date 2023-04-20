@@ -16,7 +16,7 @@ function M.setup()
             "cmake",
             "graphql",
             "jsonls",
-            "sqls",
+            "sqlls",
             "taplo",
             "vuels",
             "emmet_ls",

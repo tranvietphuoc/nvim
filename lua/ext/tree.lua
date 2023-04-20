@@ -12,14 +12,9 @@ function M.setup()
 
         hijack_unnamed_buffer_when_opening = false,
 
-        -- open the tree when running this setup function
-        open_on_setup_file = false,
-
-        open_on_setup = false,
         -- will not open on setup if the filetype is in this list
         -- ignore_ft_on_setup = { "dashboard" },
 
-        ignore_buffer_on_setup = false,
         -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
         open_on_tab = false,
 
@@ -86,7 +81,6 @@ function M.setup()
             update_cwd = false,
             ignore_list = {},
         }, ]]
-        ignore_ft_on_setup = {},
         system_open = {
             cmd = "",
             args = {},

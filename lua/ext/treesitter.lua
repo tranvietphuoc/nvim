@@ -16,7 +16,7 @@ function M.setup()
         indent = {
             enable = false,
         },
-        ensure_installed = {
+        --[[ ensure_installed = {
             "markdown",
             "markdown_inline",
             "javascript",
@@ -50,7 +50,9 @@ function M.setup()
             "elixir",
             "ocaml",
             -- "haskell",
-        },
+        }, ]]
+
+        ensure_installed = "all",
         ignore_install = { "hcl" },
         highlight = {
             enable = true,
@@ -80,16 +82,14 @@ function M.setup()
         playground = {
             enable = true,
             disable = {},
-            updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+            updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
             persist_queries = false, -- Whether the query persists across vim sessions
         },
         textobjects = {
             select = {
                 enable = true,
-
                 -- Automatically jump forward to textobj, similar to targets.vim
                 lookahead = true,
-
                 keymaps = {
                     -- You can use the capture groups defined in textobjects.scm
                     ["af"] = "@function.outer",

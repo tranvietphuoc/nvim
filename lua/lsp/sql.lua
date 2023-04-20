@@ -11,11 +11,18 @@ function M.setup()
         filetypes = { "sql", "mysql" },
         single_file_support = true,
     } ) ]]
-
-    require("lspconfig")["sqls"].setup({
-        cmd = { DATA .. "/mason/bin/sqls", "-config", "~/.config/sql-language-server/.sqlsrc.yml" },
+    require("lspconfig")["sqlls"].setup({
+        cmd = {
+            DATA .. "/mason/bin/sql-language-server",
+            "up",
+            "--method",
+            "stdio",
+            -- "-config",
+            -- "~/.config/sql-language-server/.sqllsrc.json",
+        },
         flags = lsp_flags,
-        filetypes = { "sql", "mysql" },
+        -- root_dir = {},
+        filetypes = { "sql" },
         single_file_support = true,
     })
 end
