@@ -81,7 +81,7 @@ function M.setup()
     map("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
     map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 
-    local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+    local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
     for type, icon in pairs(signs) do
         local hl = "DiagnosticSign" .. type

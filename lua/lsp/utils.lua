@@ -35,7 +35,6 @@ function M.lsp_diagnostics()
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
         border = "rounded",
     })
-
 end
 
 function M.lsp_config(client, bufnr)
