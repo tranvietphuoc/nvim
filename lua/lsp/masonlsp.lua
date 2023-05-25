@@ -27,6 +27,7 @@ function M.setup()
             "texlab",
             "yamlls",
             "docker_compose_language_service",
+            "omnisharp",
         },
     })
 end

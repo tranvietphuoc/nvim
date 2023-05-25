@@ -200,6 +200,7 @@ function M.setup()
     require("lsp.cmp").setup()
     require("lsp.nullls").setup()
     require("lsp.scala").setup()
+    require("lsp.csharp").setup()
 end
 
 return M
