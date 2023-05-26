@@ -201,6 +201,7 @@ function M.setup()
     require("lsp.nullls").setup()
     require("lsp.scala").setup()
     require("lsp.csharp").setup()
+    require("lsp.verilog").setup()
 end
 
 return M
