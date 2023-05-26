@@ -18,7 +18,7 @@ function M.setup()
         sdk_include_prereleases = true,
         analyze_open_documents_only = false,
         filetypes = { "cs", "vb" },
-        root_dir = root_pattern(".csproj"),
+        root_dir = root_pattern("csharp.csproj") or root_pattern(".sln"),
         init_options = {},
         full = vim.empty_dict(),
         on_attach = function(client, bufnr)
