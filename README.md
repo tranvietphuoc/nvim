@@ -19,6 +19,7 @@ This configuration supports (includes syntax highlighting and autocompletion) fo
 -   `Yaml`
 -   `Java`
 -   `Scala`
+-   `C#`
 
 ## Prerequisites:
 
@@ -33,6 +34,7 @@ You need to install these tools first:
 -   [stylua](https://github.com/JohnnyMorganz/StyLua)
 -   [pmd](https://pmd.github.io/latest/)
 -   [openjdk](https://www.freecodecamp.org/news/install-openjdk-free-java-multi-os-guide/)
+-   [dotnet-sdk](https://learn.microsoft.com/en-us/dotnet/core/install/)
 
 ### Neovim
 
