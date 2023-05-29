@@ -377,6 +377,9 @@ function M.setup()
         -- scala metal
         use({ "scalameta/nvim-metals", requires = { "nvim-lua/plenary.nvim" } })
 
+        -- csharp
+        use('Hoffs/omnisharp-extended-lsp.nvim')
+
         -- chatgpt
         --[[ use({
             "jackMort/ChatGPT.nvim",

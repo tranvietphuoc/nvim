@@ -21,12 +21,11 @@ end
 
 local jdtls = require("jdtls")
 local home = os.getenv("HOME")
-local root_markers = { "gradlew", "pom.xml", ".git" }
+local root_markers = { "gradlew.build", "pom.xml", ".git" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
 local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
 local workplace = "/Desktop/learning/java/"
 local workspace_dir = home .. workplace .. project_name
-
 
 local capabilities = {
     workspace = {
@@ -85,7 +84,7 @@ local config = {
 }
 
 config.cmd = {
-    "/usr/local/opt/openjdk/bin/java",
+    "java",
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -107,16 +106,15 @@ config.cmd = {
     workspace_dir,
 }
 
-
 config.settings = {
-    ['java.format.settings.profile'] = "GoogleStyle",
+    ["java.format.settings.profile"] = "GoogleStyle",
     -- ['java.format.settings.url'] = home .. "/.config/nvim/language-servers/java-google-formatter.xml",
     java = {
         configuration = {
             runtimes = {
                 {
-                    name = "JavaSE-19",
-                    path = "/usr/local/opt/openjdk/",
+                    name = "JavaSE-17",
+                    path = "/usr/local/opt/openjdk@17",
                 },
             },
         },
