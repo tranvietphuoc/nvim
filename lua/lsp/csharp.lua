@@ -3,17 +3,19 @@ local M = {}
 local root_pattern = require("lspconfig/util").root_pattern
 local lspconfig = require("lspconfig")
 local omnisharp_bin = DATA .. "/mason/bin/omnisharp-mono"
+-- local omnisharp_bin = "~/Downloads/omnisharp-osx-x64-net6.0/OmniSharp"
 local pid = vim.fn.getpid()
 local config = {
     handlers = {
         ["textDocument/definition"] = require("omnisharp_extended").handler,
     },
     cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
+    -- cmd = { "dotnet", "~/Downloads/omnisharp-osx-x64-net6.0/OmniSharp.dll" },
     enable_editorconfig_support = true,
     enable_ms_build_load_projects_on_demand = false,
-    organize_imports_on_format = false,
-    enable_roslyn_analyzers = false,
-    enable_import_completion = false,
+    organize_imports_on_format = true,
+    enable_roslyn_analyzers = true,
+    enable_import_completion = true,
     sdk_include_prereleases = true,
     analyze_open_documents_only = false,
     filetypes = { "cs", "vb" },
@@ -21,6 +23,8 @@ local config = {
     init_options = {},
     full = vim.empty_dict(),
     on_attach = function(client, bufnr)
+        require("lsp").common_on_attach(client, bufnr)
+
         client.server_capabilities.semanticTokensProvider = {
             full = vim.empty_dict(),
             legend = {

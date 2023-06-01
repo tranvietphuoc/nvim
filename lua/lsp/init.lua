@@ -20,7 +20,6 @@ end
 
 function M.setup()
     -- lsp saga
-    -- saga.init_lsp_saga()
     saga.setup({
         finder_icons = {
             def = "  ",
@@ -63,7 +62,7 @@ function M.setup()
     -- lsp config
     -- map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     -- map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    -- map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
     map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     map("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     -- map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
@@ -102,7 +101,15 @@ function M.setup()
     map("n", "gD", "<cmd>Lspsaga peek_definition<CR>")
 
     -- go to definition
-    map("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
+    -- map("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
+    -- Use <C-t> to jump back
+    map("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
+
+    -- Use <C-t> to jump back
+    map("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
+
+    -- Go to type definition
+    map("n", "gt", "<cmd>Lspsaga goto_type_definition<CR>")
 
     -- rename
     map("n", "gr", "<cmd>Lspsaga rename ++project<CR>")

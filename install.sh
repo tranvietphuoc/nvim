@@ -40,20 +40,23 @@ install_dependencies() {
     luarocks install --server=https://luarocks.org/dev luaformatter
 
     pip3 install ranger-fm
-    
+
     # install tree-sitter
     brew install tree-sitter
 
     # install gitui
     brew install gitui
 
+    # jdtls
+    brew install jdtls
+
 }
 
 install_lsp() {
 	npm install -g pyright vscode-css-languageserver-bin vscode-html-languageserver-bin
     	npm install -g typescript typescript-language-server graphql-language-service-cli
-    	npm install -g dockerfile-language-server-nodejs vscode-json-languageserver 
-    	npm install -g vls yaml-language-server bash-language-server 
+    	npm install -g dockerfile-language-server-nodejs vscode-json-languageserver
+    	npm install -g vls yaml-language-server bash-language-server
 
 	pip3 install cmake-language-server
 }
