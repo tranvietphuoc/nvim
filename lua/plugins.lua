@@ -97,6 +97,13 @@ function M.setup()
                 require("ext.treesitter").setup()
             end,
         })
+
+        use({
+            "nvim-treesitter/nvim-treesitter-textobjects",
+            after = "nvim-treesitter",
+            requires = "nvim-treesitter/nvim-treesitter",
+        })
+
         -- multiple cursors
         use({ "terryma/vim-multiple-cursors" })
 
@@ -155,7 +162,7 @@ function M.setup()
             requires = { { "nvim-tree/nvim-web-devicons" } },
         })
         -- auto-completion
-        use({ "hrsh7th/nvim-cmp" })     -- Autocompletion plugin
+        use({ "hrsh7th/nvim-cmp" }) -- Autocompletion plugin
         use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp'
         use({ "hrsh7th/cmp-buffer" })
         use({ "hrsh7th/cmp-path" })
@@ -253,7 +260,7 @@ function M.setup()
                     window = {
                         backdrop = 0.95,
                         width = 120, -- width of the Zen window
-                        height = 1,  -- height of the Zen window
+                        height = 1, -- height of the Zen window
                         options = {
                             signcolumn = "no",
                             number = true,
@@ -326,12 +333,10 @@ function M.setup()
         -- use({ "github/copilot.vim" })
 
         -- statusline components
+
         use({
-            "SmiteshP/nvim-gps",
-            requires = "nvim-treesitter/nvim-treesitter",
-            config = function()
-                require("nvim-gps").setup()
-            end,
+            "SmiteshP/nvim-navic",
+            requires = "neovim/nvim-lspconfig",
         })
         use({
             "nvim-telescope/telescope.nvim",
@@ -341,8 +346,7 @@ function M.setup()
         })
         use({
             "nvim-telescope/telescope-fzf-native.nvim",
-            run =
-            "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+            run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
         })
         use({
             "FeiyouG/command_center.nvim",
@@ -378,7 +382,7 @@ function M.setup()
         use({ "scalameta/nvim-metals", requires = { "nvim-lua/plenary.nvim" } })
 
         -- csharp
-        use('Hoffs/omnisharp-extended-lsp.nvim')
+        use("Hoffs/omnisharp-extended-lsp.nvim")
 
         -- chatgpt
         --[[ use({

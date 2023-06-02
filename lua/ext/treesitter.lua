@@ -14,7 +14,7 @@ function M.setup()
             enable = true,
         },
         indent = {
-            enable = false,
+            enable = true,
         },
         --[[ ensure_installed = {
             "markdown",

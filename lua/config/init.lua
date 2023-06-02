@@ -24,7 +24,7 @@ function M.setup()
     cmd("set inccommand=split")
     cmd("set shortmess+=c")
     cmd([[colorscheme dracula]])
-    -- cmd([[colorscheme tokyonight-day]])
+    -- cmd([[colorscheme tokyonight-moon]])
     -- cmd([[colorscheme dawnfox]])
 
     -- cmd "syntax on"
