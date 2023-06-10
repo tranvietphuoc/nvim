@@ -9,7 +9,7 @@ local lsp_flags = {
 function M.setup()
     require("clangd_extensions").setup({
         server = {
-            cmd = { DATA .. "/mason/bin/clangd" },
+            cmd = { DATA .. "/mason/bin/clangd", "--offset-encoding=utf-16" },
             on_attach = require("lsp").common_on_attach,
             flags = lsp_flags,
             filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "cc", "h", "hpp" },
