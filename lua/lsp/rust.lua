@@ -4,7 +4,6 @@ local root_pattern = require("lspconfig/util").root_pattern
 local lspconfig = require("lspconfig")
 -- local rt = require("rust-tools")
 local lsp_flags = {
-    -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
 }
 

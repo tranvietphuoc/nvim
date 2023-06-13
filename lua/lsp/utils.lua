@@ -2,27 +2,36 @@ local M = {}
 
 function M.lsp_highlight(client, bufnr)
     if client.server_capabilities.documentHighlightProvider then
-        vim.api.nvim_exec(
-            [[
-      hi LspReferenceRead cterm=bold ctermbg=red guibg=#454545
-      hi LspReferenceText cterm=bold ctermbg=red guibg=#454545
-      hi LspReferenceWrite cterm=bold ctermbg=red guibg=#454545
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END]],
-            false
-        )
+        vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+        vim.api.nvim_clear_autocmds({ buffer = bufnr, group = "lsp_document_highlight" })
+        vim.api.nvim_create_autocmd("CursorHold", {
+            callback = vim.lsp.buf.document_highlight,
+            buffer = bufnr,
+            group = "lsp_document_highlight",
+            desc = "Document Highlight",
+        })
+        vim.api.nvim_create_autocmd("CursorMoved", {
+            callback = vim.lsp.buf.clear_references,
+            buffer = bufnr,
+            group = "lsp_document_highlight",
+            desc = "Clear All the References",
+        })
     end
 end
 
 function M.lsp_diagnostics()
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
         virtual_text = true,
-        underline = false,
+        underline = true,
         signs = true,
         update_in_insert = false,
+        severity_sort = false,
+        float = {
+            border = "rounded",
+            source = "always",
+            header = "",
+            prefix = "",
+        },
     })
 
     local on_references = vim.lsp.handlers["textDocument/references"]

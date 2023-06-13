@@ -80,6 +80,7 @@ function M.setup()
     map("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
     map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 
+
     local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
     for type, icon in pairs(signs) do
@@ -138,11 +139,11 @@ function M.setup()
 
     -- Only jump to error
     map("n", "[E", function()
-        require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+        require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
     end)
 
     map("n", "]E", function()
-        require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+        require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
     end)
     -- Outline
     map("n", "<leader>o", "<cmd>Lspsaga outline<cr>")
