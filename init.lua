@@ -25,4 +25,4 @@ require("ext").setup()
 require("lsp").setup()
 
 -- debugger
-require("debugger").setup()
+require("dbg").setup()
