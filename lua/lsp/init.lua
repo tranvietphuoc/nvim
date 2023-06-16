@@ -1,6 +1,7 @@
 local opts = { noremap = true, silent = true }
 local lsputils = require("lsp.utils")
 local saga = require("lspsaga")
+local ih = require("lsp-inlayhints")
 
 local M = {}
 
@@ -10,7 +11,7 @@ end
 
 function M.common_on_attach(client, bufnr)
     lsputils.lsp_highlight(client, bufnr)
-    require("lsp-inlayhints").on_attach(client, bufnr, true)
+    ih.on_attach(client, bufnr)
 end
 
 function M.tsserver_on_attach(client, bufnr)
@@ -80,7 +81,6 @@ function M.setup()
     map("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
     map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 
-
     local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
     for type, icon in pairs(signs) do
@@ -148,42 +148,41 @@ function M.setup()
     -- Outline
     map("n", "<leader>o", "<cmd>Lspsaga outline<cr>")
 
-    -- inlayHints
-    local inlayhints_config = {
+    -- inlayHints setup
+    --[[ local ih_config = {
         inlay_hints = {
             parameter_hints = {
                 show = true,
                 prefix = "<- ",
                 separator = ", ",
-                remove_colon_start = true,
+                remove_colon_start = false,
                 remove_colon_end = true,
             },
             type_hints = {
                 -- type and other hints
                 show = true,
-                prefix = "-> ",
-                separator = " ",
-                remove_colon_start = true,
-                remove_colon_end = true,
+                prefix = "",
+                separator = ", ",
+                remove_colon_start = false,
+                remove_colon_end = false,
             },
             only_current_line = false,
             -- separator between types and parameter hints. Note that type hints are
             -- shown before parameter
-            labels_separator = ", ",
+            labels_separator = " ",
             -- whether to align to the length of the longest line in the file
             max_len_align = false,
             -- padding from the left if max_len_align is true
             max_len_align_padding = 1,
             -- highlight group
-            highlight = "Comment",
+            highlight = "LspInlayHint",
             -- virt_text priority
             priority = 0,
         },
         enabled_at_startup = true,
         debug_mode = false,
-    }
-
-    require("lsp-inlayhints").setup(inlayhints_config)
+    } ]]
+    ih.setup()
 
     -- lsp clients setup
     require("lsp.bash").setup()

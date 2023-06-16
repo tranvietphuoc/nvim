@@ -136,10 +136,27 @@ function M.setup()
         use({ "fatih/vim-go", run = ":GoUpdateBinaries" })
 
         -- inlayHints
-        use("lvimuser/lsp-inlayhints.nvim")
+        use({
+            "lvimuser/lsp-inlayhints.nvim",
+            branch = "anticonceal",
+            opts = {},
+            lazy = true,
+            init = function()
+                vim.api.nvim_create_autocmd("LspAttach", {
+                    group = vim.api.nvim_create_augroup("LspAttach_inlayhints", {}),
+                    callback = function(args)
+                        if not (args.data and args.data.client_id) then
+                            return
+                        end
+                        local client = vim.lsp.get_client_by_id(args.data.client_id)
+                        require("lsp-inlayhints").on_attach(client, args.buf)
+                    end,
+                })
+            end,
+        })
 
         -- rust
-        use("simrat39/rust-tools.nvim")
+        -- use("simrat39/rust-tools.nvim")
 
         -- symbol-outline
         use("simrat39/symbols-outline.nvim")
@@ -162,7 +179,7 @@ function M.setup()
             requires = { { "nvim-tree/nvim-web-devicons" } },
         })
         -- auto-completion
-        use({ "hrsh7th/nvim-cmp" }) -- Autocompletion plugin
+        use({ "hrsh7th/nvim-cmp" })     -- Autocompletion plugin
         use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp'
         use({ "hrsh7th/cmp-buffer" })
         use({ "hrsh7th/cmp-path" })
@@ -260,7 +277,7 @@ function M.setup()
                     window = {
                         backdrop = 0.95,
                         width = 120, -- width of the Zen window
-                        height = 1, -- height of the Zen window
+                        height = 1,  -- height of the Zen window
                         options = {
                             signcolumn = "no",
                             number = true,
@@ -346,7 +363,8 @@ function M.setup()
         })
         use({
             "nvim-telescope/telescope-fzf-native.nvim",
-            run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+            run =
+            "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
         })
         use({
             "FeiyouG/command_center.nvim",
