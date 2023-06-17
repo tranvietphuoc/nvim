@@ -11,7 +11,7 @@ end
 
 function M.common_on_attach(client, bufnr)
     lsputils.lsp_highlight(client, bufnr)
-    ih.on_attach(client, bufnr)
+    ih.on_attach(client, bufnr, true)
 end
 
 function M.tsserver_on_attach(client, bufnr)
@@ -19,46 +19,48 @@ function M.tsserver_on_attach(client, bufnr)
     client.server_capabilities.document_formatting = false
 end
 
+local saga_config = {
+    finder_icons = {
+        def = "  ",
+        ref = "諭 ",
+        link = "  ",
+    },
+    lightbulb = {
+        enable = true,
+        enable_in_insert = true,
+        sign = true,
+        sign_priority = 40,
+        virtual_text = true,
+    },
+    diagnostic = {
+        twice_into = false,
+        show_code_action = true,
+        show_source = true,
+        keys = {
+            exec_action = "o",
+            quit = "q",
+        },
+    },
+    outline = {
+        win_position = "right",
+        win_with = "",
+        win_width = 30,
+        show_detail = true,
+        auto_preview = true,
+        auto_refresh = true,
+        auto_close = true,
+        custom_sort = nil,
+        keys = {
+            jump = "o",
+            expand_collaspe = "u",
+            quit = "q",
+        },
+    },
+}
+
 function M.setup()
     -- lsp saga
-    saga.setup({
-        finder_icons = {
-            def = "  ",
-            ref = "諭 ",
-            link = "  ",
-        },
-        lightbulb = {
-            enable = true,
-            enable_in_insert = true,
-            sign = true,
-            sign_priority = 40,
-            virtual_text = true,
-        },
-        diagnostic = {
-            twice_into = false,
-            show_code_action = true,
-            show_source = true,
-            keys = {
-                exec_action = "o",
-                quit = "q",
-            },
-        },
-        outline = {
-            win_position = "right",
-            win_with = "",
-            win_width = 30,
-            show_detail = true,
-            auto_preview = true,
-            auto_refresh = true,
-            auto_close = true,
-            custom_sort = nil,
-            keys = {
-                jump = "o",
-                expand_collaspe = "u",
-                quit = "q",
-            },
-        },
-    })
+    saga.setup(saga_config)
 
     -- lsp config
     -- map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
@@ -91,57 +93,41 @@ function M.setup()
     -- lspsaga
     -- lsp finder
     map("n", "gh", "<cmd>Lspsaga lsp_finder<CR><CR>")
-
     -- code actions
     map({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
-
     -- signature help
     map("n", "gs", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>")
-
     -- preview definition
     map("n", "gD", "<cmd>Lspsaga peek_definition<CR>")
-
     -- go to definition
     -- map("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
     -- Use <C-t> to jump back
     map("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
-
     -- Use <C-t> to jump back
     map("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
-
     -- Go to type definition
     map("n", "gt", "<cmd>Lspsaga goto_type_definition<CR>")
-
     -- rename
     map("n", "gr", "<cmd>Lspsaga rename ++project<CR>")
-
     -- Rename all occurrences of the hovered word for the entire file
     map("n", "gr", "<cmd>Lspsaga rename<CR>")
-
     -- diagnostics
     map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
     map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
-
     -- show_line_diagnostics
     map("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<cr>")
-
     -- show cursor diagnostics
     map("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
-
     -- show buf diagnostics
     map("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
-
     -- toggle outline
     map("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
-
     -- hover
     map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
-
     -- Only jump to error
     map("n", "[E", function()
         require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
     end)
-
     map("n", "]E", function()
         require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
     end)
