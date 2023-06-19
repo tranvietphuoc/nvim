@@ -135,7 +135,7 @@ function M.setup()
     map("n", "<leader>o", "<cmd>Lspsaga outline<cr>")
 
     -- inlayHints setup
-    --[[ local ih_config = {
+    local ih_config = {
         inlay_hints = {
             parameter_hints = {
                 show = true,
@@ -166,9 +166,9 @@ function M.setup()
             priority = 0,
         },
         enabled_at_startup = true,
-        debug_mode = false,
-    } ]]
-    ih.setup()
+        debug_mode = true,
+    }
+    ih.setup(ih_config)
 
     -- lsp clients setup
     require("lsp.bash").setup()
