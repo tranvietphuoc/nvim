@@ -35,6 +35,7 @@ function M.setup()
     }
 
     metals_config.on_attach = function(client, bufnr)
+        require("lsp").common_on_attach()
         metals.setup_dap()
     end
 

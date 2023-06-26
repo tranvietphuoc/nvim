@@ -44,6 +44,12 @@ function M.setup()
                     diagnosticMode = "workspace",
                     useLibraryCodeForTypes = true,
                     typeCheckingMode = "basic",
+                    inlayHints = {
+                        variableTypes = true,
+                        functionReturnTypes = true,
+                        callArgumentNames = true,
+                        pytestParameters = true,
+                    }
                 },
             },
         },

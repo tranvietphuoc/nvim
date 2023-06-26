@@ -138,7 +138,7 @@ function M.setup()
         -- inlayHints
         use({
             "lvimuser/lsp-inlayhints.nvim",
-            branch = "main",
+            branch = "anticonceal",
             opts = {},
             lazy = true,
             init = function()
