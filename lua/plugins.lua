@@ -178,7 +178,8 @@ function M.setup()
             branch = "main",
             -- opt = true,
             event = "LspAttach",
-            requires = { { "nvim-tree/nvim-web-devicons" } },
+            requires = { { "nvim-tree/nvim-web-devicons" },
+                { "nvim-treesitter/nvim-treesitter" } },
         })
         -- auto-completion
         use({ "hrsh7th/nvim-cmp" })     -- Autocompletion plugin
