@@ -176,10 +176,12 @@ function M.setup()
         use({
             "glepnir/lspsaga.nvim",
             branch = "main",
+            -- opt = true,
+            event = "LspAttach",
             requires = { { "nvim-tree/nvim-web-devicons" } },
         })
         -- auto-completion
-        use({ "hrsh7th/nvim-cmp" }) -- Autocompletion plugin
+        use({ "hrsh7th/nvim-cmp" })     -- Autocompletion plugin
         use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp'
         use({ "hrsh7th/cmp-buffer" })
         use({ "hrsh7th/cmp-path" })
@@ -277,7 +279,7 @@ function M.setup()
                     window = {
                         backdrop = 0.95,
                         width = 120, -- width of the Zen window
-                        height = 1, -- height of the Zen window
+                        height = 1,  -- height of the Zen window
                         options = {
                             signcolumn = "no",
                             number = true,
@@ -363,7 +365,8 @@ function M.setup()
         })
         use({
             "nvim-telescope/telescope-fzf-native.nvim",
-            run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+            run =
+            "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
         })
         use({
             "FeiyouG/command_center.nvim",
