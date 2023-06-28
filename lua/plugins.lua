@@ -184,8 +184,8 @@ function M.setup()
             requires = {
                 { "nvim-tree/nvim-web-devicons" },
                 --Please make sure you install markdown and markdown_inline parser
-                { "nvim-treesitter/nvim-treesitter" }
-            }
+                { "nvim-treesitter/nvim-treesitter" },
+            },
         })
         -- auto-completion
         use({ "hrsh7th/nvim-cmp" })     -- Autocompletion plugin
@@ -404,9 +404,9 @@ function M.setup()
 
         -- live server
         use({
-            'barrett-ruth/live-server.nvim',
+            "barrett-ruth/live-server.nvim",
             config = function()
-                require('live-server').setup({})
+                require("live-server").setup({})
             end,
         })
 
