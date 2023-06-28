@@ -30,8 +30,8 @@ function M.setup()
             M = { "<cmd>MarkdownPreviewStop<cr>", "Markdown Preview Stop" },
             l = {
                 name = "+live server",
-                s = { "<cmd>LiveServer start<cr>", "Start" },
-                S = { "<cmd>LiveServer stop<cr>", "Stop" },
+                s = { "<cmd>LiveServerStart<cr>", "Start" },
+                S = { "<cmd>LiveServerStop<cr>", "Stop" },
             },
             n = { "<cmd>Neogit<cr>", "Neogit" },
         },

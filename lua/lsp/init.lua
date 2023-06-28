@@ -1,6 +1,5 @@
 local opts = { noremap = true, silent = true }
 local lsputils = require("lsp.utils")
-local saga = require("lspsaga")
 local ih = require("lsp-inlayhints")
 
 local M = {}
@@ -19,49 +18,7 @@ function M.tsserver_on_attach(client, bufnr)
     client.server_capabilities.document_formatting = false
 end
 
-local saga_config = {
-    finder_icons = {
-        def = "  ",
-        ref = "諭 ",
-        link = "  ",
-    },
-    lightbulb = {
-        enable = true,
-        enable_in_insert = true,
-        sign = true,
-        sign_priority = 40,
-        virtual_text = true,
-    },
-    diagnostic = {
-        twice_into = false,
-        show_code_action = true,
-        show_source = true,
-        keys = {
-            exec_action = "o",
-            quit = "q",
-        },
-    },
-    outline = {
-        win_position = "right",
-        win_with = "",
-        win_width = 30,
-        show_detail = true,
-        auto_preview = true,
-        auto_refresh = true,
-        auto_close = true,
-        custom_sort = nil,
-        keys = {
-            jump = "o",
-            expand_collaspe = "u",
-            quit = "q",
-        },
-    },
-}
-
 function M.setup()
-    -- lsp saga
-    saga.setup(saga_config)
-
     -- lsp config
     -- map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     -- map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -133,6 +90,10 @@ function M.setup()
     end)
     -- Outline
     map("n", "<leader>o", "<cmd>Lspsaga outline<cr>")
+
+    -- Call hierarchy
+    map("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
+    map("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
 
     -- inlayHints setup
     local ih_config = {

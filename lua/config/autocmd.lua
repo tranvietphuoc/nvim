@@ -6,6 +6,13 @@ function M.auto_cmds()
     vim.g.dracula_italic_comment = true
     vim.g.dracula_transparent_bg = false
 
+    vim.cmd([[
+  augroup packer_init
+    autocmd!
+    autocmd BufWritePost plugins.lua source PackerCompile
+  augroup end
+]])
+
     cmd("autocmd BufRead,BufNewFile *java,*.js,*.ts,*.tsx,*.jsx,*.json setlocal expandtab ts=2 sw=2 sts=2")
     cmd("autocmd BufRead,BufNewFile *.scala,*.sbt setlocal expandtab ts=3 sw=3 sts=3")
     cmd("autocmd BufRead,BufNewFile *.html,*.css,*.scss,*.yml,*.svelte setlocal expandtab ts=2 sw=2 sts=2")

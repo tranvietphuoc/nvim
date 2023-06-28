@@ -5,7 +5,7 @@ function M.setup()
 
     local fn = vim.fn
     local installed_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-    local packer_bootstrap
+    local packer_bootstrap = nil
 
     if fn.empty(fn.glob(installed_path)) > 0 then
         packer_bootstrap =
@@ -175,11 +175,17 @@ function M.setup()
         use({ "onsails/lspkind-nvim" })
         use({
             "glepnir/lspsaga.nvim",
+            opt = true,
             branch = "main",
-            -- opt = true,
             event = "LspAttach",
-            requires = { { "nvim-tree/nvim-web-devicons" },
-                { "nvim-treesitter/nvim-treesitter" } },
+            config = function()
+                require("lspsaga").setup({})
+            end,
+            requires = {
+                { "nvim-tree/nvim-web-devicons" },
+                --Please make sure you install markdown and markdown_inline parser
+                { "nvim-treesitter/nvim-treesitter" }
+            }
         })
         -- auto-completion
         use({ "hrsh7th/nvim-cmp" })     -- Autocompletion plugin
@@ -397,7 +403,12 @@ function M.setup()
         use({ "chrisbra/csv.vim" })
 
         -- live server
-        use({ "manzeloth/live-server" })
+        use({
+            'barrett-ruth/live-server.nvim',
+            config = function()
+                require('live-server').setup({})
+            end,
+        })
 
         -- scala metal
         use({ "scalameta/nvim-metals", requires = { "nvim-lua/plenary.nvim" } })
