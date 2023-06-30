@@ -28,7 +28,7 @@ function M.get_python_path(workspace)
 end
 
 function M.setup()
-    lspconfig["pyright"].setup({
+    lspconfig.pyright.setup({
         -- require'nvim_lsp'.pyright.setup {
         cmd = { DATA .. "/mason/bin/pyright-langserver", "--stdio" },
         on_attach = require("lsp").common_on_attach,

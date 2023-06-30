@@ -108,7 +108,7 @@ local config = {
 }
 
 function M.setup()
-    lspconfig["omnisharp"].setup(config)
+    lspconfig.omnisharp.setup(config)
 end
 
 return M

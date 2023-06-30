@@ -8,7 +8,7 @@ local lsp_flags = {
 }
 
 function M.setup()
-    require("lspconfig")["dockerls"].setup({
+    require("lspconfig").dockerls.setup({
         cmd = { DATA .. "/mason/bin/docker-langserver", "--stdio" },
         -- cmd = {"docker-langserver", "--stdio"},
         on_attach = require("lsp").common_on_attach,

@@ -14,7 +14,7 @@ local lsp_flags = {
 local M = {}
 
 function M.setup()
-    require("lspconfig")["lua_ls"].setup({
+    require("lspconfig").lua_ls.setup({
         cmd = { sumneko_binary }, -- "-E", sumneko_root .. "/extension/server/bin/main.lua" },
         on_attach = require("lsp").common_on_attach,
         flags = lsp_flags,

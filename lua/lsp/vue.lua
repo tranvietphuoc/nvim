@@ -6,7 +6,7 @@ local lsp_flags = {
 }
 
 function M.setup()
-    require("lspconfig")["vuels"].setup({
+    require("lspconfig").vuels.setup({
         cmd = { DATA .. "/mason/bin/vls" },
         on_attach = require("lsp").common_on_attach,
         flags = lsp_flags,

@@ -11,7 +11,7 @@ function M.setup()
         filetypes = { "sql", "mysql" },
         single_file_support = true,
     } ) ]]
-    require("lspconfig")["sqlls"].setup({
+    require("lspconfig").sqlls.setup({
         cmd = {
             DATA .. "/mason/bin/sql-language-server",
             "up",

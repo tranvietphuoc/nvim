@@ -26,7 +26,7 @@ function M.setup()
     --         },
     --     }
     -- end
-    require("lspconfig")["emmet_ls"].setup({
+    require("lspconfig").emmet_ls.setup({
         cmd = { DATA .. "/mason/bin/emmet-ls", "--stdio" },
         filetypes = { "html", "css", "javascriptreact", "typescriptreact", "sass", "scss" },
         flags = lsp_flags,

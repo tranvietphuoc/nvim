@@ -10,7 +10,7 @@ local lsp_flags = {
 }
 
 function M.setup()
-    require("lspconfig")["cssls"].setup({
+    require("lspconfig").cssls.setup({
         cmd = {
             DATA .. "/mason/bin/vscode-css-language-server",
             "--stdio",

@@ -7,7 +7,7 @@ local lsp_flags = {
 }
 
 function M.setup()
-    require("lspconfig")['vimls'].setup({
+    require("lspconfig").vimls.setup({
         cmd = { DATA .. "/mason/bin/vim-language-server", "--stdio" },
         on_attach = require("lsp").common_on_attach,
         flags = lsp_flags,

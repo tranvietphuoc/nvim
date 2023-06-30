@@ -7,7 +7,7 @@ local lsp_flags = {
 }
 
 function M.setup()
-    require("lspconfig")["tailwindcss"].setup({
+    require("lspconfig").tailwindcss.setup({
         cmd = { DATA .. "/mason/bin/tailwindcss-language-server", "--stdio" },
         filetypes = {
             "css",

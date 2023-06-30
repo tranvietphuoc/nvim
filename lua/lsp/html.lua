@@ -10,7 +10,7 @@ local lsp_flags = {
 local M = {}
 
 function M.setup()
-    require("lspconfig")["html"].setup({
+    require("lspconfig").html.setup({
         cmd = { DATA .. "/mason/bin/vscode-html-language-server", "--stdio" },
         -- cmd = { "vscode-html-language-server", "--stdio" },
         filetypes = { "html" },

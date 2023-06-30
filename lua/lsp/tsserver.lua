@@ -8,7 +8,7 @@ local lsp_flags = {
 }
 
 function M.setup()
-    require("lspconfig")["tsserver"].setup({
+    require("lspconfig").tsserver.setup({
         cmd = { DATA .. "/mason/bin/typescript-language-server", "--stdio" },
 
         filetypes = {

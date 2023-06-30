@@ -6,7 +6,7 @@ local lsp_flags = {
 }
 
 function M.setup()
-    require("lspconfig")["solidity_ls"].setup({
+    require("lspconfig").solidity_ls.setup({
         cmd = { DATA .. "/mason/bin/solidity-language-server", "--stdio" },
         filetypes = { "solidity" },
         flags = lsp_flags,

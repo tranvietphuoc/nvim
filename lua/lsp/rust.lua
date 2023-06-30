@@ -82,7 +82,7 @@ local lsp_flags = {
 function M.setup()
     -- rt.setup(opts)
     -- lsp
-    lspconfig["rust_analyzer"].setup({
+    lspconfig.rust_analyzer.setup({
         cmd = { DATA .. "/mason/bin/rust-analyzer" },
         filetypes = { "rust" },
         on_attach = require("lsp").common_on_attach,

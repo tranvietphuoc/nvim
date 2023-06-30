@@ -6,7 +6,7 @@ local lsp_flags = {
 }
 
 function M.setup()
-    require("lspconfig")["gopls"].setup({
+    require("lspconfig").gopls.setup({
         cmd = { DATA .. "/mason/bin/gopls" },
         flags = lsp_flags,
         cmd_env = {

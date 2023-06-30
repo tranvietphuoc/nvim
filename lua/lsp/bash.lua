@@ -6,7 +6,7 @@ local lsp_flags = {
 }
 
 function M.setup()
-    require("lspconfig")["bashls"].setup({
+    require("lspconfig").bashls.setup({
         cmd = { DATA .. "/mason/bin/bash-language-server", "start" },
         on_attach = require("lsp").common_on_attach,
         flags = lsp_flags,

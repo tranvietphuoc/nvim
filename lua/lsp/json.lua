@@ -7,7 +7,7 @@ local lsp_flags = {
 }
 
 function M.setup()
-    require("lspconfig")["jsonls"].setup({
+    require("lspconfig").jsonls.setup({
         cmd = {
             -- "node",
             DATA .. "/mason/bin/vscode-json-languageserver",
