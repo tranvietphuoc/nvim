@@ -25,7 +25,6 @@ function M.setup()
                 U = { "<cmd>lua _G.__fterm_gitui()<cr>", "Open GitUI" },
                 d = { "<cmd>Gvdiffsplit<cr>", "GitvDiff" },
             },
-            t = { "<cmd>SymbolsOutline<cr>", "Symbols Outline" },
             m = { "<cmd>MarkdownPreview<cr>", "Markdown Preview" },
             M = { "<cmd>MarkdownPreviewStop<cr>", "Markdown Preview Stop" },
             l = {
@@ -35,6 +34,12 @@ function M.setup()
             },
             n = { "<cmd>Neogit<cr>", "Neogit" },
         },
+
+        -- lspsaga
+        --[[ ["g"] = {
+            r = { "<cmd>Lspsaga rename<cr>", "Lspsaga Rename" },
+            p = { "<cmd>Lspsaga peek_definition<cr>", "Lspsaga Peek Definition" }
+        }, ]]
     })
     wk.setup({
         window = {

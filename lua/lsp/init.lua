@@ -2,7 +2,6 @@ local opts = { noremap = true, silent = true }
 local lsputils = require("lsp.utils")
 local ih = require("lsp-inlayhints")
 
-
 local M = {}
 
 local function map(...)
@@ -22,7 +21,7 @@ end
 function M.setup()
     -- lsp config
     -- map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    -- map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
     map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     map("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
@@ -80,7 +79,7 @@ function M.setup()
             priority = 0,
         },
         enabled_at_startup = true,
-        debug_mode = true,
+        debug_mode = false,
     }
     ih.setup(ih_config)
 
@@ -91,18 +90,16 @@ function M.setup()
     map({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
     -- signature help
     map("n", "gs", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>")
-    -- preview definition
-    map("n", "gD", "<cmd>Lspsaga peek_definition<CR>")
     -- go to definition
     -- map("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
     -- Use <C-t> to jump back
     map("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
     -- Use <C-t> to jump back
-    map("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
+    map("n", "gP", "<cmd>Lspsaga peek_type_definition<CR>")
     -- Go to type definition
-    map("n", "gt", "<cmd>Lspsaga goto_type_definition<CR>")
+    map("n", "gT", "<cmd>Lspsaga goto_type_definition<CR>")
     -- rename
-    map("n", "gr", "<cmd>Lspsaga rename ++project<CR>")
+    map("n", "gR", "<cmd>Lspsaga rename ++project<CR>")
     -- Rename all occurrences of the hovered word for the entire file
     map("n", "gr", "<cmd>Lspsaga rename<CR>")
     -- diagnostics
@@ -126,38 +123,37 @@ function M.setup()
         require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
     end)
     -- Outline
-    map("n", "<leader>o", "<cmd>Lspsaga outline<cr>")
+    -- map("n", "<leader>o", "<cmd>Lspsaga outline<cr>")
 
     -- Call hierarchy
     map("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
     map("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
 
-
     -- lsp clients setup
-    require("lsp.bash").setup()
-    require("lsp.cpp").setup()
-    require("lsp.cmake").setup()
-    require("lsp.css").setup()
-    require("lsp.docker").setup()
-    require("lsp.go").setup()
-    require("lsp.html").setup()
-    require("lsp.python").setup()
-    require("lsp.rust").setup()
-    require("lsp.tsserver").setup()
-    require("lsp.vim").setup()
-    require("lsp.vue").setup()
-    require("lsp.yaml").setup()
-    require("lsp.sql").setup()
-    require("lsp.tex").setup()
-    require("lsp.lua").setup()
-    require("lsp.tailwindcss").setup()
-    require("lsp.emmet").setup()
-    require("lsp.solidity").setup()
+    require("lsp.servers.bash").setup()
+    require("lsp.servers.cpp").setup()
+    require("lsp.servers.cmake").setup()
+    require("lsp.servers.css").setup()
+    require("lsp.servers.docker").setup()
+    require("lsp.servers.go").setup()
+    require("lsp.servers.html").setup()
+    require("lsp.servers.python").setup()
+    require("lsp.servers.rust").setup()
+    require("lsp.servers.tsserver").setup()
+    require("lsp.servers.vim").setup()
+    require("lsp.servers.vue").setup()
+    require("lsp.servers.yaml").setup()
+    require("lsp.servers.sql").setup()
+    require("lsp.servers.tex").setup()
+    require("lsp.servers.lua").setup()
+    require("lsp.servers.tailwindcss").setup()
+    require("lsp.servers.emmet").setup()
+    require("lsp.servers.solidity").setup()
+    require("lsp.servers.scala").setup()
+    require("lsp.servers.csharp").setup()
+    require("lsp.servers.verilog").setup()
     require("lsp.cmp").setup()
     require("lsp.nullls").setup()
-    require("lsp.scala").setup()
-    require("lsp.csharp").setup()
-    require("lsp.verilog").setup()
 end
 
 return M

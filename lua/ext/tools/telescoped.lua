@@ -38,6 +38,7 @@ function M.setup()
                 ".venv",
                 ".git",
                 ".mypy_cache",
+                "jdt.ls-java-project",
             },
 
             layout_config = {
@@ -96,7 +97,7 @@ function M.setup()
         },
     })
 
-    telescope.load_extension("fzf")
+    -- telescope.load_extension("fzf")
     telescope.load_extension("command_center")
 end
 

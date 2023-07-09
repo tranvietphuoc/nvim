@@ -1,6 +1,5 @@
--- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
--- local sumneko_root = DATA .. "/lsp_servers/sumneko_lua"
-local sumneko_binary = DATA .. "/mason/bin/lua-language-server"
+-- https://github.com/lua_ls/lua-language-server/wiki/Build-and-Run-(Standalone)
+local lua_ls_binary = DATA .. "/mason/bin/lua-language-server"
 
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
@@ -15,7 +14,7 @@ local M = {}
 
 function M.setup()
     require("lspconfig").lua_ls.setup({
-        cmd = { sumneko_binary }, -- "-E", sumneko_root .. "/extension/server/bin/main.lua" },
+        cmd = { lua_ls_binary }, -- "-E", lua_ls_root .. "/extension/server/bin/main.lua" },
         on_attach = require("lsp").common_on_attach,
         flags = lsp_flags,
         settings = {

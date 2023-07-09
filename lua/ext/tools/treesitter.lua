@@ -16,7 +16,7 @@ function M.setup()
         indent = {
             enable = true,
         },
-        --[[ ensure_installed = {
+        --[[         ensure_installed = {
             "markdown",
             "markdown_inline",
             "javascript",
@@ -49,9 +49,9 @@ function M.setup()
             "php",
             "elixir",
             "ocaml",
-            -- "haskell",
-        }, ]]
-
+            "haskell",
+        },
+ ]]
         ensure_installed = "all",
         ignore_install = { "hcl" },
         highlight = {
@@ -82,7 +82,7 @@ function M.setup()
         playground = {
             enable = true,
             disable = {},
-            updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
+            updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
             persist_queries = false, -- Whether the query persists across vim sessions
         },
         textobjects = {

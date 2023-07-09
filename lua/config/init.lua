@@ -1,19 +1,18 @@
-local cmd = vim.cmd
-local o = vim.o
-local bo = vim.bo
-local wo = vim.wo
-local g = vim.g
-local opt = vim.opt
-local path = vim.fn.stdpath
+local globals = {}
 
-vim.g.mapleader = ","
+DATA = vim.fn.stdpath("data")
+CACHE = vim.fn.stdpath("cache")
 
-local M = {}
+function globals.init()
+    local cmd = vim.cmd
+    local o = vim.o
+    local bo = vim.bo
+    local wo = vim.wo
+    local g = vim.g
+    local opt = vim.opt
 
-DATA = path("data")
-CACHE = path("cache")
+    g.mapleader = ","
 
-function M.setup()
     cmd("filetype plugin indent on") -- filetype detection
     cmd("set showcmd")
     cmd("set whichwrap+=<,>,[,],h,l") -- move to next line with theses keys
@@ -23,11 +22,10 @@ function M.setup()
     -- cmd("set rtp=/usr/local/opt/fzf")
     cmd("set inccommand=split")
     cmd("set shortmess+=c")
-    cmd([[colorscheme dracula]])
-    -- cmd([[colorscheme tokyonight-moon]])
+    -- cmd([[colorscheme dracula]])
+    cmd([[colorscheme tokyonight-moon]])
     -- cmd([[colorscheme dawnfox]])
 
-    -- cmd "syntax on"
     -- opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
 
     g.did_load_filetypes = 1
@@ -76,7 +74,6 @@ function M.setup()
     o.updatetime = 300 -- faster completion
     o.timeoutlen = 300 -- timeout to 1s
     wo.relativenumber = true
-    o.termguicolors = true
     g.loaded_python_provider = 0
     g.python3_host_prog = "$HOME/.pyenv/shims/python3"
 
@@ -91,7 +88,13 @@ function M.setup()
 
     g.doge_doc_standard_python = true
     g.doge_doc_standard_javascript = true
-    vim.g.background = "light"
+    g.background = "dark"
 end
 
-return M
+function globals:setup()
+    globals.init()
+    require("config.autocmd").setup()
+    require("config.keymappings").setup()
+end
+
+return globals

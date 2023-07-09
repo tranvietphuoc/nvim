@@ -4,7 +4,7 @@ local M = {}
 
 function M.setup()
     -- local colors = require("nightfox.palette.nordfox").palette
-    local colors = require("dracula").colors()
+    local colors = require("tokyonight.colors").setup({ transform = true })
 
     local conditions = {
         buffer_not_empty = function()
@@ -25,8 +25,8 @@ function M.setup()
             component_separators = "",
             section_separators = "",
             theme = {
-                normal = { c = { fg = colors.fg, bg = colors.selection } },
-                inactive = { c = { fg = colors.fg, bg = colors.selection } },
+                normal = { c = { fg = colors.fg, bg = colors.fg_gutter } },
+                inactive = { c = { fg = colors.fg, bg = colors.fg_gutter } },
             },
         },
         sections = {
@@ -64,7 +64,7 @@ function M.setup()
         function()
             return "▊"
         end,
-        color = { fg = colors.bright_magenta }, -- Sets highlighting of component
+        color = { fg = colors.fg }, -- Sets highlighting of component
         padding = { left = 0, right = 1 }, -- We don't need space before this
     })
 
@@ -97,26 +97,26 @@ function M.setup()
             local mode_color = {
                 n = colors.cyan,
                 i = colors.green,
-                v = colors.pink,
-                [""] = colors.pink,
-                V = colors.pink,
+                v = colors.purple,
+                [""] = colors.purple,
+                V = colors.purple,
                 c = colors.orange,
                 no = colors.red,
                 s = colors.yellow,
                 S = colors.yellow,
                 [""] = colors.yellow,
-                ic = colors.bright_green,
-                R = colors.bright_cyan,
-                Rv = colors.bright_cyan,
-                ["r?"] = colors.bright_yellow,
-                cv = colors.bright_yellow,
-                ce = colors.bright_yellow,
-                r = colors.bright_cyan,
-                rm = colors.bright_cyan,
-                ["!"] = colors.bright_red,
-                t = colors.bright_red,
+                ic = colors.green1,
+                R = colors.green2,
+                Rv = colors.green2,
+                ["r?"] = colors.yellow,
+                cv = colors.yellow,
+                ce = colors.yellow,
+                r = colors.blue3,
+                rm = colors.blue3,
+                ["!"] = colors.red,
+                t = colors.red,
             }
-            vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.selection)
+            vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.fg_gutter)
             return alias[vim.fn.mode()]
         end,
         color = "LualineMode",
@@ -134,9 +134,9 @@ function M.setup()
         -- Is it me or the symbol for modified us really weird
         symbols = { added = " ", modified = "柳 ", removed = " " },
         diff_color = {
-            added = { fg = colors.bright_green },
-            modified = { fg = colors.bright_yellow },
-            removed = { fg = colors.brigth_red },
+            added = { fg = colors.git.add },
+            modified = { fg = colors.git.change },
+            removed = { fg = colors.git.delete },
         },
         cond = conditions.hide_in_width,
     })
@@ -145,7 +145,7 @@ function M.setup()
         -- filesize component
         "filesize",
         cond = conditions.buffer_not_empty,
-        color = { fg = colors.white, gui = "bold" },
+        color = { fg = colors.comment, gui = "bold" },
     })
 
     append_left({
@@ -160,8 +160,8 @@ function M.setup()
         diagnostics_color = {
             color_error = { fg = colors.red },
             color_warn = { fg = colors.yellow },
-            color_info = { fg = colors.cyan },
-            color_hint = { fg = colors.cyan },
+            color_info = { fg = colors.blue },
+            color_hint = { fg = colors.blue },
         },
     })
 
@@ -191,7 +191,7 @@ function M.setup()
             return msg
         end,
         icon = "",
-        color = { fg = colors.bright_magenta, gui = "bold" },
+        color = { fg = colors.cyan, gui = "bold" },
     })
 
     -- add components to right section
@@ -219,16 +219,16 @@ function M.setup()
 
     append_right({
         "location",
-        color = { fg = colors.white, gui = "bold" },
+        color = { fg = colors.fg, gui = "bold" },
     })
 
-    append_right({ "progress", color = { fg = colors.white, gui = "bold" } })
+    append_right({ "progress", color = { fg = colors.fg, gui = "bold" } })
 
     append_right({
         function()
             return "▊"
         end,
-        color = { fg = colors.bright_magenta },
+        color = { fg = colors.fg },
         padding = { left = 1 },
     })
 
