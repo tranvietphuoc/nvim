@@ -2,7 +2,7 @@ local M = {}
 
 local root_pattern = require("lspconfig/util").root_pattern
 local lspconfig = require("lspconfig")
-local omnisharp_bin = DATA .. "/mason/bin/omnisharp-mono"
+local omnisharp_bin = DATA .. "/mason/bin/omnisharp"
 -- local omnisharp_bin = "~/Downloads/omnisharp-osx-x64-net6.0/OmniSharp"
 local pid = vim.fn.getpid()
 local config = {
