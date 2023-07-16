@@ -12,7 +12,6 @@ function M.setup()
         cmd = { DATA .. "/mason/bin/typescript-language-server", "--stdio" },
 
         filetypes = {
-            "ejs",
             "javascript",
             "javascriptreact",
             "javascript.jsx",
@@ -21,14 +20,18 @@ function M.setup()
             "typescript.tsx",
         },
         on_attach = require("lsp").tsserver_on_attach,
+        single_file_support = true,
+        init_options = {
+            hostInfo = "neovim",
+        },
         flags = lsp_flags,
-        -- on_attach = require'lsp'.common_on_attach,
+        -- on_attach = require 'lsp'.common_on_attach,
         root_dir = utils.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
         settings = {
             documentFormatting = true,
             typescript = {
                 inlayHints = {
-                    includeInlayParameterNameHints = "all",
+                    includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
                     includeInlayParameterNameHintsWhenArgumentMatchesName = false,
                     includeInlayFunctionParameterTypeHints = true,
                     includeInlayVariableTypeHints = true,
@@ -39,7 +42,7 @@ function M.setup()
             },
             javascript = {
                 inlayHints = {
-                    includeInlayParameterNameHints = "all",
+                    includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
                     includeInlayParameterNameHintsWhenArgumentMatchesName = false,
                     includeInlayFunctionParameterTypeHints = true,
                     includeInlayVariableTypeHints = true,

@@ -191,7 +191,7 @@ function M.setup()
             return msg
         end,
         icon = "",
-        color = { fg = colors.cyan, gui = "bold" },
+        color = { fg = colors.yellow, gui = "bold" },
     })
 
     -- add components to right section

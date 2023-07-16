@@ -11,6 +11,7 @@ function M.setup()
     require("ext.tools.doge").setup()
     require("ext.tools.telescoped").setup()
     require("ext.tools.indent-blankline").setup()
+    require("ext.tools.terminal").setup()
 end
 
 return M

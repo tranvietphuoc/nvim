@@ -214,7 +214,7 @@ function M.setup()
 
         -- ts-rainbow
         {
-            "mrjones2014/nvim-ts-rainbow",
+            "HiPhish/nvim-ts-rainbow2",
             config = function()
                 require("ext.tools.ts-rainbow").setup()
             end,
@@ -316,9 +316,6 @@ function M.setup()
 
         {
             "akinsho/toggleterm.nvim",
-            config = function()
-                require("ext.tools.terminal").setup()
-            end,
         },
         {
             "numtostr/FTerm.nvim",

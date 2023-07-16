@@ -1,4 +1,3 @@
-local opts = { noremap = true, silent = true }
 local lsputils = require("lsp.utils")
 local ih = require("lsp-inlayhints")
 
@@ -9,22 +8,16 @@ local function map(...)
 end
 
 function M.common_on_attach(client, bufnr)
+    local opts = { noremap = true, silent = true, buffer = bufnr }
+
     lsputils.lsp_highlight(client, bufnr)
     ih.on_attach(client, bufnr, true)
-end
-
-function M.tsserver_on_attach(client, bufnr)
-    M.common_on_attach(client, bufnr)
-    client.server_capabilities.document_formatting = false
-end
-
-function M.setup()
     -- lsp config
     -- map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    map("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    map("n", "gD", vim.lsp.buf.declaration, opts)
+    map("n", "gd", vim.lsp.buf.definition, opts)
+    map("n", "gi", vim.lsp.buf.implementation, opts)
+    map("n", "gR", vim.lsp.buf.references, opts)
     -- map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     map("n", "<space>k", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
     map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
@@ -39,6 +32,50 @@ function M.setup()
     -- map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
     map("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
     map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+    -- lspsaga
+    -- lsp finder
+    map("n", "gh", "<cmd>Lspsaga lsp_finder<CR><CR>")
+    -- code actions
+    map({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+    -- signature help
+    map("n", "gs", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>")
+    -- go to definition
+    -- map("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
+    -- Use <C-t> to jump back
+    map("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
+    -- Use <C-t> to jump back
+    map("n", "gP", "<cmd>Lspsaga peek_type_definition<CR>")
+    -- Go to type definition
+    map("n", "gT", "<cmd>Lspsaga goto_type_definition<CR>")
+    -- rename
+    -- map("n", "gR", "<cmd>Lspsaga rename ++project<CR>")
+    -- Rename all occurrences of the hovered word for the entire file
+    map("n", "gr", "<cmd>Lspsaga rename<CR>")
+    -- diagnostics
+    map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+    map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+    -- show_line_diagnostics
+    map("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<cr>")
+    -- show cursor diagnostics
+    map("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+    -- show buf diagnostics
+    map("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
+    -- toggle outline
+    map("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
+    -- hover
+    map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+    -- Only jump to error
+    map("n", "[E", function()
+        require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    end)
+    map("n", "]E", function()
+        require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+    end)
+
+    -- Call hierarchy
+    map("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
+    map("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
+
 
     local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
@@ -82,53 +119,14 @@ function M.setup()
         debug_mode = false,
     }
     ih.setup(ih_config)
+end
 
-    -- lspsaga
-    -- lsp finder
-    map("n", "gh", "<cmd>Lspsaga lsp_finder<CR><CR>")
-    -- code actions
-    map({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
-    -- signature help
-    map("n", "gs", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>")
-    -- go to definition
-    -- map("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
-    -- Use <C-t> to jump back
-    map("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
-    -- Use <C-t> to jump back
-    map("n", "gP", "<cmd>Lspsaga peek_type_definition<CR>")
-    -- Go to type definition
-    map("n", "gT", "<cmd>Lspsaga goto_type_definition<CR>")
-    -- rename
-    map("n", "gR", "<cmd>Lspsaga rename ++project<CR>")
-    -- Rename all occurrences of the hovered word for the entire file
-    map("n", "gr", "<cmd>Lspsaga rename<CR>")
-    -- diagnostics
-    map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
-    map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
-    -- show_line_diagnostics
-    map("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<cr>")
-    -- show cursor diagnostics
-    map("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
-    -- show buf diagnostics
-    map("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
-    -- toggle outline
-    map("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
-    -- hover
-    map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
-    -- Only jump to error
-    map("n", "[E", function()
-        require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
-    end)
-    map("n", "]E", function()
-        require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
-    end)
-    -- Outline
-    -- map("n", "<leader>o", "<cmd>Lspsaga outline<cr>")
+function M.tsserver_on_attach(client, bufnr)
+    M.common_on_attach(client, bufnr)
+    client.server_capabilities.document_formatting = true
+end
 
-    -- Call hierarchy
-    map("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
-    map("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
-
+function M.setup()
     -- lsp clients setup
     require("lsp.servers.bash").setup()
     require("lsp.servers.cpp").setup()

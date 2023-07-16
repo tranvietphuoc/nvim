@@ -13,7 +13,7 @@ function globals.init()
 
     g.mapleader = ","
 
-    cmd("filetype plugin indent on") -- filetype detection
+    cmd("filetype plugin indent on")  -- filetype detection
     cmd("set showcmd")
     cmd("set whichwrap+=<,>,[,],h,l") -- move to next line with theses keys
     cmd("set modifiable")
@@ -37,8 +37,8 @@ function globals.init()
     o.titlestring = "%<%F%=%l/%L - nvim"
     -- o.completeopt = "menuone,noselect"
     vim.opt_global.completeopt = { "menuone", "noinsert", "noselect" }
-    bo.tabstop = 4 -- Insert 2 spaces for a tab
-    bo.shiftwidth = 4 -- Change the number of space characters inserted for indentation
+    bo.tabstop = 4      -- Insert 2 spaces for a tab
+    bo.shiftwidth = 4   -- Change the number of space characters inserted for indentation
     bo.expandtab = true -- Converts tabs to spaces
     bo.softtabstop = 4
     o.breakindent = true
@@ -83,12 +83,12 @@ function globals.init()
     -- clipboard
     opt.clipboard:append("unnamed,unnamedplus")
 
-    opt.iskeyword:append("-") -- treat dash seperate words as word
+    opt.iskeyword:append("-")                     -- treat dash seperate words as word
     opt.runtimepath:append("/usr/local/opt/fzf/") --runtimepath
 
     g.doge_doc_standard_python = true
     g.doge_doc_standard_javascript = true
-    g.background = "dark"
+    g.background = "light"
 end
 
 function globals:setup()
