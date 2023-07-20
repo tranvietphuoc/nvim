@@ -13,12 +13,12 @@ function M.common_on_attach(client, bufnr)
     lsputils.lsp_highlight(client, bufnr)
     ih.on_attach(client, bufnr, true)
     -- lsp config
-    -- map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    map("n", "gD", vim.lsp.buf.declaration, opts)
+    map("n", "K", vim.lsp.buf.hover, opts)
+    -- map("n", "gD", vim.lsp.buf.declaration, opts)
     map("n", "gd", vim.lsp.buf.definition, opts)
     map("n", "gi", vim.lsp.buf.implementation, opts)
     map("n", "gR", vim.lsp.buf.references, opts)
-    -- map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+    -- map("n", "gs", vim.lsp.buf.signature_help, opts)
     map("n", "<space>k", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
     map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
     map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
@@ -32,6 +32,8 @@ function M.common_on_attach(client, bufnr)
     -- map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
     map("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
     map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+
+
     -- lspsaga
     -- lsp finder
     map("n", "gh", "<cmd>Lspsaga lsp_finder<CR><CR>")
@@ -40,9 +42,9 @@ function M.common_on_attach(client, bufnr)
     -- signature help
     map("n", "gs", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>")
     -- go to definition
-    -- map("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
+    map("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
     -- Use <C-t> to jump back
-    map("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
+    map("n", "gD", "<cmd>Lspsaga peek_definition<CR>")
     -- Use <C-t> to jump back
     map("n", "gP", "<cmd>Lspsaga peek_type_definition<CR>")
     -- Go to type definition

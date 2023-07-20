@@ -6,6 +6,7 @@ function M.setup()
         on_attach = require("lsp").common_on_attach,
         filetypes = { "verilog", "systemverilog", "sv" },
         root_dir = require("lspconfig").util.find_git_ancestor(),
+        single_file_support = true,
     })
 end
 
