@@ -110,6 +110,8 @@ function M.setup()
             diagnostics.checkstyle.with({ -- run `brew install checkstyle` first
                 extra_args = { "-c", "/google_checks.xml" }, -- or "/sun_checks.xml" or path to self written rules
             }),
+
+            formatting.csharpier,
         },
         on_attach = function(client, bufnr)
             if client.supports_method("textDocument/formatting") then
