@@ -1,8 +1,5 @@
 local on_attach = function(client, bufnr)
-    require("jdtls.setup").add_commands()
     require("jdtls").setup_dap()
-    require("lsp-status").register_progress()
-    require("lspsaga").setup()
     require("lsp").common_on_attach(client, bufnr)
 
     local function map(...)
@@ -21,15 +18,23 @@ local on_attach = function(client, bufnr)
 end
 
 local jdtls = require("jdtls")
-jdtls.settings.jdt_uri_timeout_ms = 10000
+jdtls.settings.jdt_uri_timeout_ms = 1000
 
 local home = os.getenv("HOME")
 local jdtls_dir = home .. "/.local/share/nvim/mason/packages/jdtls/"
-local root_markers = { "gradlew", "pom.xml", ".git", "mvnw", "build.gradle" }
+local root_markers = {
+    "build.xml",           -- Ant
+    "pom.xml",             -- Maven
+    "settings.gradle",     -- Gradle
+    "settings.gradle.kts", -- Gradle
+}
+
 local root_dir = require("jdtls.setup").find_root(root_markers)
 local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
-local workplace = "/Desktop/learning/java/"
-local workspace_folder = home .. workplace .. project_name
+local ws = '/.local/share/eclipse/'
+
+local workspace = home .. ws .. project_name
+local lombok_dir = jdtls_dir .. "lombok.jar"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.workspace = {
@@ -61,11 +66,14 @@ extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 local config = {
     capabilities = capabilities,
+    single_file_support = true,
     on_attach = on_attach,
     flags = {
         allow_incremental_sync = true,
         debounce_text_changes = 80,
     },
+
+    root_dir = root_dir,
 
     cmd = {
         "java",
@@ -75,20 +83,20 @@ local config = {
         "-Dlog.protocol=true",
         "-Dlog.level=ALL",
         "-Xms1g",
+        "-javaagent:" .. lombok_dir,
+
         "--add-modules=ALL-SYSTEM",
         "--add-opens",
         "java.base/java.util=ALL-UNNAMED",
         "--add-opens",
         "java.base/java.lang=ALL-UNNAMED",
-
-        "-javaagent:" .. jdtls_dir .. "lombok.jar",
         "-jar",
         -- "$HOME/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar",
         vim.fn.glob(jdtls_dir .. "plugins/org.eclipse.equinox.launcher_*.jar"),
         "-configuration",
         jdtls_dir .. "config_mac/",
         "-data",
-        workspace_folder,
+        workspace,
     },
 
     settings = {
@@ -99,9 +107,17 @@ local config = {
             configuration = {
                 runtimes = {
                     {
+                        name = "JavaSE-11",
+                        path = "/usr/local/opt/openjdk@11",
+                    },
+                    {
                         name = "JavaSE-17",
                         path = "/usr/local/opt/openjdk@17",
                     },
+                    --[[ {
+                        name = "JavaSE-20",
+                        path = "/usr/local/opt/openjdk@20",
+                    }, ]]
                 },
             },
             eclipse = {
@@ -154,7 +170,7 @@ local config = {
             },
             inlayHints = {
                 parameterNames = {
-                    enabled = false,
+                    enabled = true,
                 },
             },
         },
