@@ -87,7 +87,7 @@ function M.setup()
         filetypes = { "rust" },
         on_attach = require("lsp").common_on_attach,
         flags = lsp_flags,
-        root_dir = root_pattern("Cargo.toml"),
+        root_dir = root_pattern("Cargo.toml", "rust-project.json"),
         settings = {
             ["rust-analyzer"] = {
                 imports = {
