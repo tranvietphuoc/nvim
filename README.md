@@ -35,6 +35,7 @@ You need to install these tools first:
 -   [pmd](https://pmd.github.io/latest/)
 -   [openjdk](https://www.freecodecamp.org/news/install-openjdk-free-java-multi-os-guide/)
 -   [dotnet-sdk](https://learn.microsoft.com/en-us/dotnet/core/install/)
+-   [mono]()
 
 ### Neovim
 
@@ -89,11 +90,12 @@ nvim
 to open the editor first, then run command:
 
 ```
-:PackerInstall
+:Lazy
 
 ```
+then press: `I` or `S` or `U`
 
-**The languages servers is automatically install later.**
+**The languages servers is automatically install later in `mason`**
 
 **For debuggers install**
 
@@ -121,7 +123,20 @@ This configuration of `Vimspector` uses `HUMAN` mode, so there are some key in d
 -   Step out using `F12`
 -   Step over using `F10`
 
+### 4. Important note for `java`
+To use `lombok` for your `java` project, you must put these line into your `pom.xml` file at `dependencies` tag:
+```
+<dependency>
+	<groupId>org.projectlombok</groupId>
+	<artifactId>lombok</artifactId>
+	<version>1.18.28</version>
+	<scope>provided</scope>
+</dependency>
+```
+
 ## Todo
+[]
+
 
 Thanks to all authors of [these plugin](./lua/plugins.lua).
 
