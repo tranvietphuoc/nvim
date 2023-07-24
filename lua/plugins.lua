@@ -20,7 +20,7 @@ function M.setup()
     require("lazy").setup({
 
         -- mason
-        { "williamboman/mason.nvim",    build = ":MasonUpdate" },
+        { "williamboman/mason.nvim", build = ":MasonUpdate" },
         {
             "williamboman/mason-lspconfig.nvim",
             config = function()
@@ -124,7 +124,7 @@ function M.setup()
                 require("ext.tools.markdown").setup()
             end,
         },
-        { "iamcco/markdown-preview.nvim",  build = ":call mkdp#util#install()" },
+        { "iamcco/markdown-preview.nvim", build = ":call mkdp#util#install()" },
         { "christoomey/vim-tmux-navigator" },
 
         -- highlight yank
@@ -134,7 +134,7 @@ function M.setup()
         { "nvim-lua/plenary.nvim" },
 
         -- go vim
-        { "fatih/vim-go",                  build = ":GoUpdateBinaries" },
+        { "fatih/vim-go", build = ":GoUpdateBinaries" },
 
         -- inlayHints
         {
@@ -175,9 +175,7 @@ function M.setup()
 
         { "onsails/lspkind-nvim" },
         {
-            "glepnir/lspsaga.nvim",
-            opt = true,
-            branch = "main",
+            "nvimdev/lspsaga.nvim",
             event = "LspAttach",
             config = function()
                 require("lspsaga").setup({})
@@ -189,7 +187,7 @@ function M.setup()
             },
         },
         -- auto-completion
-        { "hrsh7th/nvim-cmp" },     -- Autocompletion plugin
+        { "hrsh7th/nvim-cmp" }, -- Autocompletion plugin
         { "hrsh7th/cmp-nvim-lsp" }, -- LSP source for nvim-cmp'
         { "hrsh7th/cmp-buffer" },
         { "hrsh7th/cmp-path" },
@@ -277,7 +275,7 @@ function M.setup()
                     window = {
                         backdrop = 0.95,
                         width = 120, -- width of the Zen window
-                        height = 1,  -- height of the Zen window
+                        height = 1, -- height of the Zen window
                         options = {
                             signcolumn = "no",
                             number = true,
@@ -359,8 +357,7 @@ function M.setup()
         },
         {
             "nvim-telescope/telescope-fzf-native.nvim",
-            build =
-            "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+            build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
         },
         {
             "FeiyouG/command_center.nvim",
@@ -398,7 +395,7 @@ function M.setup()
         },
 
         -- scala metal
-        { "scalameta/nvim-metals",            dependencies = { "nvim-lua/plenary.nvim" } },
+        { "scalameta/nvim-metals", dependencies = { "nvim-lua/plenary.nvim" } },
 
         -- csharp
         { "Hoffs/omnisharp-extended-lsp.nvim" },

@@ -5,7 +5,10 @@ local lspconfig = require("lspconfig")
 local omnisharp_bin = DATA .. "/mason/bin/omnisharp"
 -- local omnisharp_bin = "~/Downloads/omnisharp-osx-x64-net6.0/OmniSharp"
 local pid = vim.fn.getpid()
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 local config = {
+    capabilities = capabilities,
     handlers = {
         ["textDocument/definition"] = require("omnisharp_extended").handler,
     },
