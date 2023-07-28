@@ -5,7 +5,7 @@ local lspconfig = require("lspconfig")
 local omnisharp_bin = DATA .. "/mason/bin/omnisharp"
 -- local omnisharp_bin = "~/Downloads/omnisharp-osx-x64-net6.0/OmniSharp"
 local pid = vim.fn.getpid()
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local config = {
     capabilities = capabilities,
@@ -22,13 +22,13 @@ local config = {
     sdk_include_prereleases = true,
     analyze_open_documents_only = false,
     filetypes = { "cs", "vb" },
-    root_dir = root_pattern("csharp.csproj") or root_pattern(".sln"),
+    root_dir = root_pattern("cs.csproj") or root_pattern(".sln"),
     init_options = {},
     full = vim.empty_dict(),
     on_attach = function(client, bufnr)
         require("lsp").common_on_attach(client, bufnr)
 
-        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+        vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
         client.server_capabilities.semanticTokensProvider = {
             full = vim.empty_dict(),
