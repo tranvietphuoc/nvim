@@ -9,7 +9,7 @@ This configuration supports (includes syntax highlighting and autocompletion) fo
 -   `Rust`
 -   `C`
 -   `C++`
--   `Go`
+-   `Golang`
 -   `Html`
 -   `Css`
 -   `Lua`
@@ -135,7 +135,7 @@ To use `lombok` for your `java` project, you must put these line into your `pom.
 ```
 
 ## Todo
-[]
+ - [  ]
 
 
 Thanks to all authors of [these plugin](./lua/plugins.lua).
