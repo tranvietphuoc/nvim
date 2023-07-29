@@ -65,6 +65,7 @@ local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 local config = {
+    autostart = true,
     capabilities = capabilities,
     single_file_support = true,
     on_attach = on_attach,
