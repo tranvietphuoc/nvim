@@ -31,7 +31,7 @@ local root_markers = {
 
 local root_dir = require("jdtls.setup").find_root(root_markers)
 local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
-local ws = '/.local/share/eclipse/'
+local ws = "/.local/share/eclipse/"
 
 local workspace = home .. ws .. project_name
 local lombok_dir = jdtls_dir .. "lombok.jar"
@@ -66,6 +66,7 @@ extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 local config = {
     autostart = true,
+    filetypes = { "java" },
     capabilities = capabilities,
     single_file_support = true,
     on_attach = on_attach,

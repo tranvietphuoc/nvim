@@ -3,26 +3,32 @@ local M = {}
 local root_pattern = require("lspconfig/util").root_pattern
 local lspconfig = require("lspconfig")
 local omnisharp_bin = DATA .. "/mason/bin/omnisharp"
--- local omnisharp_bin = "~/Downloads/omnisharp-osx-x64-net6.0/OmniSharp"
 local pid = vim.fn.getpid()
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = vim.lsp.protocol.make_client_capabilities() --require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = true,
+    lineFoldingOnly = true,
+}
 
 local config = {
-    capabilities = capabilities,
     handlers = {
         ["textDocument/definition"] = require("omnisharp_extended").handler,
     },
+
     cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
-    -- cmd = { "dotnet", "~/Downloads/omnisharp-osx-x64-net6.0/OmniSharp.dll" },
+
+    capabilities = capabilities,
+
     enable_editorconfig_support = true,
-    enable_ms_build_load_projects_on_demand = false,
+    enable_ms_build_load_projects_on_demand = true,
     organize_imports_on_format = true,
     enable_roslyn_analyzers = true,
     enable_import_completion = true,
     sdk_include_prereleases = true,
     analyze_open_documents_only = false,
     filetypes = { "cs", "vb" },
-    root_dir = root_pattern("cs.csproj") or root_pattern(".sln"),
+    root_dir = root_pattern("*.csproj") or root_pattern("*.sln"),
     init_options = {},
     full = vim.empty_dict(),
     on_attach = function(client, bufnr)

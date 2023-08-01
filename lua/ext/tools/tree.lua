@@ -1,8 +1,12 @@
 local M = {}
 
 function M.setup()
+    -- disable netrw at the very start
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
     -- following options are the default
     require("nvim-tree").setup({
+
         -- disables netrw completely
         disable_netrw = false,
 
