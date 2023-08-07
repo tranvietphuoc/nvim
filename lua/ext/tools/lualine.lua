@@ -198,13 +198,13 @@ function M.setup()
     append_right({
         "fileformat",
         fmt = string.upper,
-        icons_enabled = false,
+        icons_enabled = true,
         color = { fg = colors.orange, gui = "bold" },
     })
 
     append_right({
         "o:encoding", -- option component same as &encoding in viml
-        fmt = string.upper,
+        fmt = string.lower,
         cond = conditions.hide_in_width,
         color = { fg = colors.orange, gui = "bold" },
     })
@@ -212,7 +212,7 @@ function M.setup()
     append_right({
         "filetype",
         cond = conditions.buffer_not_empty,
-        fmt = string.upper,
+        fmt = string.lower,
         icons_enabled = false,
         color = { fg = colors.orange, gui = "bold" },
     })
