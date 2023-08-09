@@ -8,6 +8,15 @@ local lsp_flags = {
 }
 
 function M.setup()
+    require("typescript").setup({
+        disable_commands = false, -- prevent the plugin from creating Vim commands
+        debug = false,            -- enable debug logging for commands
+        go_to_source_definition = {
+            fallback = true,      -- fall back to standard LSP definition on failure
+        },
+        server = {
+        },
+    })
     require("lspconfig").tsserver.setup({
         cmd = { DATA .. "/mason/bin/typescript-language-server", "--stdio" },
 
@@ -19,13 +28,13 @@ function M.setup()
             "typescriptreact",
             "typescript.tsx",
         },
-        on_attach = require("lsp").tsserver_on_attach,
+        -- on_attach = require("lsp").tsserver_on_attach,
         single_file_support = true,
         init_options = {
             hostInfo = "neovim",
         },
         flags = lsp_flags,
-        -- on_attach = require 'lsp'.common_on_attach,
+        on_attach = require 'lsp'.common_on_attach,
         root_dir = utils.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
         settings = {
             documentFormatting = true,

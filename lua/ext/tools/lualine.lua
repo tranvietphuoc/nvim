@@ -64,7 +64,7 @@ function M.setup()
         function()
             return "▊"
         end,
-        color = { fg = colors.fg }, -- Sets highlighting of component
+        color = { fg = colors.fg },        -- Sets highlighting of component
         padding = { left = 0, right = 1 }, -- We don't need space before this
     })
 
@@ -197,8 +197,8 @@ function M.setup()
     -- add components to right section
     append_right({
         "fileformat",
-        fmt = string.upper,
-        icons_enabled = true,
+        fmt = string.lower,
+        icons_enabled = false,
         color = { fg = colors.orange, gui = "bold" },
     })
 
