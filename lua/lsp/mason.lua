@@ -28,6 +28,7 @@ function M.setup()
             "yamlls",
             "docker_compose_language_service",
             "omnisharp",
+            "omnisharp_mono",
             "svls",
         },
     })
