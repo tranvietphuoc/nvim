@@ -152,6 +152,7 @@ function M.setup()
     require("lsp.servers.scala").setup()
     require("lsp.servers.csharp").setup()
     require("lsp.servers.verilog").setup()
+    require("lsp.servers.xml").setup()
     require("lsp.cmp").setup()
     require("lsp.nullls").setup()
 end
