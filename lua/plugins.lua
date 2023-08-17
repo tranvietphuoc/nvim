@@ -221,9 +221,9 @@ function M.setup()
 
         -- ts-rainbow
         {
-            "HiPhish/nvim-ts-rainbow2",
+            "HiPhish/rainbow-delimiters.nvim",
             config = function()
-                require("ext.tools.ts-rainbow").setup()
+                require("ext.tools.rainbow-delimiters").setup()
             end,
         },
 
