@@ -10,7 +10,7 @@ function M.setup()
     require("lspconfig").jsonls.setup({
         cmd = {
             -- "node",
-            DATA .. "/mason/bin/vscode-json-languageserver",
+            DATA .. "/mason/bin/vscode-json-language-server",
             "--stdio",
         },
         on_attach = require("lsp").common_on_attach,

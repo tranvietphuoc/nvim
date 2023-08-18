@@ -30,7 +30,7 @@ function M.setup()
             "omnisharp",
             "omnisharp_mono",
             "svls",
-            "lemminx"
+            "lemminx",
         },
     })
 end

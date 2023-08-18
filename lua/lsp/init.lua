@@ -33,7 +33,6 @@ function M.common_on_attach(client, bufnr)
     map("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
     map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 
-
     -- lspsaga
     -- lsp finder
     map("n", "gh", "<cmd>Lspsaga lsp_finder<CR><CR>")
@@ -77,7 +76,6 @@ function M.common_on_attach(client, bufnr)
     -- Call hierarchy
     map("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
     map("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
-
 
     local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
@@ -130,8 +128,10 @@ end
 
 function M.setup()
     -- lsp clients setup
+    --
+
     require("lsp.servers.bash").setup()
-    require("lsp.servers.cpp").setup()
+    require("lsp.servers.clang").setup()
     require("lsp.servers.cmake").setup()
     require("lsp.servers.css").setup()
     require("lsp.servers.docker").setup()
@@ -140,21 +140,21 @@ function M.setup()
     require("lsp.servers.python").setup()
     require("lsp.servers.rust").setup()
     require("lsp.servers.tsserver").setup()
+    require("lsp.servers.json").setup()
     require("lsp.servers.vim").setup()
     require("lsp.servers.vue").setup()
     require("lsp.servers.yaml").setup()
     require("lsp.servers.sql").setup()
     require("lsp.servers.tex").setup()
     require("lsp.servers.lua").setup()
-    require("lsp.servers.tailwindcss").setup()
+    require("lsp.servers.tailwind").setup()
     require("lsp.servers.emmet").setup()
     require("lsp.servers.solidity").setup()
     require("lsp.servers.scala").setup()
-    require("lsp.servers.csharp").setup()
+    require("lsp.servers.cs").setup()
     require("lsp.servers.verilog").setup()
     require("lsp.servers.xml").setup()
     require("lsp.cmp").setup()
-    require("lsp.nullls").setup()
 end
 
 return M

@@ -9,20 +9,15 @@ local lsp_flags = {
 function M.setup()
     require("lspconfig").clangd.setup({
         cmd = { DATA .. "/mason/bin/clangd", "--offset-encoding=utf-16" },
-        on_attach = require("lsp").common_on_attach,
+        on_attach = function(client, bufnr)
+            require("lsp").common_on_attach(client, bufnr)
+            client.server_capabilities.signatureHelpProvider = false
+        end,
         flags = lsp_flags,
-        filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "cc", "h", "hpp" },
+        filetypes = { "c", "cpp", "cuda", "proto", "cc", "h", "hpp" },
         handlers = lsputils.lsp_diagnostics(),
-
     })
     require("clangd_extensions").setup({
-        --[[ server = {
-            cmd = { DATA .. "/mason/bin/clangd", "--offset-encoding=utf-16" },
-            on_attach = require("lsp").common_on_attach,
-            flags = lsp_flags,
-            filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "cc", "h", "hpp" },
-            handlers = lsputils.lsp_diagnostics(),
-        }, ]]
         inlay_hints = {
             inline = vim.fn.has("nvim-0.10") == 1,
             -- Options other than `highlight' and `priority' only work

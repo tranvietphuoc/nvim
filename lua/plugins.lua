@@ -20,7 +20,13 @@ function M.setup()
     require("lazy").setup({
 
         -- mason
-        { "williamboman/mason.nvim",    build = ":MasonUpdate" },
+        {
+            "williamboman/mason.nvim",
+            build = ":MasonUpdate",
+            opts = {
+                ensure_installed = { "clang-format" }
+            }
+        },
         {
             "williamboman/mason-lspconfig.nvim",
             config = function()
@@ -196,7 +202,9 @@ function M.setup()
             },
         },
         -- auto-completion
-        { "hrsh7th/nvim-cmp" },     -- Autocompletion plugin
+        {
+            "hrsh7th/nvim-cmp",
+        },                          -- Autocompletion plugin
         { "hrsh7th/cmp-nvim-lsp" }, -- LSP source for nvim-cmp'
         { "hrsh7th/cmp-buffer" },
         { "hrsh7th/cmp-path" },
@@ -309,7 +317,13 @@ function M.setup()
         -- Javascript / Typescript
         { "jose-elias-alvarez/typescript.nvim" },
 
-        { "jose-elias-alvarez/null-ls.nvim" },
+        {
+            "jose-elias-alvarez/null-ls.nvim",
+            event = "VeryLazy",
+            opts = function()
+                return require("lsp.nullls").setup()
+            end,
+        },
 
         {
             "akinsho/toggleterm.nvim",
