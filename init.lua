@@ -1,8 +1,7 @@
-
 -- general
+require('plugins').setup()
 require("config.autocmd").setup()
 require("config").setup()
-require("plugins").setup()
 require("config.keymappings").setup()
 
 -- ext
