@@ -36,7 +36,7 @@ function globals.init()
     cmd([[let &titleold                            = "' .. TERMINAL .. '"]])
     o.titlestring = "%<%F%=%l/%L - nvim"
     -- o.completeopt = "menuone,noselect"
-    vim.opt_global.completeopt = { "menuone", "noinsert", "noselect" }
+    vim.opt.completeopt = { "menu", "menuone", "noselect" }
     opt.tabstop = 4      -- Insert 2 spaces for a tab
     opt.shiftwidth = 4   -- Change the number of space characters inserted for indentation
     opt.expandtab = true -- Converts tabs to spaces
@@ -54,7 +54,7 @@ function globals.init()
     o.splitbelow = true
     o.splitright = true
     o.syntax = "on"
-    o.guifont = "Hack\\ Nerd\\ Font:h13"
+    o.guifont = "FiraCode\\ Nerd\\ Font:h13"
     o.hidden = false -- keep open multiple buffers
     o.title = true
     o.fileencoding = "utf-8"
