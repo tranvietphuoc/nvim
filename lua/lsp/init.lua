@@ -10,6 +10,7 @@ end
 function M.common_on_attach(client, bufnr)
     local opts = { noremap = true, silent = true, buffer = bufnr }
 
+    lsputils.lsp_attach(client, bufnr)
     lsputils.lsp_highlight(client, bufnr)
     ih.on_attach(client, bufnr, true)
     -- lsp config

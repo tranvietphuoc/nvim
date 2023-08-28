@@ -9,14 +9,6 @@ local M = {}
 function M.setup()
     require("luasnip.loaders.from_vscode").lazy_load({ exclude = { "go" } })
 
-    local t = function(str)
-        return vim.api.nvim_replace_termcodes(str, true, true, true)
-    end
-
-    local check_backspace = function()
-        local col = vim.fn.col(".") - 1
-        return col == 0 or vim.fn.getline("."):sub(col, col):match("%s%") ~= nil
-    end
 
     local select_opts = { behavior = cmp.SelectBehavior.Select }
 
@@ -28,16 +20,12 @@ function M.setup()
             end,
         },
 
-        window = {},
-
         mapping = cmp.mapping.preset.insert({
-            -- ["<C-p>"] = cmp.mapping.select_prev_item(select_opts),
-            -- ["<C-n>"] = cmp.mapping.select_next_item(select_opts),
-            ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-            ["<C-f>"] = cmp.mapping.scroll_docs(4),
-            ["<C-Space>"] = cmp.mapping.complete({}),
+            ["<C-u>"] = cmp.mapping.scroll_docs(-4), --Up
+            ["<C-d>"] = cmp.mapping.scroll_docs(4),  -- Down
             -- cancel selection
             ["<C-e>"] = cmp.mapping.abort(),
+            ["<C-Space>"] = cmp.mapping.complete(),
             -- confirm selection
             ["<C-y>"] = cmp.mapping.confirm({ select = true }),
             ["<CR>"] = cmp.mapping.confirm({
@@ -46,36 +34,20 @@ function M.setup()
             }),
 
             ["<Tab>"] = cmp.mapping(function(fallback)
-                --[[ local col = vim.fn.col('.') - 1
-
-                if cmp.visible() then
-                    cmp.select_next_item(select_opts)
-                elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-                    fallback()
-                else
-                    cmp.complete()
-                end ]]
                 if cmp.visible() then
                     cmp.select_next_item()
-                elseif luasnip and luasnip.expand_or_jumpable() then
-                    vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
-                elseif check_backspace() then
-                    vim.fn.feedkeys(t("<Tab>"), "")
+                elseif luasnip.expand_or_jumpable() then
+                    luasnip.expand_or_jump()
                 else
                     fallback()
                 end
             end, { 'i', 's' }),
 
             ["<S-Tab>"] = cmp.mapping(function(fallback)
-                --[[ if cmp.visible() then
-                    cmp.select_prev_item(select_opts)
-                else
-                    fallback()
-                end ]]
                 if cmp.visible() then
                     cmp.select_prev_item()
-                elseif luasnip and luasnip.jumpable(-1) then
-                    vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
+                elseif luasnip.jumpable(-1) then
+                    luasnip.jump(-1)
                 else
                     fallback()
                 end
@@ -84,7 +56,6 @@ function M.setup()
         sources = cmp.config.sources({
             { name = "luasnip" },
             { name = "nvim_lsp" },
-            -- { name = "vsnip" },
             { name = "treesitter" },
             { name = "path" },
             { name = "buffer" },
@@ -163,7 +134,7 @@ function M.setup()
                 -- before = function(entry, vim_item)
                 --     return vim_item
                 -- end,
-                cb = function(entry, vim_item)
+                --[[ cb = function(entry, vim_item)
                     local word = entry:get_insert_text()
                     if entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet then
                         word = vim.lsp.util.parse_snippet(word)
@@ -174,7 +145,7 @@ function M.setup()
                     end
                     vim_item.abbr = word
                     return vim_item
-                end,
+                end, ]]
             }),
 
 
