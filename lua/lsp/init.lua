@@ -10,73 +10,56 @@ end
 function M.common_on_attach(client, bufnr)
     local opts = { noremap = true, silent = true, buffer = bufnr }
 
-    lsputils.lsp_attach(client, bufnr)
-    lsputils.lsp_highlight(client, bufnr)
+    -- lsputils.lsp_attach(client, bufnr)
+    -- lsputils.lsp_highlight(client, bufnr)
+    -- lsputils.lsp_diagnostics()
     ih.on_attach(client, bufnr, true)
+
+
+
     -- lsp config
-    map("n", "K", vim.lsp.buf.hover, opts)
-    -- map("n", "gD", vim.lsp.buf.declaration, opts)
-    map("n", "gd", vim.lsp.buf.definition, opts)
-    map("n", "gi", vim.lsp.buf.implementation, opts)
-    map("n", "gR", vim.lsp.buf.references, opts)
-    -- map("n", "gs", vim.lsp.buf.signature_help, opts)
-    map("n", "<space>k", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-    map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
-    map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
-    map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
-    map("n", "<leader>ws", '<cmd>lua require"metals".hover_worksheet()<CR>') -- scala metals
-    map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-    map("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-    -- map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-    -- map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-    -- map("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    -- map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+    opts.desc = "Show LSP references"
+    map('n', 'gR', '<cmd>Telescope lsp_references<cr>', opts) -- show definitions, references
+
+    opts.desc = "Go to declaration"
+    map('n', 'gD', vim.lsp.buf.declaration, opts) -- go to declaration
+
+    opts.desc = "Show LSP definition"
+    map('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', opts) -- show lsp definitions
+
+    opts.desc = "Show LSP implementation"
+    map('n', 'gi', '<cmd>Telescope lsp_implementations<cr>', opts) -- show lsp implementations
+
+    opts.desc = "Show LSP type definitions"
+    map('n', 'gt', '<cmd>Telescope lsp_type_definitions<cr>', opts) -- show lsp type definitions
+
+    opts.desc = "See all available code actions"
+    map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to see selection
+
+    -- opts.desc = "Smart rename"
+    -- map("n", "<leader>rn", ":IncRename ", opts) -- smart rename
+
+    opts.desc = "Show buffer diagnostics"
+    map("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+
+    opts.desc = "Show line diagnostics"
+    map("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+
+    opts.desc = "Go to previous diagnostic"
+    map("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+
+    opts.desc = "Go to next diagnostic"
+    map("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+
+    opts.desc = "Show documentation for what is under cursor"
+    map("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+
+    opts.desc = "Restart LSP"
+    map("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
     map("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
     map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 
-    -- lspsaga
-    -- lsp finder
-    map("n", "gh", "<cmd>Lspsaga lsp_finder<CR><CR>")
-    -- code actions
-    map({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
-    -- signature help
-    map("n", "gs", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>")
-    -- go to definition
-    map("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
-    -- Use <C-t> to jump back
-    map("n", "gD", "<cmd>Lspsaga peek_definition<CR>")
-    -- Use <C-t> to jump back
-    map("n", "gP", "<cmd>Lspsaga peek_type_definition<CR>")
-    -- Go to type definition
-    map("n", "gT", "<cmd>Lspsaga goto_type_definition<CR>")
-    -- rename
-    -- map("n", "gR", "<cmd>Lspsaga rename ++project<CR>")
-    -- Rename all occurrences of the hovered word for the entire file
-    map("n", "gr", "<cmd>Lspsaga rename<CR>")
-    -- diagnostics
-    map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
-    map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
-    -- show_line_diagnostics
-    map("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<cr>")
-    -- show cursor diagnostics
-    map("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
-    -- show buf diagnostics
-    map("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
-    -- toggle outline
-    map("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
-    -- hover
-    map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
-    -- Only jump to error
-    map("n", "[E", function()
-        require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
-    end)
-    map("n", "]E", function()
-        require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
-    end)
-
-    -- Call hierarchy
-    map("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
-    map("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
 
     local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 

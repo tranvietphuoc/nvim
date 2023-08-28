@@ -43,7 +43,7 @@ function M.setup()
             config = function()
                 require("mason-null-ls").setup({
                     ensure_installed = { "stylua", "cpplint", "checkstyle", "clang-format", "prettier", "pg-format",
-                        "scalafmt", "pycodestyle", "csharpier", "google-java-format", "mypy", "eslint-d" }
+                        "scalafmt", "pycodestyle", "csharpier", "google-java-format", "mypy", "eslint-d", "gitsigns" }
                 })
             end,
         },
@@ -203,7 +203,7 @@ function M.setup()
         { "neovim/nvim-lspconfig" },
 
         { "onsails/lspkind-nvim" },
-        {
+        --[[ {
             "nvimdev/lspsaga.nvim",
             event = "LspAttach",
             config = function()
@@ -214,7 +214,7 @@ function M.setup()
                 --Please make sure you install markdown and markdown_inline parser
                 { "nvim-treesitter/nvim-treesitter" },
             },
-        },
+        }, ]]
         -- auto-completion
         {
             "hrsh7th/nvim-cmp",
@@ -363,6 +363,11 @@ function M.setup()
 
         {
             "folke/which-key.nvim",
+            event = "VeryLazy",
+            --[[ init = function()
+                vim.o.timeout = true
+                vim.o.timeoutlen = 30
+            end, ]]
             config = function()
                 require("which-key").setup()
             end,
@@ -388,8 +393,8 @@ function M.setup()
             "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
         },
         {
-            "FeiyouG/command_center.nvim",
-            dependencies = { "nvim-telescope/telescope.nvim" },
+            "FeiyouG/commander.nvim",
+            dependencies = { "nvim-telescope/telescope.nvim" }
         },
         {
             "pwntester/octo.nvim",

@@ -24,7 +24,7 @@ function M.setup()
             ["<C-u>"] = cmp.mapping.scroll_docs(-4), --Up
             ["<C-d>"] = cmp.mapping.scroll_docs(4),  -- Down
             -- cancel selection
-            ["<C-e>"] = cmp.mapping.abort(),
+            ["<C-e>"] = cmp.mapping.close(),
             ["<C-Space>"] = cmp.mapping.complete(),
             -- confirm selection
             ["<C-y>"] = cmp.mapping.confirm({ select = true }),

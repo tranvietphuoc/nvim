@@ -1,6 +1,6 @@
 local M = {}
 
-function M.lsp_highlight(client, bufnr)
+--[[ function M.lsp_highlight(client, bufnr)
     if client.server_capabilities.documentHighlightProvider then
         vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
         vim.api.nvim_clear_autocmds({ buffer = bufnr, group = "lsp_document_highlight" })
@@ -17,7 +17,7 @@ function M.lsp_highlight(client, bufnr)
             desc = "Clear All the References",
         })
     end
-end
+end ]]
 
 function M.lsp_diagnostics()
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -46,7 +46,7 @@ function M.lsp_diagnostics()
     })
 end
 
-function M.lsp_config(client, bufnr)
+--[[ function M.lsp_config(client, bufnr)
     require("lsp_signature").on_attach({
         bind = true,
         handler_opts = { border = "single" },
@@ -77,7 +77,7 @@ function M.lsp_config(client, bufnr)
         vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
     end
 end
-
+ ]]
 function M.lsp_init(client, bufnr)
     -- LSP init
 end
@@ -86,11 +86,11 @@ function M.lsp_exit(client, bufnr)
     -- LSP exit
 end
 
-function M.lsp_attach(client, bufnr)
+--[[ function M.lsp_attach(client, bufnr)
     M.lsp_config(client, bufnr)
     M.lsp_highlight(client, bufnr)
     M.lsp_diagnostics()
-end
+end ]]
 
 function M.setup()
     M.lsp_diagnostics()

@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-    local command_center = require("command_center")
+    local command_center = require("commander")
     local telescope = require("telescope")
     local noremap = { noremap = true, silent = true }
 
@@ -27,7 +27,7 @@ function M.setup()
                 { "n", "<leader>-", noremap },
             },
         },
-    }, command_center.mode.REGISTER_ONLY)
+    })
 
     telescope.setup({
         defaults = {
@@ -77,22 +77,11 @@ function M.setup()
         },
         extensions = {
             fzf = {
-                fuzzy = true, -- false will only do exact matching
+                fuzzy = true,                   -- false will only do exact matching
                 override_generic_sorter = true, -- override the generic sorter
-                override_file_sorter = true, -- override the file sorter
-                case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+                override_file_sorter = true,    -- override the file sorter
+                case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
                 -- the default case_mode is "smart_case"
-            },
-            command_center = {
-                components = {
-                    command_center.component.DESC,
-                    command_center.component.KEYS,
-                },
-                sort_by = {
-                    command_center.component.DESC,
-                    command_center.component.KEYS,
-                },
-                auto_replace_desc_with_cmd = false,
             },
         },
     })
