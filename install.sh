@@ -29,8 +29,8 @@ install_dependencies() {
     brew install fzf
 
     # install lua
-    brew install --HEAD luajit
-    brew install luarocks
+    brew install luajit --HEAD
+    brew install luarocks --HEAD
 
     # install formatters and linters
     pip3 install flake8 --no-cache-dir
