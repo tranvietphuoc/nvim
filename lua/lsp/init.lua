@@ -61,6 +61,10 @@ function M.common_on_attach(client, bufnr)
     map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 
 
+    -- lspsaga
+    map('n', "<leader>o", "<cmd>Lspsaga outline<cr>", opts)
+
+
     local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
     for type, icon in pairs(signs) do

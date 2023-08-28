@@ -203,7 +203,7 @@ function M.setup()
         { "neovim/nvim-lspconfig" },
 
         { "onsails/lspkind-nvim" },
-        --[[ {
+        {
             "nvimdev/lspsaga.nvim",
             event = "LspAttach",
             config = function()
@@ -214,7 +214,7 @@ function M.setup()
                 --Please make sure you install markdown and markdown_inline parser
                 { "nvim-treesitter/nvim-treesitter" },
             },
-        }, ]]
+        },
         -- auto-completion
         {
             "hrsh7th/nvim-cmp",
