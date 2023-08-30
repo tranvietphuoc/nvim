@@ -90,6 +90,9 @@ function M.setup()
 
             formatting.clang_format.with({
                 filetypes = { "c", "cpp", "h", "hpp" },
+                extra_args = {
+                    "-style=file:" .. vim.fn.expand("~/.clang-format")
+                }
             }),
             -- formatting.djhtml.with({
             -- filetypes = { "html" },
