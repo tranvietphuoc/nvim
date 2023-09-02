@@ -14,6 +14,7 @@ end
 
 function M.setup()
     require("luasnip.loaders.from_vscode").lazy_load({ exclude = { "go" } })
+    require("luasnip").filetype_extend("typescript", { "javascript" })
 
 
     cmp.setup({
