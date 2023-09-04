@@ -44,7 +44,7 @@ function M.setup()
                 require("mason-null-ls").setup({
                     ensure_installed = { "stylua", "cpplint", "checkstyle", "clang-format", "prettier", "pg-format",
                         "scalafmt", "pycodestyle", "flake8", "csharpier", "google-java-format", "mypy", "eslint-d",
-                        "gitsigns",
+                        "gitsigns", "ruff",
                         "black" }
                 })
             end,

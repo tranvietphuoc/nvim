@@ -108,7 +108,7 @@ function M.setup()
             diagnostics.mypy.with({
                 methods = null_ls.methods.DIAGNOSTICS_ON_SAVE,
             }),
-            diagnostics.mypy,
+            diagnostics.ruff,
             formatting.google_java_format,                   -- java run `brew install google-java-format` first
             diagnostics.checkstyle.with({                    -- run `brew install checkstyle` first
                 extra_args = { "-c", "/google_checks.xml" }, -- or "/sun_checks.xml" or path to self written rules
