@@ -108,13 +108,13 @@ local config = {
         java = {
             configuration = {
                 runtimes = {
-                    {
+                    --[[ {
                         name = "JavaSE-11",
                         path = "/usr/local/opt/openjdk@11",
-                    },
+                    }, ]]
                     {
                         name = "JavaSE-17",
-                        path = "/usr/local/opt/openjdk@17",
+                        path = "/opt/homebrew/opt/openjdk@17",
                     },
                     --[[ {
                         name = "JavaSE-20",
