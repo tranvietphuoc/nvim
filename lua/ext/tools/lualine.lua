@@ -190,7 +190,7 @@ function M.setup()
             end
             return msg
         end,
-        icon = "",
+        icon = "",
         color = { fg = colors.yellow, gui = "bold" },
     })
 
