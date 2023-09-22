@@ -53,7 +53,7 @@ function M.setup()
         -- colorscheme
         { "Mofiqul/dracula.nvim" },
         { "folke/tokyonight.nvim" },
-        -- { "EdenEast/nightfox.nvim" },
+        { "EdenEast/nightfox.nvim" },
 
         -- { "Mofiqul/vscode.nvim" },
 
@@ -251,6 +251,7 @@ function M.setup()
         -- ts-rainbow
         {
             "HiPhish/rainbow-delimiters.nvim",
+            branch = "use-children",
             config = function()
                 require("ext.tools.rainbow-delimiters").setup()
             end,
