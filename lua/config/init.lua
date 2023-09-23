@@ -23,8 +23,10 @@ function globals.init()
     cmd("set inccommand=split")
     cmd("set shortmess+=c")
     -- cmd([[colorscheme dracula]])
-    cmd([[colorscheme tokyonight-storm]])
+    -- cmd([[colorscheme tokyonight-day]])
+    -- cmd([[colorscheme tokyonight-storm]])
     -- cmd([[colorscheme dawnfox]])
+    cmd([[colorscheme catppuccin-latte]])
 
     -- opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
 
