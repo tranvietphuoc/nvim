@@ -30,8 +30,8 @@ function M.setup()
             component_separators = "",
             section_separators = "",
             theme = {
-                normal = { c = { fg = colors.overlay0, bg = bg} },
-                inactive = { c = { fg = colors.overlay0, bg = bg} },
+                normal = { c = { fg = colors.overlay0, bg = bg } },
+                inactive = { c = { fg = colors.overlay0, bg = bg } },
             },
         },
         sections = {
@@ -69,7 +69,7 @@ function M.setup()
         function()
             return "▊"
         end,
-        color = { fg = colors.text },        -- Sets highlighting of component
+        color = { fg = colors.text },      -- Sets highlighting of component
         padding = { left = 0, right = 1 }, -- We don't need space before this
     })
 
@@ -150,7 +150,7 @@ function M.setup()
         -- filesize component
         "filesize",
         cond = conditions.buffer_not_empty,
-        color = { fg = colors.lavender, gui = "bold" },
+        color = { fg = colors.sky, gui = "bold" },
     })
 
     append_left({
@@ -242,6 +242,5 @@ function M.setup()
 
     require("lualine").setup(configs)
 end
-
 
 return M
