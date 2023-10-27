@@ -1,5 +1,3 @@
--- npm install -g dockerfile-language-server-nodejs
---
 local M = {}
 
 local lsp_flags = {
@@ -10,13 +8,14 @@ local lsp_flags = {
 local util = require("lspconfig").util
 
 function M.setup()
-    require("lspconfig").dockerls.setup({
-        cmd = { DATA .. "/mason/bin/docker-langserver", "--stdio" },
+    require("lspconfig").docker_compose_language_service.setup({
+        cmd = { DATA .. "/mason/bin/docker-compose-langserver", "--stdio" },
         -- cmd = {"docker-langserver", "--stdio"},
         on_attach = require("lsp").common_on_attach,
         flags = lsp_flags,
-        filetypes = { "Dockerfile", "dockerfile" },
-        root_dir = util.root_pattern("Dockerfile"),
+        filetypes = { "docker-compose.yaml" },
+        root_dir = util.root_pattern("docker-compose.yaml"),
+        single_file_support = true,
     })
 end
 
