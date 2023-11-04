@@ -10,10 +10,9 @@ local util = require("lspconfig").util
 function M.setup()
     require("lspconfig").docker_compose_language_service.setup({
         cmd = { DATA .. "/mason/bin/docker-compose-langserver", "--stdio" },
-        -- cmd = {"docker-langserver", "--stdio"},
         on_attach = require("lsp").common_on_attach,
         flags = lsp_flags,
-        filetypes = { "docker-compose.yaml" },
+        filetypes = { "yaml.docker-compose" },
         root_dir = util.root_pattern("docker-compose.yaml"),
         single_file_support = true,
     })
