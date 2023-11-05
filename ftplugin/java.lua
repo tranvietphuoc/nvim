@@ -31,9 +31,9 @@ local root_markers = {
 
 local root_dir = require("jdtls.setup").find_root(root_markers)
 local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
-local ws = "/.local/share/eclipse/"
+local workspace_uri = "/.local/share/eclipse/"
 
-local workspace = home .. ws .. project_name
+local workspace = home .. workspace_uri .. project_name
 local lombok_dir = jdtls_dir .. "lombok.jar"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -86,19 +86,14 @@ local config = {
         "-Dlog.level=ALL",
         "-Xms1g",
         "-javaagent:" .. lombok_dir,
+        '--add-modules=ALL-SYSTEM',
+        '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+        '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
-        "--add-modules=ALL-SYSTEM",
-        "--add-opens",
-        "java.base/java.util=ALL-UNNAMED",
-        "--add-opens",
-        "java.base/java.lang=ALL-UNNAMED",
-        "-jar",
+        "-jar", vim.fn.glob(jdtls_dir .. "plugins/org.eclipse.equinox.launcher_*.jar"),
         -- "$HOME/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar",
-        vim.fn.glob(jdtls_dir .. "plugins/org.eclipse.equinox.launcher_*.jar"),
-        "-configuration",
-        jdtls_dir .. "config_mac/",
-        "-data",
-        workspace,
+        "-configuration", jdtls_dir .. "config_mac/",
+        "-data", workspace,
     },
 
     settings = {
@@ -184,10 +179,5 @@ local config = {
     },
 }
 
--- config.handlers["language/status"] = function() end
-
---[[ config.on_init = function(client, _)
-    client.notify("workspace/didChangeConfiguration", { settings = config.settings })
-end ]]
 
 jdtls.start_or_attach(config)
