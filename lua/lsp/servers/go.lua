@@ -7,16 +7,31 @@ local lsp_flags = {
 
 function M.setup()
     require("lspconfig").gopls.setup({
-        cmd = { DATA .. "/mason/bin/gopls" },
+        cmd = { DATA .. "/mason/bin/gopls", "-remote.debug=:0" },
         flags = lsp_flags,
         cmd_env = {
             GLOB_PATTERN = "*@(.sh|.inc|.bash|.command)",
         },
-        filetypes = { "go", "gomod" },
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
         settings = {
             gopls = {
-                analyses = { unusedparams = true },
+                analyses = {
+                    unreachable = true,
+                    nilness = true,
+                    unusedparams = true,
+                    useany = true,
+                    unusedwrite = true,
+                    ST1003 = true,
+                    undeclaredname = true,
+                    fillreturns = true,
+                    nonewvars = true,
+                    fieldalignment = false,
+                    shadow = true,
+                },
+                usePlaceholders = true,
+                completeUnimported = true,
                 staticcheck = true,
+                gofumpt = true,
                 hints = {
                     assignVariableTypes = true,
                     compositeLiteralFields = true,
@@ -28,7 +43,7 @@ function M.setup()
                 },
             },
         },
-        root_dir = require("lspconfig").util.root_pattern(".git", "go.mod"),
+        root_dir = require("lspconfig.util").root_pattern("go.mod", "go.work"),
         init_options = { usePlaceholders = true, completeUnimported = true },
         on_attach = require("lsp").common_on_attach,
     })

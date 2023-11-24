@@ -1,8 +1,16 @@
 local M = {}
 
 function M.setup()
+    require("barbar").setup({
+        opts = {
+            insert_at_start = false,
+        }
+    })
+
+
     local map = vim.api.nvim_set_keymap
     local opts = { noremap = true, silent = true }
+
 
     map("n", "<Tab>", "<Cmd>BufferNext<CR>", opts)
     map("n", "<S-Tab>", "<Cmd>BufferPrevious<CR>", opts)

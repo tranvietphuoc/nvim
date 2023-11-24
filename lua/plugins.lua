@@ -132,7 +132,7 @@ function M.setup()
         -- tabline
         {
             "romgrk/barbar.nvim",
-            dependencies = { "nvim-tree/nvim-web-devicons" },
+            dependencies = { 'lewis6991/gitsigns.nvim', "nvim-tree/nvim-web-devicons" },
             config = function()
                 require("ext.tools.barbar").setup()
             end,
@@ -393,7 +393,7 @@ function M.setup()
         },
         {
             "nvim-telescope/telescope.nvim",
-            tag = "0.1.2",
+            tag = "0.1.4",
             dependencies = { { "nvim-lua/plenary.nvim" } },
         },
         {

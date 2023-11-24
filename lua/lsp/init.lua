@@ -1,7 +1,8 @@
+local M = {}
+
 local lsputils = require("lsp.utils")
 local ih = require("lsp-inlayhints")
 
-local M = {}
 
 local function map(...)
     vim.keymap.set(...)

@@ -34,7 +34,7 @@ function M.setup()
             hostInfo = "neovim",
         },
         flags = lsp_flags,
-        on_attach = require 'lsp'.common_on_attach,
+        on_attach = require("lsp").common_on_attach,
         root_dir = utils.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
         settings = {
             documentFormatting = true,
