@@ -1,5 +1,5 @@
 -- npm install -g vscode-html-languageserver-bin
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require("lsp").capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lsp_flags = {
@@ -7,10 +7,12 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
+local lspconfig = require("lspconfig")
+
 local M = {}
 
 function M.setup()
-    require("lspconfig").html.setup({
+    lspconfig.html.setup {
         cmd = { DATA .. "/mason/bin/vscode-html-language-server", "--stdio" },
         -- cmd = { "vscode-html-language-server", "--stdio" },
         filetypes = { "html" },
@@ -24,7 +26,7 @@ function M.setup()
                 javascript = true,
             },
         },
-    })
+    }
 end
 
 return M

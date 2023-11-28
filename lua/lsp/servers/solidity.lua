@@ -5,8 +5,10 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
+local lspconfig = require("lspconfig")
+
 function M.setup()
-    require("lspconfig").solidity_ls.setup({
+    lspconfig.solidity_ls.setup({
         cmd = { DATA .. "/mason/bin/solidity-language-server", "--stdio" },
         filetypes = { "solidity" },
         flags = lsp_flags,

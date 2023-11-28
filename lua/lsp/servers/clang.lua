@@ -6,9 +6,11 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
+local lspconfig = require("lspconfig")
+
 function M.setup()
-    require("lspconfig").clangd.setup({
-        cmd = { DATA .. "/mason/bin/clangd", "--offset-encoding=utf-16"},
+    lspconfig.clangd.setup {
+        cmd = { DATA .. "/mason/bin/clangd", "--offset-encoding=utf-16" },
         on_attach = function(client, bufnr)
             require("lsp").common_on_attach(client, bufnr)
             client.server_capabilities.signatureHelpProvider = false
@@ -16,8 +18,8 @@ function M.setup()
         flags = lsp_flags,
         filetypes = { "c", "cpp", "cuda", "proto", "cc", "h", "hpp" },
         handlers = lsputils.lsp_diagnostics(),
-    })
-    require("clangd_extensions").setup({
+    }
+    require("clangd_extensions").setup {
         inlay_hints = {
             inline = vim.fn.has("nvim-0.10") == 1,
             -- Options other than `highlight' and `priority' only work
@@ -79,7 +81,7 @@ function M.setup()
         symbol_info = {
             border = "none",
         },
-    })
+    }
 end
 
 return M

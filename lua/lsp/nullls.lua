@@ -79,9 +79,9 @@ function M.setup()
                 filetypes = { "rust" },
                 extra_args = { "--emit=stdout" },
             }),
-            formatting.gofmt.with({
-                filetypes = { "go" },
-            }),
+            formatting.gofumpt,
+            formatting.goimports,
+
             formatting.black.with({
                 filetypes = { "python" },
                 args = { "--quiet", "-" },

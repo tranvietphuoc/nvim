@@ -4,14 +4,15 @@ local lsp_flags = {
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
 }
+local lspconfig = require("lspconfig")
 
 function M.setup()
-    require("lspconfig").vuels.setup({
+    lspconfig.vuels.setup({
         cmd = { DATA .. "/mason/bin/vls" },
         on_attach = require("lsp").common_on_attach,
         flags = lsp_flags,
         filetypes = { "vue" },
-        root_dir = require("lspconfig/util").root_pattern("package.json", "vue.config.js"),
+        root_dir = require("lspconfig.util").root_pattern("package.json", "vue.config.js"),
         init_options = {
             config = {
                 css = {},

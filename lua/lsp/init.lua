@@ -8,6 +8,10 @@ local function map(...)
     vim.keymap.set(...)
 end
 
+function M.capabilities()
+    return vim.lsp.protocol.make_client_capabilities()
+end
+
 function M.common_on_attach(client, bufnr)
     local opts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -127,32 +131,15 @@ end
 
 function M.setup()
     -- lsp clients setup
+    local servers = { "bash", "clang", "cmake", "css", "docker", "docker-compose", "go", "html", "python", "rust",
+        "tsserver", "json", "vue", "yaml", "sql", "tex", "lua", "tailwind", "emmet", "solidity", "scala", "cs", "verilog",
+        "xml" }
 
-    require("lsp.servers.bash").setup()
-    require("lsp.servers.clang").setup()
-    require("lsp.servers.cmake").setup()
-    require("lsp.servers.css").setup()
-    require("lsp.servers.docker").setup()
-    require("lsp.servers.docker-compose").setup()
-    require("lsp.servers.go").setup()
-    require("lsp.servers.html").setup()
-    require("lsp.servers.python").setup()
-    require("lsp.servers.rust").setup()
-    require("lsp.servers.tsserver").setup()
-    require("lsp.servers.json").setup()
-    require("lsp.servers.vim").setup()
-    require("lsp.servers.vue").setup()
-    require("lsp.servers.yaml").setup()
-    require("lsp.servers.sql").setup()
-    require("lsp.servers.tex").setup()
-    require("lsp.servers.lua").setup()
-    require("lsp.servers.tailwind").setup()
-    require("lsp.servers.emmet").setup()
-    require("lsp.servers.solidity").setup()
-    require("lsp.servers.scala").setup()
-    require("lsp.servers.cs").setup()
-    require("lsp.servers.verilog").setup()
-    require("lsp.servers.xml").setup()
+
+    for _, server in ipairs(servers) do
+        require("lsp.servers." .. server).setup()
+    end
+
     require("lsp.cmp").setup()
 end
 

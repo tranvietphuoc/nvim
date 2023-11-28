@@ -5,8 +5,10 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
+local lspconfig = require("lspconfig")
+
 function M.setup()
-    require("lspconfig").cmake.setup({
+    lspconfig.cmake.setup {
         cmd = { DATA .. "/mason/bin/cmake-language-server", "--stdio" },
         on_attach = require("lsp").common_on_attach,
         filetypes = { "cmake" },
@@ -14,7 +16,7 @@ function M.setup()
         flags = lsp_flags,
         root_dir = require("lspconfig.util").root_pattern(".git", "CMakePresets.json", "build", "cmake"),
         single_file_support = true,
-    })
+    }
 end
 
 return M

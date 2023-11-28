@@ -5,13 +5,16 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
+local lspconfig = require("lspconfig")
+local capabilities = require("lsp").capabilities()
+
 function M.setup()
     vim.g.tagalong_verbose = 1
     --
     -- local lspconfig = require("lspconfig")
     -- local configs = require("lspconfig/configs")
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    -- local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
 
     -- if not lspconfig.emmet_ls then
@@ -26,7 +29,7 @@ function M.setup()
     --         },
     --     }
     -- end
-    require("lspconfig").emmet_ls.setup({
+    lspconfig.emmet_ls.setup {
         cmd = { DATA .. "/mason/bin/emmet-ls", "--stdio" },
         filetypes = { "html", "css", "javascriptreact", "typescriptreact", "sass", "scss" },
         flags = lsp_flags,
@@ -38,7 +41,7 @@ function M.setup()
             },
         },
         capabilities = capabilities,
-    })
+    }
 end
 
 return M

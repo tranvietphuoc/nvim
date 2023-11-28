@@ -6,9 +6,10 @@ local lsp_flags = {
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
 }
+local lspconfig = require("lspconfig")
 
 function M.setup()
-    require("typescript").setup({
+    require("typescript").setup {
         disable_commands = false, -- prevent the plugin from creating Vim commands
         debug = false,            -- enable debug logging for commands
         go_to_source_definition = {
@@ -16,8 +17,8 @@ function M.setup()
         },
         server = {
         },
-    })
-    require("lspconfig").tsserver.setup({
+    }
+    lspconfig.tsserver.setup {
         cmd = { DATA .. "/mason/bin/typescript-language-server", "--stdio" },
 
         filetypes = {
@@ -70,7 +71,7 @@ function M.setup()
         --     }),
         -- },
         handlers = lsputils.lsp_diagnostics(),
-    })
+    }
 end
 
 return M

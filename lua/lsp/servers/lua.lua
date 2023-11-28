@@ -10,10 +10,12 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
+local lspconfig = require("lspconfig")
+
 local M = {}
 
 function M.setup()
-    require("lspconfig").lua_ls.setup({
+    lspconfig.lua_ls.setup{
         cmd = { lua_ls_binary }, -- "-E", lua_ls_root .. "/extension/server/bin/main.lua" },
         on_attach = require("lsp").common_on_attach,
         flags = lsp_flags,
@@ -38,7 +40,7 @@ function M.setup()
                 },
             },
         },
-    })
+    }
 end
 
 return M

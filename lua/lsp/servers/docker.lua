@@ -7,17 +7,18 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
-local util = require("lspconfig").util
+local utils = require("lspconfig.util")
+local lspconfig = require("lspconfig")
 
 function M.setup()
-    require("lspconfig").dockerls.setup({
+    lspconfig.dockerls.setup {
         cmd = { DATA .. "/mason/bin/docker-langserver", "--stdio" },
         -- cmd = {"docker-langserver", "--stdio"},
         on_attach = require("lsp").common_on_attach,
         flags = lsp_flags,
         filetypes = { "Dockerfile", "dockerfile" },
-        root_dir = util.root_pattern("Dockerfile"),
-    })
+        root_dir = utils.root_pattern("Dockerfile"),
+    }
 end
 
 return M

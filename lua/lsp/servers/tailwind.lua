@@ -6,8 +6,10 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
+local lspconfig = require("lspconfig")
+
 function M.setup()
-    require("lspconfig").tailwindcss.setup({
+    lspconfig.tailwindcss.setup {
         cmd = { DATA .. "/mason/bin/tailwindcss-language-server", "--stdio" },
         filetypes = {
             "css",
@@ -47,7 +49,7 @@ function M.setup()
                 validate = true,
             },
         },
-    })
+    }
 end
 
 return M

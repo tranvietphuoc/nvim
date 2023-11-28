@@ -6,8 +6,10 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
+local lspconfig = require("lspconfig")
+
 function M.setup()
-    require("lspconfig").jsonls.setup({
+    lspconfig.jsonls.setup({
         cmd = {
             -- "node",
             DATA .. "/mason/bin/vscode-json-language-server",

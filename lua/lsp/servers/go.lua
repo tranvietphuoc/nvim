@@ -5,14 +5,20 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
+local utils = require("lspconfig.util")
+local lspconfig = require("lspconfig")
+local capabilities = require("lsp").capabilities()
+
 function M.setup()
-    require("lspconfig").gopls.setup({
-        cmd = { DATA .. "/mason/bin/gopls" },
+    lspconfig.gopls.setup {
+        cmd = { DATA .. "/mason/bin/gopls", "--remote=auto" },
+        -- cmd = { "gopls" },
         flags = lsp_flags,
         filetypes = { "go", "gomod", "gowork", "gotmpl" },
         settings = {
             gopls = {
                 analyses = { unusedparams = true },
+                completeUnimported = true,
                 usePlaceholders = true,
                 staticcheck = true,
                 gofumpt = true,
@@ -27,10 +33,11 @@ function M.setup()
                 },
             },
         },
-        root_dir = require("lspconfig.util").root_pattern("go.mod", "go.work"),
+        root_dir = utils.root_pattern("go.mod", "go.work", ".git"),
         init_options = { usePlaceholders = true, completeUnimported = true },
         on_attach = require("lsp").common_on_attach,
-    })
+
+    }
 end
 
 return M

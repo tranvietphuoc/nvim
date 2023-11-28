@@ -6,8 +6,10 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
+local lspconfig = require("lspconfig")
+
 function M.setup()
-    require("lspconfig").graphql.setup({
+    lspconfig.graphql.setup({
         cmd = { DATA .. "/mason/bin/graphql-lsp", "server", "-m", "stream" },
         on_attach = require("lsp").common_on_attach,
         flags = lsp_flags,
