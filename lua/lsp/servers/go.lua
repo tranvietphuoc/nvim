@@ -11,7 +11,7 @@ local capabilities = require("lsp").capabilities()
 
 function M.setup()
     lspconfig.gopls.setup {
-        cmd = { DATA .. "/mason/bin/gopls", "--remote=auto" },
+        cmd = { DATA .. "/mason/bin/gopls" },
         -- cmd = { "gopls" },
         flags = lsp_flags,
         filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -33,6 +33,7 @@ function M.setup()
                 },
             },
         },
+        single_file_support = true,
         root_dir = utils.root_pattern("go.mod", "go.work", ".git"),
         init_options = { usePlaceholders = true, completeUnimported = true },
         on_attach = require("lsp").common_on_attach,
