@@ -3,9 +3,6 @@ local M = {}
 local root_pattern = require("lspconfig/util").root_pattern
 local lspconfig = require("lspconfig")
 -- local rt = require("rust-tools")
-local lsp_flags = {
-    debounce_text_changes = 150,
-}
 
 --[[ local opts = {
     server = {
@@ -86,7 +83,6 @@ function M.setup()
         cmd = { DATA .. "/mason/bin/rust-analyzer" },
         filetypes = { "rust" },
         on_attach = require("lsp").common_on_attach,
-        flags = lsp_flags,
         root_dir = root_pattern("Cargo.toml", "rust-project.json"),
         settings = {
             ["rust-analyzer"] = {

@@ -1,10 +1,5 @@
 local M = {}
 
-local lsp_flags = {
-    -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
-}
-
 local utils = require("lspconfig.util")
 local lspconfig = require("lspconfig")
 
@@ -23,7 +18,6 @@ function M.setup()
             -- "-config",
             -- "~/.config/sql-language-server/.sqllsrc.json",
         },
-        flags = lsp_flags,
         -- root_dir = {},
         filetypes = { "sql" },
         single_file_support = true,

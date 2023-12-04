@@ -1,11 +1,8 @@
 -- npm install -g typescript typescript-language-server
 local M = {}
+
 local utils = require("lspconfig/util")
-local lsputils = require("lsp.utils")
-local lsp_flags = {
-    -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
-}
+local local_utils = require("lsp.utils")
 local lspconfig = require("lspconfig")
 
 function M.setup()
@@ -34,7 +31,6 @@ function M.setup()
         init_options = {
             hostInfo = "neovim",
         },
-        flags = lsp_flags,
         on_attach = require("lsp").common_on_attach,
         root_dir = utils.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
         settings = {
@@ -70,7 +66,7 @@ function M.setup()
         --         update_in_insert = false,
         --     }),
         -- },
-        handlers = lsputils.lsp_diagnostics(),
+        handlers = local_utils.lsp_diagnostics(),
     }
 end
 

@@ -5,20 +5,14 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-local lsp_flags = {
-    -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
-}
-
 local lspconfig = require("lspconfig")
 
 local M = {}
 
 function M.setup()
-    lspconfig.lua_ls.setup{
+    lspconfig.lua_ls.setup {
         cmd = { lua_ls_binary }, -- "-E", lua_ls_root .. "/extension/server/bin/main.lua" },
         on_attach = require("lsp").common_on_attach,
-        flags = lsp_flags,
         settings = {
             Lua = {
                 runtime = {

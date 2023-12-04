@@ -5,10 +5,6 @@ local lspconfig = require("lspconfig")
 
 local M = {}
 
-local lsp_flags = {
-    -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
-}
 
 function M.get_python_path(workspace)
     -- Use activated virtualenv.
@@ -33,7 +29,6 @@ function M.setup()
         cmd = { DATA .. "/mason/bin/pyright-langserver", "--stdio" },
         on_attach = require("lsp").common_on_attach,
         handlers = lsputils.lsp_diagnostics(),
-        flags = lsp_flags,
         on_init = function(client)
             client.config.settings.python.pythonPath = M.get_python_path(client.config.root_dir)
         end,

@@ -1,10 +1,6 @@
 local M = {}
 local utils = require("lspconfig.util")
 
-local lsp_flags = {
-    -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
-}
 
 local lspconfig = require("lspconfig")
 
@@ -13,7 +9,6 @@ function M.setup()
         cmd = { DATA .. "/mason/bin/texlab" },
         filetypes = { "tex", "bib", "plaintex", "markdown", "rst" },
         on_attach = require("lsp").common_on_attach,
-        flags = lsp_flags,
         settings = {
             texlab = {
                 auxDirectory = ".",

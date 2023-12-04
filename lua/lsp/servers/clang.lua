@@ -1,10 +1,6 @@
 local M = {}
 local lsputils = require("lsp.utils")
 
-local lsp_flags = {
-    -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
-}
 
 local lspconfig = require("lspconfig")
 
@@ -15,7 +11,6 @@ function M.setup()
             require("lsp").common_on_attach(client, bufnr)
             client.server_capabilities.signatureHelpProvider = false
         end,
-        flags = lsp_flags,
         filetypes = { "c", "cpp", "cuda", "proto", "cc", "h", "hpp" },
         handlers = lsputils.lsp_diagnostics(),
     }

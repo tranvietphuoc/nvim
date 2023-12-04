@@ -1,10 +1,5 @@
 local M = {}
 
-local lsp_flags = {
-    -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
-}
-
 local lspconfig = require("lspconfig")
 local capabilities = require("lsp").capabilities()
 
@@ -32,7 +27,6 @@ function M.setup()
     lspconfig.emmet_ls.setup {
         cmd = { DATA .. "/mason/bin/emmet-ls", "--stdio" },
         filetypes = { "html", "css", "javascriptreact", "typescriptreact", "sass", "scss" },
-        flags = lsp_flags,
         init_options = {
             html = {
                 options = {
