@@ -1,18 +1,20 @@
 local M = {}
 
-local lsputils = require("lsp.utils")
+local local_utils = require("lsp.utils")
 local ih = require("lsp-inlayhints")
-
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 local function map(...)
     vim.keymap.set(...)
 end
 
 function M.capabilities()
-    return vim.lsp.protocol.make_client_capabilities()
+    -- return vim.lsp.protocol.make_client_capabilities()
+    return cmp_nvim_lsp.default_capabilities()
 end
 
 function M.common_on_attach(client, bufnr)
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     local opts = { noremap = true, silent = true, buffer = bufnr }
 
     ih.on_attach(client, bufnr, true)

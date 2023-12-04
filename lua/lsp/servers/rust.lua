@@ -9,6 +9,7 @@ function M.setup()
         cmd = { DATA .. "/mason/bin/rust-analyzer" },
         filetypes = { "rust" },
         on_attach = require("lsp").common_on_attach,
+        capabilities = require("lsp").capabilities(),
         root_dir = utils.root_pattern("Cargo.toml", "rust-project.json"),
         settings = {
             ["rust-analyzer"] = {
