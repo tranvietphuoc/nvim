@@ -9,12 +9,10 @@ local function map(...)
 end
 
 function M.capabilities()
-    -- return vim.lsp.protocol.make_client_capabilities()
-    return cmp_nvim_lsp.default_capabilities()
+    return cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 end
 
 function M.common_on_attach(client, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     local opts = { noremap = true, silent = true, buffer = bufnr }
 
     ih.on_attach(client, bufnr, true)
