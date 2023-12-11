@@ -6,7 +6,7 @@ local lspconfig = require("lspconfig")
 local capabilities = require("lsp").capabilities()
 
 function M.setup()
-    lspconfig["gopls"].setup {
+    lspconfig.gopls.setup {
         cmd = { DATA .. "/mason/bin/gopls" },
         -- cmd = { "gopls" },
         filetypes = { "go", "gomod", "gowork", "gotmpl" },

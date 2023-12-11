@@ -14,6 +14,7 @@ end
 
 function M.common_on_attach(client, bufnr)
     local opts = { noremap = true, silent = true, buffer = bufnr }
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     ih.on_attach(client, bufnr, true)
 
