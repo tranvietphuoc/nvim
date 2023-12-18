@@ -25,8 +25,9 @@ local jdtls_dir = home .. "/.local/share/nvim/mason/packages/jdtls/"
 local root_markers = {
     "build.xml",           -- Ant
     "pom.xml",             -- Maven
-    "settings.gradle",     -- Gradle
     "settings.gradle.kts", -- Gradle
+    "gradlew",
+    "mvnw"
 }
 
 local root_dir = require("jdtls.setup").find_root(root_markers)
