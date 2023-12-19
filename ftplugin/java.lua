@@ -20,6 +20,11 @@ end
 local jdtls = require("jdtls")
 jdtls.settings.jdt_uri_timeout_ms = 1000
 
+local os_config = "linux"
+if vim.fn.has "mac" == 1 then
+    os_config = "mac"
+end
+
 local home = os.getenv("HOME")
 local jdtls_dir = home .. "/.local/share/nvim/mason/packages/jdtls/"
 local root_markers = {
@@ -32,12 +37,12 @@ local root_markers = {
 
 local root_dir = require("jdtls.setup").find_root(root_markers)
 local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
-local workspace_uri = "/.local/share/eclipse/"
+local workspace_uri = "/.local/share/nvim/jdtls-workspace/"
 
 local workspace = home .. workspace_uri .. project_name
 local lombok_dir = jdtls_dir .. "lombok.jar"
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require("lsp").capabilities()
 capabilities.workspace = {
     configuration = true,
 }
@@ -93,7 +98,7 @@ local config = {
 
         "-jar", vim.fn.glob(jdtls_dir .. "plugins/org.eclipse.equinox.launcher_*.jar"),
         -- "$HOME/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar",
-        "-configuration", jdtls_dir .. "config_mac/",
+        "-configuration", jdtls_dir .. "config_" .. os_config .. "/",
         "-data", workspace,
     },
 
@@ -168,7 +173,7 @@ local config = {
             },
             inlayHints = {
                 parameterNames = {
-                    enabled = true,
+                    enabled = "all",
                 },
             },
         },
