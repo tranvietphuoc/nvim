@@ -1,6 +1,6 @@
 local M = {}
 
-local utils = require("lspconfig.util")
+local util = require("lspconfig.util")
 local lspconfig = require("lspconfig")
 
 function M.setup()
@@ -10,7 +10,7 @@ function M.setup()
         filetypes = { "rust" },
         on_attach = require("lsp").common_on_attach,
         capabilities = require("lsp").capabilities(),
-        root_dir = utils.root_pattern("Cargo.toml", "rust-project.json"),
+        root_dir = util.root_pattern("Cargo.toml", "rust-project.json"),
         settings = {
             ["rust-analyzer"] = {
                 imports = {

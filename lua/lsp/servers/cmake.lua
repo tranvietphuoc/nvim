@@ -2,7 +2,7 @@ local M = {}
 
 
 local lspconfig = require("lspconfig")
-local utils = require("lspconfig.util")
+local util = require("lspconfig.util")
 
 function M.setup()
     lspconfig.cmake.setup {

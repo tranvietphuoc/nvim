@@ -1,7 +1,7 @@
 -- npm install -g typescript typescript-language-server
 local M = {}
 
-local utils = require("lspconfig/util")
+local util = require("lspconfig.util")
 local local_utils = require("lsp.utils")
 local lspconfig = require("lspconfig")
 
@@ -32,7 +32,7 @@ function M.setup()
             hostInfo = "neovim",
         },
         on_attach = require("lsp").common_on_attach,
-        root_dir = utils.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+        root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
         settings = {
             documentFormatting = true,
             typescript = {

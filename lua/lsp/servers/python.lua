@@ -1,4 +1,4 @@
-local util = require("lspconfig/util")
+local util = require("lspconfig.util")
 local path = util.path
 local lsputils = require("lsp.utils")
 local lspconfig = require("lspconfig")

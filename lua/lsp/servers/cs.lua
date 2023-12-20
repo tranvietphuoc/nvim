@@ -1,6 +1,6 @@
 local M = {}
 
-local root_pattern = require("lspconfig/util").root_pattern
+local root_pattern = require("lspconfig.util").root_pattern
 local lspconfig = require("lspconfig")
 -- local omnisharp_bin = DATA .. "/mason/bin/omnisharp"
 -- local pid = vim.fn.getpid()

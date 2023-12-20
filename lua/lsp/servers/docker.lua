@@ -3,7 +3,7 @@
 local M = {}
 
 
-local utils = require("lspconfig.util")
+local util = require("lspconfig.util")
 local lspconfig = require("lspconfig")
 
 function M.setup()
@@ -12,7 +12,7 @@ function M.setup()
         -- cmd = {"docker-langserver", "--stdio"},
         on_attach = require("lsp").common_on_attach,
         filetypes = { "Dockerfile", "dockerfile" },
-        root_dir = utils.root_pattern("Dockerfile"),
+        root_dir = util.root_pattern("Dockerfile"),
     }
 end
 
