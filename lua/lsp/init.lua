@@ -12,11 +12,16 @@ function M.capabilities()
     return cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 end
 
-function M.common_on_attach(client, bufnr)
+function M.attach(client, bufnr)
+    map('n', '[d', vim.diagnostic.goto_prev)
+    map('n', ']d', vim.diagnostic.goto_next)
+    map('n', '<leader>e', vim.diagnostic.open_float)
+    map('n', '<leader>q', vim.diagnostic.setloclist)
+
+
     local opts = { noremap = true, silent = true, buffer = bufnr }
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    ih.on_attach(client, bufnr, true)
 
     -- lsp config
     opts.desc = "Restart LSP"
@@ -87,6 +92,11 @@ function M.common_on_attach(client, bufnr)
         local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
     end
+end
+
+function M.common_on_attach(client, bufnr)
+    M.attach(client, bufnr)
+    ih.on_attach(client, bufnr, true)
 
     -- inlayHints setup
     local ih_config = {

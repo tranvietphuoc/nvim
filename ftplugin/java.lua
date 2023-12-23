@@ -129,6 +129,9 @@ local config = {
             maven = {
                 downloadSources = true,
             },
+            gradle = {
+                enabled = true,
+            },
             signatureHelp = { enabled = true },
             contentProvider = { preferred = "fernflower" },
             completion = {

@@ -166,7 +166,7 @@ function M.setup()
         { "nvim-lua/plenary.nvim" },
 
         -- go vim
-        -- { "fatih/vim-go",                  build = ":GoUpdateBinaries" },
+        { "fatih/vim-go",                  build = ":GoUpdateBinaries" },
 
         -- inlayHints
         {

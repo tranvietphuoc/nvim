@@ -8,9 +8,13 @@ local capabilities = require("lsp").capabilities()
 local mod_cache = '/Users/phuoc/go/pkg/mod'
 
 function M.setup()
+    vim.g.go_fmt_command = "goimports"
     lspconfig.gopls.setup {
         cmd = { DATA .. "/mason/bin/gopls" },
         -- cmd = { "gopls" },
+        cmd_env = {
+            GLOB_PATTERN = "*@(.sh|.inc|.bash|.command)",
+        },
         filetypes = { "go", "gomod", "gowork", "gotmpl" },
         root_dir = function(fname)
             -- see: https://github.com/neovim/nvim-lspconfig/issues/804
@@ -31,43 +35,8 @@ function M.setup()
         settings = {
             gopls = {
                 analyses = {
-                    assign = true,
-                    atomic = true,
-                    bools = true,
-                    composites = true,
-                    copylocks = true,
-                    deepequalerrors = true,
-                    embed = true,
-                    errorsas = true,
-                    fieldalignment = true,
-                    httpresponse = true,
-                    ifaceassert = true,
-                    loopclosure = true,
-                    lostcancel = true,
-                    nilfunc = true,
-                    nilness = true,
-                    nonewvars = true,
-                    printf = true,
-                    shadow = true,
-                    shift = true,
-                    simplifycompositelit = true,
-                    simplifyrange = true,
-                    simplifyslice = true,
-                    sortslice = true,
-                    stdmethods = true,
-                    stringintconv = true,
-                    structtag = true,
-                    testinggoroutine = true,
-                    tests = true,
-                    timeformat = true,
-                    unmarshal = true,
-                    unreachable = true,
-                    unsafeptr = true,
                     unusedparams = true,
-                    unusedresult = true,
-                    unusedvariable = true,
-                    unusedwrite = true,
-                    useany = true, },
+                },
                 hoverKind = "FullDocumentation",
                 vulncheck = "Imports",
                 usePlaceholders = true,
@@ -86,7 +55,7 @@ function M.setup()
         },
         single_file_support = true,
         -- root_dir = util.root_pattern("go.mod", "go.work", ".git"),
-        -- init_options = { usePlaceholders = true, completeUnimported = true },
+        init_options = { usePlaceholders = true, completeUnimported = true },
         on_attach = require("lsp").common_on_attach,
         capabilities = capabilities,
 
