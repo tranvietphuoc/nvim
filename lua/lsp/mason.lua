@@ -32,6 +32,7 @@ function M.setup()
             "svls",
             -- "verible",
             "lemminx",
+            "r_language_server"
         },
     })
 end
