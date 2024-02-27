@@ -50,6 +50,12 @@ function M.setup()
     map("n", "<leader>vo", ":VimspectorShowOutput", opts)
     map("n", "<leader>vi", "<Plug>VimspectorBalloonEval", opts)
     map("x", "<leader>vi", "<Plug>VimspectorBalloonEval", opts)
+
+
+    -- codelens
+    opts.desc = "code_lens"
+    map("n", "<leader>lcld", "<cmd>lua vim.lsp.codelens.refresh()<cr>", opts)
+    map("n", "<leader>lclr", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
 end
 
 return M

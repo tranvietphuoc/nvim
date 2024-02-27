@@ -44,7 +44,7 @@ function M.setup()
                 require("mason-null-ls").setup({
                     ensure_installed = { "stylua", "cpplint", "checkstyle", "clang-format", "prettier", "pg-format",
                         "scalafmt", "pycodestyle", "flake8", "csharpier", "google-java-format", "mypy", "eslint_d",
-                        "gitsigns", "ruff",
+                        "gitsigns", "ruff", "java-debug-adapter",
                         "black" }
                 })
             end,
@@ -306,7 +306,8 @@ function M.setup()
         -- indent
         {
             "lukas-reineke/indent-blankline.nvim",
-            main = "ibl", opts = {},
+            main = "ibl",
+            opts = {},
         },
 
         {
@@ -408,7 +409,7 @@ function M.setup()
         },
         {
             "pwntester/octo.nvim",
-            dependencies = { "nvim-telescope/telescope.nvim" },
+            dependencies = { "nvim-telescope/telescope.nvim", 'nvim-tree/nvim-web-devicons', 'nvim-lua/plenary.nvim', },
             config = function()
                 require("octo").setup()
             end,
