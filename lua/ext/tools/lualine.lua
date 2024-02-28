@@ -4,10 +4,10 @@ local M = {}
 
 function M.setup()
     -- local colors = require("nightfox.palette.nordfox").palette
-    local colors = require("tokyonight.colors").setup({ transform = true })
-    -- local colors = require("catppuccin.palettes").get_palette("latte")
-    -- local O = require("catppuccin").options
-    -- local bg = O.transparent_background and "NONE" or colors.crust
+    -- local colors = require("tokyonight.colors").setup({ transform = true })
+    local colors = require("catppuccin.palettes").get_palette("latte")
+    local O = require("catppuccin").options
+    local bg = O.transparent_background and "NONE" or colors.crust
 
 
 
@@ -30,10 +30,10 @@ function M.setup()
             component_separators = "",
             section_separators = "",
             theme = {
-                -- normal = { c = { fg = colors.overlay0, bg = bg } },
-                -- inactive = { c = { fg = colors.overlay0, bg = bg } },
-                normal = { c = { fg = colors.fg, bg = colors.fg_gutter } },
-                inactive = { c = { fg = colors.fg, bg = colors.fg_gutter } },
+                normal = { c = { fg = colors.overlay0, bg = bg } },
+                inactive = { c = { fg = colors.overlay0, bg = bg } },
+                -- normal = { c = { fg = colors.fg, bg = colors.fg_gutter } },
+                -- inactive = { c = { fg = colors.fg, bg = colors.fg_gutter } },
             },
         },
         sections = {
@@ -71,8 +71,8 @@ function M.setup()
         function()
             return "▊"
         end,
-        color = { fg = colors.fg },
-        -- color = { fg = colors.text },      -- Sets highlighting of component
+        -- color = { fg = colors.fg },
+        color = { fg = colors.text },      -- Sets highlighting of component
         padding = { left = 0, right = 1 }, -- We don't need space before this
     })
 
@@ -103,7 +103,7 @@ function M.setup()
             }
             -- auto change color according to neovims mode
             local mode_color = {
-                --[[ n = colors.blue,
+                n = colors.blue,
                 i = colors.green,
                 v = colors.mauve,
                 [""] = colors.mauve,
@@ -122,8 +122,8 @@ function M.setup()
                 r = colors.maroon,
                 rm = colors.maroon,
                 ["!"] = colors.red,
-                t = colors.red, ]]
-                n = colors.cyan,
+                t = colors.red,
+                --[[  n = colors.cyan,
                 i = colors.green,
                 v = colors.purple,
                 [""] = colors.purple,
@@ -142,10 +142,10 @@ function M.setup()
                 r = colors.blue3,
                 rm = colors.blue3,
                 ["!"] = colors.red,
-                t = colors.red,
+                t = colors.red, ]]
             }
-            -- vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. bg)
-            vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.fg_gutter)
+            vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. bg)
+            -- vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.fg_gutter)
 
             return alias[vim.fn.mode()]
         end,
@@ -156,8 +156,8 @@ function M.setup()
     append_left({
         "branch",
         icon = "",
-        -- color = { fg = colors.sapphire, gui = "bold" },
-        color = { fg = colors.bright_blue, gui = "bold" },
+        color = { fg = colors.sapphire, gui = "bold" },
+        -- color = { fg = colors.bright_blue, gui = "bold" },
     })
 
     append_left({
@@ -165,12 +165,12 @@ function M.setup()
         -- Is it me or the symbol for modified us really weird
         symbols = { added = " ", modified = "柳 ", removed = " " },
         diff_color = {
-            --[[ added = { fg = colors.green },
+            added = { fg = colors.green },
             modified = { fg = colors.yellow },
-            removed = { fg = colors.red }, ]]
-            added = { fg = colors.git.add },
+            removed = { fg = colors.red },
+            --[[ added = { fg = colors.git.add },
             modified = { fg = colors.git.change },
-            removed = { fg = colors.git.delete },
+            removed = { fg = colors.git.delete }, ]]
         },
         cond = conditions.hide_in_width,
     })
@@ -179,8 +179,8 @@ function M.setup()
         -- filesize component
         "filesize",
         cond = conditions.buffer_not_empty,
-        -- color = { fg = colors.sky, gui = "bold" },
-        color = { fg = colors.comment, gui = "bold" },
+        color = { fg = colors.sky, gui = "bold" },
+        -- color = { fg = colors.comment, gui = "bold" },
     })
 
     append_left({
@@ -234,16 +234,16 @@ function M.setup()
         "fileformat",
         fmt = string.lower,
         icons_enabled = false,
-        -- color = { fg = colors.overlay1, gui = "bold" },
-        color = { fg = colors.orange, gui = "bold" },
+        color = { fg = colors.overlay1, gui = "bold" },
+        -- color = { fg = colors.orange, gui = "bold" },
     })
 
     append_right({
         "o:encoding", -- option component same as &encoding in viml
         fmt = string.lower,
         cond = conditions.hide_in_width,
-        -- color = { fg = colors.overlay1, gui = "bold" },
-        color = { fg = colors.orange, gui = "bold" },
+        color = { fg = colors.overlay1, gui = "bold" },
+        -- color = { fg = colors.orange, gui = "bold" },
     })
 
     append_right({
@@ -251,14 +251,14 @@ function M.setup()
         cond = conditions.buffer_not_empty,
         fmt = string.lower,
         icons_enabled = false,
-        -- color = { fg = colors.overlay1, gui = "bold" },
-        color = { fg = colors.orange, gui = "bold" },
+        color = { fg = colors.overlay1, gui = "bold" },
+        -- color = { fg = colors.orange, gui = "bold" },
     })
 
     append_right({
         "location",
-        -- color = { fg = colors.text, gui = "bold" },
-        color = { fg = colors.fg, gui = "bold" },
+        color = { fg = colors.text, gui = "bold" },
+        -- color = { fg = colors.fg, gui = "bold" },
     })
 
 
