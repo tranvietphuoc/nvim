@@ -32,8 +32,8 @@ function M.setup()
             theme = {
                 -- normal = { c = { fg = colors.overlay0, bg = bg } },
                 -- inactive = { c = { fg = colors.overlay0, bg = bg } },
-                normal = { c = { fg = colors.fg, bg = colors.fg_gutter } },
-                inactive = { c = { fg = colors.fg, bg = colors.fg_gutter } },
+                normal = { c = { fg = colors.fg, bg = colors.bg_highlight } },
+                inactive = { c = { fg = colors.fg, bg = colors.bg_highlight } },
             },
         },
         sections = {
@@ -145,7 +145,8 @@ function M.setup()
                 t = colors.red,
             }
             -- vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. bg)
-            vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.fg_gutter)
+            vim.api.nvim_command("hi! LualineMode guifg=" ..
+            mode_color[vim.fn.mode()] .. " guibg=" .. colors.bg_highlight)
 
             return alias[vim.fn.mode()]
         end,
