@@ -38,7 +38,6 @@ function M.setup()
             event = { "BufReadPre", "BufNewFile" },
             dependencies = {
                 "williamboman/mason.nvim",
-                "jose-elias-alvarez/null-ls.nvim",
             },
             config = function()
                 require("mason-null-ls").setup({
@@ -147,7 +146,8 @@ function M.setup()
         },
         {
             "iamcco/markdown-preview.nvim",
-            build = "cd app && npm install",
+            cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+            build = "cd app && yarn install",
             config = function()
                 vim.g.mkdp_filetypes = {
                     "markdown",
@@ -343,7 +343,9 @@ function M.setup()
         { "jose-elias-alvarez/typescript.nvim" },
 
         {
+            -- "nvimtools/none-ls.nvim",
             "jose-elias-alvarez/null-ls.nvim",
+
             event = "VeryLazy",
             opts = function()
                 return require("lsp.nullls").setup()
