@@ -108,7 +108,9 @@ function M.setup()
             diagnostics.mypy.with({
                 methods = null_ls.methods.DIAGNOSTICS_ON_SAVE,
             }),
-            -- diagnostics.ruff,
+            diagnostics.ruff.with({
+                extra_args = { "-n", "-e", "--stdin-filename", "$FILENAME", "-" },
+            }),
             diagnostics.flake8,
             formatting.google_java_format,                   -- java run `brew install google-java-format` first
             diagnostics.checkstyle.with({                    -- run `brew install checkstyle` first

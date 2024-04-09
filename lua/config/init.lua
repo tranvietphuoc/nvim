@@ -19,7 +19,6 @@ function globals.init()
     cmd("set modifiable")
     cmd("set nofoldenable")
     cmd("set colorcolumn=99999")
-    -- cmd("set rtp=/usr/local/opt/fzf")
     cmd("set inccommand=split")
     cmd("set shortmess+=c")
     -- cmd([[colorscheme dracula]])
@@ -86,8 +85,8 @@ function globals.init()
     -- clipboard
     opt.clipboard:append("unnamed,unnamedplus")
 
-    opt.iskeyword:append("-")                     -- treat dash seperate words as word
-    opt.runtimepath:append("/usr/local/opt/fzf/") --runtimepath
+    opt.iskeyword:append("-")                        -- treat dash seperate words as word
+    opt.runtimepath:append("/opt/homebrew/opt/fzf/") --runtimepath -- for mac
 
     g.doge_doc_standard_python = true
     g.doge_doc_standard_javascript = true

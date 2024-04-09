@@ -50,7 +50,7 @@ local jdtls_path = home .. "/.local/share/nvim/mason/packages/jdtls/"
 } ]]
 
 
-local root_markers = { ".git", "mvnw", "gradlew", "pom.xml",  "build.gradle"}
+local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
 
 -- get the current OS
 local os_config
@@ -151,18 +151,18 @@ local config = {
         java = {
             configuration = {
                 runtimes = {
-                    --[[ {
+                    {
                         name = "JavaSE-11",
-                        path = "/usr/local/opt/openjdk@11",
-                    }, ]]
+                        path = "/opt/homebrew/opt/openjdk@11",
+                    },
                     {
                         name = "JavaSE-17",
                         path = "/opt/homebrew/opt/openjdk@17",
                     },
-                    --[[ {
-                        name = "JavaSE-20",
-                        path = "/usr/local/opt/openjdk@20",
-                    }, ]]
+                    {
+                        name = "JavaSE-21",
+                        path = "/opt/homebrew/opt/openjdk@21",
+                    },
                 },
             },
             eclipse = {
