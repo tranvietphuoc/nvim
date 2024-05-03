@@ -15,8 +15,8 @@ function M.setup()
             "up",
             "--method",
             "stdio",
-            -- "-config",
-            -- "~/.config/sql-language-server/.sqllsrc.json",
+            "-config",
+            "~/.config/nvim/sql-language-server/.sqllsrc.json",
         },
         -- root_dir = {},
         filetypes = { "sql" },
@@ -30,6 +30,13 @@ function M.setup()
         filetype = { "sql" },
         root_dir = util.root_pattern(),
         single_file_support = true,
+    } ]]
+
+    --[[ lspconfig.sqls.setup {
+        cmd = { DATA .. "/mason/bin/sqls", "-config", "~/.config/nvim/sqls/config.yml" },
+        single_file_support = true,
+        filetypes = { "sql" },
+        root_dir = util.root_pattern(),
     } ]]
 end
 

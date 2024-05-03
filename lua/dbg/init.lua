@@ -5,7 +5,6 @@ local M = {}
 local dap = require("dap")
 
 -- rust lldb
-local dap = require('dap')
 dap.adapters.codelldb = {
     type = 'server',
     host = '127.0.0.1',
@@ -24,6 +23,22 @@ dap.adapters.codelldb = {
         -- detached = false,
     }
 }
+
+-- codelldb
+dap.adapters.codelldb = {
+    type = 'server',
+    port = "${port}",
+    executable = {
+        -- CHANGE THIS to your path!
+        command = '/absolute/path/to/codelldb/extension/adapter/codelldb',
+        args = { "--port", "${port}" },
+
+        -- On windows you may have to uncomment this:
+        -- detached = false,
+    }
+}
+
+
 
 -- cpp lldb
 dap.configurations.cpp = {
@@ -92,7 +107,7 @@ dap.adapters.python = function(cb, config)
     else
         cb({
             type = 'executable',
-            command = 'path/to/virtualenvs/debugpy/bin/python',
+            command = '.venv/debugpy/bin/python',
             args = { '-m', 'debugpy.adapter' },
             options = {
                 source_filetype = 'python',
@@ -125,20 +140,6 @@ dap.configurations.python = {
             end
         end,
     },
-}
-
--- codelldb
-dap.adapters.codelldb = {
-    type = 'server',
-    port = "${port}",
-    executable = {
-        -- CHANGE THIS to your path!
-        command = '/absolute/path/to/codelldb/extension/adapter/codelldb',
-        args = { "--port", "${port}" },
-
-        -- On windows you may have to uncomment this:
-        -- detached = false,
-    }
 }
 
 -- vscode-js-debug

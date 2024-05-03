@@ -12,8 +12,8 @@ function M.setup()
         single_file_support = true,
     } ]]
     lspconfig.verible.setup {
-        -- cmd = { DATA .. "/mason/bin/verible" }
-        cmd = { "verible-verilog-ls" },
+        cmd = { DATA .. "/mason/bin/verible-verilog-ls", "--rules_config_search" },
+        -- cmd = { "verible-verilog-ls" },
         on_attach = require("lsp").common_on_attach,
         root_dir = function() return vim.loop.cwd() end,
         -- filetypes = { "systemverilog", "verilog" },

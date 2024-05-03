@@ -17,6 +17,7 @@ function M.setup()
             "graphql",
             "jsonls",
             "sqlls",
+            "sqls",
             "taplo",
             "vuels",
             "emmet_ls",
@@ -30,9 +31,9 @@ function M.setup()
             "omnisharp",
             "omnisharp_mono",
             "svls",
-            -- "verible",
+            "verible",
             "lemminx",
-            "r_language_server"
+            -- "r_language_server"
         },
     })
 end

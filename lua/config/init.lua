@@ -23,8 +23,8 @@ function globals.init()
     cmd("set shortmess+=c")
     -- cmd([[colorscheme dracula]])
     -- cmd([[colorscheme tokyonight-night]])
-    -- cmd [[colorscheme tokyonight]]
-    cmd([[colorscheme tokyonight-day]])
+    cmd([[colorscheme tokyonight-moon]])
+    -- cmd([[colorscheme tokyonight-day]])
     -- cmd([[colorscheme dawnfox]])
     -- cmd([[colorscheme catppuccin-latte]])
 
