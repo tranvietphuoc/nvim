@@ -4,21 +4,16 @@ local util = require("lspconfig.util")
 local lspconfig = require("lspconfig")
 
 function M.setup()
-    --[[  require("lspconfig").sqlls.setup({
-        cmd = { DATA .. "/mason/bin/sql-language-server", "up", "--method", "stdio" },
-        filetypes = { "sql", "mysql" },
-        single_file_support = true,
-    } ) ]]
     lspconfig.sqlls.setup {
         cmd = {
             DATA .. "/mason/bin/sql-language-server",
             "up",
             "--method",
             "stdio",
-            "-config",
-            "~/.config/nvim/sql-language-server/.sqllsrc.json",
+            -- "-config",
+            -- "~/.config/nvim/sql-language-server/.sqllsrc.json",
         },
-        -- root_dir = {},
+        root_dir = util.root_pattern(),
         filetypes = { "sql" },
         single_file_support = true,
     }
