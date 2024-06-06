@@ -297,7 +297,9 @@ function M.setup()
         -- nvim-tree
         {
             "nvim-tree/nvim-tree.lua",
-            require = "nvim-tree/nvim-web-devicons",
+            version = "*",
+            lazy = false,
+            dependencies = { "nvim-tree/nvim-web-devicons"},
             config = function()
                 require("ext.tools.tree").setup()
             end,
@@ -446,14 +448,14 @@ function M.setup()
         -- csharp
 
         { "Hoffs/omnisharp-extended-lsp.nvim" },
-        {
+        --[[ {
             'wfxr/minimap.vim',
             build = "cargo install --locked code-minimap",
             init = function()
                 vim.g.minimap_auto_start = true
                 vim.g.minimap_width = 10
             end,
-        }
+        } ]]
     })
 end
 

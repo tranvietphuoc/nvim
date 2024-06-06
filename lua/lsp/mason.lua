@@ -30,7 +30,7 @@ function M.setup()
             "docker_compose_language_service",
             "omnisharp",
             "omnisharp_mono",
-            "svls",
+            -- "svls",
             "verible",
             "lemminx",
             -- "r_language_server"

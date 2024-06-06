@@ -112,7 +112,7 @@ function M.setup()
                 extra_args = { "-n", "-e", "--stdin-filename", "$FILENAME", "-" },
             }),
             diagnostics.flake8,
-            formatting.google_java_format,                   -- java run `brew install google-java-format` first
+            formatting.google_java_format.with({}),          -- java run `brew install google-java-format` first
             diagnostics.checkstyle.with({                    -- run `brew install checkstyle` first
                 extra_args = { "-c", "/google_checks.xml" }, -- or "/sun_checks.xml" or path to self written rules
             }),
