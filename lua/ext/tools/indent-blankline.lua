@@ -15,7 +15,7 @@ local M = {}
     "Whitespace",
 } ]]
 
-local hooks = require "ibl.hooks"
+-- local hooks = require "ibl.hooks"
 -- create the highlight groups in the highlight setup hook, so they are reset
 -- every time the colorscheme changes
 --[[ hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
@@ -28,17 +28,10 @@ local hooks = require "ibl.hooks"
     vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
 end) ]]
 
+
 function M.setup()
-    -- require("ibl").setup { indent = { highlight = highlight } }
-    --[[ require("ibl").setup {
-        indent = { highlight = highlight, char = "" },
-        whitespace = {
-            highlight = highlight,
-            remove_blankline_trail = false,
-        },
-        scope = { enabled = false },
-    } ]]
-    require("ibl").setup()
+    require("ibl").setup({
+    })
 end
 
 return M
