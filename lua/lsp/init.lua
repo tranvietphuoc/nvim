@@ -142,14 +142,41 @@ end
 
 function M.setup()
     -- lsp clients setup
-    local servers = { "bash", "cpp", "cmake", "css", "docker", "docker-compose", "go", "html", "python", "rust",
-        "typescript", "json", "vue", "yaml", "sql", "tex", "lua", "r", "tailwind", "emmet", "solidity", "scala", "csharp",
-        "verilog",
-        "xml" }
+    --
+    local scandir = require("plenary.scandir")
+
+    -- strip the file extension
+    local function stripExtension(filepath)
+        return filepath:match("(.+)%..+$") or filepath
+    end
+
+    -- Function to get the filename from a full path
+    local function getFilename(filepath)
+        return filepath:match("([^/]+)$")
+    end
+
+    -- get a list of files name
+    local function listFiles(dir)
+        local files = scandir.scan_dir(dir, { hidden = false, add_dirs = false, depth = 1 })
+        local filenames = {}
+        for _, file in ipairs(files) do
+            if file:match("%.lua$") then
+                local filename = getFilename(file)
+                table.insert(filenames, stripExtension(filename))
+            end
+        end
+
+        return filenames
+    end
+
+    local dir = os.getenv("HOME") .. "/.config/nvim/lua/lsp/servers/"
+    local files = listFiles(dir)
 
 
-    for _, server in ipairs(servers) do
-        require("lsp.servers." .. server).setup()
+
+    for _, file in ipairs(files) do
+        -- print(file)
+        require('lsp.servers.' .. file).setup()
     end
 
     require("lsp.cmp").setup()
