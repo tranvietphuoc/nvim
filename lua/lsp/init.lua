@@ -142,8 +142,9 @@ end
 
 function M.setup()
     -- lsp clients setup
-    local servers = { "bash", "clang", "cmake", "css", "docker", "docker-compose", "go", "html", "python", "rust",
-        "tsserver", "json", "vue", "yaml", "sql", "tex", "lua", "r", "tailwind", "emmet", "solidity", "scala", "cs", "verilog",
+    local servers = { "bash", "cpp", "cmake", "css", "docker", "docker-compose", "go", "html", "python", "rust",
+        "typescript", "json", "vue", "yaml", "sql", "tex", "lua", "r", "tailwind", "emmet", "solidity", "scala", "csharp",
+        "verilog",
         "xml" }
 
 

@@ -299,7 +299,7 @@ function M.setup()
             "nvim-tree/nvim-tree.lua",
             version = "*",
             lazy = false,
-            dependencies = { "nvim-tree/nvim-web-devicons"},
+            dependencies = { "nvim-tree/nvim-web-devicons" },
             config = function()
                 require("ext.tools.tree").setup()
             end,
@@ -342,7 +342,11 @@ function M.setup()
         },
 
         -- Javascript / Typescript
-        { "jose-elias-alvarez/typescript.nvim" },
+        {
+            "pmizio/typescript-tools.nvim",
+            dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+            opts = {},
+        },
 
         {
             -- "nvimtools/none-ls.nvim",
