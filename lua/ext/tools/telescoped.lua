@@ -3,6 +3,8 @@ local M = {}
 function M.setup()
     local command_center = require("commander")
     local telescope = require("telescope")
+    local open_with_trouble = require("trouble.sources.telescope").open
+
     local noremap = { noremap = true, silent = true }
 
     command_center.add({
@@ -52,7 +54,9 @@ function M.setup()
                     -- actions.which_key shows the mappings for your picker,
                     -- e.g. git_{create, delete, ...}_branch for the git_branches picker
                     ["<C-h>"] = "which_key",
+                    ["<c-t>"] = open_with_trouble,
                 },
+                n = { ["<c-t>"] = open_with_trouble },
             },
         },
         pickers = {
