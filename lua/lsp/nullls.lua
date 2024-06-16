@@ -43,6 +43,12 @@ function M.setup()
     -- formatting sources
     local formatting = null_ls.builtins.formatting
 
+    -- hover
+    -- local hover = null_ls.builtins.hover
+
+    -- completion sources
+    -- local completion = null_ls.builtins.completion
+
     null_ls.setup({
         debug = false,
         sources = {
