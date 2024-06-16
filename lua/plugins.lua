@@ -404,6 +404,7 @@ function M.setup()
         -- debugger
         { "puremourning/vimspector" },
         { "mfussenegger/nvim-dap" },
+        { "rcarriga/nvim-dap-ui",   dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
 
         {
             "folke/which-key.nvim",
