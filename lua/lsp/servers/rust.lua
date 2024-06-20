@@ -3,12 +3,31 @@ local M = {}
 local util = require("lspconfig.util")
 local lspconfig = require("lspconfig")
 
+
+-- config format on save for rust
+local function format_on_save(client, bufnr)
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+            vim.lsp.buf.format({ bufnr = bufnr })
+        end,
+    })
+end
+
+local function rust_on_attach(client, bufnr)
+    require("lsp").common_on_attach(client, bufnr)
+    format_on_save(client, bufnr)
+end
+
+
 function M.setup()
     -- lsp
     lspconfig.rust_analyzer.setup {
         cmd = { DATA .. "/mason/bin/rust-analyzer" },
         filetypes = { "rust" },
-        on_attach = require("lsp").common_on_attach,
+        on_attach = rust_on_attach, --require("lsp").common_on_attach,
         capabilities = require("lsp").capabilities(),
         root_dir = util.root_pattern("Cargo.toml", "rust-project.json"),
         settings = {
