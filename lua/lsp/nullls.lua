@@ -43,28 +43,24 @@ function M.setup()
     -- formatting sources
     local formatting = null_ls.builtins.formatting
 
+
     -- hover
     -- local hover = null_ls.builtins.hover
 
     -- completion sources
-    -- local completion = null_ls.builtins.completion
+    local completion = null_ls.builtins.completion
 
     null_ls.setup({
         debug = false,
         sources = {
-            formatting.trim_newlines.with({
-                disabled_filetypes = { "rust" },
-            }),
-            formatting.trim_whitespace.with({
-                disabled_filetypes = { "rust" },
-            }),
             formatting.stylua.with({
                 filetypes = { "lua" },
                 extra_args = { "--config-path", vim.fn.expand("~/.stylua.toml") },
             }),
-            diagnostics.eslint_d,
-            code_actions.eslint_d,
+
+            completion.luasnip,
             code_actions.gitsigns,
+            code_actions.proselint,
             -- completion.luasnip,
             formatting.prettier.with({
                 filetypes = {
@@ -81,12 +77,12 @@ function M.setup()
                 end,
             }),
 
-            formatting.rustfmt.with({
-                filetypes = { "rust" },
-                extra_args = { "--emit=stdout" },
-            }),
+            formatting.rustfmt,
             formatting.gofumpt,
             formatting.goimports,
+            formatting.gofmt,
+            formatting.djhtml,
+            formatting.csharpier,
 
             formatting.black.with({
                 filetypes = { "python" },
@@ -100,9 +96,7 @@ function M.setup()
                     "-style=file:" .. vim.fn.expand("~/.clang-format")
                 }
             }),
-            -- formatting.djhtml.with({
-            -- filetypes = { "html" },
-            -- }),
+
             formatting.pg_format.with({
                 filetypes = { "sql" },
             }),
@@ -110,20 +104,24 @@ function M.setup()
             formatting.scalafmt,
 
             -- formatting.isort,
-            diagnostics.cpplint,
             diagnostics.mypy.with({
                 methods = null_ls.methods.DIAGNOSTICS_ON_SAVE,
             }),
-            diagnostics.ruff.with({
-                extra_args = { "-n", "-e", "--stdin-filename", "$FILENAME", "-" },
-            }),
-            diagnostics.flake8,
+            diagnostics.dotenv_linter,
+            diagnostics.vacuum,
+            diagnostics.djlint,
+            diagnostics.markdownlint,
+            diagnostics.pylint,
+            diagnostics.cppcheck,
+            diagnostics.stylelint,
             formatting.google_java_format.with({}),          -- java run `brew install google-java-format` first
             diagnostics.checkstyle.with({                    -- run `brew install checkstyle` first
                 extra_args = { "-c", "/google_checks.xml" }, -- or "/sun_checks.xml" or path to self written rules
             }),
+            diagnostics.sqlfluff.with({
+                extra_args = { "--dialect", "postgres" }, -- change to your dialect
+            }),
 
-            formatting.csharpier,
         },
         on_attach = function(client, bufnr)
             if client.supports_method("textDocument/formatting") then

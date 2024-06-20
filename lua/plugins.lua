@@ -38,12 +38,13 @@ function M.setup()
             event = { "BufReadPre", "BufNewFile" },
             dependencies = {
                 "williamboman/mason.nvim",
+                "nvimtools/none-ls.nvim",
             },
             config = function()
                 require("mason-null-ls").setup({
-                    ensure_installed = { "stylua", "cpplint", "checkstyle", "clang-format", "prettier", "pg-format",
+                    ensure_installed = { "rustfmt", "stylua", "cpplint", "checkstyle", "clang-format", "prettier", "pg-format",
                         "scalafmt", "pycodestyle", "flake8", "csharpier", "google-java-format", "mypy", "eslint_d",
-                        "gitsigns", "ruff", "java-debug-adapter",
+                        "gitsigns", "java-debug-adapter",
                         "black" }
                 })
             end,
@@ -242,6 +243,13 @@ function M.setup()
                 { "nvim-treesitter/nvim-treesitter" },
             },
         },
+        {
+            "j-hui/fidget.nvim",
+            opts = {
+                -- options
+            },
+        },
+
         -- auto-completion
         {
             "hrsh7th/nvim-cmp",
@@ -373,8 +381,8 @@ function M.setup()
         },
 
         {
-            -- "nvimtools/none-ls.nvim",
-            "jose-elias-alvarez/null-ls.nvim",
+            "nvimtools/none-ls.nvim",
+            -- "jose-elias-alvarez/null-ls.nvim",
 
             event = "VeryLazy",
             opts = function()
@@ -506,7 +514,14 @@ function M.setup()
         },
 
         -- scala metal
-        { "scalameta/nvim-metals",            dependencies = { "nvim-lua/plenary.nvim" } },
+        {
+            "scalameta/nvim-metals",
+            dependencies = { "nvim-lua/plenary.nvim", {
+                "j-hui/fidget.nvim",
+                opts = {},
+            }, },
+            ft = { "scala", "sbt" },
+        },
 
         -- csharp
 
