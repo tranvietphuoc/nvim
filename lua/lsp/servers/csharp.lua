@@ -53,7 +53,7 @@ local config = {
     init_options = {},
     on_attach = function(client, bufnr)
         require("lsp").common_on_attach(client, bufnr)
-        vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+        -- vim.api.nvim_set_option_value(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
     end,
 }
 
