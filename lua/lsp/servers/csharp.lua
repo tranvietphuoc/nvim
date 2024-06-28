@@ -2,9 +2,8 @@ local M = {}
 
 local root_pattern = require("lspconfig.util").root_pattern
 local lspconfig = require("lspconfig")
--- local omnisharp_bin = DATA .. "/mason/bin/omnisharp"
+-- local csharp_ls = DATA .. "/mason/bin/csharp-ls"
 -- local pid = vim.fn.getpid()
--- local capabilities = vim.lsp.protocol.make_client_capabilities() --require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local capabilities = require("lsp").capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.foldingRange = {
@@ -20,6 +19,8 @@ local config = {
 
     -- cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
     cmd = { "dotnet", DATA .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
+    -- cmd = { csharp_ls },
+
 
     capabilities = capabilities,
     settings = {
@@ -41,7 +42,7 @@ local config = {
             LoadProjectsOnDemand = nil,
         },
         Sdk = {
-            IncludePrereleases = true
+            IncludePrereleases = false
         },
         RoslynExtensionsOptions = {
             EnableAnalyzersSupport = nil,
@@ -63,16 +64,9 @@ local config = {
         },
     },
 
-    enable_editorconfig_support = true,
-    enable_ms_build_load_projects_on_demand = true,
-    organize_imports_on_format = true,
-    enable_roslyn_analyzers = true,
-    enable_import_completion = true,
-    sdk_include_prereleases = true,
-    analyze_open_documents_only = false,
     filetypes = { "cs", "csproj", "sln" },
     root_dir = root_pattern("*.csproj") or root_pattern("*.sln"),
-    init_options = {},
+    init_options = { AutomaticWorkspaceInit = true },
     on_attach = function(client, bufnr)
         require("lsp").common_on_attach(client, bufnr)
         -- vim.api.nvim_set_option_value(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -81,6 +75,7 @@ local config = {
 
 function M.setup()
     lspconfig.omnisharp.setup(config)
+    -- lspconfig.csharp_ls.setup(config)
 end
 
 return M
