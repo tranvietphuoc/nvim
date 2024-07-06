@@ -36,6 +36,7 @@ You need to install these tools first:
 -   [openjdk](https://www.freecodecamp.org/news/install-openjdk-free-java-multi-os-guide/)
 -   [dotnet-sdk](https://learn.microsoft.com/en-us/dotnet/core/install/)
 -   [mono]()
+-   [cppcheck](https://cppcheck.sourceforge.io/)
 
 ### Neovim
 
