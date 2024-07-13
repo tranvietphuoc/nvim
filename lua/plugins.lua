@@ -545,6 +545,15 @@ function M.setup()
         -- csharp
 
         { "Hoffs/omnisharp-extended-lsp.nvim" },
+
+        -- distant -- remote neovim
+        {
+            'chipsenkbeil/distant.nvim',
+            branch = 'v0.3',
+            config = function()
+                require('distant'):setup()
+            end
+        }
         --[[ {
             'wfxr/minimap.vim',
             build = "cargo install --locked code-minimap",
