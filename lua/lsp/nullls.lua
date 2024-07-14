@@ -1,5 +1,7 @@
 local M = {}
 
+local venv_path = require("lsp.servers.python").get_python_path()
+
 function M.setup()
     local async_formatting = function(bufnr)
         bufnr = bufnr or vim.api.nvim_get_current_buf()
@@ -111,7 +113,12 @@ function M.setup()
             diagnostics.vacuum,
             diagnostics.djlint,
             diagnostics.markdownlint,
-            diagnostics.pylint,
+            diagnostics.pylint.with({
+                diagnostics_postprocess = function(diagnostic)
+                    diagnostic.code = diagnostic.message_id
+                end,
+                -- extra_args = { "--init-hook", venv_path },
+            }),
             diagnostics.cppcheck,
             diagnostics.stylelint,
             formatting.google_java_format.with({}),          -- java run `brew install google-java-format` first
