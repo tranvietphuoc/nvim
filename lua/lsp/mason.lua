@@ -8,6 +8,7 @@ function M.setup()
             "rust_analyzer",
             "clangd",
             "pyright",
+            "pylyzer",
             "gopls",
             "tsserver",
             "bashls",
@@ -34,6 +35,7 @@ function M.setup()
             -- "svls",
             "verible",
             "lemminx",
+
             -- "r_language_server"
         },
     })

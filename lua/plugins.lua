@@ -42,7 +42,7 @@ function M.setup()
             },
             config = function()
                 require("mason-null-ls").setup({
-                    ensure_installed = { "stylua", "cpplint", "checkstyle", "clang-format", "prettier",
+                    ensure_installed = { "stylua", "checkstyle", "clang-format", "prettier",
                         "pg-format",
                         "scalafmt", "pycodestyle", "csharpier", "google-java-format", "mypy", "eslint_d",
                         "gitsigns", "java-debug-adapter", "cppcheck", "pylint", "markdownlint", "djlint", "scalafmt",
@@ -55,10 +55,8 @@ function M.setup()
         },
 
         -- colorscheme
-        { "Mofiqul/dracula.nvim" },
-        { "folke/tokyonight.nvim" },
-        { "EdenEast/nightfox.nvim" },
         { "catppuccin/nvim",            name = "catppuccin", priority = 1000 },
+        { "rebelot/kanagawa.nvim" },
 
         -- { "Mofiqul/vscode.nvim" },
 
@@ -285,7 +283,6 @@ function M.setup()
                 "rafamadriz/friendly-snippets" }
         },
         { "saadparwaiz1/cmp_luasnip" },
-        { "hrsh7th/vim-vsnip" },
         { "hrsh7th/cmp-vsnip" },
 
         -- snippet

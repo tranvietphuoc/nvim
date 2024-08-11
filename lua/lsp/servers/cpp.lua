@@ -6,7 +6,7 @@ local lspconfig = require("lspconfig")
 
 function M.setup()
     lspconfig.clangd.setup {
-        cmd = { DATA .. "/mason/bin/clangd", "--offset-encoding=utf-16", "--query-driver=/opt/homebrew/opt/gcc/bin/g*" },
+        cmd = { DATA .. "/mason/bin/clangd", "--offset-encoding=utf-16", "--query-driver=/usr/bin/gcc" },
         on_attach = function(client, bufnr)
             require("lsp").common_on_attach(client, bufnr)
             client.server_capabilities.signatureHelpProvider = false
@@ -23,7 +23,7 @@ function M.setup()
             -- Options other than `highlight' and `priority' only work
             -- if `inline' is disabled
             -- Only show inlay hints for the current line
-            only_current_line = false,
+            only_current_line = true,
             -- Event which triggers a refresh of the inlay hints.
             -- You can make this { "CursorMoved" } or { "CursorMoved,CursorMovedI" } but
             -- not that this may cause  higher CPU usage.

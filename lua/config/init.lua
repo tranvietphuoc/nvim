@@ -27,7 +27,7 @@ function globals.init()
     -- cmd([[colorscheme tokyonight-moon]])
     -- cmd([[colorscheme tokyonight-day]])
     -- cmd([[colorscheme dawnfox]])
-    cmd([[colorscheme catppuccin-latte]])
+    cmd([[colorscheme kanagawa-wave]])
 
     -- opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
 
@@ -77,16 +77,16 @@ function globals.init()
     o.timeoutlen = 300 -- timeout to 1s
     wo.relativenumber = true
     g.loaded_python_provider = 0
-    g.python3_host_prog = "$HOME/.pyenv/shims/python3.9"
+    g.python3_host_prog = "~/.pyenv/shims/python"
 
     -- backspace
     opt.backspace = "indent,eol,start"
 
     -- clipboard
-    opt.clipboard:append("unnamed,unnamedplus")
+    -- opt.clipboard:append("unnamed,unnamedplus")
 
-    opt.iskeyword:append("-")                        -- treat dash seperate words as word
-    opt.runtimepath:append("/opt/homebrew/opt/fzf/") --runtimepath -- for mac
+    opt.iskeyword:append("-")                -- treat dash seperate words as word
+    opt.runtimepath:append("~/.fzf/bin/fzf") --runtimepath -- for mac
 
     g.doge_doc_standard_python = true
     g.doge_doc_standard_javascript = true

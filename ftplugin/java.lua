@@ -1,6 +1,7 @@
 local on_attach = function(client, bufnr)
     require("jdtls").setup_dap()
     require("lsp").common_on_attach(client, bufnr)
+    -- vim.lsp.inlay_hint.enable(true)
 
     local function map(...)
         vim.keymap.set(...)
@@ -47,7 +48,7 @@ local root_markers = {
     "settings.gradle.kts",
     "gradlew",
     "mvnw"
-} 
+}
 
 
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml" }
@@ -139,7 +140,6 @@ local config = {
         '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
         "-jar", vim.fn.glob(jdtls_path .. "plugins/org.eclipse.equinox.launcher_*.jar"),
-        -- "$HOME/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar",
         "-configuration", jdtls_path .. "config_" .. os_config .. "/",
         "-data", workspace_path,
     },
@@ -157,7 +157,7 @@ local config = {
                     }, ]]
                     {
                         name = "JavaSE-17",
-                        path = "/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home/",
+                        path = "/usr/lib/jvm/java-17-openjdk-amd64/",
                     },
                     --[[ {
                         name = "JavaSE-21",
@@ -220,6 +220,7 @@ local config = {
             inlayHints = {
                 parameterNames = {
                     enabled = "all",
+                    exclusions = { "this" },
                 },
             },
         },

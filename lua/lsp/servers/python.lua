@@ -34,6 +34,10 @@ function M.setup()
         end,
         settings = {
             python = {
+                --[[ checkOnType = false,
+                diagnostics = true,
+                inlayHints = true,
+                smartCompletion = true ]]
                 analysis = {
                     autoSearchPaths = true,
                     diagnosticMode = "workspace",

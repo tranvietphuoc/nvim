@@ -24,6 +24,13 @@ function M.attach(client, bufnr)
 
     --turn on inlay hints
     -- vim.lsp.inlay_hint(bufnr, true)
+    -- toggle inlay hint
+    opts.desc = "Toggle inlayhints"
+    map("n", '<leader>i', function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
+        end,
+        opts
+    )
 
 
     -- lsp config
