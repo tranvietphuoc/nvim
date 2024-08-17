@@ -49,6 +49,8 @@ function M.setup()
                         "djhtml",
                         "vaccum",
                         "dotenv_linter",
+                        "gofumpt",
+                        "goimports",
                         "black" }
                 })
             end,
