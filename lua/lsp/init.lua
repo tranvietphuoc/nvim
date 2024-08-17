@@ -106,7 +106,7 @@ end
 
 function M.common_on_attach(client, bufnr)
     M.attach(client, bufnr)
-    ih.on_attach(client, bufnr)
+    ih.on_attach(client, bufnr) -- enable inlay hints for lsp server
 end
 
 function M.tsserver_on_attach(client, bufnr)

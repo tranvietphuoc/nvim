@@ -201,30 +201,8 @@ function M.setup()
             "MysticalDevil/inlay-hints.nvim",
             event = "LspAttach",
             dependencies = { "neovim/nvim-lspconfig" },
-            config = function()
-                require("inlay-hints").setup()
-            end
         },
 
-        --[[ -- inlayHints
-        {
-            "lvimuser/lsp-inlayhints.nvim",
-            branch = "anticonceal",
-            opts = {},
-            lazy = true,
-            init = function()
-                vim.api.nvim_create_autocmd("LspAttach", {
-                    group = vim.api.nvim_create_augroup("LspAttach_inlayhints", {}),
-                    callback = function(args)
-                        if not (args.data and args.data.client_id) then
-                            return
-                        end
-                        local client = vim.lsp.get_client_by_id(args.data.client_id)
-                        require("lsp-inlayhints").on_attach(client, args.buf)
-                    end,
-                })
-            end,
-        }, ]]
 
         -- rust
         -- use("simrat39/rust-tools.nvim")
@@ -332,16 +310,6 @@ function M.setup()
             "nvim-lualine/lualine.nvim",
             -- after = "github-nvim-theme",
             dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
-            -- config = function()
-            -- require("lualine").setup({
-            -- options = {
-            -- theme = "github_dark_colorblind",
-            -- },
-            -- })
-            -- end,
-            -- options = {
-            -- theme = 'vscode'
-            -- }
         },
 
         -- nvim-tree
@@ -398,9 +366,9 @@ function M.setup()
             opts = {},
         },
 
+        -- none-ls
         {
             "nvimtools/none-ls.nvim",
-            -- "jose-elias-alvarez/null-ls.nvim",
 
             event = "VeryLazy",
             opts = function()
@@ -435,10 +403,6 @@ function M.setup()
         {
             "folke/which-key.nvim",
             event = "VeryLazy",
-            --[[ init = function()
-                vim.o.timeout = true
-                vim.o.timeoutlen = 30
-            end, ]]
             config = function()
                 require("which-key").setup()
             end,
