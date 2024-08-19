@@ -9,21 +9,27 @@ capabilities.textDocument.foldingRange = {
     lineFoldingOnly = true,
 }
 
+local omnisharpExtended = require("omnisharp_extended")
+
+local toSnakeCase = function(str)
+    return string.gsub(str, "%s*[- ]%s*", "_")
+end
 
 local config = {
     handlers = {
-        ["textDocument/definition"] = require("omnisharp_extended").definition_handler,
-        ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,
-        ["textDocument/references"] = require('omnisharp_extended').references_handler,
-        ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
+        ["textDocument/definition"] = omnisharpExtended.definition_handler,
+        ["textDocument/typeDefinition"] = omnisharpExtended.type_definition_handler,
+        ["textDocument/references"] = omnisharpExtended.references_handler,
+        ["textDocument/implementation"] = omnisharpExtended.implementation_handler,
     },
 
     cmd = { "dotnet", DATA .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
 
     capabilities = capabilities,
-    --[[ enable_import_completion = true,
+    enable_roslyn_analyzers = true,
+    enable_import_completion = true,
     organize_imports_on_format = true,
-    enable_decompilation_support = true, ]]
+    enable_decompilation_support = true,
     settings = {
         FormattingOptions = {
             -- Enables support for reading code style, naming convention and analyzer
@@ -84,13 +90,23 @@ local config = {
     init_options = { AutomaticWorkspaceInit = true },
     on_attach = function(client, bufnr)
         require("lsp").common_on_attach(client, bufnr)
-        -- vim.api.nvim_set_option_value(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+        if client.name == "omnisharp" then
+            local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
+            for i, v in ipairs(tokenModifiers) do
+                tokenModifiers[i] = toSnakeCase(v)
+            end
+
+            local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
+            for i, v in ipairs(tokenTypes) do
+                tokenTypes[i] = toSnakeCase(v)
+            end
+        end
     end,
 }
 
 function M.setup()
     lspconfig.omnisharp.setup(config)
-    -- lspconfig.csharp_ls.setup(config)
 end
 
 return M
