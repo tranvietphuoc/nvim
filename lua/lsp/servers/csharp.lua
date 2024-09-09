@@ -17,7 +17,7 @@ end
 
 local config = {
     handlers = {
-        ["textDocument/definition"] = omnisharpExtended.definition_handler,
+        ["textDocument/definition"] = omnisharpExtended.handler,
         ["textDocument/typeDefinition"] = omnisharpExtended.type_definition_handler,
         ["textDocument/references"] = omnisharpExtended.references_handler,
         ["textDocument/implementation"] = omnisharpExtended.implementation_handler,
@@ -30,6 +30,7 @@ local config = {
     enable_import_completion = true,
     organize_imports_on_format = true,
     enable_decompilation_support = true,
+    enable_editorconfig_support = true,
     settings = {
         FormattingOptions = {
             -- Enables support for reading code style, naming convention and analyzer

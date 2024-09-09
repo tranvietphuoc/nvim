@@ -15,7 +15,7 @@ function M.get_python_path(workspace)
     -- Find and use virtualenv from poetry in workspace directory.
     local match = vim.fn.glob(path.join(workspace, "pyproject.toml"))
     if match ~= "" then
-        local venv = vim.fn.trim(vim.fn.system("poetry env info -p"))
+        local venv = vim.fn.trim(".venv") --vim.fn.system("poetry env info -p"))
         return path.join(venv, "bin", "python")
     end
 
