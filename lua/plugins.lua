@@ -280,7 +280,7 @@ function M.setup()
         -- ts-rainbow
         {
             "HiPhish/rainbow-delimiters.nvim",
-            branch = "use-children",
+            -- branch = "use-children",
             config = function()
                 require("ext.tools.rainbow-delimiters").setup()
             end,
@@ -423,11 +423,7 @@ function M.setup()
             tag = "0.1.4",
             dependencies = { { "nvim-lua/plenary.nvim" } },
         },
-        {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            build =
-            "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-        },
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
         {
             "FeiyouG/commander.nvim",
             dependencies = { "nvim-telescope/telescope.nvim" }

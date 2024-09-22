@@ -77,7 +77,7 @@ function globals.init()
     o.timeoutlen = 300 -- timeout to 1s
     wo.relativenumber = true
     g.loaded_python_provider = 0
-    g.python3_host_prog = "/usr/bin/python3"
+    g.python3_host_prog = "/usr/sbin/python"
 
     -- backspace
     opt.backspace = "indent,eol,start"
