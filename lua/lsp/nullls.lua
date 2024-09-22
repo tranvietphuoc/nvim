@@ -90,7 +90,7 @@ function M.setup()
                 filetypes = { "python" },
                 args = { "--quiet", "-" },
                 extra_args = { "--line-length", "79" },
-            }),
+            }), 
 
             formatting.clang_format.with({
                 filetypes = { "c", "cpp", "h", "hpp" },
@@ -113,12 +113,14 @@ function M.setup()
             diagnostics.vacuum,
             diagnostics.djlint,
             diagnostics.markdownlint,
+            require("none-ls.diagnostics.ruff"),
+                -- require("none-ls.formatting.ruff"),
             diagnostics.pylint.with({
                 diagnostics_postprocess = function(diagnostic)
                     diagnostic.code = diagnostic.message_id
                 end,
                 -- extra_args = { "--init-hook", venv_path },
-            }),
+            }), 
             diagnostics.cppcheck,
             diagnostics.stylelint,
             formatting.google_java_format.with({}),          -- java run `brew install google-java-format` first

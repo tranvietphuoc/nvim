@@ -10,7 +10,7 @@ function M.setup()
             "pyright",
             "pylyzer",
             "gopls",
-            "tsserver",
+            -- "tsserver",
             "bashls",
             "cssls",
             "html",

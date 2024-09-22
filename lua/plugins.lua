@@ -45,7 +45,7 @@ function M.setup()
                     ensure_installed = { "stylua", "checkstyle", "clang-format", "prettier",
                         "pg-format",
                         "scalafmt", "pycodestyle", "csharpier", "google-java-format", "mypy", "eslint_d",
-                        "gitsigns", "java-debug-adapter", "cppcheck", "pylint", "markdownlint", "djlint", "scalafmt",
+                        "gitsigns", "java-debug-adapter", "cppcheck", "pylint", "markdownlint", "djlint", "scalafmt", "ruff",
                         "djhtml",
                         "vaccum",
                         "dotenv_linter",
@@ -374,7 +374,8 @@ function M.setup()
             opts = function()
                 return require("lsp.nullls").setup()
             end,
-            requires = { "nvim-lua/plenary.nvim" }
+            requires = { "nvim-lua/plenary.nvim" },
+            dependencies = { "nvimtools/none-ls-extras.nvim", },
         },
 
         {
