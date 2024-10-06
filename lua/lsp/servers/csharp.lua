@@ -18,9 +18,9 @@ end
 local config = {
     handlers = {
         ["textDocument/definition"] = omnisharpExtended.handler,
-        ["textDocument/typeDefinition"] = omnisharpExtended.type_definition_handler,
+        --[[ ["textDocument/typeDefinition"] = omnisharpExtended.type_definition_handler,
         ["textDocument/references"] = omnisharpExtended.references_handler,
-        ["textDocument/implementation"] = omnisharpExtended.implementation_handler,
+        ["textDocument/implementation"] = omnisharpExtended.implementation_handler, ]]
     },
 
     cmd = { "dotnet", DATA .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
