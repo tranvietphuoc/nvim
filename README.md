@@ -136,8 +136,7 @@ To use `lombok` for your `java` project, you must put these line into your `pom.
 ```
 
 ## Todo
- - [  ]
-
+ - [ ] refactoring the whole files
 
 Thanks to all authors of [these plugin](./lua/plugins.lua).
 
