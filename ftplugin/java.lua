@@ -220,7 +220,7 @@ local config = {
             inlayHints = {
                 parameterNames = {
                     enabled = "all",
-                    exclusions = { "this" },
+                    -- exclusions = { "this" },
                 },
             },
         },

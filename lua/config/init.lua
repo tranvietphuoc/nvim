@@ -83,7 +83,19 @@ function globals.init()
     opt.backspace = "indent,eol,start"
 
     -- clipboard
-    -- opt.clipboard:append("unnamed,unnamedplus")
+    g.clipboard = {
+        name = "TmuxClipboard",
+        copy = {
+            ["+"] = "tmux load-buffer -w -",
+            ["*"] = "tmux load-buffer -w -",
+        },
+        paste = {
+            ["+"] = "tmux save-buffer -",
+            ["*"] = "tmux save-buffer -",
+        },
+        cache_enabled = 0,
+    }
+    opt.clipboard = "unnamedplus"
 
     opt.iskeyword:append("-")                -- treat dash seperate words as word
     opt.runtimepath:append("~/.fzf/bin/fzf") --runtimepath -- for mac
