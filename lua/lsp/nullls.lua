@@ -45,10 +45,6 @@ function M.setup()
     -- formatting sources
     local formatting = null_ls.builtins.formatting
 
-
-    -- hover
-    -- local hover = null_ls.builtins.hover
-
     -- completion sources
     local completion = null_ls.builtins.completion
 
@@ -86,12 +82,6 @@ function M.setup()
             formatting.djhtml,
             formatting.csharpier,
 
-            formatting.black.with({
-                filetypes = { "python" },
-                args = { "--quiet", "-" },
-                extra_args = { "--line-length", "79" },
-            }), 
-
             formatting.clang_format.with({
                 filetypes = { "c", "cpp", "h", "hpp" },
                 extra_args = {
@@ -108,19 +98,14 @@ function M.setup()
             -- formatting.isort,
             diagnostics.mypy.with({
                 methods = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+
             }),
             diagnostics.dotenv_linter,
             diagnostics.vacuum,
             diagnostics.djlint,
             diagnostics.markdownlint,
-            require("none-ls.diagnostics.ruff"),
-                -- require("none-ls.formatting.ruff"),
-            diagnostics.pylint.with({
-                diagnostics_postprocess = function(diagnostic)
-                    diagnostic.code = diagnostic.message_id
-                end,
-                -- extra_args = { "--init-hook", venv_path },
-            }), 
+            -- require("none-ls.diagnostics.ruff"),
+            -- require("none-ls.formatting.ruff"),
             diagnostics.cppcheck,
             diagnostics.stylelint,
             formatting.google_java_format.with({}),          -- java run `brew install google-java-format` first

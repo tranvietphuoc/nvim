@@ -44,15 +44,14 @@ function M.setup()
                 require("mason-null-ls").setup({
                     ensure_installed = { "stylua", "checkstyle", "clang-format", "prettier",
                         "pg-format",
-                        "scalafmt", "pycodestyle", "csharpier", "google-java-format", "mypy", "eslint_d",
-                        "gitsigns", "java-debug-adapter", "cppcheck", "pylint", "markdownlint", "djlint", "scalafmt",
-                        "ruff",
+                        "scalafmt", "csharpier", "google-java-format", "mypy", "eslint_d",
+                        "gitsigns", "java-debug-adapter", "cppcheck", "markdownlint", "djlint", "scalafmt",
                         "djhtml",
                         "vaccum",
                         "dotenv_linter",
                         "gofumpt",
                         "goimports",
-                        "black" }
+                    }
                 })
             end,
         },
@@ -61,26 +60,10 @@ function M.setup()
         { "catppuccin/nvim",            name = "catppuccin", priority = 1000 },
         { "rebelot/kanagawa.nvim" },
 
-        -- { "Mofiqul/vscode.nvim" },
 
         -- clangd extensions
         { "p00f/clangd_extensions.nvim" },
 
-        --[[ use({
-            "EdenEast/nightfox.nvim",
-            build = ":NightfoxCompile",
-            config = function()
-                require("nightfox").setup({
-                    options = {
-                        styles = {
-                            comments = "italic",
-                            keywords = "bold",
-                            types = "italic,bold",
-                        },
-                    },
-                })
-            end,
-        }) ]]
         -- git
         {
             "lewis6991/gitsigns.nvim",
@@ -117,29 +100,6 @@ function M.setup()
         -- java
         { "mfussenegger/nvim-jdtls" },
 
-        --[[ {
-            'nvim-java/nvim-java',
-            ft = 'java',
-            dependencies = {
-                'nvim-java/lua-async-await',
-                'nvim-java/nvim-java-refactor',
-                'nvim-java/nvim-java-core',
-                'nvim-java/nvim-java-test',
-                'nvim-java/nvim-java-dap',
-                'MunifTanjim/nui.nvim',
-                'neovim/nvim-lspconfig',
-                'mfussenegger/nvim-dap',
-                {
-                    'williamboman/mason.nvim',
-                    opts = {
-                        registries = {
-                            'github:nvim-java/mason-registry',
-                            'github:mason-org/mason-registry',
-                        },
-                    },
-                }
-            },
-        }, ]]
         -- treesitter
         {
             "nvim-treesitter/nvim-treesitter",
@@ -205,11 +165,6 @@ function M.setup()
         },
 
 
-        -- rust
-        -- use("simrat39/rust-tools.nvim")
-
-        -- symbol-outline
-        -- use("simrat39/symbols-outline.nvim")
 
         -- vim easy align
         {
@@ -410,9 +365,6 @@ function M.setup()
             end,
         },
 
-        -- github copilot
-        -- use({ "github/copilot.vim" })
-
         -- statusline components
 
         {
@@ -515,56 +467,41 @@ function M.setup()
                 require('distant'):setup()
             end
         },
-        --[[ {
-            'wfxr/minimap.vim',
-            build = "cargo install --locked code-minimap",
-            init = function()
-                vim.g.minimap_auto_start = true
-                vim.g.minimap_width = 10
-            end,
-        } ]]
 
-        -- roslyn
-        --[[ {
-            "seblj/roslyn.nvim",
-            ft = "cs",
-            on_attach = function(client, bufnr)
-                require("lsp").common_on_attach(client, bufnr)
-            end,
+        {
+            "mfussenegger/nvim-lint",
+            config = function()
+                local lint = require("lint")
+                lint.linter_by_ft = {
+                    python = { "ruff" }, -- python
+                }
 
+                local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+
+                vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "TextChanged" }, {
+                    group = lint_augroup,
+                    callback = function()
+                        lint.try_lint()
+                    end,
+                })
+            end,
+        }, -- linting
+        {
+            'stevearc/conform.nvim',
             opts = {
-                -- your configuration comes here; leave empty for default settings
-                config = {
-                    settings = {
-                        ["csharp|inlay_hints"] = {
-                            csharp_enable_inlay_hints_for_implicit_object_creation = true,
-                            csharp_enable_inlay_hints_for_implicit_variable_types = true,
-                            csharp_enable_inlay_hints_for_lambda_parameter_types = true,
-                            csharp_enable_inlay_hints_for_types = true,
-                            dotnet_enable_inlay_hints_for_indexer_parameters = true,
-                            dotnet_enable_inlay_hints_for_literal_parameters = true,
-                            dotnet_enable_inlay_hints_for_object_creation_parameters = true,
-                            dotnet_enable_inlay_hints_for_other_parameters = true,
+                formatters_by_ft = {
+                    python = function(bufnr)
+                        local conform = require("conform")
+                        if conform.get_formatter_info("ruff_format", bufnr).available then
+                            return { { "ruff_fix" }, { "ruff_format" } }
+                        else
+                            return { "black" }
+                        end
+                    end,
+                }
+            },
+        },
 
-                            dotnet_enable_inlay_hints_for_parameters = true,
-
-                            dotnet_suppress_inlay_hints_for_parameters_that_differ_only_by_suffix = true,
-                            dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name = true,
-                            dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent = true,
-
-                        },
-                        ["csharp|code_lens"] = {
-                            dotnet_enable_references_code_lens = true,
-                        },
-                    }
-                },
-                exe = { "dotnet",
-                    vim.fs.joinpath(vim.fn.stdpath("data"), "roslyn", "Microsoft.CodeAnalysis.LanguageServer.dll"),
-                },
-                filewatching = true,
-                choose_sln = nil,
-            }
-        } ]]
     })
 end
 

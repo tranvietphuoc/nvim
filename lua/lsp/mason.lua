@@ -8,9 +8,8 @@ function M.setup()
             "rust_analyzer",
             "clangd",
             "pyright",
-            "pylyzer",
+            "ruff",
             "gopls",
-            -- "tsserver",
             "bashls",
             "cssls",
             "html",
@@ -29,13 +28,9 @@ function M.setup()
             "yamlls",
             "docker_compose_language_service",
             "omnisharp",
-            -- "omnisharp_mono",
-            -- "csharp_ls",
-            -- "svls",
             "verible",
             "lemminx",
 
-            -- "r_language_server"
         },
     })
 end
