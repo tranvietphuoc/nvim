@@ -52,19 +52,19 @@ function M.setup()
 
     -- find and replace Spectre
     wk.add({
-        { "<leader>s",  group = "Spectre - Find and replace" },
-        { "<leader>so", "<cmd>lua require('spectre').open()<cr>",                          desc = "Spectre open",                    mode = "n" },
-        { "<leader>sO", "<cmd>lua require('spectre').open_visual()<cr>",                   desc = "Spectre open visual",             mode = "v" },
-        { "<leader>sw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", desc = "Spectre open with selected word", mode = "n" },
+        { "<leader>S",  group = "Spectre - Find and replace" },
+        { "<leader>So", "<cmd>lua require('spectre').open()<cr>",                          desc = "Spectre open",                    mode = "n" },
+        { "<leader>SO", "<cmd>lua require('spectre').open_visual()<cr>",                   desc = "Spectre open visual",             mode = "v" },
+        { "<leader>Sw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", desc = "Spectre open with selected word", mode = "n" },
         { "gR",         "<cmd>Trouble lsp_references<cr>",                                 desc = "Trouble Lsp references",          mode = "n" }
 
     })
 
     -- codelens
     wk.add({
-        { "<leader>l",    group = "Code lens" },
-        { "<leader>lcld", "<cmd>lua vim.lsp.codelens.refresh()<cr>", desc = "Refresh codelens", mode = "n" },
-        { "<leader>lclr", "<cmd>lua vim.lsp.codelens.run()<cr>",     desc = "Run codelens",     mode = "n" },
+        { "<leader>C",  group = "Code lens" },
+        { "<leader>CR", "<cmd>lua vim.lsp.codelens.refresh()<cr>", desc = "Refresh codelens", mode = "n" },
+        { "<leader>Cr", "<cmd>lua vim.lsp.codelens.run()<cr>",     desc = "Run codelens",     mode = "n" },
 
     })
 
@@ -76,6 +76,23 @@ function M.setup()
         { "<C-h>", ":wincmd h<CR>", desc = "Moving left",  mode = "n" },
         { "<C-l>", ":wincmd l<CR>", desc = "Moving right", mode = "n" },
 
+    })
+
+    -- Dadbod
+    wk.add({
+        {
+            "<leader>D",
+            group = "DatabaseUI"
+        },
+        {
+            "<leader>DB",
+            ":DBUIToggle<cr>",
+            desc = "Trigger DBUI",
+            mode = "n"
+        },
+        { "<leader>DF", ":DBUIFindBuffer<cr>", desc = "Database find buffer.", mode = "n" },
+        { "<leader>DR", ":DBUIRenameBuffer<cr>", desc = "Database rename buffer.", mode = "n" },
+        {"<leader>DL", "DBUILastQueryInfo<cr>", desc = "Last query info.", mode = n},
     })
 
     -- trouble
@@ -98,7 +115,7 @@ function M.setup()
 
     -- zen mode
     wk.add({
-        { "<leader>z", "<cmd>ZenMode<cr>", desc = "Toggle Zen mode", mode = "n" },
+        { "<leader>Z", "<cmd>ZenMode<cr>", desc = "Toggle Zen mode", mode = "n" },
     })
 
     -- lspsaga

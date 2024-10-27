@@ -6,8 +6,6 @@ function M.setup()
     local kanagawa = require("kanagawa.colors").setup()
     local colors = kanagawa.palette
 
-
-
     local conditions = {
         buffer_not_empty = function()
             return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
@@ -68,7 +66,7 @@ function M.setup()
         end,
         -- color = { fg = colors.fg },
         color = { fg = colors.katanaGray }, -- Sets highlighting of component
-        padding = { left = 0, right = 1 },  -- We don't need space before this
+        padding = { left = 0, right = 1 }, -- We don't need space before this
     })
 
     append_left({
@@ -139,10 +137,10 @@ function M.setup()
     append_left({
         "diff",
         -- Is it me or the symbol for modified us really weird
-        symbols = { added = " ", modified = "柳 ", removed = " " },
+        symbols = { added = " ", modified = " ", removed = " " },
         diff_color = {
             added = { fg = colors.springGreen },
-            modified = { fg = colors.carpYellow },
+            modified = { fg = colors.autumnYellow },
             removed = { fg = colors.peachRed },
             --[[ added = { fg = colors.git.add },
             modified = { fg = colors.git.change },
@@ -237,13 +235,11 @@ function M.setup()
         -- color = { fg = colors.dark5, gui = "bold" },
     })
 
-
     append_right({
         "progress",
-        color = { fg = colors.sumiInk1, gui = "bold" }
+        color = { fg = colors.sumiInk1, gui = "bold" },
     })
     -- append_right({ "progress", color = { fg = colors.dark3, gui = "bold" } })
-
 
     append_right({
         function()

@@ -22,37 +22,12 @@ function M.setup()
         -- mason
         {
             "williamboman/mason.nvim",
-            build = ":MasonUpdate",
-            opts = {
-                ensure_installed = { "clang-format" }
-            }
-        },
-        {
-            "williamboman/mason-lspconfig.nvim",
-            config = function()
-                require("lsp.mason").setup()
-            end,
-        },
-        {
-            "jay-babu/mason-null-ls.nvim",
-            event = { "BufReadPre", "BufNewFile" },
             dependencies = {
-                "williamboman/mason.nvim",
-                "nvimtools/none-ls.nvim",
+                "williamboman/mason-lspconfig.nvim",
+                "WhoIsSethDaniel/mason-tool-installer.nvim",
             },
             config = function()
-                require("mason-null-ls").setup({
-                    ensure_installed = { "stylua", "checkstyle", "clang-format", "prettier",
-                        "pg-format",
-                        "scalafmt", "csharpier", "google-java-format", "mypy", "eslint_d",
-                        "gitsigns", "java-debug-adapter", "cppcheck", "markdownlint", "djlint", "scalafmt",
-                        "djhtml",
-                        "vaccum",
-                        "dotenv_linter",
-                        "gofumpt",
-                        "goimports",
-                    }
-                })
+                require("lsp.mason").setup()
             end,
         },
 
@@ -322,17 +297,6 @@ function M.setup()
             opts = {},
         },
 
-        -- none-ls
-        {
-            "nvimtools/none-ls.nvim",
-
-            event = "VeryLazy",
-            opts = function()
-                return require("lsp.nullls").setup()
-            end,
-            requires = { "nvim-lua/plenary.nvim" },
-            dependencies = { "nvimtools/none-ls-extras.nvim", },
-        },
 
         {
             "akinsho/toggleterm.nvim",
@@ -470,36 +434,16 @@ function M.setup()
 
         {
             "mfussenegger/nvim-lint",
+            event = { "BufReadPre", "BufNewFile" },
             config = function()
-                local lint = require("lint")
-                lint.linter_by_ft = {
-                    python = { "ruff" }, -- python
-                }
-
-                local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-
-                vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "TextChanged" }, {
-                    group = lint_augroup,
-                    callback = function()
-                        lint.try_lint()
-                    end,
-                })
+                require("ext.tools.linting").setup()
             end,
         }, -- linting
         {
             'stevearc/conform.nvim',
-            opts = {
-                formatters_by_ft = {
-                    python = function(bufnr)
-                        local conform = require("conform")
-                        if conform.get_formatter_info("ruff_format", bufnr).available then
-                            return { { "ruff_fix" }, { "ruff_format" } }
-                        else
-                            return { "black" }
-                        end
-                    end,
-                }
-            },
+            config = function()
+                require("ext.tools.formatting").setup()
+            end,
         },
 
     })

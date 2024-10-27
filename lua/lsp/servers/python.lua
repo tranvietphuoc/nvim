@@ -5,7 +5,6 @@ local lspconfig = require("lspconfig")
 
 local M = {}
 
-
 function M.get_python_path(workspace)
     -- Use activated virtualenv.
     if vim.env.VIRTUAL_ENV then
@@ -22,19 +21,30 @@ function M.get_python_path(workspace)
 end
 
 -- callback to attach to python lsp client
-local python_attach = function(client, bufnr)
-    require("lsp").common_on_attach(client, bufnr)
+function M.python_attach(client, bufnr)
+    -- disable ruff hover
+    vim.api.nvim_create_autocmd('LspAttach', {
+        group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
+        callback = function(args)
+            local client = vim.lsp.get_client_by_id(args.data.client_id)
+            if client == nil then
+                return
+            end
+            if client.name == 'ruff' then
+                --disable hover in favor of pyright
+                client.server_capabilities.hoverProvider = false
+            end
+        end,
+        desc = 'LSP: Disable hover capability from Ruff',
+    })
 
-    -- disable hover documentation of ruff, use pyright instead
-    if client.name == 'ruff_lsp' then
-        client.server_capabilities.hoverProvider = false
-    end
+    require("lsp").common_on_attach(client, bufnr)
 end
 
 function M.setup()
     lspconfig.pyright.setup {
         cmd = { DATA .. "/mason/bin/pyright-langserver", "--stdio" },
-        on_attach = python_attach,
+        on_attach = M.python_attach,
         handlers = lsputils.lsp_diagnostics(),
         on_init = function(client)
             client.config.settings.python.pythonPath = M.get_python_path(client.config.root_dir)
@@ -57,6 +67,8 @@ function M.setup()
 
     -- ruff
     lspconfig.ruff.setup {
+        on_attach = M.python_attach,
+        filetypes = { "python" },
         init_options = {
             settings = {
                 organizeImports = true,
@@ -64,23 +76,22 @@ function M.setup()
                 lint = {
                     enable = true,
                     --[[ select = { "E", "F" },
-                    extendSelect = { "W" },
-                    ignore = { "E4", "E7" }, ]]
+                    extendSelect = { "E501" },
+                    ignore = { "E4", "E7", "F401" }, ]]
                     run = "onType",
-                    args = { "--config", "pyproject.toml" }
+                    args = { "--select=ARG,E,F,E501", "--ignore=E4,E7,F401" }
                 },
                 format = {
                     preview = true,
-                    args = { "--config", "pyproject.toml" },
+                    args = { "--config", "./pyproject.toml" },
                 },
                 codeAction = {
                     disableRuleComment = {
-                        enable = true
+                        enable = false
                     },
                     fixViolation = {
                         enable = true
                     }
-
                 },
             },
         },
