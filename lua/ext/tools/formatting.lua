@@ -19,6 +19,7 @@ function M.setup()
             go = { "gofmt", "goimports" },
             c = { "clang-format" },
             cpp = { "clang-format" },
+            markdown = { "prettier" },
         },
         format_on_save = {
             lsp_format = "fallback",

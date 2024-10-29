@@ -59,6 +59,7 @@ function M.setup()
             "djlint",
             "luacheck",
             "jsonlint",
+            "vale",
         },
     })
 end

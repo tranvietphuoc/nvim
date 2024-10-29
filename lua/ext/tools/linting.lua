@@ -15,7 +15,7 @@ function M.setup()
         javascriptreact = { "eslint_d" },
         python = { "ruff", "mypy" }, -- python
         rust = { "clippy" },
-        markdown = { "codespell" },
+        markdown = { "vale" },
         json = { "jsonlint" },
         lua = { "luacheck" },
     }
