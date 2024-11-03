@@ -129,7 +129,7 @@ function M.setup()
 
     append_left({
         "branch",
-        icon = "",
+        icon = "",
         color = { fg = colors.autumnGreen, gui = "bold" },
         -- color = { fg = colors.bright_blue, gui = "bold" },
     })
@@ -165,7 +165,7 @@ function M.setup()
     append_left({
         "diagnostics",
         sources = { "nvim_diagnostic" },
-        symbols = { error = " ", warn = " ", info = " ", hint = " " },
+        symbols = { error = " ", warn = " ", info = " ", hint = " " },
         diagnostics_color = {
             color_error = { fg = colors.autumnRed },
             color_warn = { fg = colors.autumnYellow },
@@ -199,14 +199,15 @@ function M.setup()
             end
             return msg
         end,
-        icon = "",
+        icon = " [LSP]",
+        fmt = string.upper,
         color = { fg = colors.winterYellow, gui = "bold" },
     })
 
     -- add components to right section
     append_right({
         "fileformat",
-        fmt = string.lower,
+        fmt = string.upper,
         icons_enabled = false,
         color = { fg = colors.sumiInk1, gui = "bold" },
         -- color = { fg = colors.dark5, gui = "bold" },
@@ -214,7 +215,7 @@ function M.setup()
 
     append_right({
         "o:encoding", -- option component same as &encoding in viml
-        fmt = string.lower,
+        fmt = string.upper,
         cond = conditions.hide_in_width,
         color = { fg = colors.sumiInk1, gui = "bold" },
         -- color = { fg = colors.dark5, gui = "bold" },
@@ -223,7 +224,7 @@ function M.setup()
     append_right({
         "filetype",
         cond = conditions.buffer_not_empty,
-        fmt = string.lower,
+        fmt = string.upper,
         icons_enabled = false,
         color = { fg = colors.sumiInk1, gui = "bold" },
         -- color = { fg = colors.dark5, gui = "bold" },
