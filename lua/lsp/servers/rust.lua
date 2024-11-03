@@ -17,7 +17,7 @@ end
 
 local function rust_on_attach(client, bufnr)
     require("lsp").common_on_attach(client, bufnr)
-    format_on_save(client, bufnr)
+    -- format_on_save(client, bufnr)
 end
 
 function M.setup()

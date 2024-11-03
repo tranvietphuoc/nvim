@@ -6,7 +6,6 @@ function M.setup()
     conform.setup({
 
         formatters_by_ft = {
-            ["*"] = { "codespell" },
             javascript = { "prettier" },
             typescript = { "prettier" },
             javascriptreact = { "prettier" },
@@ -16,7 +15,7 @@ function M.setup()
             yaml = { "prettier" },
             lua = { "stylua" },
             python = { "ruff_format" },
-            -- rust = { "rustfmt" },
+            rust = { "rustfmt" },
             go = { "gofmt", "goimports" },
             c = { "clang-format" },
             cpp = { "clang-format" },

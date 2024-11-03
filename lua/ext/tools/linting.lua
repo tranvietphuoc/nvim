@@ -18,6 +18,7 @@ function M.setup()
         markdown = { "vale" },
         json = { "jsonlint" },
         lua = { "luacheck" },
+        cs = { "csharpier" },
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
