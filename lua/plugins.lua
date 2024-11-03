@@ -32,9 +32,8 @@ function M.setup()
         },
 
         -- colorscheme
-        { "catppuccin/nvim",            name = "catppuccin", priority = 1000 },
+        { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
         { "rebelot/kanagawa.nvim" },
-
 
         -- clangd extensions
         { "p00f/clangd_extensions.nvim" },
@@ -96,7 +95,7 @@ function M.setup()
         -- tabline
         {
             "romgrk/barbar.nvim",
-            dependencies = { 'lewis6991/gitsigns.nvim', "nvim-tree/nvim-web-devicons" },
+            dependencies = { "lewis6991/gitsigns.nvim", "nvim-tree/nvim-web-devicons" },
             config = function()
                 require("ext.tools.barbar").setup()
             end,
@@ -131,15 +130,13 @@ function M.setup()
         { "nvim-lua/plenary.nvim" },
 
         -- go vim
-        { "fatih/vim-go",                  build = ":GoUpdateBinaries" },
+        { "fatih/vim-go", build = ":GoUpdateBinaries" },
 
         {
             "MysticalDevil/inlay-hints.nvim",
             event = "LspAttach",
             dependencies = { "neovim/nvim-lspconfig" },
         },
-
-
 
         -- vim easy align
         {
@@ -155,7 +152,6 @@ function M.setup()
             --[[ opts = {
                 inlay_hints = { enable = true },
             }, ]]
-
         },
 
         { "onsails/lspkind-nvim" },
@@ -181,7 +177,7 @@ function M.setup()
         -- auto-completion
         {
             "hrsh7th/nvim-cmp",
-        },                          -- Autocompletion plugin
+        }, -- Autocompletion plugin
         { "hrsh7th/cmp-nvim-lsp" }, -- LSP source for nvim-cmp'
         { "hrsh7th/cmp-buffer" },
         { "hrsh7th/cmp-path" },
@@ -191,7 +187,8 @@ function M.setup()
             version = "2.*",
             build = "make install_jsregexp",
             dependencies = {
-                "rafamadriz/friendly-snippets" }
+                "rafamadriz/friendly-snippets",
+            },
         },
         { "saadparwaiz1/cmp_luasnip" },
         { "hrsh7th/cmp-vsnip" },
@@ -268,7 +265,7 @@ function M.setup()
                     window = {
                         backdrop = 0.95,
                         width = 120, -- width of the Zen window
-                        height = 1,  -- height of the Zen window
+                        height = 1, -- height of the Zen window
                         options = {
                             signcolumn = "no",
                             number = true,
@@ -297,7 +294,6 @@ function M.setup()
             opts = {},
         },
 
-
         {
             "akinsho/toggleterm.nvim",
         },
@@ -319,7 +315,7 @@ function M.setup()
         -- debugger
         { "puremourning/vimspector" },
         { "mfussenegger/nvim-dap" },
-        { "rcarriga/nvim-dap-ui",   dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
+        { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
 
         {
             "folke/which-key.nvim",
@@ -340,14 +336,17 @@ function M.setup()
             tag = "0.1.4",
             dependencies = { { "nvim-lua/plenary.nvim" } },
         },
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
+        {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+        },
         {
             "FeiyouG/commander.nvim",
-            dependencies = { "nvim-telescope/telescope.nvim" }
+            dependencies = { "nvim-telescope/telescope.nvim" },
         },
         {
             "pwntester/octo.nvim",
-            dependencies = { "nvim-telescope/telescope.nvim", 'nvim-tree/nvim-web-devicons', 'nvim-lua/plenary.nvim', },
+            dependencies = { "nvim-telescope/telescope.nvim", "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" },
             config = function()
                 require("octo").setup()
             end,
@@ -412,10 +411,13 @@ function M.setup()
         -- scala metal
         {
             "scalameta/nvim-metals",
-            dependencies = { "nvim-lua/plenary.nvim", {
-                "j-hui/fidget.nvim",
-                opts = {},
-            }, },
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+                {
+                    "j-hui/fidget.nvim",
+                    opts = {},
+                },
+            },
             ft = { "scala", "sbt" },
         },
 
@@ -425,11 +427,11 @@ function M.setup()
 
         -- distant -- remote neovim
         {
-            'chipsenkbeil/distant.nvim',
-            branch = 'v0.3',
+            "chipsenkbeil/distant.nvim",
+            branch = "v0.3",
             config = function()
-                require('distant'):setup()
-            end
+                require("distant"):setup()
+            end,
         },
 
         {
@@ -440,12 +442,52 @@ function M.setup()
             end,
         }, -- linting
         {
-            'stevearc/conform.nvim',
+            "stevearc/conform.nvim",
             config = function()
                 require("ext.tools.formatting").setup()
             end,
         },
 
+        -- venv selector
+        {
+            "linux-cultist/venv-selector.nvim",
+            dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
+            branch = "regexp",
+            config = function()
+                local venv_selector = require("venv-selector")
+                venv_selector.setup({
+                    settings = {
+                        search = {},
+                    },
+                })
+
+                vim.api.nvim_create_autocmd("VimEnter", {
+                    desc = "Auto select virtualenv Nvim open",
+                    pattern = "*",
+
+                    callback = function()
+                        local venv = vim.fn.findfile("pyproject.toml", vim.fn.getcwd() .. ";")
+                        if venv ~= "" then
+                            venv_selector.retrieve_from_cache()
+                        end
+                    end,
+                    once = true,
+                })
+            end,
+            opts = {
+                -- Your options go here
+                -- name = "venv",
+
+                -- auto_refresh = false
+            },
+            event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+            keys = {
+                -- Keymap to open VenvSelector to pick a venv.
+                { "<leader>vs", "<cmd>VenvSelect<cr>" },
+                -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
+                { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
+            },
+        },
     })
 end
 

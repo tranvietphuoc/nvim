@@ -2,6 +2,7 @@ local util = require("lspconfig.util")
 local path = util.path
 local lsputils = require("lsp.utils")
 local lspconfig = require("lspconfig")
+local capabilities = require("lsp").capabilities()
 
 local M = {}
 
@@ -23,26 +24,61 @@ end
 -- callback to attach to python lsp client
 function M.python_attach(client, bufnr)
     -- disable ruff hover
-    vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
+    vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("lsp_attach_disable_ruff_hover", { clear = true }),
         callback = function(args)
             local client = vim.lsp.get_client_by_id(args.data.client_id)
             if client == nil then
                 return
             end
-            if client.name == 'ruff' then
+            if client.name == "ruff" then
                 --disable hover in favor of pyright
                 client.server_capabilities.hoverProvider = false
             end
         end,
-        desc = 'LSP: Disable hover capability from Ruff',
+        desc = "LSP: Disable hover capability from Ruff",
     })
 
     require("lsp").common_on_attach(client, bufnr)
 end
 
 function M.setup()
-    lspconfig.pyright.setup {
+    lspconfig.pylsp.setup({
+        cmd = { DATA .. "/mason/bin/pylsp" },
+        on_attach = M.python_attach,
+
+        handlers = lsputils.lsp_diagnostics(),
+        single_file_support = true,
+        filetypes = { "python" },
+        capabilities = capabilities,
+        root_dir = function(fname)
+            local root_files = {
+                "pyproject.toml",
+                "setup.py",
+                "setup.cfg",
+                "requirements.txt",
+            }
+
+            return util.root_pattern(unpack(root_files))(fname)
+                or util.find_git_ancestor(fname)
+                or util.path.dirname(fname)
+        end,
+        settings = {
+            pylsp = {
+                plugins = {
+                    -- pycodestyle = {},
+                    pylsp_mypy = {
+                        enabled = true,
+                        -- overrides = { "--python-executable", py_path, true },
+                        report_progress = true,
+                        live_mode = false,
+                    },
+                },
+            },
+        },
+    })
+
+    --[[ lspconfig.pyright.setup({
         cmd = { DATA .. "/mason/bin/pyright-langserver", "--stdio" },
         on_attach = M.python_attach,
         handlers = lsputils.lsp_diagnostics(),
@@ -60,13 +96,13 @@ function M.setup()
             pyright = {
                 -- using ruff's import organizer
                 disableOrganizeImports = true,
-            }
+            },
         },
         single_file_support = true,
-    }
+    }) ]]
 
     -- ruff
-    lspconfig.ruff.setup {
+    lspconfig.ruff.setup({
         on_attach = M.python_attach,
         filetypes = { "python" },
         init_options = {
@@ -79,7 +115,7 @@ function M.setup()
                     extendSelect = { "E501" },
                     ignore = { "E4", "E7", "F401" }, ]]
                     run = "onType",
-                    args = { "--select=ARG,E,F,E501", "--ignore=E4,E7,F401" }
+                    args = { "--select=ARG,E,F,E501", "--ignore=E4,E7,F401" },
                 },
                 format = {
                     preview = true,
@@ -87,15 +123,15 @@ function M.setup()
                 },
                 codeAction = {
                     disableRuleComment = {
-                        enable = false
+                        enable = false,
                     },
                     fixViolation = {
-                        enable = true
-                    }
+                        enable = true,
+                    },
                 },
             },
         },
-    }
+    })
 end
 
 return M
