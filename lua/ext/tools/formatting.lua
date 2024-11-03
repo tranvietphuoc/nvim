@@ -4,6 +4,7 @@ function M.setup()
     local conform = require("conform")
 
     conform.setup({
+
         formatters_by_ft = {
             ["*"] = { "codespell" },
             javascript = { "prettier" },
@@ -19,11 +20,12 @@ function M.setup()
             go = { "gofmt", "goimports" },
             c = { "clang-format" },
             cpp = { "clang-format" },
-            csharp = { "csharpier" },
+            cs = { "csharpier" },
             markdown = { "prettier" },
         },
         format_on_save = {
-            lsp_format = "fallback",
+            -- lsp_format = "fallback",
+            lsp_fallback = false,
             async = false,
             timeout_ms = 500,
         },
