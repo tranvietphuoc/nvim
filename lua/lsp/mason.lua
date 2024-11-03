@@ -16,7 +16,7 @@ function M.setup()
             "lua_ls",
             "rust_analyzer",
             "clangd",
-            "pyright",
+            "pylyzer",
             "pylsp",
             "ruff",
             "gopls",
