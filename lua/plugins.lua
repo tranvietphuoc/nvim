@@ -443,6 +443,7 @@ function M.setup()
         }, -- linting
         {
             "stevearc/conform.nvim",
+            opts = {},
             config = function()
                 require("ext.tools.formatting").setup()
             end,

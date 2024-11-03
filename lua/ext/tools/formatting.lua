@@ -23,9 +23,13 @@ function M.setup()
             markdown = { "prettier" },
         },
         format_on_save = {
-            -- lsp_format = "fallback",
-            lsp_fallback = false,
-            async = false,
+            lsp_format = "fallback",
+
+            timeout_ms = 500,
+        },
+
+        format_after_save = {
+            lsp_format = "fallback",
             timeout_ms = 500,
         },
 
