@@ -15,10 +15,11 @@ function M.setup()
             yaml = { "prettier" },
             lua = { "stylua" },
             python = { "ruff_format" },
-            rust = { "rustfmt" },
+            -- rust = { "rustfmt" },
             go = { "gofmt", "goimports" },
             c = { "clang-format" },
             cpp = { "clang-format" },
+            csharp = { "csharpier" },
             markdown = { "prettier" },
         },
         format_on_save = {

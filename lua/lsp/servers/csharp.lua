@@ -11,7 +11,7 @@ capabilities.textDocument.foldingRange = {
 
 local omnisharpExtended = require("omnisharp_extended")
 
-local toSnakeCase = function(str)
+local function toSnakeCase(str)
     return string.gsub(str, "%s*[- ]%s*", "_")
 end
 
@@ -50,7 +50,7 @@ local config = {
             LoadProjectsOnDemand = true,
         },
         Sdk = {
-            IncludePrereleases = false
+            IncludePrereleases = false,
         },
         RoslynExtensionsOptions = {
 
