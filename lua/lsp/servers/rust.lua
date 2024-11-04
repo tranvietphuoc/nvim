@@ -30,6 +30,9 @@ function M.setup()
         root_dir = util.root_pattern("Cargo.toml", "rust-project.json"),
         settings = {
             ["rust-analyzer"] = {
+                files = {
+                    excludeDirs = { "target" },
+                },
 
                 inlayHints = {
                     bindingModeHints = {

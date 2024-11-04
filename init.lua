@@ -1,8 +1,5 @@
-
-
-
 -- general
-require('plugins').setup()
+require("plugins").setup()
 require("config.autocmd").setup()
 require("config").setup()
 require("config.keymappings").setup()
@@ -14,4 +11,4 @@ require("ext").setup()
 require("lsp").setup()
 
 -- debugger
-require("dbg").setup()
+require("debug").setup()
