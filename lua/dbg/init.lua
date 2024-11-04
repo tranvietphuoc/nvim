@@ -6,39 +6,37 @@ local dap = require("dap")
 
 -- rust lldb
 dap.adapters.codelldb = {
-    type = 'server',
-    host = '127.0.0.1',
-    port = 13000 -- 💀 Use the port printed out or specified with `--port`
+    type = "server",
+    host = "127.0.0.1",
+    port = 13000, -- 💀 Use the port printed out or specified with `--port`
 }
 
 dap.adapters.codelldb = {
-    type = 'server',
+    type = "server",
     port = "${port}",
     executable = {
         -- CHANGE THIS to your path!
-        command = '/absolute/path/to/codelldb/extension/adapter/codelldb',
+        command = "/absolute/path/to/codelldb/extension/adapter/codelldb",
         args = { "--port", "${port}" },
 
         -- On windows you may have to uncomment this:
         -- detached = false,
-    }
+    },
 }
 
 -- codelldb
 dap.adapters.codelldb = {
-    type = 'server',
+    type = "server",
     port = "${port}",
     executable = {
         -- CHANGE THIS to your path!
-        command = '/absolute/path/to/codelldb/extension/adapter/codelldb',
+        command = "/absolute/path/to/codelldb/extension/adapter/codelldb",
         args = { "--port", "${port}" },
 
         -- On windows you may have to uncomment this:
         -- detached = false,
-    }
+    },
 }
-
-
 
 -- cpp lldb
 dap.configurations.cpp = {
@@ -47,9 +45,9 @@ dap.configurations.cpp = {
         type = "codelldb",
         request = "launch",
         program = function()
-            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
         end,
-        cwd = '${workspaceFolder}',
+        cwd = "${workspaceFolder}",
         stopOnEntry = false,
     },
 }
@@ -62,7 +60,7 @@ dap.adapters["local-lua"] = {
     type = "executable",
     command = "node",
     args = {
-        "/absolute/path/to/local-lua-debugger-vscode/extension/debugAdapter.js"
+        "/absolute/path/to/local-lua-debugger-vscode/extension/debugAdapter.js",
     },
     enrich_config = function(config, on_config)
         if not config["extensionPath"] then
@@ -77,40 +75,39 @@ dap.adapters["local-lua"] = {
     end,
 }
 
-
 -- java
 dap.configurations.java = {
     {
-        type = 'java',
-        request = 'attach',
-        name = 'Debug (Attach) - Remote',
+        type = "java",
+        request = "attach",
+        name = "Debug (Attach) - Remote",
         hostName = "127.0.0.1",
         port = 5005,
-    }
+    },
 }
 
 -- python
 dap.adapters.python = function(cb, config)
-    if config.request == 'attach' then
+    if config.request == "attach" then
         ---@diagnostic disable-next-line: undefined-field
         local port = (config.connect or config).port
         ---@diagnostic disable-next-line: undefined-field
-        local host = (config.connect or config).host or '127.0.0.1'
+        local host = (config.connect or config).host or "127.0.0.1"
         cb({
-            type = 'server',
-            port = assert(port, '`connect.port` is required for a python `attach` configuration'),
+            type = "server",
+            port = assert(port, "`connect.port` is required for a python `attach` configuration"),
             host = host,
             options = {
-                source_filetype = 'python',
+                source_filetype = "python",
             },
         })
     else
         cb({
-            type = 'executable',
-            command = '.venv/debugpy/bin/python',
-            args = { '-m', 'debugpy.adapter' },
+            type = "executable",
+            command = ".venv/debugpy/bin/python",
+            args = { "-m", "debugpy.adapter" },
             options = {
-                source_filetype = 'python',
+                source_filetype = "python",
             },
         })
     end
@@ -119,8 +116,8 @@ end
 dap.configurations.python = {
     {
         -- The first three options are required by nvim-dap
-        type = 'python', -- the type here established the link to the adapter definition: `dap.adapters.python`
-        request = 'launch',
+        type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
+        request = "launch",
         name = "Launch file",
 
         -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
@@ -131,12 +128,12 @@ dap.configurations.python = {
             -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
             -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
             local cwd = vim.fn.getcwd()
-            if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
-                return cwd .. '/venv/bin/python'
-            elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
-                return cwd .. '/.venv/bin/python'
+            if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
+                return cwd .. "/venv/bin/python"
+            elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+                return cwd .. "/.venv/bin/python"
             else
-                return '/usr/bin/python'
+                return "/usr/bin/python"
             end
         end,
     },
@@ -151,7 +148,7 @@ dap.adapters["pwa-node"] = {
         command = "node",
         -- 💀 Make sure to update this path to point to your installation
         args = { "/path/to/js-debug/src/dapDebugServer.js", "${port}" },
-    }
+    },
 }
 
 dap.configurations.javascript = {
@@ -166,9 +163,9 @@ dap.configurations.javascript = {
 
 -- csharp
 dap.adapters.coreclr = {
-    type = 'executable',
-    command = '~/.local/share/nvim/mason/bin/netcoredbg',
-    args = { '--interpreter=vscode' }
+    type = "executable",
+    command = "~/.local/share/nvim/mason/bin/netcoredbg",
+    args = { "--interpreter=vscode" },
 }
 dap.configurations.cs = {
     {
@@ -176,7 +173,7 @@ dap.configurations.cs = {
         name = "launch - netcoredbg",
         request = "launch",
         program = function()
-            return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+            return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
         end,
     },
 }
@@ -262,9 +259,8 @@ function M.setup()
         render = {
             max_type_length = nil, -- Can be integer or nil.
             max_value_lines = 100, -- Can be integer or nil.
-        }
+        },
     })
-
 
     vim.g.vimspector_enable_mappings = "HUMAN"
     vim.g.vimspector_install_gadgets = {
