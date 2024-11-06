@@ -17,7 +17,6 @@ local on_attach = function(client, bufnr)
     map("n", "<leader>de", "<Cmd>lua require('jdtls').extract_variable()<CR>", opts)
     map("v", "<leader>dm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opts)
 
-
     -- If using nvim-dap
     -- This requires java-debug and vscode-java-test bundles, see install steps in this README further below.
     map("n", "<leader>df", "<Cmd>lua require'jdtls'.test_class()<CR>", opts)
@@ -38,18 +37,16 @@ local function directory_exists(path)
     end
 end
 
-
 local home = os.getenv("HOME")
 local jdtls_path = home .. "/.local/share/nvim/mason/packages/jdtls/"
 local root_markers = {
-    "build.xml",    -- Ant
-    "pom.xml",      -- Maven
+    "build.xml", -- Ant
+    "pom.xml", -- Maven
     "build.gradle", -- Gradle
     "settings.gradle.kts",
     "gradlew",
-    "mvnw"
+    "mvnw",
 }
-
 
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml" }
 
@@ -63,7 +60,6 @@ else
     os_config = "linux"
 end
 
-
 local root_dir = require("jdtls.setup").find_root(root_markers)
 -- local root_dir = vim.fs.dirname(vim.fs.find(root_markers, { upward = true })[1])
 local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
@@ -74,7 +70,6 @@ if directory_exists(workspace_path) then
 else
     os.execute("mkdir " .. workspace_path)
 end
-
 
 local lombok_path = jdtls_path .. "lombok.jar"
 
@@ -92,8 +87,8 @@ capabilities.textDocument = {
                     "documentation",
                     "detail",
                     "additionalTextEdits",
-                }
-            }
+                },
+            },
         },
     },
 
@@ -135,13 +130,18 @@ local config = {
         "-Dlog.level=ALL",
         "-Xms1g",
         "-javaagent:" .. lombok_path,
-        '--add-modules=ALL-SYSTEM',
-        '--add-opens', 'java.base/java.util=ALL-UNNAMED',
-        '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+        "--add-modules=ALL-SYSTEM",
+        "--add-opens",
+        "java.base/java.util=ALL-UNNAMED",
+        "--add-opens",
+        "java.base/java.lang=ALL-UNNAMED",
 
-        "-jar", vim.fn.glob(jdtls_path .. "plugins/org.eclipse.equinox.launcher_*.jar"),
-        "-configuration", jdtls_path .. "config_" .. os_config .. "/",
-        "-data", workspace_path,
+        "-jar",
+        vim.fn.glob(jdtls_path .. "plugins/org.eclipse.equinox.launcher_*.jar"),
+        "-configuration",
+        jdtls_path .. "config_" .. os_config .. "/",
+        "-data",
+        workspace_path,
     },
 
     settings = {
@@ -151,18 +151,14 @@ local config = {
         java = {
             configuration = {
                 runtimes = {
-                    --[[ {
-                        name = "JavaSE-11",
-                        path = "/opt/homebrew/opt/openjdk@11",
-                    }, ]]
                     {
                         name = "JavaSE-17",
                         path = "/usr/lib/jvm/java-17-openjdk",
                     },
-                    --[[ {
+                    {
                         name = "JavaSE-21",
-                        path = "/opt/homebrew/opt/openjdk@21",
-                    }, ]]
+                        path = "/usr/lib/jvm/java-21-openjdk",
+                    },
                 },
             },
             eclipse = {
@@ -230,8 +226,10 @@ local config = {
         extendedClientCapabilities = extendedClientCapabilities,
         bundles = {
             vim.fn.glob(
-                vim.fn.glob(vim.fn.stdpath("data") .. "/mason/") ..
-                "packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar", "\n"),
+                vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
+                    .. "packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar",
+                "\n"
+            ),
         },
     },
 }
@@ -242,6 +240,5 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         local _, _ = pcall(vim.lsp.codelens.refresh)
     end,
 })
-
 
 jdtls.start_or_attach(config)
