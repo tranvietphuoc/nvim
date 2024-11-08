@@ -63,6 +63,18 @@ function M.setup()
             "vale",
         },
     })
+
+    require("mason-nvim-dap").setup({
+        ensure_installed = {
+            "python", -- debugpy python
+            "codelldb", -- cpp, c, rust
+            "delve", -- go
+            "coreclr", -- netcoredbg - c#
+            "javatest", -- java
+            "javadbg", -- java
+            "js", -- javascript
+        },
+    })
 end
 
 return M

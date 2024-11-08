@@ -7,7 +7,7 @@ local dap = require("dap")
 -- rust lldb
 dap.adapters.codelldb = {
     type = "server",
-    host = "127.0.0.1",
+    host = "localhost",
     port = 13000, -- 💀 Use the port printed out or specified with `--port`
 }
 
@@ -16,7 +16,7 @@ dap.adapters.codelldb = {
     port = "${port}",
     executable = {
         -- CHANGE THIS to your path!
-        command = "/absolute/path/to/codelldb/extension/adapter/codelldb",
+        command = DATA .. "/mason/bin/codelldb",
         args = { "--port", "${port}" },
 
         -- On windows you may have to uncomment this:
@@ -30,7 +30,7 @@ dap.adapters.codelldb = {
     port = "${port}",
     executable = {
         -- CHANGE THIS to your path!
-        command = "/absolute/path/to/codelldb/extension/adapter/codelldb",
+        command = DATA .. "/mason/bin/codelldb",
         args = { "--port", "${port}" },
 
         -- On windows you may have to uncomment this:
@@ -104,8 +104,8 @@ dap.adapters.python = function(cb, config)
     else
         cb({
             type = "executable",
-            command = ".venv/debugpy/bin/python",
-            args = { "-m", "debugpy.adapter" },
+            command = DATA .. "/mason/bin/debugpy",
+            args = { "-m", DATA .. "/mason/bin/debugpy-adapter" },
             options = {
                 source_filetype = "python",
             },
@@ -164,7 +164,7 @@ dap.configurations.javascript = {
 -- csharp
 dap.adapters.coreclr = {
     type = "executable",
-    command = "~/.local/share/nvim/mason/bin/netcoredbg",
+    command = DATA .. "/mason/bin/netcoredbg",
     args = { "--interpreter=vscode" },
 }
 dap.configurations.cs = {
@@ -173,14 +173,45 @@ dap.configurations.cs = {
         name = "launch - netcoredbg",
         request = "launch",
         program = function()
-            return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+            return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/bin/Debug/", "file")
         end,
     },
 }
 
 function M.setup()
+    local map = vim.keymap.set
+    local opts = { silent = true, noremap = true }
+
+    map("n", "<Leader>da", "<CMD>lua require('dap').continue()<CR>", opts)
+    map("n", "<Leader>db", "<CMD>lua require('dap').toggle_breakpoint()<CR>", opts)
+    map("n", "<Leader>dd", "<CMD>lua require('dap').continue()<CR>", opts)
+    map("n", "<Leader>dh", "<CMD>lua require('dapui').eval()<CR>", opts)
+    map("n", "<Leader>di", "<CMD>lua require('dap').step_into()<CR>", opts)
+    map("n", "<Leader>do", "<CMD>lua require('dap').step_out()<CR>", opts)
+    map("n", "<Leader>dO", "<CMD>lua require('dap').step_over()<CR>", opts)
+    map("n", "<Leader>dt", "<CMD>lua require('dap').terminate()<CR>", opts)
+    map("n", "<Leader>du", "<CMD>lua require('dapui').open()<CR>", opts)
+    map("n", "<Leader>dc", "<CMD>lua require('dapui').close()<CR>", opts)
+
+    map("n", "<Leader>dw", "<CMD>lua require('dapui').float_element('watches', { enter = true })<CR>", opts)
+    map("n", "<Leader>ds", "<CMD>lua require('dapui').float_element('scopes', { enter = true })<CR>", opts)
+    map("n", "<Leader>dr", "<CMD>lua require('dapui').float_element('repl', { enter = true })<CR>", opts)
+
     -- import adapters
     local dap, dapui = require("dap"), require("dapui")
+
+    dap.listeners.before.attach.dapui_config = function()
+        dapui.open()
+    end
+    dap.listeners.before.launch.dapui_config = function()
+        dapui.open()
+    end
+    dap.listeners.before.event_terminated.dapui_config = function()
+        dapui.close()
+    end
+    dap.listeners.before.event_exited.dapui_config = function()
+        dapui.close()
+    end
     dapui.setup({
         icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
         mappings = {
@@ -261,17 +292,6 @@ function M.setup()
             max_value_lines = 100, -- Can be integer or nil.
         },
     })
-
-    vim.g.vimspector_enable_mappings = "HUMAN"
-    vim.g.vimspector_install_gadgets = {
-        "debugpy",
-        "vscode-go",
-        "CodeLLDB",
-        "vscode-js-debug",
-        "vscode-java",
-        "netcoredbg",
-        "local-lua-debugger-vscode",
-    }
 end
 
 return M

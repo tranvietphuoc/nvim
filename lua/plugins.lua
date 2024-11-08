@@ -25,6 +25,7 @@ function M.setup()
             dependencies = {
                 "williamboman/mason-lspconfig.nvim",
                 "WhoIsSethDaniel/mason-tool-installer.nvim",
+                "jay-babu/mason-nvim-dap.nvim",
             },
             config = function()
                 require("lsp.mason").setup()
@@ -313,7 +314,6 @@ function M.setup()
         },
 
         -- debugger
-        { "puremourning/vimspector" },
         { "mfussenegger/nvim-dap" },
         { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
 
