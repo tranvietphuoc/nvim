@@ -489,6 +489,7 @@ function M.setup()
                 { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
             },
         },
+        { "github/copilot.vim" },
     })
 end
 
