@@ -489,7 +489,17 @@ function M.setup()
                 { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
             },
         },
-        { "github/copilot.vim" },
+        {
+            "nanotee/sqls.nvim",
+            config = function()
+                require("lspconfig").sqls.setup({
+                    on_attach = function(client, bufnr)
+                        require("sqls").on_attach(client, bufnr)
+                    end,
+                })
+            end,
+        },
+        -- { "github/copilot.vim" },
     })
 end
 
