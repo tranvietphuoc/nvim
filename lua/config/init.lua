@@ -86,14 +86,14 @@ function globals.init()
 
     -- clipboard
     g.clipboard = {
-        name = "TmuxClipboard",
+        name = "wl-clipboard",
         copy = {
-            ["+"] = "tmux load-buffer -w -",
-            ["*"] = "tmux load-buffer -w -",
+            ["+"] = "wl-copy",
+            ["*"] = "wl-copy",
         },
         paste = {
-            ["+"] = "tmux save-buffer -",
-            ["*"] = "tmux save-buffer -",
+            ["+"] = "wl-paste",
+            ["*"] = "wl-paste",
         },
         cache_enabled = 0,
     }

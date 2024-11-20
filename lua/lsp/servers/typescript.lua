@@ -7,8 +7,8 @@ local lspconfig = require("lspconfig")
 
 function M.setup()
     -- typescript-tools
-    require("typescript-tools").setup {
-        on_attach = function() end,
+    require("typescript-tools").setup({
+        on_attach = require("lsp").tsserver_on_attach,
         handlers = {},
         settings = {
             -- spawn additional tsserver instance to calculate diagnostics on it
@@ -65,10 +65,9 @@ function M.setup()
             tsserver_format_options = {
                 allowIncompleteCompletions = false,
                 allowRenameOfImportPath = false,
-            }
-
+            },
         },
-    }
+    })
 end
 
 return M

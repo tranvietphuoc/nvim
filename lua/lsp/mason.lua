@@ -18,6 +18,7 @@ function M.setup()
             "clangd",
             "pylyzer",
             "pylsp",
+            "ts_ls",
             "ruff",
             "gopls",
             "bashls",

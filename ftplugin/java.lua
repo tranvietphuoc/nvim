@@ -139,7 +139,7 @@ local config = {
         "-jar",
         vim.fn.glob(jdtls_path .. "plugins/org.eclipse.equinox.launcher_*.jar"),
         "-configuration",
-        jdtls_path .. "config_" .. os_config .. "/",
+        jdtls_path .. "config_" .. "linux" .. "/",
         "-data",
         workspace_path,
     },
