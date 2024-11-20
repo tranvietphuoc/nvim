@@ -3,46 +3,48 @@
 Currently, I use `Neovim` on `macOS`, so this guide will work well on `macOS` only. I will update for another platforms in future.
 This configuration supports (includes syntax highlighting and autocompletion) for these main languages:
 
--   `Python`
--   `Javascript`
--   `Typescript`
--   `Rust`
--   `C`
--   `C++`
--   `Golang`
--   `Html`
--   `Css`
--   `Lua`
--   `Cmake`
--   `Json`
--   `Docker`
--   `Yaml`
--   `Java`
--   `Scala`
--   `C#`
+- `Python`
+- `Javascript`
+- `Typescript`
+- `Rust`
+- `C`
+- `C++`
+- `Golang`
+- `Html`
+- `Css`
+- `Lua`
+- `Cmake`
+- `Json`
+- `Docker`
+- `Yaml`
+- `Java`
+- `Scala`
+- `C#`
 
 ## Prerequisites:
 
 You need to install these tools first:
 
--   [pyenv](https://github.com/pyenv/pyenv)
--   [neovim](https://github.com/neovim/neovim)
--   `python3.+`
--   `nodejs` and `npm`
--   [luajit](https://luajit.org/luajit.html)
--   [gitui](https://github.com/extrawurst/gitui)
--   [stylua](https://github.com/JohnnyMorganz/StyLua)
--   [pmd](https://pmd.github.io/latest/)
--   [openjdk](https://www.freecodecamp.org/news/install-openjdk-free-java-multi-os-guide/)
--   [dotnet-sdk](https://learn.microsoft.com/en-us/dotnet/core/install/)
--   [mono]()
--   [cppcheck](https://cppcheck.sourceforge.io/)
+- [neovim](https://github.com/neovim/neovim)
+- `python3.+`
+- `nodejs` and `npm`
+- `gcc`
+- [luajit](https://luajit.org/luajit.html)
+- [stylua](https://github.com/JohnnyMorganz/StyLua)
+- [pmd](https://pmd.github.io/latest/)
+- [java](https://wiki.archlinux.org/title/Java)
+- [dotnet-sdk](https://wiki.archlinux.org/title/.NET)
+- `aspnet-runtime`
+- `dotnet-runtime`
+- [golang](https://wiki.archlinux.org/title/Go)
+- [rust](https://www.rust-lang.org/tools/install)
+- [cppcheck](https://cppcheck.sourceforge.io/)
 
 ### Neovim
 
 In order to have all the newest features, you should install the [Nightly version](https://github.com/neovim/neovim/wiki/Installing-Neovim).
 
-And also need to install `luajit` by command: `brew install --HEAD luajit`
+And also need to install `luajit` by command: `sudo pacman -S luajit`
 
 ### Python providers
 
@@ -94,6 +96,7 @@ to open the editor first, then run command:
 :Lazy
 
 ```
+
 then press: `I` or `S` or `U`
 
 **The languages servers is automatically install later in `mason`**
@@ -116,16 +119,18 @@ You need to add `.vimspector.json` to your local project to add debugging config
 
 This configuration of `Vimspector` uses `HUMAN` mode, so there are some key in debugging:
 
--   Toggle breakpoint using `F9`
--   Trigger debugging UI using `F3`
--   Toggle debugging UI using `F4`
--   Launch debugger using `F5`
--   Step into using `F11`
--   Step out using `F12`
--   Step over using `F10`
+- Toggle breakpoint using `F9`
+- Trigger debugging UI using `F3`
+- Toggle debugging UI using `F4`
+- Launch debugger using `F5`
+- Step into using `F11`
+- Step out using `F12`
+- Step over using `F10`
 
 ### 4. Important note for `java`
+
 To use `lombok` for your `java` project, you must put these line into your `pom.xml` file at `dependencies` tag:
+
 ```
 <dependency>
 	<groupId>org.projectlombok</groupId>
@@ -136,7 +141,8 @@ To use `lombok` for your `java` project, you must put these line into your `pom.
 ```
 
 ## Todo
- - [ ] refactoring the whole files
+
+- [ ] refactoring the whole files
 
 Thanks to all authors of [these plugin](./lua/plugins.lua).
 
