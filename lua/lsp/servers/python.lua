@@ -66,6 +66,11 @@ function M.setup()
         settings = {
             pylsp = {
                 plugins = {
+                    -- auto-import
+                    rope_autoimport = {
+                        enabled = true,
+                    },
+
                     -- pycodestyle = {},
                     pylsp_mypy = {
                         enabled = true,
@@ -124,6 +129,40 @@ function M.setup()
         single_file_support = true,
     }) ]]
 
+    --pylyzer
+    --[[ lspconfig.pylyzer.setup({
+        on_attach = M.python_attach,
+        cmd = { DATA .. "/mason/bin/pylyzer", "--server" },
+        filetypes = { "python" },
+        on_init = function(client)
+            client.config.settings.python.pythonPath = M.get_python_path(client.config.root_dir)
+        end,
+        root_dir = function(fname)
+            local root_files = {
+                "pyproject.toml",
+                "setup.py",
+                "setup.cfg",
+                "requirements.txt",
+            }
+
+            return util.root_pattern(unpack(root_files))(fname)
+                or util.find_git_ancestor(fname)
+                or util.path.dirname(fname)
+        end,
+
+        handlers = lsputils.lsp_diagnostics(),
+        capabilities = capabilities,
+        single_file_support = true,
+        settings = {
+            python = {
+                checkOnType = false,
+                diagnostics = true,
+                inlayHints = true,
+                smartCompletion = true,
+            },
+        },
+    }) ]]
+
     -- ruff
     lspconfig.ruff.setup({
         on_attach = M.python_attach,
@@ -134,10 +173,6 @@ function M.setup()
                 showSyntaxErrors = true,
                 lint = {
                     enable = true,
-                    --[[ select = { "E", "F" },
-                    extendSelect = { "E501" },
-                    ignore = { "E4", "E7", "F401" }, ]]
-                    run = "onType",
                     args = { "--select=ARG,E,F,E501", "--ignore=E4,E7,F401" },
                 },
                 format = {
