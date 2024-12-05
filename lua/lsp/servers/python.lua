@@ -46,7 +46,6 @@ function M.setup()
     lspconfig.pylsp.setup({
         cmd = { DATA .. "/mason/bin/pylsp" },
         on_attach = M.python_attach,
-
         handlers = lsputils.lsp_diagnostics(),
         single_file_support = true,
         filetypes = { "python" },
@@ -58,7 +57,6 @@ function M.setup()
                 "setup.cfg",
                 "requirements.txt",
             }
-
             return util.root_pattern(unpack(root_files))(fname)
                 or util.find_git_ancestor(fname)
                 or util.path.dirname(fname)
@@ -69,9 +67,11 @@ function M.setup()
                     -- auto-import
                     rope_autoimport = {
                         enabled = true,
+                        autoimport = true,
+                        refactor = false,
+                        completion = false,
                     },
 
-                    -- pycodestyle = {},
                     pylsp_mypy = {
                         enabled = true,
                         -- overrides = { "--python-executable", py_path, true },

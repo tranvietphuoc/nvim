@@ -33,7 +33,6 @@ function M.setup()
             "emmet_ls",
             "dockerls",
             "jdtls",
-            "vimls",
             "tailwindcss",
             "texlab",
             "yamlls",
