@@ -26,7 +26,7 @@ local config = {
     cmd = { "dotnet", DATA .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
 
     capabilities = capabilities,
-    enable_roslyn_analyzers = true,
+    enable_roslyn_analysers = true,
     enable_import_completion = true,
     organize_imports_on_format = true,
     enable_decompilation_support = true,
