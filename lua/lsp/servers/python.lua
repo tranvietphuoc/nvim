@@ -66,7 +66,7 @@ function M.setup()
                 plugins = {
                     -- auto-import
                     rope_autoimport = {
-                        enabled = true,
+                        enabled = false,
                         autoimport = true,
                         refactor = false,
                         completion = false,
@@ -134,9 +134,6 @@ function M.setup()
         on_attach = M.python_attach,
         cmd = { DATA .. "/mason/bin/pylyzer", "--server" },
         filetypes = { "python" },
-        on_init = function(client)
-            client.config.settings.python.pythonPath = M.get_python_path(client.config.root_dir)
-        end,
         root_dir = function(fname)
             local root_files = {
                 "pyproject.toml",
@@ -147,7 +144,7 @@ function M.setup()
 
             return util.root_pattern(unpack(root_files))(fname)
                 or util.find_git_ancestor(fname)
-                or util.path.dirname(fname)
+                or vim.fs.dirname(fname)
         end,
 
         handlers = lsputils.lsp_diagnostics(),

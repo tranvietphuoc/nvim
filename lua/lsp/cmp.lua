@@ -2,7 +2,7 @@
 local luasnip = require("luasnip")
 local lspkind = require("lspkind")
 local cmp = require("cmp")
-local cmp_buffer = require('cmp_buffer')
+local cmp_buffer = require("cmp_buffer")
 
 local M = {}
 
@@ -18,7 +18,6 @@ function M.setup()
     require("luasnip.loaders.from_vscode").lazy_load({ exclude = { "go" } })
     require("luasnip").filetype_extend("typescript", { "javascript" })
 
-
     cmp.setup({
         snippet = {
             expand = function(args)
@@ -29,7 +28,7 @@ function M.setup()
 
         mapping = cmp.mapping.preset.insert({
             ["<C-u>"] = cmp.mapping.scroll_docs(-4), --Up
-            ["<C-d>"] = cmp.mapping.scroll_docs(4),  -- Down
+            ["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
             -- cancel selection
             ["<C-Space>"] = cmp.mapping.complete(),
             -- confirm selection
@@ -47,7 +46,7 @@ function M.setup()
                 else
                     fallback()
                 end
-            end, { 'i', 's' }),
+            end, { "i", "s" }),
 
             ["<S-Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
@@ -57,17 +56,18 @@ function M.setup()
                 else
                     fallback()
                 end
-            end, { 'i', 's' }),
+            end, { "i", "s" }),
         }),
         sources = cmp.config.sources({
-            { name = "luasnip" },
-            { name = "nvim_lsp" },
-            { name = "treesitter" },
-            { name = "path" },
+            { name = "copilot", group_index = 2 },
+            { name = "luasnip", group_index = 2 },
+            { name = "nvim_lua", group_index = 2 },
+            { name = "nvim_lsp", group_index = 2 },
+            { name = "path", group_index = 2 },
             { name = "buffer" },
         }, {
             {
-                name = 'buffer',
+                name = "buffer",
                 option = {
                     -- Complete from all visible buffers.
                     get_bufnrs = function()
@@ -78,12 +78,12 @@ function M.setup()
         }),
         window = {
             completion = {
-                border = 'rounded',
-                winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
+                border = "rounded",
+                winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
             },
             documentation = {
-                border = 'rounded',
-                winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
+                border = "rounded",
+                winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
             },
         },
         -- completion = { completeopt = "menu,menuone,noselect" },
@@ -95,12 +95,12 @@ function M.setup()
                     cmp.config.compare.score,
                     cmp.config.compare.recently_used,
                     cmp.config.compare.locality,
-                    require('clangd_extensions.cmp_scores'),
+                    require("clangd_extensions.cmp_scores"),
                     cmp.config.compare.kind,
                     cmp.config.compare.sort_text,
                     cmp.config.compare.length,
                     cmp.config.compare.order,
-                }
+                },
             },
 
             -- lspkind
@@ -108,6 +108,7 @@ function M.setup()
                 mode = "symbol",
                 maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
                 symbol_map = {
+                    Copilot = "",
                     Text = "󰉿",
                     Method = "󰆧",
                     Function = "󰊕",
@@ -153,9 +154,7 @@ function M.setup()
                     return vim_item
                 end, ]]
             }),
-
-
-        }
+        },
     })
 
     -- Autopairs

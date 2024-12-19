@@ -499,7 +499,24 @@ function M.setup()
                 })
             end,
         },
-        -- { "github/copilot.vim" },
+        {
+            "zbirenbaum/copilot.lua",
+            cmd = "Copilot",
+            event = "InsertEnter",
+            config = function()
+                require("copilot").setup({
+                    suggestion = { enable = false },
+                    panel = { enable = false },
+                })
+            end,
+        },
+        {
+            "zbirenbaum/copilot-cmp",
+            dependencies = { "zbirenbaum/copilot.lua" },
+            config = function()
+                require("copilot_cmp").setup()
+            end,
+        },
     })
 end
 

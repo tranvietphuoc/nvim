@@ -97,7 +97,7 @@ function globals.init()
         },
         cache_enabled = 0,
     }
-    opt.clipboard = "unnamedplus"
+    opt.clipboard:append("unnamedplus")
 
     opt.iskeyword:append("-") -- treat dash seperate words as word
     opt.runtimepath:append("~/.fzf/bin/fzf") --runtimepath -- for mac
