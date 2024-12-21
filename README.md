@@ -1,6 +1,6 @@
 # My configurations for Neovim editor
 
-Currently, I use `Neovim` on `macOS`, so this guide will work well on `macOS` only. I will update for another platforms in future.
+Currently, I use `Neovim` on `Arch Linux`, so this guide will work well on `Arch Linux` only. I will update for another platforms in future.
 This configuration supports (includes syntax highlighting and autocompletion) for these main languages:
 
 - `Python`
@@ -72,17 +72,8 @@ npm install -g neovim
 
 ### 1. Install.
 
-Run this command if you use fish shell:
-
-```
-bash (curl -s https://raw.githubusercontent.com/tranvietphuoc/nvim/master/install.sh | psub)
-```
-
-or if you use another shell:
-
-```
-bash <(curl -s https://raw.githubusercontent.com/tranvietphuoc/nvim/master/install.sh)
-```
+- [ ] Need to build a bash script to install it automatically
+- Currently, you can only clone it into your `$HOME/.config` directory and fix it manually.
 
 and then type to the terminal command:
 
@@ -103,9 +94,7 @@ then press: `I` or `S` or `U`
 
 **For debuggers install**
 
-I use [vimspector](https://github.com/puremourning/vimspector) as a debugger adapter.
-
-You can add more `gadgets` by adding in `lua/debugger/init.lua`. Then run `:VimspectorInstall` to install gadgets.
+I use [dap](https://github.com/mfussenegger/nvim-dap) and [mason-dap](https://github.com/jay-babu/mason-nvim-dap.nvim) to install debuggers
 
 **You can config your settings in** `config/init.lua` **file.**
 
@@ -115,21 +104,11 @@ Because this configuration using `which-key.nvim`. So you can see all keymapping
 
 ### 3. For debugging.
 
-You need to add `.vimspector.json` to your local project to add debugging configurations first. The guide's [here](https://puremourning.github.io/vimspector/configuration.html).
-
-This configuration of `Vimspector` uses `HUMAN` mode, so there are some key in debugging:
-
-- Toggle breakpoint using `F9`
-- Trigger debugging UI using `F3`
-- Toggle debugging UI using `F4`
-- Launch debugger using `F5`
-- Step into using `F11`
-- Step out using `F12`
-- Step over using `F10`
+- [ ] NotImplemented
 
 ### 4. Important note for `java`
 
-To use `lombok` for your `java` project, you must put these line into your `pom.xml` file at `dependencies` tag:
+To use `lombok` for your `java` project, you must put these line into your `pom.xml` file at `dependencies` tag if you're using `maven`:
 
 ```
 <dependency>
@@ -143,6 +122,7 @@ To use `lombok` for your `java` project, you must put these line into your `pom.
 ## Todo
 
 - [ ] refactoring the whole files
+- [ ] completely config nvim-dap
 
 Thanks to all authors of [these plugin](./lua/plugins.lua).
 
