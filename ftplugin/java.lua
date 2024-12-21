@@ -52,12 +52,14 @@ local root_markers = { ".git", "mvnw", "gradlew", "pom.xml" }
 
 -- get the current OS
 local os_config
-if vim.fn.has("mac") then
+if vim.fn.has("macunix") == 1 then
     os_config = "mac"
-elseif vim.fn.has("win32") then
+elseif vim.fn.has("win32") == 1 then
     os_config = "win"
-else
+elseif vim.fn.has("unix") == 1 then
     os_config = "linux"
+else -- let's assume linux
+    os_config = "unknown"
 end
 
 local root_dir = require("jdtls.setup").find_root(root_markers)
@@ -139,7 +141,7 @@ local config = {
         "-jar",
         vim.fn.glob(jdtls_path .. "plugins/org.eclipse.equinox.launcher_*.jar"),
         "-configuration",
-        jdtls_path .. "config_" .. "linux" .. "/",
+        jdtls_path .. "config_" .. os_config .. "/",
         "-data",
         workspace_path,
     },
@@ -216,7 +218,7 @@ local config = {
             inlayHints = {
                 parameterNames = {
                     enabled = "all",
-                    -- exclusions = { "this" },
+                    exclusions = { "this" },
                 },
             },
         },
