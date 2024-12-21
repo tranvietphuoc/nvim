@@ -6,7 +6,7 @@ local capabilities = require("lsp").capabilities()
 
 local M = {}
 
-function M.get_python_path(workspace)
+function M._python_path(workspace)
     -- Use activated virtualenv.
     if vim.env.VIRTUAL_ENV then
         return path.join(vim.env.VIRTUAL_ENV, "bin", "python")
@@ -19,6 +19,10 @@ function M.get_python_path(workspace)
     end
     -- Fallback to system Python.
     return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python3"
+end
+
+function M._environment()
+    return vim.fn.getenv("VIRTUAL_ENV") or vim.fn.exepath("python3")
 end
 
 -- callback to attach to python lsp client
@@ -43,10 +47,14 @@ function M.python_attach(client, bufnr)
 end
 
 function M.setup()
-    lspconfig.pylsp.setup({
+    --[[ lspconfig.pylsp.setup({
         cmd = { DATA .. "/mason/bin/pylsp" },
         on_attach = M.python_attach,
         handlers = lsputils.lsp_diagnostics(),
+        on_init = function(client)
+            -- client.config.settings.python.pythonPath = M.get_python_path(client.config.root_dir)
+            client.config.settings.pylsp.plugins.jedi.environment = M._environment() --M._python_path(client.config.root_dir)
+        end,
         single_file_support = true,
         filetypes = { "python" },
         capabilities = capabilities,
@@ -63,13 +71,20 @@ function M.setup()
         end,
         settings = {
             pylsp = {
+                configurationSources = { "ruff" },
                 plugins = {
                     -- auto-import
                     rope_autoimport = {
                         enabled = false,
-                        autoimport = true,
-                        refactor = false,
-                        completion = false,
+                        -- autoimport = false,
+                        -- refactor = false,
+                        -- completion = false,
+                    },
+
+                    jedi = {
+                        extra_paths = {},
+                        env_vars = nil,
+                        environment = nil,
                     },
 
                     pylsp_mypy = {
@@ -104,14 +119,14 @@ function M.setup()
                 },
             },
         },
-    })
+    }) ]]
 
-    --[[ lspconfig.pyright.setup({
+    lspconfig.pyright.setup({
         cmd = { DATA .. "/mason/bin/pyright-langserver", "--stdio" },
         on_attach = M.python_attach,
         handlers = lsputils.lsp_diagnostics(),
         on_init = function(client)
-            client.config.settings.python.pythonPath = M.get_python_path(client.config.root_dir)
+            client.config.settings.python.pythonPath = M._python_path(client.config.root_dir)
         end,
         settings = {
             python = {
@@ -127,7 +142,7 @@ function M.setup()
             },
         },
         single_file_support = true,
-    }) ]]
+    })
 
     --pylyzer
     --[[ lspconfig.pylyzer.setup({
@@ -154,7 +169,7 @@ function M.setup()
             python = {
                 checkOnType = false,
                 diagnostics = true,
-                inlayHints = true,
+                inlayHints = false,
                 smartCompletion = true,
             },
         },
