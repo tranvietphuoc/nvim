@@ -105,7 +105,8 @@ function M.setup()
 
             -- lspkind
             format = lspkind.cmp_format({
-                mode = "symbol",
+                mode = "symbol_text",
+                preset = "codicons",
                 maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
                 symbol_map = {
                     Copilot = "",
