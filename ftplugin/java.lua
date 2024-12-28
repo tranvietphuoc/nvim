@@ -39,15 +39,6 @@ end
 
 local home = os.getenv("HOME")
 local jdtls_path = home .. "/.local/share/nvim/mason/packages/jdtls/"
-local root_markers = {
-    "build.xml", -- Ant
-    "pom.xml", -- Maven
-    "build.gradle", -- Gradle
-    "settings.gradle.kts",
-    "gradlew",
-    "mvnw",
-}
-
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml" }
 
 -- get the current OS
