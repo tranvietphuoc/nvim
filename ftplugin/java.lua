@@ -139,7 +139,7 @@ local config = {
 
     settings = {
         ["java.format.settings.profile"] = "GoogleStyle",
-        -- ['java.format.settings.url'] = home .. "/.config/nvim/language-servers/java-google-formatter.xml",
+        -- ["java.format.settings.url"] = "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
         --
         java = {
             configuration = {
