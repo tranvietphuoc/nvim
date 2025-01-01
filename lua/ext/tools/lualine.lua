@@ -199,15 +199,15 @@ function M.setup()
             end
             return msg
         end,
-        icon = " [LSP]",
-        fmt = string.upper,
+        icon = " [lsp]",
+        -- fmt = string.upper,
         color = { fg = colors.winterYellow, gui = "bold" },
     })
 
     -- add components to right section
     append_right({
         "fileformat",
-        fmt = string.upper,
+        -- fmt = string.upper,
         icons_enabled = false,
         color = { fg = colors.sumiInk1, gui = "bold" },
         -- color = { fg = colors.dark5, gui = "bold" },
@@ -215,7 +215,7 @@ function M.setup()
 
     append_right({
         "o:encoding", -- option component same as &encoding in viml
-        fmt = string.upper,
+        -- fmt = string.upper,
         cond = conditions.hide_in_width,
         color = { fg = colors.sumiInk1, gui = "bold" },
         -- color = { fg = colors.dark5, gui = "bold" },
@@ -224,7 +224,7 @@ function M.setup()
     append_right({
         "filetype",
         cond = conditions.buffer_not_empty,
-        fmt = string.upper,
+        -- fmt = string.upper,
         icons_enabled = false,
         color = { fg = colors.sumiInk1, gui = "bold" },
         -- color = { fg = colors.dark5, gui = "bold" },
