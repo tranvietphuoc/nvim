@@ -13,25 +13,20 @@ function M.capabilities()
 end
 
 function M.attach(client, bufnr)
-    map('n', '[d', vim.diagnostic.goto_prev)
-    map('n', ']d', vim.diagnostic.goto_next)
-    map('n', '<leader>e', vim.diagnostic.open_float) -- open diagnostic buffer with floating window
-    map('n', '<leader>q', vim.diagnostic.setloclist) -- open diagnostic buffer
-
+    map("n", "[d", vim.diagnostic.goto_prev)
+    map("n", "]d", vim.diagnostic.goto_next)
+    map("n", "<leader>e", vim.diagnostic.open_float) -- open diagnostic buffer with floating window
+    map("n", "<leader>q", vim.diagnostic.setloclist) -- open diagnostic buffer
 
     local opts = { noremap = true, silent = true, buffer = bufnr }
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    --turn on inlay hints
     -- vim.lsp.inlay_hint(bufnr, true)
     -- toggle inlay hint
     opts.desc = "Toggle inlayhints"
-    map("n", '<leader>i', function()
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
-        end,
-        opts
-    )
-
+    map("n", "<leader>i", function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
+    end, opts)
 
     -- lsp config
     opts.desc = "Restart LSP"
@@ -70,9 +65,8 @@ function M.attach(client, bufnr)
     opts.desc = "Lspsaga rename"
     map("n", "gr", "<cmd>Lspsaga rename<cr>", opts) -- Rename all occurrences of the hovered word for the entire file
 
-
     opts.desc = "Show lsp outline"
-    map('n', "<leader>o", "<cmd>Lspsaga outline<cr>", opts) -- show lsp outline
+    map("n", "<leader>o", "<cmd>Lspsaga outline<cr>", opts) -- show lsp outline
 
     opts.desc = "Lspsaga show line diagnostics"
     map("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<cr>", opts) -- show_line_diagnostics
@@ -91,10 +85,8 @@ function M.attach(client, bufnr)
         require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
     end)
 
-
     map("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<cr>")
     map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<cr>")
-
 
     local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
@@ -146,11 +138,9 @@ function M.setup()
     local dir = os.getenv("HOME") .. "/.config/nvim/lua/lsp/servers/"
     local files = listFiles(dir)
 
-
-
     for _, file in ipairs(files) do
         -- print(file)
-        require('lsp.servers.' .. file).setup()
+        require("lsp.servers." .. file).setup()
     end
 
     require("lsp.cmp").setup()
