@@ -7,7 +7,7 @@ function M.auto_cmds()
     vim.g.dracula_transparent_bg = false
 
     cmd(
-        "autocmd BufRead,BufNewFile *.java,*.js,*.ts,*.tsx,*.jsx,*.json,*.html,*.css,*.yml,*.svelte setlocal expandtab ts=2 sw=2 sts=2"
+        "autocmd BufRead,BufNewFile *.java,*.c,*.h,*.cpp,*.hpp,*.js,*.ts,*.tsx,*.jsx,*.json,*.html,*.css,*.yml setlocal expandtab ts=2 sw=2 sts=2"
     )
     cmd("autocmd BufRead,BufNewFile *.scala,*.sbt setlocal expandtab ts=3 sw=3 sts=3")
     cmd("autocmd BufNewFile,BufRead *.go setlocal noexpandtab ts=8 sw=8")
