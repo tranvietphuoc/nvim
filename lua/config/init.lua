@@ -31,6 +31,7 @@ function globals.init()
 
     -- opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
 
+    opt.laststatus = 3 -- always display status line
     g.did_load_filetypes = 1
     o.foldmethod = "expr"
     o.foldexpr = "nvim_treesitter#foldexpr()"
