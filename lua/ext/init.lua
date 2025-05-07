@@ -12,6 +12,7 @@ function M.setup()
     require("ext.tools.telescoped").setup()
     require("ext.tools.indent-blankline").setup()
     require("ext.tools.terminal").setup()
+    -- require("ext.tools.odools").setup()
 end
 
 return M

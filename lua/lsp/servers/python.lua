@@ -199,6 +199,7 @@ function M.setup()
                         enable = true,
                     },
                 },
+                logLevel = "debug",
             },
         },
     })

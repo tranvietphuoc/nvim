@@ -35,6 +35,12 @@ function M.setup()
         -- colorscheme
         { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
         { "rebelot/kanagawa.nvim" },
+        {
+            "folke/tokyonight.nvim",
+            lazy = false,
+            priority = 1000,
+            opts = {},
+        },
 
         -- clangd extensions
         { "p00f/clangd_extensions.nvim" },
@@ -529,6 +535,10 @@ function M.setup()
                 -- See Configuration section for options
             },
             -- See Commands section for default commands if you want to lazy load on them
+        },
+        {
+            "whenrow/odoo-ls.nvim",
+            dependencies = { "neovim/nvim-lspconfig" },
         },
         {
             "yetone/avante.nvim",
