@@ -34,17 +34,20 @@ function M.setup()
     telescope.setup({
         defaults = {
             file_ignore_patterns = {
-                "node_modules/*",
-                "__pycache__/*",
-                "target/*",
-                ".venv/*",
-                ".git/*",
-                ".mypy_cache/*",
-                "jdt.ls-java-project/*",
+                "node_modules",
+                "__pycache__",
+                "target",
+                ".venv",
+                ".git",
+                ".mypy_cache",
+                "jdt.ls-java-project",
+                "bin",
+                ".metals",
+                ".bloop",
             },
 
             layout_config = {
-                vertical = { width = 0.5 },
+                vertical = { width = 0.8, height = 0.8 },
             },
             -- Default configuration for telescope goes here:
             -- config_key = value,
@@ -58,35 +61,10 @@ function M.setup()
                 },
                 n = { ["<c-t>"] = open_with_trouble },
             },
-        },
-        pickers = {
-            find_files = {
-                theme = "ivy",
-            },
-            live_grep = {
-                theme = "ivy",
-            },
-            buffers = {
-                theme = "ivy",
-            },
-            command_history = {
-                theme = "ivy",
-            },
-            search_history = {
-                theme = "ivy",
-            },
-            quickfix = {
-                theme = "ivy",
-            },
-            git_commits = {
-                theme = "ivy",
-            },
-            git_branches = {
-                theme = "ivy",
-            },
-            git_status = {
-                them = "ivy",
-            },
+            sorting_strategy = "ascending",
+            layout_strategy = "horizontal",
+            winblend = 5,
+            border = true,
         },
         extensions = {
             fzf = {
@@ -94,13 +72,14 @@ function M.setup()
                 override_generic_sorter = true, -- override the generic sorter
                 override_file_sorter = true, -- override the file sorter
                 case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-                -- the default case_mode is "smart_case"
             },
         },
     })
 
-    telescope.load_extension("fzf")
-    telescope.load_extension("command_center")
+    pcall(function()
+        telescope.load_extension("fzf")
+        telescope.load_extension("command_center")
+    end)
 end
 
 return M

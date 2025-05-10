@@ -599,6 +599,24 @@ function M.setup()
                 },
             },
         },
+        {
+            "stevearc/oil.nvim",
+            ---@module 'oil'
+            ---@type oil.SetupOpts
+            opts = {},
+            -- Optional dependencies
+            dependencies = { { "echasnovski/mini.icons", opts = {} } },
+            -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+            -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+            lazy = false,
+            config = function()
+                require("oil").setup({
+                    -- Your configuration comes here
+                    -- You can also omit the options and use the default settings
+                    -- See:
+                })
+            end,
+        },
     })
 end
 
