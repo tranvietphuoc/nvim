@@ -40,7 +40,7 @@ function globals.init()
     cmd([[let &titleold                            = "' .. TERMINAL .. '"]])
     o.titlestring = "%<%F%=%l/%L - nvim"
     -- o.completeopt = "menuone,noselect"
-    vim.opt.completeopt = { "menu", "menuone", "noselect" }
+    vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
     opt.tabstop = 4 -- Insert 2 spaces for a tab
     opt.shiftwidth = 4 -- Change the number of space characters inserted for indentation
     opt.expandtab = true -- Converts tabs to spaces
