@@ -26,6 +26,7 @@ function M.setup()
             "toml",
             "rst",
             "html",
+            "xml",
             "css",
             "bash",
             "lua",
@@ -82,7 +83,7 @@ function M.setup()
         playground = {
             enable = true,
             disable = {},
-            updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
+            updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
             persist_queries = false, -- Whether the query persists across vim sessions
         },
         textobjects = {
