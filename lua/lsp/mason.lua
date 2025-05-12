@@ -42,6 +42,9 @@ function M.setup()
             "verible",
             "lemminx",
         },
+        automatic_installation = true,
+        automatic_enable = false, -- don't automatically enable lsp servers, use each servers instead
+        handlers = {},
     })
 
     require("mason-tool-installer").setup({

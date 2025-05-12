@@ -1,4 +1,5 @@
 local M = {}
+local util = require("lspconfig.util")
 
 --[[ function M.lsp_highlight(client, bufnr)
     if client.server_capabilities.documentHighlightProvider then

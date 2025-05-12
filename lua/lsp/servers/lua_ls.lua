@@ -10,7 +10,7 @@ local lspconfig = require("lspconfig")
 local M = {}
 
 function M.setup()
-    lspconfig.lua_ls.setup {
+    lspconfig.lua_ls.setup({
         cmd = { lua_ls_binary }, -- "-E", lua_ls_root .. "/extension/server/bin/main.lua" },
         on_attach = require("lsp").common_on_attach,
         settings = {
@@ -37,7 +37,7 @@ function M.setup()
                 },
             },
         },
-    }
+    })
 end
 
 return M

@@ -15,7 +15,7 @@ end
 local select_opts = { behavior = cmp.SelectBehavior.Select }
 
 function M.setup()
-    require("luasnip.loaders.from_vscode").lazy_load({ exclude = { "go" } })
+    require("luasnip.loaders.from_vscode").lazy_load()
     require("luasnip").filetype_extend("typescript", { "javascript" })
 
     cmp.setup({

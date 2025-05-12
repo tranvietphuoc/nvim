@@ -1,11 +1,10 @@
 -- npm install -g @tailwindcss/language-server
 local M = {}
 
-
 local lspconfig = require("lspconfig")
 
 function M.setup()
-    lspconfig.tailwindcss.setup {
+    lspconfig.tailwindcss.setup({
         cmd = { DATA .. "/mason/bin/tailwindcss-language-server", "--stdio" },
         filetypes = {
             "css",
@@ -44,7 +43,7 @@ function M.setup()
                 validate = true,
             },
         },
-    }
+    })
 end
 
 return M

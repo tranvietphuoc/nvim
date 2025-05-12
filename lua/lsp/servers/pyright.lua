@@ -6,6 +6,15 @@ local capabilities = require("lsp").capabilities()
 
 local M = {}
 
+local function is_client_already_attached(name, root_dir)
+    for _, client in pairs(vim.lsp.get_active_clients()) do
+        if client.name == name and client.config.root_dir == root_dir then
+            return true
+        end
+    end
+    return false
+end
+
 function M._python_path(workspace)
     -- Use activated virtualenv.
     if vim.env.VIRTUAL_ENV then
@@ -122,6 +131,7 @@ function M.setup()
     }) ]]
 
     lspconfig.pyright.setup({
+        enable = false,
         cmd = { DATA .. "/mason/bin/pyright-langserver", "--stdio" },
         on_attach = M.python_attach,
         handlers = lsputils.lsp_diagnostics(),
@@ -142,38 +152,8 @@ function M.setup()
             },
         },
         single_file_support = true,
+        root_dir = util.find_git_ancestor(fname) or vim.fn.getcwd(),
     })
-
-    --pylyzer
-    --[[ lspconfig.pylyzer.setup({
-        on_attach = M.python_attach,
-        cmd = { DATA .. "/mason/bin/pylyzer", "--server" },
-        filetypes = { "python" },
-        root_dir = function(fname)
-            local root_files = {
-                "pyproject.toml",
-                "setup.py",
-                "setup.cfg",
-                "requirements.txt",
-            }
-
-            return util.root_pattern(unpack(root_files))(fname)
-                or util.find_git_ancestor(fname)
-                or vim.fs.dirname(fname)
-        end,
-
-        handlers = lsputils.lsp_diagnostics(),
-        capabilities = capabilities,
-        single_file_support = true,
-        settings = {
-            python = {
-                checkOnType = false,
-                diagnostics = true,
-                inlayHints = false,
-                smartCompletion = true,
-            },
-        },
-    }) ]]
 
     -- ruff
     lspconfig.ruff.setup({

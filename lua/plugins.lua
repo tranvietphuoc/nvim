@@ -118,15 +118,11 @@ function M.setup()
         {
             "iamcco/markdown-preview.nvim",
             cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-            build = "cd app && yarn install",
-            config = function()
-                vim.g.mkdp_filetypes = {
-                    "markdown",
-                }
+            build = "cd app && npm install",
+            init = function()
+                vim.g.mkdp_filetypes = { "markdown" }
             end,
-            ft = {
-                "markdown",
-            },
+            ft = { "markdown" },
         },
         { "christoomey/vim-tmux-navigator" },
 
@@ -191,18 +187,17 @@ function M.setup()
         { "hrsh7th/cmp-cmdline" },
         {
             "L3MON4D3/LuaSnip",
-            version = "2.*",
+            version = "v2.*",
             build = "make install_jsregexp",
             dependencies = {
                 "rafamadriz/friendly-snippets",
+                "mstuttgart/vscode-odoo-snippets",
             },
         },
         { "saadparwaiz1/cmp_luasnip" },
-        { "hrsh7th/cmp-vsnip" },
 
         -- snippet
         { "cstrap/python-snippets" },
-        { "ylcnfrht/vscode-python-snippet-pack" },
         { "xabikos/vscode-javascript" },
         { "golang/vscode-go" },
         { "rust-lang/vscode-rust" },
