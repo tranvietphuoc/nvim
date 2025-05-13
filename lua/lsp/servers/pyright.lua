@@ -6,6 +6,20 @@ local capabilities = require("lsp").capabilities()
 
 local M = {}
 
+local function find_extra_paths(root_dir)
+    local result = {}
+    local candidates = { "odoo", "src", "lib", "tutorials", "addons", "my_addons", "custom_addons" }
+
+    for _, name in ipairs(candidates) do
+        local candidate = path.join(root_dir, name)
+        if vim.fn.isdirectory(candidate) == 1 then
+            table.insert(result, candidate)
+        end
+    end
+
+    return result
+end
+
 local function is_client_already_attached(name, root_dir)
     for _, client in pairs(vim.lsp.get_active_clients()) do
         if client.name == name and client.config.root_dir == root_dir then
@@ -136,7 +150,16 @@ function M.setup()
         on_attach = M.python_attach,
         handlers = lsputils.lsp_diagnostics(),
         on_init = function(client)
-            client.config.settings.python.pythonPath = M._python_path(client.config.root_dir)
+            local root_dir = client.config.root_dir
+            client.config.settings.python = vim.tbl_deep_extend("force", client.config.settings.python or {}, {
+                pythonPath = M._python_path(root_dir),
+                analysis = {
+                    autoSearchPaths = true,
+                    diagnosticMode = "workspace",
+                    useLibraryCodeForTypes = true,
+                    extraPaths = find_extra_paths(root_dir),
+                },
+            })
         end,
         settings = {
             python = {
