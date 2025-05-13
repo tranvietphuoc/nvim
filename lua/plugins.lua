@@ -532,10 +532,6 @@ function M.setup()
             -- See Commands section for default commands if you want to lazy load on them
         },
         {
-            "whenrow/odoo-ls.nvim",
-            dependencies = { "neovim/nvim-lspconfig" },
-        },
-        {
             "yetone/avante.nvim",
             event = "VeryLazy",
             version = false, -- Never set this value to "*"! Never!
