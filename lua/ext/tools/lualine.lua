@@ -199,7 +199,7 @@ function M.setup()
             end
             return msg
         end,
-        icon = " [lsp]",
+        icon = " ",
         -- fmt = string.upper,
         color = { fg = colors.winterYellow, gui = "bold" },
     })

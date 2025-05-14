@@ -33,6 +33,27 @@ function M.setup()
 
     telescope.setup({
         defaults = {
+            vimgrep_arguments = {
+                "rg",
+                "--color=never",
+                "--no-heading",
+                "--with-filename",
+                "--line-number",
+                "--column",
+                "--smart-case",
+                "--hidden",
+                "--no-ignore",
+            },
+            find_command = {
+                "fd",
+                "--type",
+                "f",
+                "--strip-cwd-prefix",
+                "--hidden",
+                "--no-ignore",
+                "--exclude",
+                ".git",
+            },
             file_ignore_patterns = {
                 "node_modules",
                 "__pycache__",
@@ -80,6 +101,25 @@ function M.setup()
         telescope.load_extension("fzf")
         telescope.load_extension("command_center")
     end)
+
+    -- Override default find_files
+    local builtin = require("telescope.builtin")
+    local original_find_files = builtin.find_files
+
+    builtin.find_files = function(opts)
+        opts = opts or {}
+        opts.find_command = {
+            "fd",
+            "--type",
+            "f",
+            "--strip-cwd-prefix",
+            "--hidden",
+            "--no-ignore",
+            "--exclude",
+            ".git",
+        }
+        original_find_files(opts)
+    end
 end
 
 return M
