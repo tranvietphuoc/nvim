@@ -32,9 +32,20 @@ function M.setup()
             -- cancel selection
             ["<C-Space>"] = cmp.mapping.complete(),
             -- confirm selection
-            ["<CR>"] = cmp.mapping.confirm({
-                select = true,
-            }),
+            ["<CR>"] = cmp.mapping(function(fallback)
+                if cmp.visible() and cmp.get_selected_entry() then
+                    local entry = cmp.get_selected_entry()
+                    if entry.source.name == "copilot" then
+                        -- only confirm when selected Copilot (it's mean Tab come first then <CR> works)
+                        cmp.confirm({ select = false })
+                    else
+                        -- another source => auto-select
+                        cmp.confirm({ select = true })
+                    end
+                else
+                    fallback()
+                end
+            end, { "i", "s" }),
 
             ["<Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
@@ -86,7 +97,7 @@ function M.setup()
                 winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
             },
         },
-        -- completion = { completeopt = "menu,menuone,noselect" },
+        completion = { completeopt = "menu,menuone,noinsert,noselect" },
         formatting = {
             sorting = {
                 comparators = {
