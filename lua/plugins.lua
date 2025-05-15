@@ -318,14 +318,6 @@ function M.setup()
         { "mfussenegger/nvim-dap" },
         { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
 
-        {
-            "folke/which-key.nvim",
-            event = "VeryLazy",
-            config = function()
-                require("which-key").setup()
-            end,
-        },
-
         -- statusline components
 
         {
@@ -399,7 +391,30 @@ function M.setup()
                 },
             },
         },
-        { "chrisbra/csv.vim" },
+        {
+            "chrisbra/csv.vim",
+            config = function()
+                vim.g.csv_delim = ","
+                vim.g.csv_highlight_column = "y"
+
+                -- Tạo autocmd tự động chạy ArrangeColumn và bật conceal khi mở csv
+                vim.api.nvim_create_autocmd("FileType", {
+                    pattern = "csv",
+                    callback = function()
+                        vim.opt_local.conceallevel = 2
+                        vim.opt_local.concealcursor = "nc"
+                        vim.cmd("silent! ArrangeColumn")
+                    end,
+                })
+            end,
+        },
+        {
+            "godlygeek/tabular",
+            cmd = { "Tabularize" },
+            keys = {
+                { "<leader>tc", ":Tabularize /,<CR>", desc = "Align column CSV with ," },
+            },
+        },
 
         -- live server
         {
@@ -606,6 +621,13 @@ function M.setup()
                     -- You can also omit the options and use the default settings
                     -- See:
                 })
+            end,
+        },
+        {
+            "folke/which-key.nvim",
+            event = "VeryLazy",
+            config = function()
+                require("which-key").setup()
             end,
         },
     })
