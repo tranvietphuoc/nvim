@@ -118,7 +118,7 @@ function M.setup()
         {
             "iamcco/markdown-preview.nvim",
             cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-            build = "cd app && npm install",
+            build = "cd app && yarn install",
             init = function()
                 vim.g.mkdp_filetypes = { "markdown" }
             end,
@@ -491,12 +491,7 @@ function M.setup()
                     once = true,
                 })
             end,
-            opts = {
-                -- Your options go here
-                -- name = "venv",
-
-                -- auto_refresh = false
-            },
+            opts = {},
             event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
             keys = {
                 -- Keymap to open VenvSelector to pick a venv.
