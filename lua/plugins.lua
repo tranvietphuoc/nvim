@@ -33,7 +33,25 @@ function M.setup()
         },
 
         -- colorscheme
-        { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+        {
+            "catppuccin/nvim",
+            name = "catppuccin",
+            priority = 1000,
+            config = function()
+                require("catppuccin").setup({
+                    flavour = "latte",
+                    integrations = {
+                        cmp = true,
+                        treesitter = true,
+                        telescope = true,
+                        gitsigns = true,
+                        notify = true,
+                        mini = true,
+                    },
+                })
+                vim.cmd("colorscheme catppuccin")
+            end,
+        },
         { "rebelot/kanagawa.nvim" },
         {
             "folke/tokyonight.nvim",
@@ -57,6 +75,56 @@ function M.setup()
             -- tag = 'release' -- To use the latest release
         },
         {
+            "sindrets/diffview.nvim",
+        },
+        {
+            "isakbm/gitgraph.nvim",
+            dependencies = {
+                "sindrets/diffview.nvim",
+            },
+            opts = {
+                git_cmd = "git",
+                symbols = {
+                    merge_commit = "M",
+                    commit = "*",
+                },
+                format = {
+                    timestamp = "%H:%M:%S %d-%m-%Y",
+                    fields = { "hash", "timestamp", "author", "branch_name", "tag" },
+                },
+                hooks = {
+                    on_select_commit = function(commit)
+                        print("selected commit:", commit.hash)
+                    end,
+                    on_select_range_commit = function(from, to)
+                        print("selected range:", from.hash, to.hash)
+                    end,
+                    -- Check diff of a commit
+                    on_select_commit = function(commit)
+                        vim.notify("DiffviewOpen " .. commit.hash .. "^!")
+                        vim.cmd(":DiffviewOpen " .. commit.hash .. "^!")
+                    end,
+                    -- Check diff from commit a -> commit b
+                    on_select_range_commit = function(from, to)
+                        vim.notify("DiffviewOpen " .. from.hash .. "~1.." .. to.hash)
+                        vim.cmd(":DiffviewOpen " .. from.hash .. "~1.." .. to.hash)
+                    end,
+                },
+            },
+            keys = {
+                {
+                    "<leader>gl",
+                    function()
+                        require("gitgraph").draw({}, { all = true, max_count = 5000 })
+                    end,
+                    desc = "GitGraph - Draw",
+                },
+            },
+        },
+        {
+            "rhysd/git-messenger.vim",
+        },
+        {
             "tpope/vim-fugitive",
             config = function()
                 require("ext.tools.fugitive").setup()
@@ -74,7 +142,17 @@ function M.setup()
         -- neogit
         {
             "NeogitOrg/neogit",
-            dependencies = "nvim-lua/plenary.nvim",
+            dependencies = {
+
+                "nvim-lua/plenary.nvim", -- required
+                "sindrets/diffview.nvim", -- optional - Diff integration
+
+                -- Only one of these is needed.
+                "nvim-telescope/telescope.nvim", -- optional
+                "ibhagwan/fzf-lua", -- optional
+                "echasnovski/mini.pick", -- optional
+                "folke/snacks.nvim", -- optional
+            },
             config = true,
         },
 

@@ -21,13 +21,14 @@ function globals.init()
     cmd("set colorcolumn=99999")
     cmd("set inccommand=split")
     cmd("set shortmess+=c")
+    -- cmd("hi Normal guibg=NONE ctermbg=NONE")
     -- cmd([[colorscheme dracula]])
     -- cmd([[colorscheme tokyonight-night]])
     -- cmd([[colorscheme tokyonight-storm]])
     -- cmd([[colorscheme tokyonight-moon]])
     -- cmd([[colorscheme tokyonight-day]])
     -- cmd([[colorscheme dawnfox]])
-    cmd([[colorscheme kanagawa-wave]])
+    -- cmd([[colorscheme kanagawa-wave]])
 
     -- opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
 
@@ -57,7 +58,6 @@ function globals.init()
     o.splitbelow = true
     o.splitright = true
     o.syntax = "on"
-    -- o.guifont = "FiraCode\\ Nerd\\ Font:h13"
     o.hidden = false -- keep open multiple buffers
     o.title = true
     o.fileencoding = "utf-8"

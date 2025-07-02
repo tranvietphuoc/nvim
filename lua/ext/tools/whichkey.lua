@@ -100,20 +100,28 @@ function M.setup()
         },
     })
 
+    -- git
+    wk.add({
+        { "<leader>g", group = "Git" },
+        { "<leader>gd", "<cmd>DiffviewOpen -uno<cr>", desc = "Diff View Open" },
+        { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Diff View Close" },
+
+        { "<leader>gm", "<cmd>GitMessenger<cr>", desc = "Git Messenger" },
+        {
+            "<leader>gl",
+            function()
+                require("gitgraph").draw({}, { all = true, max_count = 5000 })
+            end,
+            desc = "GitGraph - Draw",
+        },
+    })
+
     -- nvim tree keymap
     wk.add({
         { "<leader>b", "<cmd>NvimTreeToggle<cr>", desc = "Open NvimTree", mode = "n" },
     })
     wk.add({
         { "<leader>r", "<cmd>NvimTreeRefresh<cr>", desc = "Refresh NvimTree", mode = "n" },
-    })
-
-    -- Git
-    wk.add({
-        { "<leader>G", group = "Git Utilites" },
-        { "<leader>GU", "<cmd>lua _G.__fterm_gitui()<cr>", desc = "Open GitUI", mode = "n" },
-        { "<leader>GD", "<cmd>GitvDiff<cr>", desc = "Git diff", mode = "n" },
-        { "<leader>Gd", "<cmd>diffget //2<cr>", desc = "Git diff split", mode = "n" },
     })
 
     -- markdow preview

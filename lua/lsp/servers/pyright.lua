@@ -79,7 +79,7 @@ function M.setup()
                     autoImportCompletions = true,
                     importFormat = "relative",
 
-                    stubPath = tostring(Path:new(root_dir, ".stubs")),
+                    stubPath = tostring(Path:new(root_dir, "stubs/odoo-stubs16")),
                 },
             }
 
