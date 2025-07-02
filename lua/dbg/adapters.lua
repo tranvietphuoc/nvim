@@ -165,6 +165,27 @@ function M.setup()
 
     dap.configurations.python = {
         {
+            --Odoo docker attach
+            type = "python",
+            request = "attach",
+            name = "Attach to docker",
+            connect = {
+                host = "localhost",
+                port = 5679,
+            },
+            pathMappings = {
+                {
+                    localRoot = "${workspaceFolder}/my_addons/",
+                    remoteRoot = "/mnt/my_addons/",
+                },
+                {
+                    localRoot = "${workspaceFolder}/odoo/odoo",
+                    remoteRoot = "/usr/lib/python3/dist-packages/odoo",
+                },
+            },
+        },
+        {
+            -- launch
             -- The first three options are required by nvim-dap
             type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
             request = "launch",
