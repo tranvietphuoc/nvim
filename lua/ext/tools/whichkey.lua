@@ -9,33 +9,25 @@ function M.setup()
         { "<leader>f", group = "File" }, -- group
         {
             "<leader>ff",
-            function()
-                builtin.find_files({ hidden = true })
-            end,
+            "<cmd>Telescope find_files<cr>",
             desc = "Find files",
             mode = "n",
         },
         {
             "<leader>fc",
-            function()
-                builtin.commands()
-            end,
+            "<cmd>Telescope commands<cr>",
             desc = "Commands list",
             mode = "n",
         },
         {
             "<leader>fb",
-            function()
-                builtin.buffers()
-            end,
+            "<cmd>Telescope buffers<cr>",
             desc = "Find Buffers",
             mode = "n",
         },
         {
             "<leader>fw",
-            function()
-                builtin.live_grep({ hidden = true })
-            end,
+            "<cmd>Telescope live_grep hidden=true<cr>",
             desc = "Find words",
             mode = "n",
         },
@@ -43,58 +35,44 @@ function M.setup()
         { "<leader>fg", group = "Git" },
         {
             "<leader>fgb",
-            function()
-                builtin.git_branches()
-            end,
+            "<cmd>Telescope git_branches<cr>",
             desc = "Git branches",
             mode = "n",
         },
         {
             "<leader>fgs",
-            function()
-                builtin.git_status()
-            end,
+            "<cmd>Telescope git_status<cr>",
             desc = "Git status",
             mode = "n",
         },
         {
             "<leader>fgc",
-            function()
-                builtin.git_commits()
-            end,
+            "<cmd>Telescope git_commits<cr>",
             desc = "Git commits",
             mode = "n",
         },
 
         {
             "<leader>fd",
-            function()
-                builtin.diagnostics()
-            end,
+            "<cmd>Telescope diagnostics<cr>",
             desc = "Diagnostics list",
             mode = "n",
         },
         {
             "<leader>fq",
-            function()
-                builtin.quickfix()
-            end,
+            "<cmd>Telescope quickfix<cr>",
             desc = "Quickfix list",
             mode = "n",
         },
         {
             "<leader>ft",
-            function()
-                builtin.colorscheme()
-            end,
+            "<cmd>Telescope colorscheme<cr>",
             desc = "Themes list",
             mode = "n",
         },
         {
             "<leader>fs",
-            function()
-                builtin.command_history()
-            end,
+            "<cmd>Telescope command_history<cr>",
             desc = "Command history",
             mode = "n",
         },

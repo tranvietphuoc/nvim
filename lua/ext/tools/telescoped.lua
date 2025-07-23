@@ -33,6 +33,10 @@ function M.setup()
 
     telescope.setup({
         defaults = {
+            cache_picker = {
+                num_pickers = 5, -- giữ cache tối đa 5 picker
+                limit_entries = 1000, -- mỗi picker index max 1000 entries
+            },
             vimgrep_arguments = {
                 "rg",
                 "--color=never",

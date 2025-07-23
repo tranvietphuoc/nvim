@@ -39,7 +39,7 @@ function M.setup()
             priority = 1000,
             config = function()
                 require("catppuccin").setup({
-                    flavour = "latte",
+                    flavour = "mocha",
                     integrations = {
                         cmp = true,
                         treesitter = true,
