@@ -21,18 +21,14 @@ function globals.init()
     cmd("set colorcolumn=99999")
     cmd("set inccommand=split")
     cmd("set shortmess+=c")
-    -- cmd("hi Normal guibg=NONE ctermbg=NONE")
-    -- cmd([[colorscheme dracula]])
-    -- cmd([[colorscheme tokyonight-night]])
-    -- cmd([[colorscheme tokyonight-storm]])
-    -- cmd([[colorscheme tokyonight-moon]])
-    -- cmd([[colorscheme tokyonight-day]])
-    -- cmd([[colorscheme dawnfox]])
-    -- cmd([[colorscheme kanagawa-wave]])
+    o.background = "light"
+
+    cmd([[colorscheme PaperColor]])
 
     -- opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
 
     opt.laststatus = 3 -- always display status line
+    opt.termguicolors = true -- enable 24-bit RGB colors in the TUI
     g.did_load_filetypes = 1
     o.foldmethod = "expr"
     o.foldexpr = "nvim_treesitter#foldexpr()"
@@ -105,7 +101,16 @@ function globals.init()
 
     g.doge_doc_standard_python = true
     g.doge_doc_standard_javascript = true
-    g.background = "light"
+
+    vim.defer_fn(function()
+        local bg_color = vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg#")
+        if bg_color and bg_color ~= "" then
+            vim.cmd(string.format("highlight Cursor guifg=#1c1c1c guibg=%s", bg_color))
+        else
+            -- fallback nếu không detect được
+            vim.cmd("highlight Cursor guifg=#1c1c1c guibg=#eeeeee")
+        end
+    end, 100)
 end
 
 function globals:setup()

@@ -33,13 +33,14 @@ function M.setup()
         },
 
         -- colorscheme
-        {
+        { "NLKNguyen/papercolor-theme", lazy = false, priority = 1000 },
+        --[[ {
             "catppuccin/nvim",
             name = "catppuccin",
             priority = 1000,
             config = function()
                 require("catppuccin").setup({
-                    flavour = "mocha",
+                    flavour = "latte",
                     integrations = {
                         cmp = true,
                         treesitter = true,
@@ -49,9 +50,9 @@ function M.setup()
                         mini = true,
                     },
                 })
-                vim.cmd("colorscheme catppuccin")
+                -- vim.cmd("colorscheme catppuccin")
             end,
-        },
+        }, ]]
         { "rebelot/kanagawa.nvim" },
         {
             "folke/tokyonight.nvim",
