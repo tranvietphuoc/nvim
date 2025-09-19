@@ -4,12 +4,8 @@ local M = {}
 local capabilities = require("lsp").capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-
-
-local lspconfig = require("lspconfig")
-
 function M.setup()
-    lspconfig.cssls.setup {
+    vim.lsp.config("cssls", {
         cmd = {
             DATA .. "/mason/bin/vscode-css-language-server",
             "--stdio",
@@ -24,7 +20,7 @@ function M.setup()
             },
         },
         capabilities = capabilities,
-    }
+    })
 end
 
 return M

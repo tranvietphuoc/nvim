@@ -1,11 +1,8 @@
 -- npm install -g vscode-json-languageserver
 local M = {}
 
-
-local lspconfig = require("lspconfig")
-
 function M.setup()
-    lspconfig.jsonls.setup({
+    vim.lsp.config("jsonls", {
         cmd = {
             -- "node",
             DATA .. "/mason/bin/vscode-json-language-server",
@@ -21,6 +18,7 @@ function M.setup()
             },
         },
     })
+    vim.lsp.enable("jsonls")
 end
 
 return M

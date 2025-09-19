@@ -1,7 +1,6 @@
 local M = {}
 
-local util = require("lspconfig.util")
-local lspconfig = require("lspconfig")
+local util = vim.lsp.util
 
 function M.setup()
     --[[     lspconfig.sqlls.setup {

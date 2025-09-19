@@ -1,11 +1,8 @@
 local M = {}
 local lsputils = require("lsp.utils")
 
-
-local lspconfig = require("lspconfig")
-
 function M.setup()
-    lspconfig.clangd.setup {
+    vim.lsp.config("clangd", {
         cmd = { DATA .. "/mason/bin/clangd", "--offset-encoding=utf-16", "--query-driver=/usr/bin/gcc" },
         on_attach = function(client, bufnr)
             require("lsp").common_on_attach(client, bufnr)
@@ -13,10 +10,9 @@ function M.setup()
         end,
         filetypes = { "c", "cpp", "cuda", "proto", "cc", "h", "hpp" },
         handlers = lsputils.lsp_diagnostics(),
-        settings = {
-        },
-    }
-    require("clangd_extensions").setup {
+        settings = {},
+    })
+    require("clangd_extensions").setup({
         -- autoSetHints = false,
         inlay_hints = {
             inline = vim.fn.has("nvim-0.10") == 1,
@@ -79,7 +75,7 @@ function M.setup()
         symbol_info = {
             border = "none",
         },
-    }
+    })
 end
 
 return M

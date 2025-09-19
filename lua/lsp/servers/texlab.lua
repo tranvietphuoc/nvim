@@ -1,11 +1,8 @@
 local M = {}
 local utils = require("lspconfig.util")
 
-
-local lspconfig = require("lspconfig")
-
 function M.setup()
-    lspconfig.texlab.setup({
+    vim.lsp.config("texlab", {
         cmd = { DATA .. "/mason/bin/texlab" },
         filetypes = { "tex", "bib", "plaintex", "markdown", "rst" },
         on_attach = require("lsp").common_on_attach,
@@ -39,6 +36,8 @@ function M.setup()
             return utils.root_pattern(".latexmkrc")(fname) or utils.find_git_ancestor(fname)
         end,
     })
+
+    vim.lsp.enable("textlab")
 end
 
 return M

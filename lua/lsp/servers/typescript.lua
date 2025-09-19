@@ -3,7 +3,6 @@ local M = {}
 
 local util = require("lspconfig.util")
 local local_utils = require("lsp.utils")
-local lspconfig = require("lspconfig")
 
 function M.setup()
     -- typescript-tools

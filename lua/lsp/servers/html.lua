@@ -2,13 +2,10 @@
 local capabilities = require("lsp").capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-
-local lspconfig = require("lspconfig")
-
 local M = {}
 
 function M.setup()
-    lspconfig.html.setup {
+    vim.lsp.config("html", {
         cmd = { DATA .. "/mason/bin/vscode-html-language-server", "--stdio" },
         -- cmd = { "vscode-html-language-server", "--stdio" },
         filetypes = { "html" },
@@ -21,7 +18,8 @@ function M.setup()
                 javascript = true,
             },
         },
-    }
+    })
+    vim.lsp.enable("html")
 end
 
 return M

@@ -1,9 +1,7 @@
 local M = {}
 
-local lspconfig = require("lspconfig")
-
 function M.setup()
-    lspconfig.vuels.setup({
+    vim.lsp.config("vuels", {
         cmd = { DATA .. "/mason/bin/vls" },
         on_attach = require("lsp").common_on_attach,
         filetypes = { "vue" },
@@ -47,6 +45,7 @@ function M.setup()
             },
         },
     })
+    vim.lsp.enable("vuels")
 end
 
 return M

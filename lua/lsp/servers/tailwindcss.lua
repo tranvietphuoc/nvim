@@ -1,10 +1,8 @@
 -- npm install -g @tailwindcss/language-server
 local M = {}
 
-local lspconfig = require("lspconfig")
-
 function M.setup()
-    lspconfig.tailwindcss.setup({
+    vim.lsp.config("tailwindcss", {
         cmd = { DATA .. "/mason/bin/tailwindcss-language-server", "--stdio" },
         filetypes = {
             "css",
@@ -44,6 +42,7 @@ function M.setup()
             },
         },
     })
+    vim.lsp.enable("tailwindcss")
 end
 
 return M

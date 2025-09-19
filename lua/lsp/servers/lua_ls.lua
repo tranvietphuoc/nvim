@@ -5,12 +5,10 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-local lspconfig = require("lspconfig")
-
 local M = {}
 
 function M.setup()
-    lspconfig.lua_ls.setup({
+    vim.lsp.config("lua_ls", {
         cmd = { lua_ls_binary }, -- "-E", lua_ls_root .. "/extension/server/bin/main.lua" },
         on_attach = require("lsp").common_on_attach,
         settings = {
@@ -38,6 +36,7 @@ function M.setup()
             },
         },
     })
+    vim.lsp.enable("lua_ls")
 end
 
 return M

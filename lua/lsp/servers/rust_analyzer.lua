@@ -1,7 +1,6 @@
 local M = {}
 
-local util = require("lspconfig.util")
-local lspconfig = require("lspconfig")
+local util = require("lspconfig").util
 
 -- config format on save for rust
 local function format_on_save(client, bufnr)
@@ -22,7 +21,7 @@ end
 
 function M.setup()
     -- lsp
-    lspconfig.rust_analyzer.setup({
+    vim.lsp.config("rust_analyzer", {
         cmd = { DATA .. "/mason/bin/rust-analyzer" },
         filetypes = { "rust" },
         on_attach = rust_on_attach, --require("lsp").common_on_attach,
@@ -91,6 +90,7 @@ function M.setup()
             },
         },
     })
+    vim.lsp.enable("rust_analyzer")
 end
 
 return M
