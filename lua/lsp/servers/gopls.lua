@@ -1,6 +1,5 @@
 local M = {}
 
-local util = require("lspconfig").util
 local async = require("lspconfig.async")
 local capabilities = require("lsp").capabilities()
 local mod_cache = "/Users/phuoc/go/pkg/mod"
@@ -28,7 +27,8 @@ function M.setup()
                     return clients[#clients].config.root_dir
                 end
             end
-            return util.root_pattern("go.work")(fname) or util.root_pattern("go.mod", ".git")(fname)
+            local root_dir = vim.fs.find({ "go.work", "go.mod", ".git" }, { upward = true, path = fname })[1]
+            return vim.fs.dirname(root_dir)
         end,
         settings = {
             gopls = {
@@ -52,11 +52,11 @@ function M.setup()
             },
         },
         single_file_support = true,
-        -- root_dir = util.root_pattern("go.mod", "go.work", ".git"),
         init_options = { usePlaceholders = true, completeUnimported = true },
         on_attach = require("lsp").common_on_attach,
         capabilities = capabilities,
     })
+    vim.lsp.enable("gopls")
 end
 
 return M

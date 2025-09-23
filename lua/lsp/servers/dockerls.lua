@@ -2,7 +2,7 @@
 --
 local M = {}
 
-local util = require("lspconfig").util
+-- local util = require("lspconfig").util
 
 function M.setup()
     vim.lsp.config("dockerls", {
@@ -10,8 +10,10 @@ function M.setup()
         -- cmd = {"docker-langserver", "--stdio"},
         on_attach = require("lsp").common_on_attach,
         filetypes = { "Dockerfile", "dockerfile" },
-        root_dir = util.root_pattern("Dockerfile"),
+        -- root_dir = util.root_pattern("Dockerfile"),
+        root_dir = vim.fs.dirname(vim.fs.find({ "Dockerfile", ".git" }, { upward = true })[1]),
     })
+    vim.lsp.enable("dockerls")
 end
 
 return M

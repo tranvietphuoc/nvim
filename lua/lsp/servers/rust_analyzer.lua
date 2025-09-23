@@ -1,7 +1,5 @@
 local M = {}
 
-local util = require("lspconfig").util
-
 -- config format on save for rust
 local function format_on_save(client, bufnr)
     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
@@ -26,7 +24,7 @@ function M.setup()
         filetypes = { "rust" },
         on_attach = rust_on_attach, --require("lsp").common_on_attach,
         capabilities = require("lsp").capabilities(),
-        root_dir = util.root_pattern("Cargo.toml", "rust-project.json"),
+        root_dir = vim.fs.dirname(vim.fs.find({ "Cargo.toml", "rust-project.json" }, { upward = true })[1]),
         settings = {
             ["rust-analyzer"] = {
                 files = {

@@ -1,5 +1,4 @@
 local M = {}
-local utils = require("lspconfig.util")
 
 function M.setup()
     vim.lsp.config("texlab", {
@@ -33,7 +32,8 @@ function M.setup()
         },
         single_file_support = true,
         root_dir = function(fname)
-            return utils.root_pattern(".latexmkrc")(fname) or utils.find_git_ancestor(fname)
+            local markers = { ".latexmkrc", ".git" }
+            return vim.fs.root(fname, markers)
         end,
     })
 

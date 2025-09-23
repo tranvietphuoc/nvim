@@ -1,5 +1,4 @@
 local M = {}
-local util = require("lspconfig.util")
 
 function M.setup()
     --[[ lspconfig.svls.setup {

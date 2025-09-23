@@ -1,6 +1,5 @@
 local M = {}
 
-local root_pattern = require("lspconfig").util.root_pattern
 local capabilities = require("lsp").capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.foldingRange = {
@@ -86,7 +85,7 @@ local config = {
     },
 
     filetypes = { "cs", "csproj", "sln" },
-    root_dir = root_pattern("*.csproj") or root_pattern("*.sln"),
+    root_dir = vim.fs.dirname(vim.fs.find({ "*.csproj", "*.sln" }, { upward = true })[1]),
     init_options = { AutomaticWorkspaceInit = true },
     on_attach = function(client, bufnr)
         require("lsp").common_on_attach(client, bufnr)

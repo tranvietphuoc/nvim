@@ -25,7 +25,6 @@ function M.setup()
                 new_config.settings.editor.tabSize = vim.lsp.util.get_effective_tabstop()
             end
         end,
-        -- root_dir = require("lspconfig/util").root_pattern("tailwind.config.js", "postcss.config.ts", ".postcssrc", "package.json", "node_modules"),
         -- on_attach = require'lsp'.common_on_attach,
         settings = {
             tailwindCSS = {

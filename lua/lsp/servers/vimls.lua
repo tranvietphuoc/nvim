@@ -6,7 +6,11 @@ function M.setup()
         cmd = { DATA .. "/mason/bin/vim-language-server", "--stdio" },
         on_attach = require("lsp").common_on_attach,
         root_dir = function(fname)
-            return require("lspconfig.util").find_git_ancestor(fname) or vim.fn.getcwd()
+            local found = vim.fs.find({ ".git" }, { upward = true, path = fname })[1]
+            if found then
+                return vim.fs.dirname(found)
+            end
+            return vim.fn.getcwd()
         end,
     })
     vim.lsp.enable("vimls")

@@ -1,7 +1,5 @@
 local M = {}
 
-local util = vim.lsp.util
-
 function M.setup()
     --[[     lspconfig.sqlls.setup {
         cmd = {

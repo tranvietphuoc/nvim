@@ -1,7 +1,6 @@
 -- npm install -g typescript typescript-language-server
 local M = {}
 
-local util = require("lspconfig.util")
 local local_utils = require("lsp.utils")
 
 function M.setup()

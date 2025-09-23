@@ -1,7 +1,6 @@
 local M = {}
 
 local capabilities = require("lsp").capabilities()
-local util = require("lspconfig").util
 
 function M.setup()
     vim.g.tagalong_verbose = 1
@@ -19,7 +18,7 @@ function M.setup()
             },
         },
         capabilities = capabilities,
-        root_dir = util.root_pattern(".git", vim.fn.getcwd()),
+        root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]),
     })
 end
 

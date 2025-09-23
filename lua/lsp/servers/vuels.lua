@@ -5,7 +5,7 @@ function M.setup()
         cmd = { DATA .. "/mason/bin/vls" },
         on_attach = require("lsp").common_on_attach,
         filetypes = { "vue" },
-        root_dir = require("lspconfig.util").root_pattern("package.json", "vue.config.js"),
+        root_dir = vim.fs.dirname(vim.fs.find({ "package.json", "vue.config.js" }, { upward = true })[1]),
         init_options = {
             config = {
                 css = {},
