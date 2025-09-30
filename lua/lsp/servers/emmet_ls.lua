@@ -18,8 +18,10 @@ function M.setup()
             },
         },
         capabilities = capabilities,
-        root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]),
+        -- root_dir = vim.fs.dirname(vim.fs.find({ ".git", "package.json" }, { upward = true })[1]),
     })
+
+    vim.lsp.enable("emmet_ls")
 end
 
 return M
