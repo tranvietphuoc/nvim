@@ -264,6 +264,7 @@ function M.setup()
         { "hrsh7th/cmp-buffer" },
         { "hrsh7th/cmp-path" },
         { "hrsh7th/cmp-cmdline" },
+
         {
             "L3MON4D3/LuaSnip",
             version = "v2.*",
@@ -271,15 +272,22 @@ function M.setup()
             dependencies = {
                 "rafamadriz/friendly-snippets",
                 "mstuttgart/vscode-odoo-snippets",
+                "cstrap/python-snippets",
+                "xabikos/vscode-javascript",
+                "golang/vscode-go",
+                "rust-lang/vscode-rust",
             },
+            config = function()
+                require("luasnip.loaders.from_vscode").lazy_load()
+            end,
         },
         { "saadparwaiz1/cmp_luasnip" },
 
         -- snippet
-        { "cstrap/python-snippets" },
-        { "xabikos/vscode-javascript" },
-        { "golang/vscode-go" },
-        { "rust-lang/vscode-rust" },
+        -- { "cstrap/python-snippets" },
+        -- { "xabikos/vscode-javascript" },
+        -- { "golang/vscode-go" },
+        -- { "rust-lang/vscode-rust" },
 
         -- database
         { "kristijanhusak/vim-dadbod-completion" },

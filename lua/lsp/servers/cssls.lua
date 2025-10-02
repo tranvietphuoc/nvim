@@ -21,6 +21,7 @@ function M.setup()
         },
         capabilities = capabilities,
     })
+    vim.lsp.enable("cssls")
 end
 
 return M
