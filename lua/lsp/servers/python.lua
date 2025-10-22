@@ -35,58 +35,62 @@ function M.python_attach(client, bufnr)
 end
 
 function M.setup()
-    vim.lsp.config("pyright", {
-        cmd = { DATA .. "/mason/bin/pyright-langserver", "--stdio" },
-        on_attach = M.python_attach,
-        handlers = lsputils.lsp_diagnostics(),
+    vim.lsp.config("pyrefly", {
+        cmd = { "uvx", "pyrefly", "lsp" },
+        filetypes = { "python" },
         root_dir = function(bufnr, on_dir)
-            -- lấy tên file từ buffer nếu arg là số
             local fname = vim.api.nvim_buf_get_name(bufnr)
-            if fname == nil or fname == "" then
-                -- có thể fallback
-                return
-            end
-            -- các markers bạn muốn tìm
-            local markers = { "odoo", ".git", ".venv" }
-            -- sử dụng vim.fs.find để tìm markers
+            local markers = { "pyproject.toml", "setup.py", "requirements.txt", ".git" }
             local found = vim.fs.find(markers, { upward = true, path = fname })
             if found and #found > 0 then
-                -- trả dir của file marker đầu tiên
                 on_dir(vim.fs.dirname(found[1]))
             else
-                -- fallback: thư mục của file hiện tại
-                on_dir(vim.fn.fnamemodify(fname, ":p:h"))
+                on_dir(vim.fn.getcwd())
             end
         end,
-        on_init = function(client)
-            local root_dir = client.config.root_dir or "" -- đảm bảo không nil
-            local extra_paths = find_extra_paths(root_dir)
-            client.config.settings = client.config.settings or {}
-            client.config.settings.python = {
-                pythonPath = M._python_path(root_dir),
-                analysis = {
-                    ignore = { "*" },
-                    extraPaths = extra_paths,
-                    typeCheckingMode = "off",
-                    autoSearchPaths = false,
-                    useLibraryCodeForTypes = true,
-                    diagnosticMode = "workspace",
-                    autoImportUserSymbols = true,
-                    autoImportCompletions = true,
-                    importFormat = "relative",
-                    stubPath = tostring(Path:new(root_dir, "stubs/odoo-stubs16")),
-                },
-            }
-            client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+        on_attach = function(client, bufnr)
+            require("lsp").common_on_attach(client, bufnr)
+            -- kích hoạt semantic tokens
+            -- Inlay hints (nếu bạn bật)
+            if client.server_capabilities.inlayHintProvider then
+                vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+            end
+
+            -- Semantic tokens (API mới của Neovim)
+            if client.server_capabilities.semanticTokensProvider then
+                vim.lsp.semantic_tokens.start(bufnr, client.id)
+
+                -- tuỳ chọn: refresh khi cần
+                vim.api.nvim_create_autocmd({ "InsertLeave", "BufEnter", "TextChanged" }, {
+                    buffer = bufnr,
+                    callback = function()
+                        pcall(vim.lsp.semantic_tokens.refresh, bufnr)
+                    end,
+                })
+            end
         end,
         settings = {
-            pyright = {
-                disableOrganizeImports = true,
+            python = {
+                analysis = {
+                    typeCheckingMode = "basic",
+                    autoSearchPaths = true,
+                    useLibraryCodeForTypes = true,
+                    diagnosticMode = "workspace",
+                    importStrategy = "fromEnvironment",
+                    stubPath = "typings",
+                    extraPaths = {
+                        "odoo/odoo",
+                        "odoo/addons",
+                        "custom-addons",
+                        "my_addons",
+                        "abenla-erp/custom-addons",
+                    },
+                },
             },
         },
-        single_file_support = true,
     })
-    vim.lsp.enable("pyright")
+
+    vim.lsp.enable({ "pyrefly" })
 
     vim.lsp.config("ruff", {
         on_attach = M.python_attach,

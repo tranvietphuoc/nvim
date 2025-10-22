@@ -18,6 +18,7 @@ function M.setup()
             "clangd",
             -- "pylyzer",
             -- "pylsp",
+            "pyrefly",
             "pyright",
             "ts_ls",
             "ruff",

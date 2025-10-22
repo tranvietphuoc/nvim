@@ -46,8 +46,8 @@ function M.setup()
                 "--column",
                 "--smart-case",
                 "--hidden",
-                "--no-ignore",
             },
+
             find_command = {
                 "fd",
                 "--type",
@@ -69,6 +69,13 @@ function M.setup()
                 "bin",
                 ".metals",
                 ".bloop",
+            },
+            pickers = {
+                live_grep = {
+                    additional_args = function(opts)
+                        return { "--glob", "!**/node_modules/**", "--glob", "!**/.git/**" }
+                    end,
+                },
             },
 
             layout_config = {
