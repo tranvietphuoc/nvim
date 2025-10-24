@@ -48,6 +48,17 @@ function M.setup()
                 on_dir(vim.fn.getcwd())
             end
         end,
+        on_init = function(client)
+            local root_dir = client.config.root_dir or vim.fn.getcwd()
+            local extra_paths = find_extra_paths(root_dir)
+            client.config.settings = client.config.settings or {}
+            client.config.settings.python = client.config.settings.python or {}
+            client.config.settings.python.analysis = client.config.settings.python.analysis or {}
+            client.config.settings.python.analysis.searchPaths = extra_paths
+
+            -- gửi config mới cho server
+            client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+        end,
         on_attach = function(client, bufnr)
             require("lsp").common_on_attach(client, bufnr)
             -- kích hoạt semantic tokens
@@ -78,13 +89,7 @@ function M.setup()
                     diagnosticMode = "workspace",
                     importStrategy = "fromEnvironment",
                     stubPath = "typings",
-                    extraPaths = {
-                        "odoo/odoo",
-                        "odoo/addons",
-                        "custom-addons",
-                        "my_addons",
-                        "abenla-erp/custom-addons",
-                    },
+                    -- searchPaths = find_extra_paths(),
                 },
             },
         },

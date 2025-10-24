@@ -19,7 +19,7 @@ function M.setup()
             -- "pylyzer",
             -- "pylsp",
             "pyrefly",
-            "pyright",
+            -- "pyright",
             "ts_ls",
             "ruff",
             "gopls",
