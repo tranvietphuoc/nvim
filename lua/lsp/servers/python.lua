@@ -4,11 +4,24 @@ local Path = require("plenary.path")
 local M = {}
 
 local function find_extra_paths(root_dir)
+    if type(root_dir) == "function" then
+        -- Nếu lỡ nhận function, gọi thử hoặc fallback
+        local ok, result = pcall(root_dir)
+        if ok and type(result) == "string" then
+            root_dir = result
+        else
+            root_dir = vim.fn.getcwd()
+        end
+    elseif type(root_dir) ~= "string" or root_dir == "" then
+        root_dir = vim.fn.getcwd()
+    end
     local root_path = Path:new(root_dir)
     return {
         tostring(root_path),
         tostring(root_path:joinpath("odoo")),
+        tostring(root_path:joinpath("odoo/addons")),
         tostring(root_path:joinpath("my_addons")),
+        tostring(root_path:joinpath("abenla-erp/custom-addons")),
     }
 end
 
@@ -35,21 +48,28 @@ function M.python_attach(client, bufnr)
 end
 
 function M.setup()
+    --[[ for _, client in ipairs(vim.lsp.get_clients()) do
+        if client.name == "pyrefly" then
+            -- vim.notify("Pyrefly already active at root: " .. client.config.root_dir)
+            return
+        end
+    end ]]
     vim.lsp.config("pyrefly", {
         cmd = { "uvx", "pyrefly", "lsp" },
         filetypes = { "python" },
-        root_dir = function(bufnr, on_dir)
-            local fname = vim.api.nvim_buf_get_name(bufnr)
-            local markers = { "pyproject.toml", "setup.py", "requirements.txt", ".git" }
-            local found = vim.fs.find(markers, { upward = true, path = fname })
-            if found and #found > 0 then
-                on_dir(vim.fs.dirname(found[1]))
-            else
-                on_dir(vim.fn.getcwd())
-            end
-        end,
+        root_dir = vim.fs.dirname(vim.fs.find({ "pyproject.toml", "requirements.txt", ".git" }, { upward = true })[1]),
         on_init = function(client)
-            local root_dir = client.config.root_dir or vim.fn.getcwd()
+            local root_dir = client.config.root_dir
+            if type(root_dir) == "function" then
+                local ok, result = pcall(root_dir)
+                if ok and type(result) == "string" then
+                    root_dir = result
+                else
+                    root_dir = vim.fn.getcwd()
+                end
+            elseif type(root_dir) ~= "string" then
+                root_dir = vim.fn.getcwd()
+            end
             local extra_paths = find_extra_paths(root_dir)
             client.config.settings = client.config.settings or {}
             client.config.settings.python = client.config.settings.python or {}
