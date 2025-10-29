@@ -66,18 +66,19 @@ function M.setup()
                 root_dir = vim.fn.getcwd()
             end
             local extra_paths = find_extra_paths(root_dir)
+            local python_path = M._python_path(root_dir)
+
             client.config.settings = client.config.settings or {}
             client.config.settings.python = client.config.settings.python or {}
             client.config.settings.python.analysis = client.config.settings.python.analysis or {}
             client.config.settings.python.analysis.searchPaths = extra_paths
+            client.config.settings.python.analysis.pythonInterpreterPath = python_path
 
             -- gửi config mới cho server
             client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
         end,
         on_attach = function(client, bufnr)
             require("lsp").common_on_attach(client, bufnr)
-            -- kích hoạt semantic tokens
-            -- Inlay hints (nếu bạn bật)
             if client.server_capabilities.inlayHintProvider then
                 vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
             end
@@ -104,8 +105,7 @@ function M.setup()
                     diagnosticMode = "workspace",
                     importStrategy = "fromEnvironment",
                     stubPath = "typings",
-                    pythonInterpreterPath = M._python_path(vim.fn.getcwd()),
-                    -- searchPaths = find_extra_paths(),
+                    -- pythonInterpreterPath = M._python_path(vim.fn.getcwd()),
                 },
             },
         },
@@ -116,6 +116,8 @@ function M.setup()
     vim.lsp.config("ruff", {
         on_attach = M.python_attach,
         filetypes = { "python" },
+        root_dir = vim.fs.dirname(vim.fs.find({ "pyproject.toml", "requirements.txt", ".git" }, { upward = true })[1]),
+
         init_options = {
             settings = {
                 organizeImports = true,
