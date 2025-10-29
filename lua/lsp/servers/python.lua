@@ -25,8 +25,8 @@ local function find_extra_paths(root_dir)
     }
 end
 
-function M._python_path(workspace)
-    local venv_python = workspace .. "/.venv/bin/python"
+function M._python_path(dir)
+    local venv_python = dir .. "/.venv/bin/python"
     if vim.fn.executable(venv_python) == 1 then
         return venv_python
     end
@@ -48,14 +48,9 @@ function M.python_attach(client, bufnr)
 end
 
 function M.setup()
-    --[[ for _, client in ipairs(vim.lsp.get_clients()) do
-        if client.name == "pyrefly" then
-            -- vim.notify("Pyrefly already active at root: " .. client.config.root_dir)
-            return
-        end
-    end ]]
     vim.lsp.config("pyrefly", {
-        cmd = { "uvx", "pyrefly", "lsp" },
+        -- cmd = { "uvx", DATA .. "/mason/bin/pyrefly", "lsp", "--python-interpreter-path" },
+        cmd = { DATA .. "/mason/bin/pyrefly", "lsp" },
         filetypes = { "python" },
         root_dir = vim.fs.dirname(vim.fs.find({ "pyproject.toml", "requirements.txt", ".git" }, { upward = true })[1]),
         on_init = function(client)
@@ -109,6 +104,7 @@ function M.setup()
                     diagnosticMode = "workspace",
                     importStrategy = "fromEnvironment",
                     stubPath = "typings",
+                    pythonInterpreterPath = M._python_path(vim.fn.getcwd()),
                     -- searchPaths = find_extra_paths(),
                 },
             },
