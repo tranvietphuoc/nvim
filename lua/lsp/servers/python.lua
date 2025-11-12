@@ -49,12 +49,28 @@ end
 
 function M.setup()
     vim.lsp.config("pyrefly", {
-        -- cmd = { "uvx", DATA .. "/mason/bin/pyrefly", "lsp", "--python-interpreter-path" },
         cmd = { DATA .. "/mason/bin/pyrefly", "lsp" },
         filetypes = { "python" },
         root_dir = vim.fs.dirname(vim.fs.find({ "pyproject.toml", "requirements.txt", ".git" }, { upward = true })[1]),
+        settings = {
+            python = {
+                analysis = {
+                    typeCheckingMode = "basic",
+                    useLibraryCodeForTypes = true,
+                    diagnosticMode = "workspace",
+                    stubPath = "typings",
+                },
+            },
+        },
         on_init = function(client)
             local root_dir = client.config.root_dir
+
+            local function is_odoo_env(root_dir)
+                return Path:new(root_dir):joinpath(".venv"):exists()
+            end
+
+            local import_strategy = is_odoo_env(root_dir) and "fromEnvironment" or "useBundled"
+
             if type(root_dir) == "function" then
                 local ok, result = pcall(root_dir)
                 if ok and type(result) == "string" then
@@ -68,11 +84,9 @@ function M.setup()
             local extra_paths = find_extra_paths(root_dir)
             local python_path = M._python_path(root_dir)
 
-            client.config.settings = client.config.settings or {}
-            client.config.settings.python = client.config.settings.python or {}
-            client.config.settings.python.analysis = client.config.settings.python.analysis or {}
-            client.config.settings.python.analysis.searchPaths = extra_paths
             client.config.settings.python.analysis.pythonInterpreterPath = python_path
+            client.config.settings.python.analysis.importStrategy = import_strategy
+            client.config.settings.python.analysis.searchPaths = extra_paths
 
             -- gửi config mới cho server
             client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
@@ -96,19 +110,6 @@ function M.setup()
                 })
             end
         end,
-        settings = {
-            python = {
-                analysis = {
-                    typeCheckingMode = "basic",
-                    autoSearchPaths = true,
-                    useLibraryCodeForTypes = true,
-                    diagnosticMode = "workspace",
-                    importStrategy = "fromEnvironment",
-                    stubPath = "typings",
-                    -- pythonInterpreterPath = M._python_path(vim.fn.getcwd()),
-                },
-            },
-        },
     })
 
     vim.lsp.enable({ "pyrefly" })
