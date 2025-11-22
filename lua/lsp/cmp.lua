@@ -115,58 +115,22 @@ function M.setup()
             },
 
             -- lspkind
-            format = lspkind.cmp_format({
-                mode = "symbol_text",
-                preset = "codicons",
-                maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-                symbol_map = {
-                    Copilot = "",
-                    Text = "󰉿",
-                    Method = "󰆧",
-                    Function = "󰊕",
-                    Constructor = "",
-                    Field = "󰜢",
-                    Variable = "󰀫",
-                    Class = "󰠱",
-                    Interface = "",
-                    Module = "",
-                    Property = "󰜢",
-                    Unit = "󰑭",
-                    Value = "󰎠",
-                    Enum = "",
-                    Keyword = "󰌋",
-                    Snippet = "",
-                    Color = "󰏘",
-                    File = "󰈙",
-                    Reference = "󰈇",
-                    Folder = "󰉋",
-                    EnumMember = "",
-                    Constant = "󰏿",
-                    Struct = "󰙅",
-                    Event = "",
-                    Operator = "󰆕",
-                    TypeParameter = "",
-                },
-                ellipsis_char = "...",
-                -- The function below will be called before any actual modifications from lspkind
-                -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-                -- before = function(entry, vim_item)
-                --     return vim_item
-                -- end,
-                --[[ cb = function(entry, vim_item)
-                    local word = entry:get_insert_text()
-                    if entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet then
-                        word = vim.lsp.util.parse_snippet(word)
-                    end
-                    word = str.online(word)
-                    if entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet then
-                        word = word .. "~"
-                    end
-                    vim_item.abbr = word
-                    return vim_item
-                end, ]]
-            }),
         },
+        format = function(entry, vim_item)
+            -- 1. Lưu lại tên gốc (VD: "Function", "Method")
+            local original_kind = vim_item.kind
+
+            -- 2. Gọi lspkind dùng PRESET
+            local kind_with_icon = require("lspkind").cmp_format({
+                mode = "symbol", -- Vẫn chỉ lấy mỗi Icon để tránh lỗi trùng lặp
+                preset = "codicons",
+                maxwidth = 50,
+            })(entry, vim_item)
+
+            kind_with_icon.kind = kind_with_icon.kind .. " " .. original_kind
+
+            return kind_with_icon
+        end,
     })
 
     -- Autopairs

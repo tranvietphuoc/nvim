@@ -15,7 +15,7 @@ function M.setup()
     require("clangd_extensions").setup({
         -- autoSetHints = false,
         inlay_hints = {
-            inline = vim.fn.has("nvim-0.10") == 1,
+            -- inline = vim.fn.has("nvim-0.10") == 1,
             -- Options other than `highlight' and `priority' only work
             -- if `inline' is disabled
             -- Only show inlay hints for the current line
@@ -76,6 +76,8 @@ function M.setup()
             border = "none",
         },
     })
+
+    vim.lsp.enable("clangd")
 end
 
 return M
