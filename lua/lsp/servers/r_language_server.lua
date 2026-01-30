@@ -1,6 +1,4 @@
-local M = {}
-
-function M.setup()
+local function setup()
     vim.lsp.config("r_language_server", {
         cmd = { "R", "--slave", "-e", "languageserver::run()" },
         log_level = 2,
@@ -10,4 +8,6 @@ function M.setup()
     vim.lsp.enable("r_language_server")
 end
 
-return M
+return {
+    setup = setup,
+}

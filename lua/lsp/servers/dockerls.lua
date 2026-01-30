@@ -1,10 +1,10 @@
 -- npm install -g dockerfile-language-server-nodejs
 --
-local M = {}
+
 
 -- local util = require("lspconfig").util
 
-function M.setup()
+local function setup()
     vim.lsp.config("dockerls", {
         cmd = { DATA .. "/mason/bin/docker-langserver", "--stdio" },
         -- cmd = {"docker-langserver", "--stdio"},
@@ -16,4 +16,6 @@ function M.setup()
     vim.lsp.enable("dockerls")
 end
 
-return M
+return {
+    setup = setup,
+}

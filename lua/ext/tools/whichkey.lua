@@ -1,224 +1,144 @@
-local M = {}
+return {
+    setup = function()
+        local wk = require("which-key")
 
-function M.setup()
-    local wk = require("which-key")
-    local builtin = require("telescope.builtin")
+        wk.setup({
+            preset = "modern",
+            delay = 300, -- Delay before Which-Key shows up (0.3s)
+            win = {
+                border = "rounded",
+                position = "bottom",
+                padding = { 1, 2, 1, 2 },
+            },
+        })
 
-    -- telescope
-    wk.add({
-        { "<leader>f", group = "File" }, -- group
-        {
-            "<leader>ff",
-            "<cmd>Telescope find_files<cr>",
-            desc = "Find files",
-            mode = "n",
-        },
-        {
-            "<leader>fc",
-            "<cmd>Telescope commands<cr>",
-            desc = "Commands list",
-            mode = "n",
-        },
-        {
-            "<leader>fb",
-            "<cmd>Telescope buffers<cr>",
-            desc = "Find Buffers",
-            mode = "n",
-        },
-        {
-            "<leader>fw",
-            "<cmd>Telescope live_grep hidden=true<cr>",
-            desc = "Find words",
-            mode = "n",
-        },
+        wk.add({
+            -- Help & Search all mappings
+            -- Help & Search all mappings
+            { "<leader>?", "<cmd>Telescope keymaps<cr>", desc = "Search Keymaps (Telescope)" },
 
-        { "<leader>fg", group = "Git" },
-        {
-            "<leader>fgb",
-            "<cmd>Telescope git_branches<cr>",
-            desc = "Git branches",
-            mode = "n",
-        },
-        {
-            "<leader>fgs",
-            "<cmd>Telescope git_status<cr>",
-            desc = "Git status",
-            mode = "n",
-        },
-        {
-            "<leader>fgc",
-            "<cmd>Telescope git_commits<cr>",
-            desc = "Git commits",
-            mode = "n",
-        },
+            -- File & Telescope
+            { "<leader>f", group = "Find / File" },
+            { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+            { "<leader>fgf", "<cmd>Telescope git_files<cr>", desc = "Find git files" },
+            { "<leader>fw", "<cmd>Telescope live_grep hidden=true<cr>", desc = "Find words (grep)" },
+            { "<leader>fz", "<cmd>Telescope grep_string<cr>", desc = "Find word under cursor" },
+            { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
+            { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Find recent files" },
+            { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
+            { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+            { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "Commands list" },
+            { "<leader>fr", "<cmd>Telescope resume<cr>", desc = "Resume last search" },
+            { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Marks" },
+            { "<leader>fj", "<cmd>Telescope jumplist<cr>", desc = "Jumplist" },
+            { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics list" },
+            { "<leader>fq", "<cmd>Telescope quickfix<cr>", desc = "Quickfix list" },
+            { "<leader>ft", "<cmd>Telescope colorscheme<cr>", desc = "Themes list" },
+            { "<leader>fs", "<cmd>Telescope command_history<cr>", desc = "Command history" },
+            { "<leader>f/", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Find in current buffer" },
+            { "<leader>f?", "<cmd>Telescope search_history<cr>", desc = "Search history" },
+            { "<leader>fB", "<cmd>Telescope builtin<cr>", desc = "Telescope built-in pickers" },
 
-        {
-            "<leader>fd",
-            "<cmd>Telescope diagnostics<cr>",
-            desc = "Diagnostics list",
-            mode = "n",
-        },
-        {
-            "<leader>fq",
-            "<cmd>Telescope quickfix<cr>",
-            desc = "Quickfix list",
-            mode = "n",
-        },
-        {
-            "<leader>ft",
-            "<cmd>Telescope colorscheme<cr>",
-            desc = "Themes list",
-            mode = "n",
-        },
-        {
-            "<leader>fs",
-            "<cmd>Telescope command_history<cr>",
-            desc = "Command history",
-            mode = "n",
-        },
-    })
+            -- Git inside Find group
+            { "<leader>fg", group = "Git Pickers" },
+            { "<leader>fgb", "<cmd>Telescope git_branches<cr>", desc = "Git branches" },
+            { "<leader>fgs", "<cmd>Telescope git_status<cr>", desc = "Git status" },
+            { "<leader>fgc", "<cmd>Telescope git_commits<cr>", desc = "Git commits (Repository)" },
+            { "<leader>fBC", "<cmd>Telescope git_bcommits<cr>", desc = "Git commits (Current Buffer)" },
+            { "<leader>fgt", "<cmd>Telescope git_stash<cr>", desc = "Git stash" },
 
-    -- git
-    wk.add({
-        { "<leader>g", group = "Git" },
-        { "<leader>gd", "<cmd>DiffviewOpen -uno<cr>", desc = "Diff View Open" },
-        { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Diff View Close" },
+            -- Git group
+            { "<leader>g", group = "Git" },
+            { "<leader>gd", "<cmd>DiffviewOpen -uno<cr>", desc = "Diff View Open" },
+            { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Diff View Close" },
+            { "<leader>gm", "<cmd>GitMessenger<cr>", desc = "Git Messenger" },
+            {
+                "<leader>gl",
+                function()
+                    require("gitgraph").draw({}, { all = true, max_count = 5000 })
+                end,
+                desc = "GitGraph - Draw",
+            },
 
-        { "<leader>gm", "<cmd>GitMessenger<cr>", desc = "Git Messenger" },
-        {
-            "<leader>gl",
-            function()
-                require("gitgraph").draw({}, { all = true, max_count = 5000 })
-            end,
-            desc = "GitGraph - Draw",
-        },
-    })
+            -- Buffer / Navigation / Tree
+            { "<leader>b", "<cmd>NvimTreeToggle<cr>", desc = "Open NvimTree" },
+            { "<leader>r", "<cmd>NvimTreeRefresh<cr>", desc = "Refresh NvimTree" },
 
-    -- nvim tree keymap
-    wk.add({
-        { "<leader>b", "<cmd>NvimTreeToggle<cr>", desc = "Open NvimTree", mode = "n" },
-    })
-    wk.add({
-        { "<leader>r", "<cmd>NvimTreeRefresh<cr>", desc = "Refresh NvimTree", mode = "n" },
-    })
+            -- Barbar / Buffer navigation (Restored)
+            { "<leader>1", "<Cmd>BufferGoto 1<CR>", desc = "Go to Buffer 1" },
+            { "<leader>2", "<Cmd>BufferGoto 2<CR>", desc = "Go to Buffer 2" },
+            { "<leader>3", "<Cmd>BufferGoto 3<CR>", desc = "Go to Buffer 3" },
+            { "<leader>4", "<Cmd>BufferGoto 4<CR>", desc = "Go to Buffer 4" },
+            { "<leader>5", "<Cmd>BufferGoto 5<CR>", desc = "Go to Buffer 5" },
+            { "<leader>6", "<Cmd>BufferGoto 6<CR>", desc = "Go to Buffer 6" },
+            { "<leader>7", "<Cmd>BufferGoto 7<CR>", desc = "Go to Buffer 7" },
+            { "<leader>8", "<Cmd>BufferGoto 8<CR>", desc = "Go to Buffer 8" },
+            { "<leader>9", "<Cmd>BufferGoto 9<CR>", desc = "Go to Buffer 9" },
+            { "<leader>0", "<Cmd>BufferLast<CR>", desc = "Go to Last Buffer" },
 
-    -- markdow preview
-    wk.add({
-        { "<leader>M", group = "Markdown Preview" },
-        { "<leader>MS", "<cmd>MarkdownPreview<cr>", desc = "Start preview", mode = "n" },
-        { "<leader>Ms", "<cmd>MarkdownPreviewStop<cr>", desc = "Stop preview", mode = "n" },
-    })
+            -- Markdown
+            { "<leader>M", group = "Markdown Preview" },
+            { "<leader>MS", "<cmd>MarkdownPreview<cr>", desc = "Start preview" },
+            { "<leader>Ms", "<cmd>MarkdownPreviewStop<cr>", desc = "Stop preview" },
 
-    -- live server
-    wk.add({
-        { "<leader>L", group = "Live server" },
-        { "<leader>LS", "<cmd>LiveServerStart<cr>", desc = "Start server", mode = "n" },
-        { "<leader>Ls", "<cmd>LiveServerStop<cr>", desc = "Stop server", mode = "n" },
-    })
+            -- Live server
+            { "<leader>L", group = "Live server" },
+            { "<leader>LS", "<cmd>LiveServerStart<cr>", desc = "Start server" },
+            { "<leader>Ls", "<cmd>LiveServerStop<cr>", desc = "Stop server" },
 
-    -- find and replace Spectre
-    wk.add({
-        { "<leader>S", group = "Spectre - Find and replace" },
-        {
-            "<leader>So",
-            "<cmd>lua require('spectre').open()<cr>",
-            desc = "Spectre open",
-            mode = "n",
-        },
-        {
-            "<leader>SO",
-            "<cmd>lua require('spectre').open_visual()<cr>",
-            desc = "Spectre open visual",
-            mode = "v",
-        },
-        {
-            "<leader>Sw",
-            "<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
-            desc = "Spectre open with selected word",
-            mode = "n",
-        },
-        {
-            "gR",
-            "<cmd>Trouble lsp_references<cr>",
-            desc = "Trouble Lsp references",
-            mode = "n",
-        },
-    })
+            -- Spectre
+            { "<leader>S", group = "Spectre" },
+            { "<leader>So", "<cmd>lua require('spectre').open()<cr>", desc = "Spectre open" },
+            { "<leader>SO", "<cmd>lua require('spectre').open_visual()<cr>", desc = "Spectre open visual", mode = "v" },
+            { "<leader>Sw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", desc = "Spectre open word" },
 
-    -- codelens
-    wk.add({
-        { "<leader>C", group = "Code lens" },
-        { "<leader>CR", "<cmd>lua vim.lsp.codelens.refresh()<cr>", desc = "Refresh codelens", mode = "n" },
-        { "<leader>Cr", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "Run codelens", mode = "n" },
-    })
+            -- Code lens
+            { "<leader>C", group = "Code lens" },
+            { "<leader>CR", "<cmd>lua vim.lsp.codelens.refresh()<cr>", desc = "Refresh codelens" },
+            { "<leader>Cr", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "Run codelens" },
 
-    -- splitting windows naviagating
-    wk.add({
-        { "<C-k>", ":wincmd k<CR>", desc = "Moving up", mode = "n" },
-        { "<C-j>", ":wincmd j<CR>", desc = "Moving down", mode = "n" },
-        { "<C-h>", ":wincmd h<CR>", desc = "Moving left", mode = "n" },
-        { "<C-l>", ":wincmd l<CR>", desc = "Moving right", mode = "n" },
-    })
+            -- Database
+            { "<leader>D", group = "DatabaseUI" },
+            { "<leader>DB", ":DBUIToggle<cr>", desc = "Trigger DBUI" },
+            { "<leader>DF", ":DBUIFindBuffer<cr>", desc = "Database find buffer." },
+            { "<leader>DR", ":DBUIRenameBuffer<cr>", desc = "Database rename buffer." },
+            { "<leader>DL", ":DBUILastQueryInfo<cr>", desc = "Last query info." },
 
-    -- Dadbod
-    wk.add({
-        {
-            "<leader>D",
-            group = "DatabaseUI",
-        },
-        {
-            "<leader>DB",
-            ":DBUIToggle<cr>",
-            desc = "Trigger DBUI",
-            mode = "n",
-        },
-        { "<leader>DF", ":DBUIFindBuffer<cr>", desc = "Database find buffer.", mode = "n" },
-        { "<leader>DR", ":DBUIRenameBuffer<cr>", desc = "Database rename buffer.", mode = "n" },
-        { "<leader>DL", "DBUILastQueryInfo<cr>", desc = "Last query info.", mode = n },
-    })
+            -- Trouble
+            { "<leader>x", group = "Trouble" },
+            { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Open trouble" },
+            { "<leader>xw", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer diagnostics" },
+            { "<leader>xd", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Symbols" },
+            { "<leader>xl", "<cmd>Trouble loclist toggle<cr>", desc = "Loc list" },
+            { "<leader>xq", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix" },
 
-    -- trouble
-    wk.add({
-        { "<leader>x", group = "Trouble.nvim" },
-        { "<leader>xx", "<cmd>Trouble<cr>", desc = "Open trouble", mode = "n" },
-        { "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", desc = "Workspace diagnostics", mode = "n" },
-        { "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", desc = "Document diagnostics", mode = "n" },
-        { "<leader>xl", "<cmd>Trouble loclist<cr>", desc = "Loc list", mode = "n" },
-        { "<leader>xq", "<cmd>Trouble quickfix<cr>", desc = "Quickfix", mode = "n" },
-    })
+            -- LSP Search (using Telescope)
+            { "<leader>l", group = "LSP Search" },
+            { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document symbols" },
+            { "<leader>lw", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Workspace symbols" },
+            { "<leader>ld", "<cmd>Telescope lsp_definitions<cr>", desc = "Definitions" },
+            { "<leader>lr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
+            { "<leader>li", "<cmd>Telescope lsp_implementations<cr>", desc = "Implementations" },
 
-    -- move selected lines/block in v mode
-    wk.add({
-        { "K", ":move '<-2<CR>gv-gv", desc = "Move up", mode = "x" },
-        { "J", ":move '>+1<CR>gv-gv", desc = "Mode down", mode = "x" },
-    })
+            -- Other mappings
+            { "gR", "<cmd>Trouble lsp_references toggle focus=false<cr>", desc = "Lsp references" },
+            { "<leader>Z", "<cmd>ZenMode<cr>", desc = "Toggle Zen mode" },
 
-    -- zen mode
-    wk.add({
-        { "<leader>Z", "<cmd>ZenMode<cr>", desc = "Toggle Zen mode", mode = "n" },
-    })
+            -- Global Shortcuts
+            { "<Tab>", "<Cmd>BufferNext<CR>", desc = "Next Buffer" },
+            { "<S-Tab>", "<Cmd>BufferPrevious<CR>", desc = "Prev Buffer" },
+            { "<S-c>", "<Cmd>BufferClose<CR>", desc = "Close Buffer" },
+            { "<S-p>", "<Cmd>BufferPin<CR>", desc = "Pin Buffer" },
 
-    -- lspsaga
-    --[[ ["g"] = {
-            r = { "<cmd>Lspsaga rename<cr>", "Lspsaga Rename" },
-            p = { "<cmd>Lspsaga peek_definition<cr>", "Lspsaga Peek Definition" }
-        }, ]]
-    -- })
-    wk.setup({
-        window = {
-            border = "none", -- none, single, double, shadow
-            position = "bottom", -- bottom, top
-            margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-            padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-            winblend = 0,
-        },
-        layout = {
-            height = { min = 4, max = 15 }, -- min and max height of the columns
-            width = { min = 20, max = 50 }, -- min and max width of the columns
-            spacing = 3, -- spacing between columns
-            align = "left", -- align columns left, center or right
-        },
-    })
-end
+            -- Window navigation
+            { "<C-k>", ":wincmd k<CR>", desc = "Move Up" },
+            { "<C-j>", ":wincmd j<CR>", desc = "Move Down" },
+            { "<C-h>", ":wincmd h<CR>", desc = "Move Left" },
+            { "<C-l>", ":wincmd l<CR>", desc = "Move Right" },
 
-return M
+            -- Visual mode move lines
+            { "K", ":move '<-2<CR>gv-gv", desc = "Move Lines Up", mode = "x" },
+            { "J", ":move '>+1<CR>gv-gv", desc = "Move Lines Down", mode = "x" },
+        })
+    end,
+}

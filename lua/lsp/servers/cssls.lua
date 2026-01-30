@@ -1,10 +1,10 @@
 -- npm install -g vscode-css-languageserver-bin
-local M = {}
+
 
 local capabilities = require("lsp").capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-function M.setup()
+local function setup()
     vim.lsp.config("cssls", {
         cmd = {
             DATA .. "/mason/bin/vscode-css-language-server",
@@ -24,4 +24,6 @@ function M.setup()
     vim.lsp.enable("cssls")
 end
 
-return M
+return {
+    setup = setup,
+}

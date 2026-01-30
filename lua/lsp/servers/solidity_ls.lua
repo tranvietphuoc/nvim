@@ -1,8 +1,6 @@
-local M = {}
-
 local solidity = vim.lsp.enable("solidity_ls")
 
-function M.setup()
+local function setup()
     vim.lsp.config("solidity_ls", {
         cmd = { DATA .. "/mason/bin/solidity-language-server", "--stdio" },
         filetypes = { "solidity" },
@@ -11,4 +9,6 @@ function M.setup()
     vim.lsp.enable("solidity_ls")
 end
 
-return M
+return {
+    setup = setup,
+}

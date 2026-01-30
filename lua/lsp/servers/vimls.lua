@@ -1,7 +1,7 @@
 -- npm install -g vim-language-server
-local M = {}
 
-function M.setup()
+
+local function setup()
     vim.lsp.config("vimls", {
         cmd = { DATA .. "/mason/bin/vim-language-server", "--stdio" },
         on_attach = require("lsp").common_on_attach,
@@ -16,4 +16,6 @@ function M.setup()
     vim.lsp.enable("vimls")
 end
 
-return M
+return {
+    setup = setup,
+}

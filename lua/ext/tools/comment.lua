@@ -1,7 +1,5 @@
-local M = {}
-
-function M.setup()
-    require('Comment').setup()
-end
-
-return M
+return {
+    setup = function()
+        require("Comment").setup()
+    end,
+}

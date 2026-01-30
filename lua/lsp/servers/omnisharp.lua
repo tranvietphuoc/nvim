@@ -1,5 +1,3 @@
-local M = {}
-
 local capabilities = require("lsp").capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.foldingRange = {
@@ -104,9 +102,11 @@ local config = {
     end,
 }
 
-function M.setup()
+local function setup()
     vim.lsp.config("omnisharp", config)
     vim.lsp.enable("omnisharp")
 end
 
-return M
+return {
+    setup = setup,
+}

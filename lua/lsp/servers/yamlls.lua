@@ -1,6 +1,4 @@
-local M = {}
-
-function M.setup()
+local function setup()
     vim.lsp.config("yamlls", {
         cmd = { DATA .. "/mason/bin/yaml-language-server", "--stdio" },
         on_attach = require("lsp").common_on_attach,
@@ -15,4 +13,6 @@ function M.setup()
     vim.lsp.enable("yamlls")
 end
 
-return M
+return {
+    setup = setup,
+}

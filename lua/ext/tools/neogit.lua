@@ -1,7 +1,5 @@
-local M = {}
-
-function M.setup()
-    require("neogit").setup{}
-end
-
-return M
+return {
+    setup = function()
+        require("neogit").setup({})
+    end,
+}

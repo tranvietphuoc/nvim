@@ -1,8 +1,6 @@
-local M = {}
-
-function M.setup()
-    vim.cmd([[xmap ea <Plug>(EasyAlign)]])
-    vim.cmd([[nmap ea <Plug>(EasyAlign)]])
-end
-
-return M
+return {
+    setup = function()
+        vim.keymap.set("x", "ea", "<Plug>(EasyAlign)")
+        vim.keymap.set("n", "ea", "<Plug>(EasyAlign)")
+    end,
+}

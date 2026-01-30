@@ -1,9 +1,9 @@
 -- npm install -g typescript typescript-language-server
-local M = {}
+
 
 local local_utils = require("lsp.utils")
 
-function M.setup()
+local function setup()
     -- typescript-tools
     require("typescript-tools").setup({
         on_attach = require("lsp").tsserver_on_attach,
@@ -68,4 +68,6 @@ function M.setup()
     })
 end
 
-return M
+return {
+    setup = setup,
+}

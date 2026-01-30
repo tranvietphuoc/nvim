@@ -1,6 +1,4 @@
-local M = {}
-
-function M.setup()
+local function setup()
     vim.lsp.config("lemminx", {
         cmd = { DATA .. "/mason/bin/lemminx" },
         filetypes = { "xml" },
@@ -10,4 +8,6 @@ function M.setup()
     vim.lsp.enable("lemminx")
 end
 
-return M
+return {
+    setup = setup,
+}

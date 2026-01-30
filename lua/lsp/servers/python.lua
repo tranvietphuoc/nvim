@@ -1,7 +1,7 @@
 local lsputils = require("lsp.utils")
 local Path = require("plenary.path")
 
-local M = {}
+
 
 local function find_extra_paths(root_dir)
     if type(root_dir) == "function" then
@@ -25,7 +25,7 @@ local function find_extra_paths(root_dir)
     }
 end
 
-function M._python_path(dir)
+local function _python_path(dir)
     local venv_python = dir .. "/.venv/bin/python"
     if vim.fn.executable(venv_python) == 1 then
         return venv_python
@@ -33,7 +33,7 @@ function M._python_path(dir)
     return vim.fn.exepath("python3") or "python"
 end
 
-function M.python_attach(client, bufnr)
+local function python_attach(client, bufnr)
     vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("lsp_attach_disable_ruff_hover", { clear = true }),
         callback = function(args)
@@ -47,7 +47,7 @@ function M.python_attach(client, bufnr)
     require("lsp").common_on_attach(client, bufnr)
 end
 
-function M.setup()
+local function setup()
     vim.lsp.config("pyrefly", {
         cmd = { DATA .. "/mason/bin/pyrefly", "lsp" },
         filetypes = { "python" },
@@ -82,7 +82,7 @@ function M.setup()
                 root_dir = vim.fn.getcwd()
             end
             local extra_paths = find_extra_paths(root_dir)
-            local python_path = M._python_path(root_dir)
+            local python_path = _python_path(root_dir)
 
             client.config.settings.python.analysis.pythonInterpreterPath = python_path
             client.config.settings.python.analysis.importStrategy = import_strategy
@@ -115,7 +115,7 @@ function M.setup()
     vim.lsp.enable({ "pyrefly" })
 
     vim.lsp.config("ruff", {
-        on_attach = M.python_attach,
+        on_attach = python_attach,
         filetypes = { "python" },
         root_dir = vim.fs.dirname(vim.fs.find({ "pyproject.toml", "requirements.txt", ".git" }, { upward = true })[1]),
 
@@ -142,4 +142,8 @@ function M.setup()
     vim.lsp.enable("ruff")
 end
 
-return M
+return {
+    _python_path = _python_path,
+    python_attach = python_attach,
+    setup = setup,
+}

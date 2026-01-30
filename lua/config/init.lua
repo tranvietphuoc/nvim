@@ -1,9 +1,4 @@
-local globals = {}
-
-DATA = vim.fn.stdpath("data")
-CACHE = vim.fn.stdpath("cache")
-
-function globals.init()
+local function init()
     local cmd = vim.cmd
     local o = vim.o
     local bo = vim.bo
@@ -11,7 +6,6 @@ function globals.init()
     local g = vim.g
     local opt = vim.opt
 
-    g.mapleader = ","
 
     cmd("filetype plugin indent on") -- filetype detection
     cmd("set showcmd")
@@ -25,28 +19,23 @@ function globals.init()
 
     cmd([[colorscheme PaperColor]])
 
-    -- opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
-
     opt.laststatus = 3 -- always display status line
-    opt.termguicolors = true -- enable 24-bit RGB colors in the TUI
     g.did_load_filetypes = 1
     o.foldmethod = "expr"
     o.foldexpr = "nvim_treesitter#foldexpr()"
     o.foldlevel = 10
     TERMINAL = vim.fn.expand("$TERMINAL")
-    cmd([[let &titleold                            = "' .. TERMINAL .. '"]])
+    cmd("let &titleold = '" .. TERMINAL .. "'")
     o.titlestring = "%<%F%=%l/%L - nvim"
-    -- o.completeopt = "menuone,noselect"
     vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
     opt.tabstop = 4 -- Insert 2 spaces for a tab
     opt.shiftwidth = 4 -- Change the number of space characters inserted for indentation
     opt.expandtab = true -- Converts tabs to spaces
     opt.softtabstop = 4
     o.breakindent = true
-    -- o.compatible = true
     o.pumheight = 10
     o.pumblend = 3
-    o.lazyredraw = true
+    -- o.lazyredraw = true
     wo.signcolumn = "yes:1" -- alway show sign column
     o.backup = false
     o.swapfile = false
@@ -54,7 +43,7 @@ function globals.init()
     o.splitbelow = true
     o.splitright = true
     o.syntax = "on"
-    o.hidden = false -- keep open multiple buffers
+    o.hidden = true -- keep open multiple buffers
     o.title = true
     o.fileencoding = "utf-8"
     o.conceallevel = 0 -- to see `` in markdown files
@@ -67,11 +56,11 @@ function globals.init()
     o.mouse = "a"
     wo.scrolloff = 8
     o.showmode = false
-    o.cmdheight = 1
+    o.cmdheight = 2
     o.showtabline = 2
     o.ruler = true
+    o.timeoutlen = 2000 -- timeout for mapped sequences (2s)
     o.updatetime = 300 -- faster completion
-    o.timeoutlen = 300 -- timeout to 1s
     wo.relativenumber = true
     g.loaded_python_provider = 0
     g.python3_host_prog = "/usr/bin/python"
@@ -113,10 +102,10 @@ function globals.init()
     end, 100)
 end
 
-function globals:setup()
-    globals.init()
-    require("config.autocmd").setup()
-    require("config.keymappings").setup()
-end
-
-return globals
+return {
+    setup = function()
+        init()
+        require("config.autocmd").setup()
+        require("config.keymappings").setup()
+    end,
+}

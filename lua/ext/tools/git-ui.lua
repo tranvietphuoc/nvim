@@ -1,21 +1,18 @@
-local M = {}
+return {
+    setup = function()
+        local term = require("FTerm.terminal")
 
-function M.setup()
-    local term = require("FTerm.terminal")
+        local gitui = term:new():setup({
+            cmd = "gitui",
+            dimension = {
+                height = 0.9,
+                width = 0.9,
+            },
+        })
 
-    local gitui = term:new():setup({
-        cmd = "gitui",
-        dimension = {
-            height = 0.9,
-            width = 0.9,
-        },
-    })
-
-    -- Use this to toggel gitui in a floating terminal
-    --
-    function _G.__fterm_gitui()
-        gitui:toggle()
-    end
-end
-
-return M
+        -- Use this to toggle gitui in a floating terminal
+        function _G.__fterm_gitui()
+            gitui:toggle()
+        end
+    end,
+}

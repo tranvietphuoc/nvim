@@ -1,6 +1,4 @@
-local M = {}
-
-function M.setup()
+local function setup()
     vim.lsp.config("texlab", {
         cmd = { DATA .. "/mason/bin/texlab" },
         filetypes = { "tex", "bib", "plaintex", "markdown", "rst" },
@@ -40,4 +38,6 @@ function M.setup()
     vim.lsp.enable("textlab")
 end
 
-return M
+return {
+    setup = setup,
+}

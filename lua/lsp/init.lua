@@ -1,5 +1,3 @@
-local M = {}
-
 local local_utils = require("lsp.utils")
 local ih = require("inlay-hints")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -8,20 +6,19 @@ local function map(...)
     vim.keymap.set(...)
 end
 
-function M.capabilities()
+local function capabilities()
     return cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 end
 
-function M.attach(client, bufnr)
+local function attach(client, bufnr)
     map("n", "[d", vim.diagnostic.goto_prev)
     map("n", "]d", vim.diagnostic.goto_next)
     map("n", "<leader>e", vim.diagnostic.open_float) -- open diagnostic buffer with floating window
     map("n", "<leader>q", vim.diagnostic.setloclist) -- open diagnostic buffer
 
     local opts = { noremap = true, silent = true, buffer = bufnr }
-    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+    vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-    -- vim.lsp.inlay_hint(bufnr, true)
     -- toggle inlay hint
     opts.desc = "Toggle inlayhints"
     map("n", "<leader>i", function()
@@ -44,10 +41,12 @@ function M.attach(client, bufnr)
     map("n", "gR", vim.lsp.buf.references, opts)
     opts.desc = "Show signature help"
     map("n", "gs", vim.lsp.buf.signature_help, opts)
-    map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>")
-    map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>")
-    map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>")
-    map("n", "<leader>ws", '<cmd>lua require"metals".hover_worksheet()<cr>') -- scala metals
+    map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+    map("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+    map("n", "<space>wl", function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    map("n", "<leader>ws", '<cmd>lua require"metals".hover_worksheet()<cr>', opts) -- scala metals
 
     -- Lspsaga
     opts.desc = "Lspsaga show lsp_finder"
@@ -56,11 +55,9 @@ function M.attach(client, bufnr)
     opts.desc = "Lspsaga codeaction"
     map({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts) -- code actions
 
-    -- opts.desc = "Lspsaga go to definitions"
-    -- map("n", "gd", "<cmd>Lspsaga goto_definition<cr>", opts) -- go to definition
     opts.desc = "Lspsaga peek definitions"
     map("n", "gp", "<cmd>Lspsaga peek_definition<cr>", opts) -- peek definition
-    map("n", "gP", "<cmd>Lspsaga peek_type_definition<CR>")
+    map("n", "gP", "<cmd>Lspsaga peek_type_definition<CR>", opts)
 
     opts.desc = "Lspsaga rename"
     map("n", "gr", "<cmd>Lspsaga rename<cr>", opts) -- Rename all occurrences of the hovered word for the entire file
@@ -80,13 +77,14 @@ function M.attach(client, bufnr)
     -- Only jump to error
     map("n", "[E", function()
         require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
-    end)
+    end, opts)
     map("n", "]E", function()
         require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
-    end)
+    end, opts)
 
-    map("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<cr>")
-    map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<cr>")
+    map("n", "<space>f", function()
+        vim.lsp.buf.format({ async = true })
+    end, opts)
 
     local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
@@ -96,54 +94,55 @@ function M.attach(client, bufnr)
     end
 end
 
-function M.common_on_attach(client, bufnr)
-    M.attach(client, bufnr)
+local function common_on_attach(client, bufnr)
+    attach(client, bufnr)
     ih.on_attach(client, bufnr) -- enable inlay hints for lsp server
 end
 
-function M.tsserver_on_attach(client, bufnr)
-    M.common_on_attach(client, bufnr)
+local function tsserver_on_attach(client, bufnr)
+    common_on_attach(client, bufnr)
     client.server_capabilities.document_formatting = true
 end
 
-function M.setup()
-    -- lsp clients setup
-    --
-    local scandir = require("plenary.scandir")
+return {
+    capabilities = capabilities,
+    attach = attach,
+    common_on_attach = common_on_attach,
+    tsserver_on_attach = tsserver_on_attach,
+    setup = function()
+        -- lsp clients setup
+        local scandir = require("plenary.scandir")
 
-    -- strip the file extension
-    local function stripExtension(filepath)
-        return filepath:match("(.+)%..+$") or filepath
-    end
-
-    -- Function to get the filename from a full path
-    local function getFilename(filepath)
-        return filepath:match("([^/]+)$")
-    end
-
-    -- get a list of files name
-    local function listFiles(dir)
-        local files = scandir.scan_dir(dir, { hidden = false, add_dirs = false, depth = 1 })
-        local filenames = {}
-        for _, file in ipairs(files) do
-            if file:match("%.lua$") then
-                local filename = getFilename(file)
-                table.insert(filenames, stripExtension(filename))
-            end
+        -- strip the file extension
+        local function stripExtension(filepath)
+            return filepath:match("(.+)%..+$") or filepath
         end
 
-        return filenames
-    end
+        -- Function to get the filename from a full path
+        local function getFilename(filepath)
+            return filepath:match("([^/]+)$")
+        end
 
-    local dir = os.getenv("HOME") .. "/.config/nvim/lua/lsp/servers/"
-    local files = listFiles(dir)
+        -- get a list of files name
+        local function listFiles(dir)
+            local files = scandir.scan_dir(dir, { hidden = false, add_dirs = false, depth = 1 })
+            local filenames = {}
+            for _, file in ipairs(files) do
+                if file:match("%.lua$") then
+                    local filename = getFilename(file)
+                    table.insert(filenames, stripExtension(filename))
+                end
+            end
+            return filenames
+        end
 
-    for _, file in ipairs(files) do
-        -- print(file)
-        require("lsp.servers." .. file).setup()
-    end
+        local dir = os.getenv("HOME") .. "/.config/nvim/lua/lsp/servers/"
+        local files = listFiles(dir)
 
-    require("lsp.cmp").setup()
-end
+        for _, file in ipairs(files) do
+            require("lsp.servers." .. file).setup()
+        end
 
-return M
+        require("lsp.cmp").setup()
+    end,
+}

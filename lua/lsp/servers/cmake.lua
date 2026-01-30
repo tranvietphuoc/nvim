@@ -1,6 +1,4 @@
-local M = {}
-
-function M.setup()
+local function setup()
     vim.lsp.config("cmake", {
         cmd = { DATA .. "/mason/bin/cmake-language-server" },
         on_attach = require("lsp").common_on_attach,
@@ -13,4 +11,6 @@ function M.setup()
     })
 end
 
-return M
+return {
+    setup = setup,
+}

@@ -1,6 +1,4 @@
-local M = {}
-
-function M.setup()
+local function setup()
     --[[     lspconfig.sqlls.setup {
         cmd = {
             DATA .. "/mason/bin/sql-language-server",
@@ -32,4 +30,6 @@ function M.setup()
     } ]]
 end
 
-return M
+return {
+    setup = setup,
+}

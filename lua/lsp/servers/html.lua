@@ -2,9 +2,9 @@
 local capabilities = require("lsp").capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local M = {}
 
-function M.setup()
+
+local function setup()
     vim.lsp.config("html", {
         cmd = { DATA .. "/mason/bin/vscode-html-language-server", "--stdio" },
         -- cmd = { "vscode-html-language-server", "--stdio" },
@@ -22,4 +22,6 @@ function M.setup()
     vim.lsp.enable("html")
 end
 
-return M
+return {
+    setup = setup,
+}

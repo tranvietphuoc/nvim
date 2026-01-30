@@ -1,10 +1,8 @@
-local M = {}
-
 -- local async = require("lspconfig.async")
 local capabilities = require("lsp").capabilities()
 local mod_cache = "/Users/phuoc/go/pkg/mod"
 
-function M.setup()
+local function setup()
     vim.g.go_fmt_command = "goimports"
     vim.lsp.config("gopls", {
         cmd = { DATA .. "/mason/bin/gopls" },
@@ -42,4 +40,6 @@ function M.setup()
     vim.lsp.enable("gopls")
 end
 
-return M
+return {
+    setup = setup,
+}

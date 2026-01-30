@@ -1,8 +1,6 @@
-local M = {}
-
 local capabilities = require("lsp").capabilities()
 
-function M.setup()
+local function setup()
     vim.g.tagalong_verbose = 1
     --
     capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -24,4 +22,6 @@ function M.setup()
     vim.lsp.enable("emmet_ls")
 end
 
-return M
+return {
+    setup = setup,
+}

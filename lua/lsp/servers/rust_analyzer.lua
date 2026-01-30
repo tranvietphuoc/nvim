@@ -1,5 +1,3 @@
-local M = {}
-
 -- config format on save for rust
 local function format_on_save(client, bufnr)
     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
@@ -17,7 +15,7 @@ local function rust_on_attach(client, bufnr)
     -- format_on_save(client, bufnr)
 end
 
-function M.setup()
+local function setup()
     -- lsp
     vim.lsp.config("rust_analyzer", {
         cmd = { DATA .. "/mason/bin/rust-analyzer" },
@@ -91,4 +89,6 @@ function M.setup()
     vim.lsp.enable("rust_analyzer")
 end
 
-return M
+return {
+    setup = setup,
+}

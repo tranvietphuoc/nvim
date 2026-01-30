@@ -1,34 +1,55 @@
-local M = {}
-local cmd = vim.cmd
+return {
+    setup = function()
+        local autocmd = vim.api.nvim_create_autocmd
 
-function M.auto_cmds()
-    vim.g.dracula_show_end_of_buffer = true
-    vim.g.dracula_italic_comment = true
-    vim.g.dracula_transparent_bg = false
+        -- Native highlight on yank
+        autocmd("TextYankPost", {
+            callback = function()
+                vim.highlight.on_yank({
+                    higroup = "IncSearch",
+                    timeout = 40,
+                })
+            end,
+        })
 
-    cmd(
-        "autocmd BufRead,BufNewFile *.java,*.c,*.h,*.cpp,*.hpp,*.js,*.ts,*.tsx,*.jsx,*.json,*.html,*.css,*.yml setlocal expandtab ts=2 sw=2 sts=2"
-    )
-    cmd("autocmd BufRead,BufNewFile *.scala,*.sbt setlocal expandtab ts=3 sw=3 sts=3")
-    cmd("autocmd BufNewFile,BufRead *.go setlocal noexpandtab ts=8 sw=8")
-    cmd("autocmd BufRead,BufNewFile *.lua,*.vue setlocal expandtab ts=4 sw=4 sts=4")
-    --   vim.api.nvim_exec(
-    --       [[
-    -- augroup FormatAutogroup
-    --   autocmd!
-    --   autocmd BufWritePost *.js,*.ts,*.jsx,*.tsx,*.rs,*.lua,*.py,*.go,*.c,*.cpp,*.h,*.hpp,*.html,*.css FormatWrite
-    -- augroup END
-    -- ]],
-    --       true
-    --   )
+        -- Filetype specific settings
+        autocmd({ "BufRead", "BufNewFile" }, {
+            pattern = { "*.java", "*.c", "*.h", "*.cpp", "*.hpp", "*.js", "*.ts", "*.tsx", "*.jsx", "*.json", "*.html", "*.css", "*.yml" },
+            command = "setlocal expandtab ts=2 sw=2 sts=2",
+        })
 
-    cmd([[command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()]])
+        autocmd({ "BufRead", "BufNewFile" }, {
+            pattern = { "*.scala", "*.sbt" },
+            command = "setlocal expandtab ts=3 sw=3 sts=3",
+        })
 
-    cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
-end
+        autocmd({ "BufRead", "BufNewFile" }, {
+            pattern = "*.go",
+            command = "setlocal noexpandtab ts=8 sw=8",
+        })
 
-function M.setup()
-    M.auto_cmds()
-end
+        autocmd({ "BufRead", "BufNewFile" }, {
+            pattern = { "*.lua", "*.vue" },
+            command = "setlocal expandtab ts=4 sw=4 sts=4",
+        })
 
-return M
+        -- Toggle virtual text command
+        vim.api.nvim_create_user_command("LspVirtualTextToggle", function()
+            require("lsp.virtual_text").toggle()
+        end, {})
+
+        -- Terminal keymaps
+        autocmd("TermOpen", {
+            pattern = "term://*",
+            callback = function()
+                local opts = { buffer = 0 }
+                vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+                vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
+                vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
+                vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
+                vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
+                vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
+            end,
+        })
+    end,
+}

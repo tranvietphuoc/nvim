@@ -1,7 +1,7 @@
 -- npm install -g vscode-json-languageserver
-local M = {}
 
-function M.setup()
+
+local function setup()
     vim.lsp.config("jsonls", {
         cmd = {
             -- "node",
@@ -21,4 +21,6 @@ function M.setup()
     vim.lsp.enable("jsonls")
 end
 
-return M
+return {
+    setup = setup,
+}

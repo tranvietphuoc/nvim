@@ -1,7 +1,6 @@
-local M = {}
 local lsputils = require("lsp.utils")
 
-function M.setup()
+local function setup()
     vim.lsp.config("clangd", {
         cmd = { DATA .. "/mason/bin/clangd", "--offset-encoding=utf-16", "--query-driver=/usr/bin/gcc" },
         on_attach = function(client, bufnr)
@@ -80,4 +79,6 @@ function M.setup()
     vim.lsp.enable("clangd")
 end
 
-return M
+return {
+    setup = setup,
+}

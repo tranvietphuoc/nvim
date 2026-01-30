@@ -1,22 +1,20 @@
-local M = {}
+return {
+    setup = function()
+        local map = vim.keymap.set
+        local opts = { noremap = true, silent = true }
 
-function M.setup()
-    -- fugitive
-    vim.cmd("nnoremap <leader>ga :Git add %:p<CR><CR>")
-    vim.cmd("nnoremap <leader>gS :Git<CR>")
-    vim.cmd("nnoremap <leader>gC :Git commit -v -q<CR>")
-    vim.cmd("nnoremap <leader>gt :Gcommit -v -q %:p<CR>")
-    vim.cmd("nnoremap <leader>gd :Git diff<CR>")
-    vim.cmd("nnoremap <leader>ge :Gedit<CR>")
-    vim.cmd("nnoremap <leader>gr :Gread<CR>")
-    -- vim.cmd("nnoremap <leader>gw :Gwrite<CR><CR>")
-    vim.cmd("nnoremap <leader>gl :silent! Glog<CR>:bot copen<CR>")
-    vim.cmd("nnoremap <leader>gp :Ggrep<Space>")
-    vim.cmd("nnoremap <leader>gm :Gmove<Space>")
-    -- vim.cmd("nnoremap <leader>gb :Git branch<Space>")
-    vim.cmd("nnoremap <leader>go :Git checkout<Space>")
-    vim.cmd("nnoremap <leader>gps :Dispatch! git push<CR>")
-    vim.cmd("nnoremap <leader>gpl :Dispatch! git pull<CR>")
-end
-
-return M
+        map("n", "<leader>ga", ":Git add %:p<CR><CR>", opts)
+        map("n", "<leader>gS", ":Git<CR>", opts)
+        map("n", "<leader>gC", ":Git commit -v -q<CR>", opts)
+        map("n", "<leader>gt", ":Gcommit -v -q %:p<CR>", opts)
+        map("n", "<leader>gd", ":Git diff<CR>", opts)
+        map("n", "<leader>ge", ":Gedit<CR>", opts)
+        map("n", "<leader>gr", ":Gread<CR>", opts)
+        map("n", "<leader>gl", ":silent! Glog<CR>:bot copen<CR>", opts)
+        map("n", "<leader>gp", ":Ggrep<Space>", { noremap = true })
+        map("n", "<leader>gm", ":Gmove<Space>", { noremap = true })
+        map("n", "<leader>go", ":Git checkout<Space>", { noremap = true })
+        map("n", "<leader>gps", ":Dispatch! git push<CR>", opts)
+        map("n", "<leader>gpl", ":Dispatch! git pull<CR>", opts)
+    end,
+}

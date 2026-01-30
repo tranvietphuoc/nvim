@@ -1,6 +1,4 @@
-local M = {}
-
-function M.setup()
+local function setup()
     local metals_config = require("metals").bare_config()
     local metals = require("metals")
     local cmp_nvim_lsp = require("cmp_nvim_lsp") -- completion
@@ -60,4 +58,6 @@ function M.setup()
     })
 end
 
-return M
+return {
+    setup = setup,
+}

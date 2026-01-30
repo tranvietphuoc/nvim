@@ -1,6 +1,4 @@
-local M = {}
-
-function M.setup()
+local function setup()
     vim.lsp.config("bashls", {
         cmd = { DATA .. "/mason/bin/bash-language-server", "start" },
         on_attach = require("lsp").common_on_attach,
@@ -10,4 +8,6 @@ function M.setup()
     vim.lsp.enable("bashls")
 end
 
-return M
+return {
+    setup = setup,
+}

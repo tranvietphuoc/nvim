@@ -1,6 +1,4 @@
-local M = {}
-
-function M.setup()
+local function setup()
     --[[ lspconfig.svls.setup {
         cmd = { DATA .. "/mason/bin/svls" },
         on_attach = require("lsp").common_on_attach,
@@ -22,4 +20,6 @@ function M.setup()
     vim.lsp.enable("verible")
 end
 
-return M
+return {
+    setup = setup,
+}

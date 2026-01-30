@@ -1,6 +1,4 @@
-local M = {}
-
-function M.setup()
+local function setup()
     vim.lsp.config("docker_compose_language_service", {
         cmd = { DATA .. "/mason/bin/docker-compose-langserver", "--stdio" },
         on_attach = require("lsp").common_on_attach,
@@ -10,4 +8,6 @@ function M.setup()
     })
 end
 
-return M
+return {
+    setup = setup,
+}
