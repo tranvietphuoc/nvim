@@ -50,7 +50,7 @@ local function attach(client, bufnr)
 
     -- Lspsaga
     opts.desc = "Lspsaga show lsp_finder"
-    map("n", "gh", "<cmd>Lspsaga lsp_finder<cr>", opts) -- lsp finder
+    map("n", "gh", "<cmd>Lspsaga finder<cr>", opts) -- lsp finder
 
     opts.desc = "Lspsaga codeaction"
     map({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts) -- code actions
