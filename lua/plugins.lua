@@ -506,7 +506,7 @@ return {
             -- live server
             {
                 "barrett-ruth/live-server.nvim",
-                config = function()
+                init = function()
                     vim.g.live_server = {}
                 end,
             },
