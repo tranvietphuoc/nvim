@@ -40,7 +40,7 @@ local function python_attach(client, bufnr)
             local client2 = vim.lsp.get_client_by_id(args.data.client_id)
             if client2 and client2.name == "ruff" then
                 client2.server_capabilities.hoverProvider = false
-            end
+    end
         end,
         desc = "LSP: Disable hover capability from Ruff",
     })
@@ -51,7 +51,10 @@ local function setup()
     vim.lsp.config("pyrefly", {
         cmd = { DATA .. "/mason/bin/pyrefly", "lsp" },
         filetypes = { "python" },
-        root_dir = vim.fs.dirname(vim.fs.find({ "pyproject.toml", "requirements.txt", ".git" }, { upward = true })[1]),
+        root_dir = (function()
+            local root = vim.fs.find({ "pyproject.toml", "requirements.txt", ".git" }, { upward = true })[1]
+            return root and vim.fs.dirname(root) or vim.fn.getcwd()
+        end)(),
         settings = {
             python = {
                 analysis = {
@@ -117,7 +120,10 @@ local function setup()
     vim.lsp.config("ruff", {
         on_attach = python_attach,
         filetypes = { "python" },
-        root_dir = vim.fs.dirname(vim.fs.find({ "pyproject.toml", "requirements.txt", ".git" }, { upward = true })[1]),
+        root_dir = (function()
+            local root = vim.fs.find({ "pyproject.toml", "requirements.txt", ".git" }, { upward = true })[1]
+            return root and vim.fs.dirname(root) or vim.fn.getcwd()
+        end)(),
 
         init_options = {
             settings = {

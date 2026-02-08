@@ -140,7 +140,12 @@ return {
         local files = listFiles(dir)
 
         for _, file in ipairs(files) do
-            require("lsp.servers." .. file).setup()
+            local ok, server = pcall(require, "lsp.servers." .. file)
+            if ok and server.setup then
+                pcall(server.setup)
+            else
+                vim.notify("Failed to load LSP server: " .. file, vim.log.levels.WARN)
+            end
         end
 
         require("lsp.cmp").setup()

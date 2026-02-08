@@ -507,7 +507,7 @@ return {
             {
                 "barrett-ruth/live-server.nvim",
                 config = function()
-                    require("live-server").setup({})
+                    vim.g.live_server = {}
                 end,
             },
 

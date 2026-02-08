@@ -9,6 +9,11 @@ local function setup()
             "svelte",
             "markdown",
             "vue",
+            "html",
+            "javascript",
+            "typescript",
+            "javascriptreact",
+            "typescriptreact",
         },
         init_options = {
             useLanguages = {},
