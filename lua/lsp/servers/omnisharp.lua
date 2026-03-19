@@ -1,110 +1,89 @@
-local capabilities = require("lsp").capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.foldingRange = {
-    dynamicRegistration = true,
-    lineFoldingOnly = true,
-}
-
-local omnisharpExtended = require("omnisharp_extended")
-
 local function toSnakeCase(str)
     return string.gsub(str, "%s*[- ]%s*", "_")
 end
 
-local config = {
-    handlers = {
-        ["textDocument/definition"] = omnisharpExtended.handler,
-        --[[ ["textDocument/typeDefinition"] = omnisharpExtended.type_definition_handler,
-        ["textDocument/references"] = omnisharpExtended.references_handler,
-        ["textDocument/implementation"] = omnisharpExtended.implementation_handler, ]]
-    },
+local function setup()
+    local ok_ext, omnisharpExtended = pcall(require, "omnisharp_extended")
+    local handlers = {}
+    if ok_ext then
+        handlers["textDocument/definition"] = omnisharpExtended.handler
+    end
 
-    cmd = { "dotnet", DATA .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
+    local capabilities = require("lsp").capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    capabilities.textDocument.foldingRange = {
+        dynamicRegistration = true,
+        lineFoldingOnly = true,
+    }
 
-    capabilities = capabilities,
-    enable_roslyn_analysers = true,
-    enable_import_completion = true,
-    organize_imports_on_format = true,
-    enable_decompilation_support = true,
-    enable_editorconfig_support = true,
-    settings = {
-        FormattingOptions = {
-            -- Enables support for reading code style, naming convention and analyzer
-            -- settings from .editorconfig.
-            EnableEditorConfigSupport = true,
-            -- Specifies whether 'using' directives should be grouped and sorted during
-            -- document formatting.
-            OrganizeImports = true,
-        },
-        MsBuild = {
-            -- If true, MSBuild project system will only load projects for files that
-            -- were opened in the editor. This setting is useful for big C# codebases
-            -- and allows for faster initialization of code navigation features only
-            -- for projects that are relevant to code that is being edited. With this
-            -- setting enabled OmniSharp may load fewer projects and may thus display
-            -- incomplete reference lists for symbols.
-            LoadProjectsOnDemand = true,
-        },
-        Sdk = {
-            IncludePrereleases = false,
-        },
-        RoslynExtensionsOptions = {
-
-            -- Enables support for roslyn analyzers, code fixes and rulesets.
-            EnableAnalyzersSupport = true,
-            -- Enables support for showing unimported types and unimported extension
-            -- methods in completion lists. When committed, the appropriate using
-            -- directive will be added at the top of the current file. This option can
-            -- have a negative impact on initial completion responsiveness,
-            -- particularly for the first few completion sessions after opening a
-            -- solution.
-            EnableImportCompletion = true,
-            -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
-            -- true
-            AnalyzeOpenDocumentsOnly = true,
-
-            EnableDecompilationSupport = true,
-
-            InlayHintsOptions = {
-                EnableForParameters = true,
-                ForLiteralParameters = true,
-                ForIndexerParameters = true,
-                ForObjectCreationParameters = true,
-                ForOtherParameters = true,
-                SuppressForParametersThatDifferOnlyBySuffix = false,
-                SuppressForParametersThatMatchMethodIntent = false,
-                SuppressForParametersThatMatchArgumentName = false,
-                EnableForTypes = true,
-                ForImplicitVariableTypes = true,
-                ForLambdaParameterTypes = true,
-                ForImplicitObjectCreatio = true,
+    local config = {
+        name = "omnisharp",
+        cmd = { DATA .. "/mason/bin/OmniSharp", "--languageserver" },
+        handlers = handlers,
+        capabilities = capabilities,
+        enable_roslyn_analysers = true,
+        enable_import_completion = true,
+        organize_imports_on_format = true,
+        enable_decompilation_support = true,
+        enable_editorconfig_support = true,
+        settings = {
+            FormattingOptions = {
+                EnableEditorConfigSupport = true,
+                OrganizeImports = true,
+            },
+            MsBuild = {
+                LoadProjectsOnDemand = false,
+            },
+            RoslynExtensionsOptions = {
+                EnableAnalyzersSupport = true,
+                EnableImportCompletion = true,
+                AnalyzeOpenDocumentsOnly = false, -- Scan all documents for errors
+                EnableDecompilationSupport = true,
+            },
+            Sdk = {
+                IncludePrereleases = false,
             },
         },
-    },
+        init_options = { AutomaticWorkspaceInit = true },
+    }
 
-    filetypes = { "cs", "csproj", "sln" },
-    root_dir = vim.fs.dirname(vim.fs.find({ "*.csproj", "*.sln" }, { upward = true })[1]),
-    init_options = { AutomaticWorkspaceInit = true },
-    on_attach = function(client, bufnr)
-        require("lsp").common_on_attach(client, bufnr)
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "cs", "csproj", "sln" },
+        callback = function(ev)
+            local bufname = vim.api.nvim_buf_get_name(ev.buf)
+            if bufname == "" then return end
 
-        if client.name == "omnisharp" then
-            local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
-            for i, v in ipairs(tokenModifiers) do
-                tokenModifiers[i] = toSnakeCase(v)
+            local root = vim.fs.find({ "*.sln", "*.csproj", ".git" }, { upward = true, path = bufname })[1]
+            local root_dir = root and vim.fs.dirname(root) or vim.fn.getcwd()
+
+            local server_config = vim.deepcopy(config)
+            server_config.root_dir = root_dir
+            server_config.on_attach = function(client, bufnr)
+                require("lsp").common_on_attach(client, bufnr)
+
+                if client.name == "omnisharp" then
+                    local tokenLegend = client.server_capabilities.semanticTokensProvider and client.server_capabilities.semanticTokensProvider.legend
+                    if tokenLegend then
+                        local tokenModifiers = tokenLegend.tokenModifiers
+                        if tokenModifiers then
+                            for i, v in ipairs(tokenModifiers) do
+                                tokenModifiers[i] = toSnakeCase(v)
+                            end
+                        end
+
+                        local tokenTypes = tokenLegend.tokenTypes
+                        if tokenTypes then
+                            for i, v in ipairs(tokenTypes) do
+                                tokenTypes[i] = toSnakeCase(v)
+                            end
+                        end
+                    end
+                end
             end
 
-            local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
-            for i, v in ipairs(tokenTypes) do
-                tokenTypes[i] = toSnakeCase(v)
-            end
-        end
-    end,
-}
-
-local function setup()
-    vim.lsp.config("omnisharp", config)
-    vim.lsp.enable("omnisharp")
+            vim.lsp.start(server_config, { bufnr = ev.buf })
+        end,
+    })
 end
 
 return {

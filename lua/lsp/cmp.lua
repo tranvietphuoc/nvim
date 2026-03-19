@@ -32,14 +32,7 @@ return {
                 -- confirm selection
                 ["<CR>"] = cmp.mapping(function(fallback)
                     if cmp.visible() and cmp.get_selected_entry() then
-                        local entry = cmp.get_selected_entry()
-                        if entry.source.name == "copilot" then
-                            -- only confirm when selected Copilot (it's mean Tab come first then <CR> works)
-                            cmp.confirm({ select = false })
-                        else
-                            -- another source => auto-select
-                            cmp.confirm({ select = true })
-                        end
+                        cmp.confirm({ select = true })
                     else
                         fallback()
                     end

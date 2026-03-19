@@ -1,15 +1,25 @@
 local lsputils = require("lsp.utils")
 
 local function setup()
-    vim.lsp.config("clangd", {
-        cmd = { DATA .. "/mason/bin/clangd", "--offset-encoding=utf-16", "--query-driver=/usr/bin/gcc" },
-        on_attach = function(client, bufnr)
-            require("lsp").common_on_attach(client, bufnr)
-            client.server_capabilities.signatureHelpProvider = false
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "c", "cpp", "cuda", "proto", "cc", "h", "hpp" },
+        callback = function(ev)
+            local root = vim.fs.find({ ".git", "compile_commands.json", "compile_flags.txt" }, { upward = true, path = vim.api.nvim_buf_get_name(ev.buf) })[1]
+            local root_dir = root and vim.fs.dirname(root) or vim.fn.getcwd()
+
+            vim.lsp.start({
+                name = "clangd",
+                cmd = { DATA .. "/mason/bin/clangd", "--offset-encoding=utf-16", "--query-driver=/usr/bin/gcc" },
+                on_attach = function(client, bufnr)
+                    require("lsp").common_on_attach(client, bufnr)
+                    client.server_capabilities.signatureHelpProvider = false
+                end,
+                root_dir = root_dir,
+                handlers = lsputils.lsp_diagnostics(),
+            }, {
+                bufnr = ev.buf,
+            })
         end,
-        filetypes = { "c", "cpp", "cuda", "proto", "cc", "h", "hpp" },
-        handlers = lsputils.lsp_diagnostics(),
-        settings = {},
     })
     require("clangd_extensions").setup({
         -- autoSetHints = false,
@@ -75,8 +85,6 @@ local function setup()
             border = "none",
         },
     })
-
-    vim.lsp.enable("clangd")
 end
 
 return {
