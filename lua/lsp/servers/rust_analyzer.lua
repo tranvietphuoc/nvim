@@ -24,7 +24,7 @@ local function setup()
 
             vim.lsp.start({
                 name = "rust_analyzer",
-                cmd = { DATA .. "/mason/bin/rust-analyzer" },
+                cmd = { "rust-analyzer" },
                 on_attach = rust_on_attach,
                 capabilities = require("lsp").capabilities(),
                 root_dir = root_dir,
