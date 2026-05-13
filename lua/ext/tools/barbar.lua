@@ -1,9 +1,8 @@
 return {
     setup = function()
         require("barbar").setup({
-            opts = {
-                insert_at_start = false,
-            }
+            insert_at_start = false,
+            auto_hide = true, -- Tự động ẩn khi chỉ có 1 buffer
         })
 
         local map = vim.keymap.set
