@@ -18,10 +18,10 @@ return {
                 enable = true,
                 auto_open = true,
             },
-            system_open = {
+            --[[ system_open = {
                 cmd = "",
                 args = {},
-            },
+            }, ]]
             diagnostics = {
                 enable = true,
                 show_on_dirs = true,
