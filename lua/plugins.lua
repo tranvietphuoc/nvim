@@ -109,11 +109,9 @@ return {
                     "nvim-lua/plenary.nvim", -- required
                     "sindrets/diffview.nvim", -- optional - Diff integration
 
-                    -- Only one of these is needed.
                     "nvim-telescope/telescope.nvim", -- optional
                     "ibhagwan/fzf-lua", -- optional
                     "echasnovski/mini.pick", -- optional
-                    "folke/snacks.nvim", -- optional
                 },
                 config = true,
             },
@@ -351,24 +349,56 @@ return {
             },
 
             {
-                "akinsho/toggleterm.nvim",
-                config = function()
-                    require("ext.tools.terminal").setup()
-                end,
-            },
-            {
-                "numtostr/FTerm.nvim",
-                config = function()
-                    require("FTerm").setup({
-                        dimensions = {
-                            height = 0.6,
-                            width = 0.5,
-                            x = 1,
-                            y = 0,
+                "folke/snacks.nvim",
+                lazy = false,
+                priority = 1000,
+                ---@module 'snacks'
+                ---@type snacks.Config
+                opts = {
+                    terminal = {
+                        win = {
+                            position = "bottom",
+                            height = 11,
                         },
-                        border = "single",
+                    },
+                    styles = {
+                        terminal = {
+                            keys = {
+                                term_normal = {
+                                    "jk",
+                                    function(self)
+                                        vim.cmd("stopinsert")
+                                    end,
+                                    mode = "t",
+                                    desc = "Normal mode",
+                                },
+                            },
+                        },
+                        gitui = {
+                            position = "float",
+                            width = 0.9,
+                            height = 0.9,
+                            bo = { filetype = "snacks_terminal" },
+                            keys = { q = "hide" },
+                        },
+                    },
+                },
+                keys = {
+                    { "<leader>`", function() Snacks.terminal.toggle() end, desc = "Toggle Terminal" },
+                    { "<leader>gu", function() Snacks.terminal.toggle("gitui", { win = { style = "gitui" } }) end, desc = "Toggle GitUI" },
+                },
+                config = function(_, opts)
+                    require("snacks").setup(opts)
+                    -- terminal mode navigation keymaps
+                    vim.api.nvim_create_autocmd("TermOpen", {
+                        callback = function()
+                            local buf_opts = { buffer = 0 }
+                            vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-W>h]], buf_opts)
+                            vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-W>j]], buf_opts)
+                            vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-W>k]], buf_opts)
+                            vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-W>l]], buf_opts)
+                        end,
                     })
-                    require("ext.tools.git-ui").setup()
                 end,
             },
 
@@ -571,7 +601,6 @@ return {
             },
             {
                 "coder/claudecode.nvim",
-                dependencies = { "folke/snacks.nvim" },
                 config = function()
                     vim.api.nvim_set_hl(0, "ClaudeTermBg", { bg = "#1a1b26", fg = "#a9b1d6", ctermbg = 0, ctermfg = 7 })
                     require("claudecode").setup({
