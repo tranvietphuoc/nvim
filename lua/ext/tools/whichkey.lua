@@ -4,7 +4,7 @@ return {
 
         wk.setup({
             preset = "modern",
-            delay = 500,
+            delay = 100,
             win = {
                 padding = { 1, 2 },
             },
@@ -91,7 +91,11 @@ return {
             { "<leader>S", group = "Spectre" },
             { "<leader>So", "<cmd>lua require('spectre').open()<cr>", desc = "Spectre open" },
             { "<leader>SO", "<cmd>lua require('spectre').open_visual()<cr>", desc = "Spectre open visual", mode = "v" },
-            { "<leader>Sw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", desc = "Spectre open word" },
+            {
+                "<leader>Sw",
+                "<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
+                desc = "Spectre open word",
+            },
 
             -- Code lens
             { "<leader>C", group = "Code lens" },
