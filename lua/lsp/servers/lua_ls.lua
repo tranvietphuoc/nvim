@@ -5,8 +5,6 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-
-
 local function setup()
     vim.api.nvim_create_autocmd("FileType", {
         pattern = { "lua" },
@@ -29,8 +27,12 @@ local function setup()
                             globals = { "vim" },
                         },
                         workspace = {
-                            library = vim.api.nvim_get_runtime_file("", true),
+                            library = {
+                                vim.env.VIMRUNTIME,
+                            },
                             checkThirdParty = false,
+                            maxPreload = 1000,
+                            preloadFileSize = 100,
                         },
                         telemetry = {
                             enable = false,
@@ -42,6 +44,9 @@ local function setup()
                 },
             }, {
                 bufnr = ev.buf,
+                reuse_client = function(client, conf)
+                    return client.name == conf.name and client.config.root_dir == conf.root_dir
+                end,
             })
         end,
     })

@@ -1,8 +1,6 @@
 -- luasnip setup
 local luasnip = require("luasnip")
-local lspkind = require("lspkind")
 local cmp = require("cmp")
-local cmp_buffer = require("cmp_buffer")
 
 local has_words_before = function()
     unpack = unpack or table.unpack
@@ -119,8 +117,6 @@ return {
 
         cmp.setup.filetype("gitcommit", {
             sources = cmp.config.sources({
-                { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
-            }, {
                 { name = "buffer" },
             }),
         })

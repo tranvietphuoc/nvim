@@ -1,5 +1,4 @@
 local local_utils = require("lsp.utils")
-local ih = require("inlay-hints")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 local function map(...)
@@ -38,7 +37,7 @@ local function attach(client, bufnr)
     opts.desc = "Go to implementations"
     map("n", "gi", vim.lsp.buf.implementation, opts)
     opts.desc = "Show references"
-    map("n", "gR", vim.lsp.buf.references, opts)
+    map("n", "gR", "<cmd>Trouble lsp_references toggle focus=false<cr>", opts)
     opts.desc = "Show signature help"
     map("n", "gs", vim.lsp.buf.signature_help, opts)
     map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
@@ -87,28 +86,21 @@ local function attach(client, bufnr)
     end, opts)
 
     local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-
+    local diagnostic_signs = {}
     for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+        diagnostic_signs[vim.diagnostic.severity[type:upper()]] = icon
     end
+    vim.diagnostic.config({ signs = { text = diagnostic_signs } })
 end
 
 local function common_on_attach(client, bufnr)
     attach(client, bufnr)
-    ih.on_attach(client, bufnr) -- enable inlay hints for lsp server
-end
-
-local function tsserver_on_attach(client, bufnr)
-    common_on_attach(client, bufnr)
-    client.server_capabilities.document_formatting = true
 end
 
 return {
     capabilities = capabilities,
     attach = attach,
     common_on_attach = common_on_attach,
-    tsserver_on_attach = tsserver_on_attach,
     setup = function()
         -- lsp clients setup
         local scandir = require("plenary.scandir")

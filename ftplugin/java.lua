@@ -1,7 +1,6 @@
 local on_attach = function(client, bufnr)
     require("jdtls").setup_dap()
     require("lsp").common_on_attach(client, bufnr)
-    -- vim.lsp.inlay_hint.enable(true)
 
     local function map(...)
         vim.keymap.set(...)
@@ -9,39 +8,21 @@ local on_attach = function(client, bufnr)
 
     local opts = { noremap = true, silent = true, buffer = bufnr }
 
-    -- Java specific
     map("n", "<leader>di", "<Cmd>lua require'jdtls'.organize_imports()<CR>", opts)
     map("n", "<leader>dt", "<Cmd>lua require'jdtls'.test_class()<CR>", opts)
     map("n", "<leader>dn", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", opts)
     map("v", "<leader>de", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", opts)
     map("n", "<leader>de", "<Cmd>lua require('jdtls').extract_variable()<CR>", opts)
     map("v", "<leader>dm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opts)
-
-    -- If using nvim-dap
-    -- This requires java-debug and vscode-java-test bundles, see install steps in this README further below.
-    map("n", "<leader>df", "<Cmd>lua require'jdtls'.test_class()<CR>", opts)
-    map("n", "<leader>dn", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", opts)
 end
 
 local jdtls = require("jdtls")
 jdtls.settings.jdt_uri_timeout_ms = 1000
 
-local function directory_exists(path)
-    local f = io.popen("cd " .. path)
-    local ff = f:read("*all")
-
-    if ff:find("ItemNotFoundException") then
-        return false
-    else
-        return true
-    end
-end
-
 local home = os.getenv("HOME")
 local jdtls_path = home .. "/.local/share/nvim/mason/packages/jdtls/"
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml" }
 
--- get the current OS
 local os_config
 if vim.fn.has("macunix") == 1 then
     os_config = "mac"
@@ -49,20 +30,15 @@ elseif vim.fn.has("win32") == 1 then
     os_config = "win"
 elseif vim.fn.has("unix") == 1 then
     os_config = "linux"
-else -- let's assume linux
-    os_config = "unknown"
+else
+    os_config = "linux"
 end
 
 local root_dir = require("jdtls.setup").find_root(root_markers)
--- local root_dir = vim.fs.dirname(vim.fs.find(root_markers, { upward = true })[1])
 local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
--- local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_path = vim.fn.stdpath("data") .. "/site/java/workspaces/" .. project_name
 
-if directory_exists(workspace_path) then
-else
-    os.execute("mkdir " .. workspace_path)
-end
+vim.fn.mkdir(workspace_path, "p")
 
 local lombok_path = jdtls_path .. "lombok.jar"
 
@@ -165,7 +141,7 @@ local config = {
             },
             updateBuildConfiguration = "interactive",
             signatureHelp = { enabled = true },
-            contentProvider = { preferred = "fernflower" },
+            contentProvider = { preferred = "cfr" },
             completion = {
                 favoriteStaticMembers = {
                     "org.hamcrest.MatcherAssert.assertThat",
@@ -201,9 +177,6 @@ local config = {
                 toString = {
                     template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
                 },
-                hashCodeEquals = {
-                    useJava7Objects = true,
-                },
                 useBlocks = true,
             },
             inlayHints = {
@@ -219,9 +192,9 @@ local config = {
         extendedClientCapabilities = extendedClientCapabilities,
         bundles = {
             vim.fn.glob(
-                vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
-                    .. "packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar",
-                "\n"
+                vim.fn.stdpath("data")
+                    .. "/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar",
+                1
             ),
         },
     },

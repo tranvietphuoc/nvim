@@ -4,11 +4,9 @@ return {
 
         wk.setup({
             preset = "modern",
-            delay = 300, -- Delay before Which-Key shows up (0.3s)
+            delay = 500,
             win = {
-                border = "rounded",
-                position = "bottom",
-                padding = { 1, 2, 1, 2 },
+                padding = { 1, 2 },
             },
         })
 
@@ -121,7 +119,6 @@ return {
             { "<leader>li", "<cmd>Telescope lsp_implementations<cr>", desc = "Implementations" },
 
             -- Other mappings
-            { "gR", "<cmd>Trouble lsp_references toggle focus=false<cr>", desc = "Lsp references" },
             { "<leader>Z", "<cmd>ZenMode<cr>", desc = "Toggle Zen mode" },
 
             -- Global Shortcuts
@@ -129,12 +126,6 @@ return {
             { "<S-Tab>", "<Cmd>BufferPrevious<CR>", desc = "Prev Buffer" },
             { "<S-c>", "<Cmd>BufferClose<CR>", desc = "Close Buffer" },
             { "<S-p>", "<Cmd>BufferPin<CR>", desc = "Pin Buffer" },
-
-            -- Window navigation
-            { "<C-k>", ":wincmd k<CR>", desc = "Move Up" },
-            { "<C-j>", ":wincmd j<CR>", desc = "Move Down" },
-            { "<C-h>", ":wincmd h<CR>", desc = "Move Left" },
-            { "<C-l>", ":wincmd l<CR>", desc = "Move Right" },
 
             -- Visual mode move lines
             { "K", ":move '<-2<CR>gv-gv", desc = "Move Lines Up", mode = "x" },

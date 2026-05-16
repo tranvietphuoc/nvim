@@ -82,15 +82,6 @@ return {
                         end,
                     },
                 },
-                keys = {
-                    {
-                        "<leader>gl",
-                        function()
-                            require("gitgraph").draw({}, { all = true, max_count = 5000 })
-                        end,
-                        desc = "GitGraph - Draw",
-                    },
-                },
             },
             {
                 "rhysd/git-messenger.vim",
@@ -178,17 +169,10 @@ return {
             -- highlight yank
             { "machakann/vim-highlightedyank" },
 
-            { "nvim-lua/popup.nvim" },
             { "nvim-lua/plenary.nvim" },
 
             -- go vim
             { "fatih/vim-go", build = ":GoUpdateBinaries" },
-
-            {
-                "MysticalDevil/inlay-hints.nvim",
-                event = "LspAttach",
-                dependencies = { "neovim/nvim-lspconfig" },
-            },
 
             -- vim easy align
             {
@@ -429,7 +413,11 @@ return {
             },
             {
                 "pwntester/octo.nvim",
-                dependencies = { "nvim-telescope/telescope.nvim", "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" },
+                dependencies = {
+                    "nvim-telescope/telescope.nvim",
+                    "nvim-tree/nvim-web-devicons",
+                    "nvim-lua/plenary.nvim",
+                },
                 config = function()
                     require("octo").setup()
                 end,
@@ -442,41 +430,8 @@ return {
                 dependencies = "nvim-tree/nvim-web-devicons",
                 cmd = "Trouble",
                 config = function()
-                    require("trouble").setup({
-                    })
+                    require("trouble").setup({})
                 end,
-                keys = {
-                    {
-                        "<leader>xx",
-                        "<cmd>Trouble diagnostics toggle<cr>",
-                        desc = "Diagnostics (Trouble)",
-                    },
-                    {
-                        "<leader>xX",
-                        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-                        desc = "Buffer Diagnostics (Trouble)",
-                    },
-                    {
-                        "<leader>cs",
-                        "<cmd>Trouble symbols toggle focus=false<cr>",
-                        desc = "Symbols (Trouble)",
-                    },
-                    {
-                        "<leader>cl",
-                        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-                        desc = "LSP Definitions / references / ... (Trouble)",
-                    },
-                    {
-                        "<leader>xL",
-                        "<cmd>Trouble loclist toggle<cr>",
-                        desc = "Location List (Trouble)",
-                    },
-                    {
-                        "<leader>xQ",
-                        "<cmd>Trouble qflist toggle<cr>",
-                        desc = "Quickfix List (Trouble)",
-                    },
-                },
             },
             {
                 "chrisbra/csv.vim",
@@ -527,15 +482,6 @@ return {
             -- csharp
 
             { "Hoffs/omnisharp-extended-lsp.nvim" },
-
-            -- distant -- remote neovim
-            {
-                "chipsenkbeil/distant.nvim",
-                branch = "v0.3",
-                config = function()
-                    require("distant"):setup()
-                end,
-            },
 
             {
                 "mfussenegger/nvim-lint",
@@ -622,6 +568,41 @@ return {
                 config = function(_, opts)
                     require("markmap").setup(opts)
                 end,
+            },
+            {
+                "coder/claudecode.nvim",
+                dependencies = { "folke/snacks.nvim" },
+                config = function()
+                    vim.api.nvim_set_hl(0, "ClaudeTermBg", { bg = "#1a1b26", fg = "#a9b1d6", ctermbg = 0, ctermfg = 7 })
+                    require("claudecode").setup({
+                        terminal = {
+                            snacks_win_opts = {
+                                wo = {
+                                    winhl = "Normal:ClaudeTermBg,FloatBorder:ClaudeTermBg",
+                                },
+                            },
+                        },
+                    })
+                end,
+                keys = {
+                    { "<leader>a", nil, desc = "AI/Claude Code" },
+                    { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+                    { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+                    { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+                    { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+                    { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
+                    { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+                    { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+                    {
+                        "<leader>as",
+                        "<cmd>ClaudeCodeTreeAdd<cr>",
+                        desc = "Add file",
+                        ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
+                    },
+                    -- Diff management
+                    { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+                    { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+                },
             },
         })
     end,
