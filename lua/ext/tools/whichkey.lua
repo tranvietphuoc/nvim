@@ -96,6 +96,25 @@ return {
                 "<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
                 desc = "Spectre open word",
             },
+            -- Code
+            { "<leader>c", group = "Code" },
+            { "<leader>cd", desc = "Generate Doc (Doge)" },
+
+            -- Debugger
+            { "<leader>d", group = "Debugger" },
+            { "<leader>da", "<cmd>lua require('dap').continue()<cr>", desc = "Continue" },
+            { "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<cr>", desc = "Toggle Breakpoint" },
+            { "<leader>dc", "<cmd>lua require('dapui').close()<cr>", desc = "Close UI" },
+            { "<leader>dd", "<cmd>lua require('dap').continue()<cr>", desc = "Continue" },
+            { "<leader>dh", "<cmd>lua require('dapui').eval()<cr>", desc = "Eval UI" },
+            { "<leader>di", "<cmd>lua require('dap').step_into()<cr>", desc = "Step Into" },
+            { "<leader>do", "<cmd>lua require('dap').step_out()<cr>", desc = "Step Out" },
+            { "<leader>dO", "<cmd>lua require('dap').step_over()<cr>", desc = "Step Over" },
+            { "<leader>dr", "<cmd>lua require('dapui').float_element('repl', { enter = true })<cr>", desc = "Repl UI" },
+            { "<leader>ds", "<cmd>lua require('dapui').float_element('scopes', { enter = true })<cr>", desc = "Scopes UI" },
+            { "<leader>dt", "<cmd>lua require('dap').terminate()<cr>", desc = "Terminate" },
+            { "<leader>du", "<cmd>lua require('dapui').open()<cr>", desc = "Open UI" },
+            { "<leader>dw", "<cmd>lua require('dapui').float_element('watches', { enter = true })<cr>", desc = "Watches UI" },
 
             -- Code lens
             { "<leader>C", group = "Code lens" },
