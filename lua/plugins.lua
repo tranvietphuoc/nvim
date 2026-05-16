@@ -153,15 +153,6 @@ return {
                     require("ext.tools.markdown").setup()
                 end,
             },
-            {
-                "iamcco/markdown-preview.nvim",
-                cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-                build = "cd app && yarn install",
-                init = function()
-                    vim.g.mkdp_filetypes = { "markdown" }
-                end,
-                ft = { "markdown" },
-            },
             { "christoomey/vim-tmux-navigator" },
 
             -- highlight yank
@@ -384,8 +375,20 @@ return {
                     },
                 },
                 keys = {
-                    { "<leader>`", function() Snacks.terminal.toggle() end, desc = "Toggle Terminal" },
-                    { "<leader>gu", function() Snacks.terminal.toggle("gitui", { win = { style = "gitui" } }) end, desc = "Toggle GitUI" },
+                    {
+                        "<leader>`",
+                        function()
+                            Snacks.terminal.toggle()
+                        end,
+                        desc = "Toggle Terminal",
+                    },
+                    {
+                        "<leader>gu",
+                        function()
+                            Snacks.terminal.toggle("gitui", { win = { style = "gitui" } })
+                        end,
+                        desc = "Toggle GitUI",
+                    },
                 },
                 config = function(_, opts)
                     require("snacks").setup(opts)
@@ -631,6 +634,28 @@ return {
                     -- Diff management
                     { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
                     { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+                },
+            },
+            {
+                "MeanderingProgrammer/render-markdown.nvim",
+                dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+                ft = { "markdown", "gitcommit" },
+                ---@module 'render-markdown'
+                ---@type render.md.UserConfig
+                opts = {
+                    render_modes = { "n", "c", "t" },
+                    debounce = 100,
+                    max_file_size = 10.0,
+                    win_options = {
+                        conceallevel = {
+                            default = vim.o.conceallevel,
+                            rendered = 3,
+                        },
+                        concealcursor = {
+                            default = vim.o.concealcursor,
+                            rendered = "",
+                        },
+                    },
                 },
             },
         })

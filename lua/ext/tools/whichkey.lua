@@ -75,9 +75,12 @@ return {
             { "<leader>0", "<Cmd>BufferLast<CR>", desc = "Go to Last Buffer" },
 
             -- Markdown
-            { "<leader>M", group = "Markdown Preview" },
-            { "<leader>MS", "<cmd>MarkdownPreview<cr>", desc = "Start preview" },
-            { "<leader>Ms", "<cmd>MarkdownPreviewStop<cr>", desc = "Stop preview" },
+            { "<leader>M", group = "Markdown Render" },
+            { "<leader>MS", "<cmd>RenderMarkdown toggle<cr>", desc = "Toggle render" },
+            { "<leader>Ms", "<cmd>RenderMarkdown buf_toggle<cr>", desc = "Toggle buffer" },
+            { "<leader>Mr", "<cmd>RenderMarkdown preview<cr>", desc = "Side-by-side preview" },
+            { "<leader>Me", "<cmd>RenderMarkdown enable<cr>", desc = "Enable render" },
+            { "<leader>Md", "<cmd>RenderMarkdown disable<cr>", desc = "Disable render" },
 
             -- Live server
             { "<leader>L", group = "Live server" },
