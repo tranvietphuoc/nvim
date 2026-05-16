@@ -1,13 +1,19 @@
 return {
     setup = function()
         local telescope = require("telescope")
+        local actions = require("telescope.actions")
         local trouble = require("trouble.sources.telescope")
 
         telescope.setup({
             defaults = {
                 mappings = {
-                    i = { ["<c-t>"] = trouble.open },
-                    n = { ["<c-t>"] = trouble.open },
+                    i = {
+                        ["<c-t>"] = trouble.open,
+                        ["<esc>"] = actions.close,
+                    },
+                    n = {
+                        ["<c-t>"] = trouble.open,
+                    },
                 },
                 vimgrep_arguments = {
                     "rg",

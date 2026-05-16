@@ -6,7 +6,7 @@ local local_utils = require("lsp.utils")
 local function setup()
     -- typescript-tools
     require("typescript-tools").setup({
-        on_attach = require("lsp").tsserver_on_attach,
+        on_attach = require("lsp").common_on_attach,
         handlers = {},
         settings = {
             -- spawn additional tsserver instance to calculate diagnostics on it
