@@ -122,6 +122,8 @@ return {
             -- treesitter
             {
                 "nvim-treesitter/nvim-treesitter",
+                branch = "main",
+                lazy = false,
                 build = ":TSUpdate",
                 config = function()
                     require("ext.tools.treesitter").setup()
@@ -130,8 +132,11 @@ return {
 
             {
                 "nvim-treesitter/nvim-treesitter-textobjects",
-                after = "nvim-treesitter",
+                branch = "main",
                 dependencies = "nvim-treesitter/nvim-treesitter",
+                config = function()
+                    require("ext.tools.treesitter").setup_textobjects()
+                end,
             },
 
             -- multiple cursors
