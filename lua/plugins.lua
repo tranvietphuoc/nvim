@@ -637,6 +637,65 @@ return {
                 },
             },
             {
+                "nwiizo/codex.nvim",
+                cmd = {
+                    "Codex",
+                    "CodexOpen",
+                    "CodexClose",
+                    "CodexFocus",
+                    "CodexResume",
+                    "CodexContinue",
+                    "CodexFork",
+                    "CodexReview",
+                    "CodexPrompt",
+                    "CodexSend",
+                    "CodexSendVisual",
+                    "CodexAddVisual",
+                    "CodexAdd",
+                    "CodexTreeAdd",
+                    "CodexInterrupt",
+                    "CodexStatus",
+                    "CodexStop",
+                    "CodexHealth",
+                },
+                opts = {
+                    backend = "terminal",
+                    cwd = "root",
+                    terminal = {
+                        layout = "split",
+                        split_side = "right",
+                        split_width_percentage = 0.25,
+                    },
+                },
+                config = function(_, opts)
+                    require("codex").setup(opts)
+
+                    -- Keep the Codex split at the configured width when another
+                    -- side window (for example nvim-tree) is opened.
+                    vim.api.nvim_create_autocmd("User", {
+                        pattern = { "CodexStarted", "CodexOpened" },
+                        callback = function(event)
+                            local winid = event.data and event.data.winid
+                            if winid and vim.api.nvim_win_is_valid(winid) then
+                                vim.wo[winid].winfixwidth = true
+                            end
+                        end,
+                    })
+                end,
+                keys = {
+                    { "<leader>ax", "<cmd>CodexFocus<cr>", desc = "Toggle Codex" },
+                    { "<leader>aX", "<cmd>CodexStop<cr>", desc = "Stop Codex" },
+                    { "<leader>ap", "<cmd>CodexPrompt<cr>", desc = "Prompt Codex" },
+                    { "<leader>aB", "<cmd>CodexAdd<cr>", desc = "Add current buffer to Codex" },
+                    {
+                        "<leader>aS",
+                        ":<C-U>CodexSendVisual<CR>",
+                        mode = "v",
+                        desc = "Send selection to Codex",
+                    },
+                },
+            },
+            {
                 "MeanderingProgrammer/render-markdown.nvim",
                 dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
                 ft = { "markdown", "gitcommit" },
