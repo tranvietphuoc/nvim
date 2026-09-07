@@ -431,7 +431,7 @@ return {
             },
             {
                 "nvim-telescope/telescope.nvim",
-                branch = "0.1.x",
+                version = "*",
                 dependencies = { { "nvim-lua/plenary.nvim" } },
                 lazy = false,
                 config = function()
@@ -544,8 +544,6 @@ return {
                 end,
                 dependencies = {
                     "nvim-telescope/telescope.nvim",
-                    branch = "0.1.x",
-                    dependencies = { "nvim-lua/plenary.nvim" },
                 },
                 ft = "python",
                 opts = {
