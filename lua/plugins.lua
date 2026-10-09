@@ -255,10 +255,18 @@ return {
 
             -- colorizer
             {
-                "norcalli/nvim-colorizer.lua",
-                config = function()
-                    require("ext.tools.colorizer").setup()
-                end,
+                "catgoose/nvim-colorizer.lua",
+                opts = {
+                    filetypes = { "*" },
+                    options = {
+                        parsers = {
+                            names = { enable = true },
+                            hex = { rgb = true, rrggbb = true, rrggbbaa = true },
+                            rgb = { enable = true },
+                            hsl = { enable = true },
+                        },
+                    },
+                },
             },
 
             -- auto-pairs
@@ -434,6 +442,13 @@ return {
                 version = "*",
                 dependencies = { { "nvim-lua/plenary.nvim" } },
                 lazy = false,
+                keys = {
+                    {
+                        "<Leader>fc",
+                        "<CMD>Telescope commands<CR>",
+                        desc = "Open command palette",
+                    },
+                },
                 config = function()
                     require("ext.tools.telescoped").setup()
                 end,
@@ -441,13 +456,6 @@ return {
             {
                 "nvim-telescope/telescope-fzf-native.nvim",
                 build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
-            },
-            {
-                "FeiyouG/commander.nvim",
-                dependencies = { "nvim-telescope/telescope.nvim" },
-                config = function()
-                    require("ext.tools.telescoped").setup_commander()
-                end,
             },
             {
                 "pwntester/octo.nvim",
@@ -498,7 +506,8 @@ return {
 
             -- live server
             {
-                "barrett-ruth/live-server.nvim",
+                name = "live-server.nvim",
+                url = "https://forge.barrettruth.com/barrettruth/live-server.nvim",
                 init = function()
                     vim.g.live_server = {}
                 end,

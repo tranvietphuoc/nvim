@@ -11,12 +11,9 @@ local function setup()
 
     metals_config.capabilities = cmp_nvim_lsp.default_capabilities()
 
-    metals_config.handlers["textDocument/publishDiagnostics"] =
-        vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-            virtual_text = {
-                prefix = "●", -- Could be '●', '▎', 'x'
-            },
-        })
+    vim.diagnostic.config({
+        virtual_text = { prefix = "●" },
+    })
 
     -- scala debugger
     dap.configurations.scala = {

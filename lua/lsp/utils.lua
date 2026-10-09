@@ -1,5 +1,5 @@
 local function lsp_diagnostics()
-    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    vim.diagnostic.config({
         virtual_text = true,
         underline = true,
         signs = true,
@@ -13,14 +13,21 @@ local function lsp_diagnostics()
         },
     })
 
-    local on_references = vim.lsp.handlers["textDocument/references"]
-    vim.lsp.handlers["textDocument/references"] = vim.lsp.with(on_references, { loclist = true, virtual_text = true })
+    local function with_config(handler, defaults)
+        return function(err, result, ctx, config)
+            config = vim.tbl_deep_extend("force", {}, defaults, config or {})
+            return handler(err, result, ctx, config)
+        end
+    end
 
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    local on_references = vim.lsp.handlers["textDocument/references"]
+    vim.lsp.handlers["textDocument/references"] = with_config(on_references, { loclist = true, virtual_text = true })
+
+    vim.lsp.handlers["textDocument/hover"] = with_config(vim.lsp.handlers.hover, {
         border = "rounded",
     })
 
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    vim.lsp.handlers["textDocument/signatureHelp"] = with_config(vim.lsp.handlers.signature_help, {
         border = "rounded",
     })
 end
